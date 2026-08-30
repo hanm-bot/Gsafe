@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Ca kiểm thử cho doi_chieu_ban.py — mỗi ca kiểm HAI CHIỀU."""
-import json, os, sys, tempfile
+import json, os, sys, tempfile, zipfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from doi_chieu_ban import tim_ban_dang_chay
+from doi_chieu_ban import tim_ban_dang_chay, doc_thu_muc, doc_goi, bam
 
 DAT = TRUOT = 0
 
@@ -68,11 +68,9 @@ def main():
         ktra('Tim thay ban nam sau 2 tang ID phien long nhau (dung dang may thuc)',
              len(kq2) == 1)
 
-        # --- Task 2: đọc thư mục và băm ---
-        from doi_chieu_ban import doc_thu_muc, doc_goi, bam
-        import zipfile
-
-        d = os.path.join(t, 'nguon')
+    # --- Task 2: đọc thư mục và băm — khối riêng, không mượn thư mục tạm đã đóng ---
+    with tempfile.TemporaryDirectory() as t3:
+        d = os.path.join(t3, 'nguon')
         os.makedirs(os.path.join(d, 'sk1'), exist_ok=True)
         with open(os.path.join(d, 'sk1', 'SKILL.md'), 'w', encoding='utf-8') as f:
             f.write('dong 1\ndong 2\ndong 3\n')
@@ -85,14 +83,14 @@ def main():
         # Chiều 2 — chỉ khác kiểu xuống dòng thì hash phải GIỐNG
         ktra('CRLF va LF cho cung hash', bam('a\r\nb\r\n') == bam('a\nb\n'))
 
-        z = os.path.join(t, 'goi.plugin')
+        z = os.path.join(t3, 'goi.plugin')
         with zipfile.ZipFile(z, 'w') as zf:
             zf.writestr('skills/sk1/SKILL.md', 'dong 1\ndong 2\ndong 3\n')
         g = doc_goi(z)
         ktra('Doc goi .plugin ra cung ket qua voi thu muc', g == m)
-        ktra('Goi khong ton tai tra ve rong', doc_goi(os.path.join(t, 'khong-co.plugin')) == {})
+        ktra('Goi khong ton tai tra ve rong', doc_goi(os.path.join(t3, 'khong-co.plugin')) == {})
 
-        print(f'\n---- KET QUA: {DAT} dat / {TRUOT} truot ----')
+    print(f'\n---- KET QUA: {DAT} dat / {TRUOT} truot ----')
     sys.exit(0 if TRUOT == 0 else 1)
 
 if __name__ == '__main__':
