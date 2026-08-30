@@ -24,8 +24,9 @@ def tim_ban_dang_chay(ten_plugin='sht-skills', goc=None):
     for f in glob.glob(mau, recursive=True):
         try:
             with open(f, encoding='utf-8') as fh:
-                if json.load(fh).get('name') != ten_plugin:
-                    continue
+                du_lieu = json.load(fh)
+            if not isinstance(du_lieu, dict) or du_lieu.get('name') != ten_plugin:
+                continue
         except (OSError, ValueError):
             continue  # manifest hỏng thì bỏ qua, không làm chết cả lần quét
         thu_muc_skills = os.path.join(os.path.dirname(os.path.dirname(f)), 'skills')

@@ -25,11 +25,21 @@ def dung_plugin(goc, ma, ten, skills=('a',)):
             f.write(f'---\nname: {s}\n---\n\nNoi dung.\n')
     return p
 
+def dung_plugin_json_tho(goc, ma, noi_dung):
+    """Dựng plugin.json cú pháp hợp lệ nhưng KHÔNG phải object (list/null/chuoi/so)."""
+    p = os.path.join(goc, 'rpm', f'plugin_{ma}')
+    os.makedirs(os.path.join(p, '.claude-plugin'), exist_ok=True)
+    with open(os.path.join(p, '.claude-plugin', 'plugin.json'), 'w', encoding='utf-8') as f:
+        json.dump(noi_dung, f)
+    return p
+
 def main():
     with tempfile.TemporaryDirectory() as t:
         dung_plugin(t, 'AAA', 'sht-skills')
         dung_plugin(t, 'BBB', 'sht-skills')
         dung_plugin(t, 'CCC', 'plugin-khac')
+        # plugin.json là [] — hợp lệ cú pháp nhưng không phải object; đứng cạnh 2 bản hợp lệ
+        dung_plugin_json_tho(t, 'DDD', [])
 
         kq = tim_ban_dang_chay('sht-skills', t)
         # Chiều 1 — phải TÌM THẤY đúng 2 bản
@@ -42,6 +52,21 @@ def main():
         # Chống sập
         ktra('Thu muc khong ton tai tra ve rong',
              tim_ban_dang_chay('sht-skills', os.path.join(t, 'khong-co-that')) == [])
+        # Chiều 2 — plugin.json khong phai object (vi du bi ghi de/cat cut) khong duoc lam sap
+        # vong quet, va khong duoc nhan nham la ban hop le
+        ktra('plugin.json khong phai object: khong sap, khong nhan nham',
+             len(kq) == 2 and all('DDD' not in p for p in kq))
+
+    # Ca rieng — chung minh vong quet khong phu thuoc so tang ID phien:
+    # duong dan thuc tren may co HAI tang ID long nhau truoc rpm/, vd:
+    # local-agent-mode-sessions/<id-1>/<id-2>/rpm/plugin_X/
+    with tempfile.TemporaryDirectory() as t2:
+        goc_long_id_phien = os.path.join(t2, 'id-phien-1', 'id-phien-2')
+        dung_plugin(goc_long_id_phien, 'EEE', 'sht-skills')
+        kq2 = tim_ban_dang_chay('sht-skills', t2)
+        # Chiều 1 — phải tìm thấy dù bản nằm sau hai tầng ID phiên lồng nhau
+        ktra('Tim thay ban nam sau 2 tang ID phien long nhau (dung dang may thuc)',
+             len(kq2) == 1)
 
     print(f'\n---- KET QUA: {DAT} dat / {TRUOT} truot ----')
     sys.exit(0 if TRUOT == 0 else 1)
