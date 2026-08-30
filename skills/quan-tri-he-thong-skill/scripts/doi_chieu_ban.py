@@ -9,8 +9,10 @@ ID phiên và ID plugin đổi mỗi lần cài lại, tên thì không.
 Thoát mã 1 nếu có phát hiện V1 hoặc V2 (mức chặn phát hành).
 """
 import glob
+import hashlib
 import json
 import os
+import zipfile
 
 GOC_MAC_DINH = os.path.expandvars(
     r'%APPDATA%\Claude\local-agent-mode-sessions')
@@ -33,3 +35,42 @@ def tim_ban_dang_chay(ten_plugin='sht-skills', goc=None):
         if os.path.isdir(thu_muc_skills):
             ket_qua.append(thu_muc_skills)
     return sorted(ket_qua)
+
+
+def bam(noi_dung):
+    """sha256 của nội dung đã chuẩn hoá xuống dòng — CRLF và LF cho cùng kết quả."""
+    chuan = noi_dung.replace('\r\n', '\n').replace('\r', '\n')
+    return hashlib.sha256(chuan.encode('utf-8')).hexdigest()
+
+
+def _do(noi_dung):
+    return (noi_dung.replace('\r\n', '\n').count('\n'), bam(noi_dung))
+
+
+def doc_thu_muc(thu_muc):
+    """{ten_skill: (so_dong, hash)} đọc từ một thư mục skills/."""
+    ket_qua = {}
+    if not os.path.isdir(thu_muc):
+        return ket_qua
+    for ten in sorted(os.listdir(thu_muc)):
+        f = os.path.join(thu_muc, ten, 'SKILL.md')
+        if os.path.isfile(f):
+            with open(f, encoding='utf-8') as fh:
+                ket_qua[ten] = _do(fh.read())
+    return ket_qua
+
+
+def doc_goi(duong_dan_plugin):
+    """{ten_skill: (so_dong, hash)} đọc từ file .plugin (zip)."""
+    ket_qua = {}
+    if not os.path.isfile(duong_dan_plugin):
+        return ket_qua
+    try:
+        with zipfile.ZipFile(duong_dan_plugin) as zf:
+            for ten_file in zf.namelist():
+                phan = ten_file.replace('\\', '/').split('/')
+                if len(phan) >= 3 and phan[-3] == 'skills' and phan[-1] == 'SKILL.md':
+                    ket_qua[phan[-2]] = _do(zf.read(ten_file).decode('utf-8'))
+    except (OSError, zipfile.BadZipFile):
+        return {}
+    return ket_qua
