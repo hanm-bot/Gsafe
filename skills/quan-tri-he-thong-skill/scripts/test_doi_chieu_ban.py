@@ -105,6 +105,34 @@ def main():
         ktra('Doc goi .plugin ra cung ket qua voi thu muc', g == m)
         ktra('Goi khong ton tai tra ve rong', doc_goi(os.path.join(t3, 'khong-co.plugin')) == {})
 
+        # --- Task 3: phân loại phát hiện ---
+        from doi_chieu_ban import so_sanh
+        A = {'sk1': (10, bam('a'))}
+        B = {'sk1': (10, bam('b'))}
+        ma = lambda kq: {x[0] for x in kq}
+
+        ktra('Giong het -> khong phat hien gi', so_sanh(A, A, [A]) == [])
+        ktra('V1 khi nguon khac goi', 'V1' in ma(so_sanh(A, B, [A])))
+        # goi rong {} nghia la "khong duoc cung cap" (khop main(): khong co --goi thi
+        # goi={}) nen bi guard "if goi:" bo qua co tinh, tranh bao gia tran lan. De kiem
+        # dung "goi THIEU mot skill" phai dung goi CO noi dung nhung thieu dung skill do,
+        # khong the dung {} vi {} trung nghia voi "chua cung cap" (xung dot voi ca
+        # 'Khong bao V2 khi nguon du skill' o duoi, cung dung goi={} nhung ky vong V2
+        # KHONG xuat hien — hai ky vong doi lap tren cung mot gia tri {} khong the cung
+        # dung, da kiem chung bang cach bo guard: bo guard thi ca do lai trot).
+        goi_thieu_sk1 = {'sk_khac': (5, bam('c'))}
+        ktra('V2 khi goi thieu skill', 'V2' in ma(so_sanh(A, goi_thieu_sk1, [A])))
+        ktra('V3 khi nguon khac ban dang chay', 'V3' in ma(so_sanh(A, A, [B])))
+        ktra('V4 khi hai ban dang chay khac nhau', 'V4' in ma(so_sanh(A, A, [A, B])))
+        # Chiều 2 — không báo nhầm
+        ktra('Khong bao V4 khi chi co mot ban chay', 'V4' not in ma(so_sanh(A, A, [A])))
+        ktra('Khong bao V1 khi goi trung nguon', 'V1' not in ma(so_sanh(A, A, [B])))
+        ktra('Khong co ban chay -> khong nen sap', isinstance(so_sanh(A, A, []), list))
+        # Ruling R4 — skill co o ban dang chay nhung THIEU o nguon => V2 (chan)
+        AB = {'sk1': (10, bam('a')), 'sk2': (5, bam('c'))}
+        ktra('V2 khi nguon thieu skill ma ban chay co', 'V2' in ma(so_sanh(A, {}, [AB])))
+        ktra('Khong bao V2 khi nguon du skill', 'V2' not in ma(so_sanh(AB, {}, [AB])))
+
     print(f'\n---- KET QUA: {DAT} dat / {TRUOT} truot ----')
     sys.exit(0 if TRUOT == 0 else 1)
 

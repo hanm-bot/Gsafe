@@ -83,3 +83,78 @@ def doc_goi(duong_dan_plugin):
     except (OSError, zipfile.BadZipFile):
         return {}
     return ket_qua
+
+
+def so_sanh(nguon, goi, chay):
+    """Trả về [(ma, muc, mo_ta)]. V1/V2 chặn phát hành; V3/V4 chỉ báo."""
+    pd = []
+
+    # V2 — thiếu/thừa skill giữa nguồn và gói
+    if goi:
+        thieu = sorted(set(nguon) - set(goi))
+        thua = sorted(set(goi) - set(nguon))
+        for s in thieu:
+            pd.append(('V2', 'CAO', f'{s}: có ở nguồn, thiếu trong gói .plugin'))
+        for s in thua:
+            pd.append(('V2', 'CAO', f'{s}: có trong gói .plugin, không có ở nguồn'))
+
+        # V1 — cùng tên nhưng nội dung khác
+        for s in sorted(set(nguon) & set(goi)):
+            if nguon[s][1] != goi[s][1]:
+                pd.append(('V1', 'CAO',
+                           f'{s}: nguồn {nguon[s][0]} dòng ≠ gói {goi[s][0]} dòng'))
+
+    # V2 — skill có ở bản đang chạy nhưng THIẾU ở nguồn.
+    # Đây là dấu hiệu chắc chắn đang đóng gói từ nguồn khuyết → nuốt ngược
+    # bản đang chạy. Chặn phát hành. (Ruling R4)
+    da_bao = set()
+    for i, b in enumerate(chay):
+        for s in sorted(set(b) - set(nguon)):
+            if s not in da_bao:
+                da_bao.add(s)
+                pd.append(('V2', 'CAO',
+                           f'{s}: có ở bản đang chạy #{i + 1}, THIẾU ở nguồn — '
+                           f'đóng gói lúc này sẽ xoá skill khỏi bản cài'))
+
+    # V3 — nguồn khác bản đang chạy
+    for i, b in enumerate(chay):
+        for s in sorted(set(nguon) & set(b)):
+            if nguon[s][1] != b[s][1]:
+                pd.append(('V3', 'TRUNG',
+                           f'{s}: nguồn {nguon[s][0]} dòng ≠ bản chạy #{i + 1} {b[s][0]} dòng'))
+
+    # V4 — hai bản đang chạy khác nhau
+    for i in range(len(chay)):
+        for j in range(i + 1, len(chay)):
+            for s in sorted(set(chay[i]) & set(chay[j])):
+                if chay[i][s][1] != chay[j][s][1]:
+                    pd.append(('V4', 'CAO',
+                               f'{s}: bản chạy #{i + 1} ({chay[i][s][0]} dòng) '
+                               f'≠ bản chạy #{j + 1} ({chay[j][s][0]} dòng)'))
+    return pd
+
+
+def main():
+    import sys
+    args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    goc_nguon = os.path.abspath(args[0] if args else '.')
+    nguon = doc_thu_muc(os.path.join(goc_nguon, 'skills'))
+    duong_dan_goi = sys.argv[sys.argv.index('--goi') + 1] if '--goi' in sys.argv else ''
+    goi = doc_goi(duong_dan_goi) if duong_dan_goi else {}
+    chay = [doc_thu_muc(p) for p in tim_ban_dang_chay()]
+
+    pd = so_sanh(nguon, goi, chay)
+    if not pd:
+        print(f'ĐỐI CHIẾU BẢN — sạch. {len(nguon)} skill, {len(chay)} bản đang cài.')
+        return 0
+
+    print(f'ĐỐI CHIẾU BẢN — {len(pd)} phát hiện\n')
+    for ma, muc, mo_ta in pd:
+        print(f'  [{ma}] {muc:5} {mo_ta}')
+    chan = [x for x in pd if x[0] in ('V1', 'V2')]
+    print(f'\n{len(chan)} phát hiện mức chặn phát hành (V1/V2).')
+    return 1 if chan else 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())
