@@ -44,6 +44,15 @@ def bam(noi_dung):
 
 
 def _do(noi_dung):
+    """Đếm số dòng theo số ký tự xuống dòng (cùng quy ước với `wc -l`), rồi băm.
+
+    Đây là quy ước CÓ CHỦ ĐÍCH, không phải lỗi: file KHÔNG kết thúc bằng newline sẽ ra
+    ít hơn số dòng văn bản thực tế MỘT đơn vị — giống hệt cách `wc -l` đếm. Chọn quy ước
+    này để so_dong công cụ in ra khớp với bảng số liệu trong tài liệu thiết kế
+    (273 / 258 / 173 / 153 dòng), vì bảng đó cũng được sinh bằng `wc -l`. so_dong chỉ
+    phục vụ người đọc ước lượng mức lệch giữa các bản; thứ quyết định hai bản có khác
+    nhau hay không là hash, và hash không bị ảnh hưởng bởi quy ước đếm dòng này.
+    """
     return (noi_dung.replace('\r\n', '\n').count('\n'), bam(noi_dung))
 
 

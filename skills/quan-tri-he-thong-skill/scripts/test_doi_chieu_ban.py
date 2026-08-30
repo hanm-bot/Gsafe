@@ -78,6 +78,21 @@ def main():
         ktra('Doc dung so dong', m['sk1'][0] == 3)
         ktra('Hash la chuoi 64 ky tu', len(m['sk1'][1]) == 64)
 
+        # Quy uoc dem dong CO CHU DICH cua _do(): giong wc -l, khop bang so lieu trong
+        # tai lieu thiet ke. Kiem qua doc_thu_muc (duong di thuc), khong goi _do truc tiep.
+        os.makedirs(os.path.join(d, 'sk_co_newline_cuoi'), exist_ok=True)
+        with open(os.path.join(d, 'sk_co_newline_cuoi', 'SKILL.md'), 'w', encoding='utf-8') as f:
+            f.write('a\nb\nc\n')
+        os.makedirs(os.path.join(d, 'sk_thieu_newline_cuoi'), exist_ok=True)
+        with open(os.path.join(d, 'sk_thieu_newline_cuoi', 'SKILL.md'), 'w', encoding='utf-8') as f:
+            f.write('a\nb\nc')
+        m_quy_uoc = doc_thu_muc(d)
+        # Chiều 1 — co newline cuoi thi dem dung so dong van ban
+        ktra('Co newline cuoi: dem dung 3 dong', m_quy_uoc['sk_co_newline_cuoi'][0] == 3)
+        # Chiều 2 — thieu newline cuoi thi ra it hon 1, dung y do (quy uoc wc -l)
+        ktra('Dem dong theo quy uoc wc -l: thieu newline cuoi thi ra 2, dung y do',
+             m_quy_uoc['sk_thieu_newline_cuoi'][0] == 2)
+
         # Chiều 2 — nội dung khác thì hash phải khác
         ktra('Noi dung khac -> hash khac', bam('a\n') != bam('b\n'))
         # Chiều 2 — chỉ khác kiểu xuống dòng thì hash phải GIỐNG
