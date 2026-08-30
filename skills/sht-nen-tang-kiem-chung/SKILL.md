@@ -157,6 +157,42 @@ Quét xong vẫn phải render ra ảnh và đọc từng trang (§5).
 
 ---
 
+## 7. Tự kiểm trước khi báo xong
+
+Luật này sinh ra từ hai lỗi thật trong phiên hunt CV 25/08/2026: báo "đã lưu xong" khi
+file nằm ở thư mục tạm người dùng không mở được, và báo "16 lời mời" khi thật là 18 vì
+đếm từ trí nhớ thay vì từ log.
+
+Cả hai cùng một họ: **tuyên bố một điều là đúng mà chưa đối chiếu nguồn thật.**
+
+### Cơ chế: dán bằng chứng vào câu báo cáo
+
+Mỗi tuyên bố phải kèm nguồn kiểm chứng ngay tại chỗ. Muốn trích được nguồn thì buộc
+phải đi nhìn — đó là toàn bộ lý do cơ chế này hiệu quả.
+
+| Không được viết | Phải viết |
+|---|---|
+| "Đã lưu xong file" | "Đã lưu: `<đường dẫn tuyệt đối>` — mở lại được, N sheet" |
+| "Đã gửi 16 lời mời" | "18 lời mời — đếm từ `<màn hình xác nhận của nền tảng>`" |
+| "Đã lọc theo TP.HCM" | "Chip đang áp: `TP Hồ Chí Minh` (đọc lại sau khi chọn)" |
+| "Đã xong" | "Xong — `<việc>`, kiểm bằng `<nguồn>`" |
+
+### Bốn câu chốt
+
+1. **File ở đâu?** Đường dẫn tuyệt đối, đã mở lại được. Chưa có quyền ghi vào thư mục
+   nghiệp vụ thì **hỏi trước**, không lưu tạm rồi báo hoàn thành.
+2. **Con số lấy từ đâu?** Đếm lại từ log thao tác hoặc màn hình xác nhận của chính nền
+   tảng. Không lấy từ báo cáo trước của mình.
+3. **Thao tác đã áp đúng chưa?** Sau mỗi lần chọn từ dropdown hoặc bộ lọc, đọc lại giá
+   trị thực đang áp trước khi chạy tiếp.
+4. **Có gì chưa xác minh được không?** Chưa đọc được bằng chứng thì không thực hiện hành
+   động tốn phí hoặc không hoàn tác được.
+
+Chưa dựng chốt máy cho luật này. **Điều kiện leo thang:** nếu sau khi có luật này mà vẫn
+xuất hiện thêm một lần "báo xong chưa kiểm chứng", lần đó là căn cứ dựng hook.
+
+---
+
 # PHỤ LỤC — CỤM BẢO VỆ KHI ĐỔI TÊN HÀNG LOẠT
 
 ```json
