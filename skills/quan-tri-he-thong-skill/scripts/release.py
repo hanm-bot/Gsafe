@@ -58,10 +58,31 @@ def main():
     dc = subprocess.run(
         [sys.executable, os.path.join(HERE, 'doi_chieu_ban.py'), root],
         capture_output=True, text=True)
-    gate(0, 'Đối chiếu bản — nguồn không khuyết skill', dc.returncode == 0,
-         '' if dc.returncode == 0 else
-         'Nguồn thiếu skill mà bản đang cài có. Đóng gói lúc này sẽ xoá skill '
-         'khỏi bản cài. Chạy doi_chieu_ban.py để xem chi tiết.')
+    # main() của doi_chieu_ban.py chỉ trả 0 hoặc 1 — bất kỳ mã thoát KHÁC (ví dụ 2:
+    # không tìm thấy file khi bị đổi tên/xoá nhầm) chắc chắn không phải "có phát hiện
+    # thật", mà là công cụ không chạy được nổi. Traceback trong stderr là dấu hiệu
+    # thứ hai của cùng loại lỗi (script chạy được nhưng crash giữa đường, returncode
+    # vẫn là 1 — TRÙNG đúng mã của "có phát hiện thật"). Cả hai đều phải bị bắt trước
+    # khi kết luận là phát hiện thật.
+    hong = dc.returncode not in (0, 1) or 'Traceback (most recent call last)' in dc.stderr
+    if dc.returncode == 0:
+        gate(0, 'Đối chiếu bản — nguồn không khuyết skill', True)
+    elif hong:
+        # Công cụ sập là lỗi của CÔNG CỤ, không phải của nguồn; nuốt stderr (bằng
+        # capture_output mà không in ra) là kiểu "báo như đang hoạt động" tệ hơn cả
+        # không có chốt. Trượt cổng vẫn đúng (an toàn), nhưng phải nói đúng lý do và
+        # trích cả stderr thật để người vận hành sửa đúng chỗ.
+        gate(0, 'Đối chiếu bản — CÔNG CỤ LỖI, không phải phát hiện thật', False,
+             f'doi_chieu_ban.py không chạy được (mã thoát {dc.returncode}) — xem stderr '
+             'bên dưới, đừng đi tìm "skill thiếu ở nguồn":\n' +
+             '\n'.join('       ' + ln for ln in dc.stderr.strip().splitlines()[-8:]))
+    else:
+        m = re.search(r'(\d+) phát hiện mức chặn phát hành', dc.stdout)
+        n = m.group(1) if m else '?'
+        gate(0, 'Đối chiếu bản — nguồn không khuyết skill', False,
+             f'{n} phát hiện mức chặn phát hành (V1/V2). Nguồn thiếu skill mà bản '
+             'đang cài có. Đóng gói lúc này sẽ xoá skill khỏi bản cài. Chạy '
+             'doi_chieu_ban.py để xem chi tiết.')
 
     # 1 — tự kiểm công cụ
     t = subprocess.run([sys.executable, os.path.join(HERE, 'test_audit.py')],

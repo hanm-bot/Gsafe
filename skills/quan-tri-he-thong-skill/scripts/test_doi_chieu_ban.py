@@ -98,6 +98,22 @@ def main():
         # Chiều 2 — chỉ khác kiểu xuống dòng thì hash phải GIỐNG
         ktra('CRLF va LF cho cung hash', bam('a\r\nb\r\n') == bam('a\nb\n'))
 
+        # Vong sua 1 — SKILL.md khong doc duoc (byte khong hop le UTF-8) khong duoc
+        # lam sap doc_thu_muc; skill hop le canh no van phai doc duoc binh thuong.
+        os.makedirs(os.path.join(d, 'sk_hop_le'), exist_ok=True)
+        with open(os.path.join(d, 'sk_hop_le', 'SKILL.md'), 'w', encoding='utf-8') as f:
+            f.write('dong 1\ndong 2\n')
+        os.makedirs(os.path.join(d, 'sk_loi_encoding'), exist_ok=True)
+        with open(os.path.join(d, 'sk_loi_encoding', 'SKILL.md'), 'wb') as f:
+            f.write(b'\xff\xfe khong phai utf8')
+        m_loi = doc_thu_muc(d)
+        # Chiều 1 — khong nap, khong bao KeyError o buoc doc
+        ktra('SKILL.md loi encoding: khong nap vao ket qua',
+             'sk_loi_encoding' not in m_loi)
+        # Chiều 2 — skill hop le canh no van duoc doc binh thuong, khong bi keo theo
+        ktra('SKILL.md loi encoding: skill hop le canh ben van doc duoc',
+             'sk_hop_le' in m_loi and m_loi['sk_hop_le'][0] == 2)
+
         z = os.path.join(t3, 'goi.plugin')
         with zipfile.ZipFile(z, 'w') as zf:
             zf.writestr('skills/sk1/SKILL.md', 'dong 1\ndong 2\ndong 3\n')

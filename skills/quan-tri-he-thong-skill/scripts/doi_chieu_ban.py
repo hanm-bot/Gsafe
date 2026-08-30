@@ -64,8 +64,13 @@ def doc_thu_muc(thu_muc):
     for ten in sorted(os.listdir(thu_muc)):
         f = os.path.join(thu_muc, ten, 'SKILL.md')
         if os.path.isfile(f):
-            with open(f, encoding='utf-8') as fh:
-                ket_qua[ten] = _do(fh.read())
+            try:
+                with open(f, encoding='utf-8') as fh:
+                    ket_qua[ten] = _do(fh.read())
+            except (OSError, UnicodeDecodeError):
+                continue  # đọc lỗi (byte không hợp UTF-8, quyền truy cập...) thì bỏ qua
+                          # skill đó và đi tiếp — cùng cách tim_ban_dang_chay và doc_goi
+                          # đang xử lý, không để MỘT file hỏng làm sập cả lượt đối chiếu
     return ket_qua
 
 
