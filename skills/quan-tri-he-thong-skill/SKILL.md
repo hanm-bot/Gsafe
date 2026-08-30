@@ -181,6 +181,30 @@ Bài học: **mở rộng lưới kiểm thì luôn bắt được thêm thứ g
 
 ---
 
+## 9b. Ca kiểm thử hành vi
+
+Audit ở §1 kiểm **hiện vật** — file có đúng cấu trúc không. Nó không kiểm được **hành vi**:
+chạy skill trên đầu vào thật thì nó quyết định đúng không.
+
+Mỗi skill giữ ca của mình ở `references/ca-kiem-thu.md`. Khung dùng chung là schema của
+`sht-cds-thiet-ke-agent` — cùng bảng SHT bán cho khách Bank/Telco.
+
+**Ba luật:**
+
+1. **Ca chỉ mọc từ sự cố thật.** Mỗi mục mới trong `debug_notes.md` sinh đúng một ca.
+   Không thêm ca từ tưởng tượng — đây là §9 áp cho Lớp 3.
+2. **Mỗi ca kiểm hai chiều.** Khi mới viết, chạy hai lần: một lần hành vi đúng (phải đạt),
+   một lần hành vi cố tình sai (phải trượt). Ca không trượt được khi đáng trượt thì bỏ.
+3. **Người chấm, không phải agent.** Để agent tự chấm agent là bỏ mất chốt độc lập.
+
+**Không phải cổng tự động.** Ca hành vi cần một agent chạy thật, không nhét vào
+`release.py` được. Nó là mục bắt buộc trong checklist sửa skill. Ghi rõ điều này để tránh
+tình trạng một control được mô tả như tự động nhưng chưa từng chạy.
+
+Skill chưa có sự cố thì file ca kiểm thử **rỗng có chủ ý** — đó là trạng thái đúng.
+
+---
+
 ## 10. Rà định kỳ
 
 Tác vụ `audit-skill-sht-hang-tuan` chạy sáng thứ Hai hàng tuần: bộ tự kiểm công cụ → audit 12 lớp → đối chiếu ba phiên bản (nguồn / file `.plugin` / bản đang cài).
