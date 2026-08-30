@@ -22,7 +22,7 @@
 - **Công cụ audit không có ai kiểm.** Đối chiếu ngược 4 lỗi thật của phiên v0.9.0: script bắt được **1**. Ba lỗi lọt đều mang tính cơ học nhưng nằm ngoài phạm vi nó soi — nó chỉ đọc *bên trong* các SKILL.md, còn lỗi lại ở **skill nằm ở đâu**, **sổ có khớp thực tế không**, **gói chứa gì**. Đã thêm E7–E10 (phiên trước) và E11 (phiên này), cộng `test_audit.py` 29 ca.
   → **Quy tắc: khi một lỗi lọt qua audit, việc đầu tiên không phải sửa lỗi đó mà là hỏi "vì sao script không thấy?" rồi vá phạm vi.**
 - **E11 — Sổ đăng bạ khai báo quan hệ không có thật.** E8 chỉ kiểm *tên* trong sổ; nhưng cột "Dùng chung với" mới là kiến trúc được tuyên bố. Chạy lần đầu bắt ngay: sổ khai `sht-normalize-account` dùng chung với `sht-xacthuc-baocao-hoatdong` trong khi SKILL.md không hề nhắc tới. Đã nối con trỏ thật.
-- **`release.py` — bảy cổng phát hành.** Mọi lỗi phát hành đã gặp đều do quên một bước thủ công. Cổng 2 cố ý **không** soi skill cá nhân: E7 là lỗi phía cài đặt, chặn phát hành vì nó sẽ khoá cứng việc ra bản mới chỉ vì người dùng chưa kịp xoá một skill cũ.
+- **`release.py` — chín cổng phát hành.** Mọi lỗi phát hành đã gặp đều do quên một bước thủ công. Cổng 2 cố ý **không** soi skill cá nhân: E7 là lỗi phía cài đặt, chặn phát hành vì nó sẽ khoá cứng việc ra bản mới chỉ vì người dùng chưa kịp xoá một skill cũ. Cổng 4 (thêm 30/08/2026) chặn đóng gói khi file `--out` đã tồn tại và version bên trong bằng version ở nguồn — gói cũ có thể đã được cài, không ai truy được nó đã đi tới đâu (sự cố: hai lần đóng gói cách nhau 37 phút cùng giữ `0.15.0`, gói sau ghi đè gói trước, mất 7 bản vá).
 - **Bảng lỗi E1–E11 chuyển sang `references/bang-loi.md`** — áp chính quy tắc E5 cho skill này, giữ thân file dưới ngưỡng.
 
 **Đã đóng (25/08/2026 — v0.9.0):**

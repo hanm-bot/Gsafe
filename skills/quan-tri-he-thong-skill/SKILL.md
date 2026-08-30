@@ -22,7 +22,7 @@ Phân biệt với `skill-creator`: skill-creator lo **bên trong** một skill 
 [4] Sửa description theo công thức 4 phần, luôn có vùng loại trừ               (§4)
 [5] Áp dụng thay đổi bằng save_skill (overwrite) — KHÔNG sửa file trên đĩa     (§5)
 [6] Chạy lại audit + cập nhật Sổ đăng bạ → phát hiện phải về 0 mức CAO         (§6)
-[7] Phát hành qua release.py — tám cổng, trượt cổng nào là không ra file       (§6)
+[7] Phát hành qua release.py — chín cổng, trượt cổng nào là không ra file      (§6)
 ```
 
 Không bỏ bước [1]. Người dùng thường chỉ nhớ một triệu chứng ("skill này không tự chạy"), trong khi audit thường lôi ra 3–4 lỗi nặng hơn mà họ không biết.
@@ -252,7 +252,7 @@ Mỗi lần thêm/sửa/xóa skill: sửa **hàng có sẵn** trong sổ, không
 |---|---|---|
 | `audit_skills.py` | Quét 12 lớp lỗi E1–E12 | Bước [1] và [6] của luồng chuẩn |
 | `test_audit.py` | **Tự kiểm chính công cụ audit** — 32 ca, mỗi lớp lỗi kiểm hai chiều | Mỗi lần sửa `audit_skills.py`, và tự động ở cổng 1 khi phát hành |
-| `release.py` | Tám cổng phát hành rồi mới đóng gói | Mọi lần ra bản mới — thay cho việc nén tay |
+| `release.py` | Chín cổng phát hành rồi mới đóng gói | Mọi lần ra bản mới — thay cho việc nén tay |
 
 ```bash
 python3 scripts/release.py <thư_mục_gốc_plugin> --personal <skill_cá_nhân> --out <file.plugin>
