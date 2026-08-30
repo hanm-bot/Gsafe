@@ -14,26 +14,45 @@ import json
 import os
 import zipfile
 
-GOC_MAC_DINH = os.path.expandvars(
+# Vị trí CŨ: phiên làm việc cục bộ của app desktop (session-scoped).
+GOC_CU_MAC_DINH = os.path.expandvars(
     r'%APPDATA%\Claude\local-agent-mode-sessions')
+# Vị trí MỚI: app đã đổi chỗ cài plugin sang marketplace dưới hồ sơ người dùng
+# (đã xác minh tồn tại thật, ví dụ:
+#  C:\Users\admin\.claude\plugins\marketplaces\local-desktop-app-uploads\sht-skills\...).
+GOC_MOI_MAC_DINH = os.path.expandvars(r'%USERPROFILE%\.claude')
+
+# Mẫu đường dẫn CŨ: <goc>/**/rpm/plugin_*/.claude-plugin/plugin.json
+MAU_CU = os.path.join('**', 'rpm', 'plugin_*', '.claude-plugin', 'plugin.json')
+# Mẫu đường dẫn MỚI: <goc>/plugins/marketplaces/<marketplace>/<ten-thu-muc>/.claude-plugin/plugin.json
+# Không hardcode tên thư mục plugin — dò theo 'name' bên trong plugin.json như cũ.
+MAU_MOI = os.path.join('plugins', 'marketplaces', '*', '*', '.claude-plugin', 'plugin.json')
 
 
 def tim_ban_dang_chay(ten_plugin='sht-skills', goc=None):
-    """Trả về danh sách thư mục skills/ của mọi bản đang cài mang tên ten_plugin."""
-    goc = goc or GOC_MAC_DINH
-    ket_qua = []
-    mau = os.path.join(goc, '**', 'rpm', 'plugin_*', '.claude-plugin', 'plugin.json')
-    for f in glob.glob(mau, recursive=True):
-        try:
-            with open(f, encoding='utf-8') as fh:
-                du_lieu = json.load(fh)
-            if not isinstance(du_lieu, dict) or du_lieu.get('name') != ten_plugin:
-                continue
-        except (OSError, ValueError):
-            continue  # manifest hỏng thì bỏ qua, không làm chết cả lần quét
-        thu_muc_skills = os.path.join(os.path.dirname(os.path.dirname(f)), 'skills')
-        if os.path.isdir(thu_muc_skills):
-            ket_qua.append(thu_muc_skills)
+    """Trả về danh sách thư mục skills/ của mọi bản đang cài mang tên ten_plugin.
+
+    Quét CẢ HAI vị trí cài có thể có (CŨ và MỚI — xem GOC_CU_MAC_DINH/GOC_MOI_MAC_DINH),
+    vì app đã từng đổi chỗ cài plugin và có thể đổi lại. Khi `goc` được truyền vào
+    (vd. để test), áp cả hai MẪU đường dẫn dưới CÙNG gốc đó, để test chỉ cần dựng
+    một thư mục giả mà vẫn phủ được cả hai kiểu cấu trúc.
+    """
+    danh_sach_goc = [goc] if goc else [GOC_CU_MAC_DINH, GOC_MOI_MAC_DINH]
+    ket_qua = set()
+    for g in danh_sach_goc:
+        for mau in (MAU_CU, MAU_MOI):
+            duong_dan_mau = os.path.join(g, mau)
+            for f in glob.glob(duong_dan_mau, recursive=True):
+                try:
+                    with open(f, encoding='utf-8') as fh:
+                        du_lieu = json.load(fh)
+                    if not isinstance(du_lieu, dict) or du_lieu.get('name') != ten_plugin:
+                        continue
+                except (OSError, ValueError):
+                    continue  # manifest hỏng thì bỏ qua, không làm chết cả lần quét
+                thu_muc_skills = os.path.join(os.path.dirname(os.path.dirname(f)), 'skills')
+                if os.path.isdir(thu_muc_skills):
+                    ket_qua.add(thu_muc_skills)
     return sorted(ket_qua)
 
 
@@ -139,6 +158,28 @@ def so_sanh(nguon, goi, chay):
     return pd
 
 
+def xac_dinh_phat_hien(nguon, goi, chay):
+    """so_sanh() cộng thêm một phát hiện V0 khi `chay` rỗng.
+
+    Nguyên tắc chung: MỘT PHÉP KIỂM KHÔNG TÌM THẤY ĐỐI TƯỢNG ĐỂ KIỂM phải báo
+    "không kiểm được", tuyệt đối không báo "sạch". `chay` rỗng nghĩa là
+    tim_ban_dang_chay() không thấy bất kỳ bản đang cài nào — có thể vì (1) plugin
+    chưa được cài trên máy này, hoặc (2) vị trí cài đã đổi và công cụ chưa biết dò
+    tới đó. Không phân biệt được hai khả năng này từ đây nên nói rõ cả hai.
+
+    V0 mức CAO nhưng KHÔNG chặn phát hành (giống V3/V4) — phát hành không phụ
+    thuộc việc máy này có cài hay không. Nhưng nó phải hiện rõ trong báo cáo và
+    làm dòng tổng kết không được in "sạch".
+    """
+    pd = so_sanh(nguon, goi, chay)
+    if not chay:
+        pd.insert(0, ('V0', 'CAO',
+                       'Không tìm thấy bản đang cài nào — hoặc plugin chưa được cài '
+                       'trên máy này, hoặc vị trí cài đã đổi và công cụ chưa biết dò '
+                       'tới đó. Đây là "không kiểm được", không phải "đã kiểm và sạch".'))
+    return pd
+
+
 def main():
     import sys
     # I-3: --goi nhận một giá trị theo sau (đường dẫn .plugin), giá trị đó KHÔNG bắt đầu
@@ -160,7 +201,7 @@ def main():
     goi = doc_goi(duong_dan_goi) if duong_dan_goi else {}
     chay = [doc_thu_muc(p) for p in tim_ban_dang_chay()]
 
-    pd = so_sanh(nguon, goi, chay)
+    pd = xac_dinh_phat_hien(nguon, goi, chay)
     if not pd:
         print(f'ĐỐI CHIẾU BẢN — sạch. {len(nguon)} skill, {len(chay)} bản đang cài.')
         return 0

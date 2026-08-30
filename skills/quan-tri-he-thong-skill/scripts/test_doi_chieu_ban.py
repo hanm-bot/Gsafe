@@ -2,7 +2,9 @@
 """Ca kiểm thử cho doi_chieu_ban.py — mỗi ca kiểm HAI CHIỀU."""
 import json, os, subprocess, sys, tempfile, zipfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from doi_chieu_ban import tim_ban_dang_chay, doc_thu_muc, doc_goi, bam
+from doi_chieu_ban import (
+    tim_ban_dang_chay, doc_thu_muc, doc_goi, bam, so_sanh, xac_dinh_phat_hien,
+)
 
 DAT = TRUOT = 0
 
@@ -31,6 +33,19 @@ def dung_plugin_json_tho(goc, ma, noi_dung):
     os.makedirs(os.path.join(p, '.claude-plugin'), exist_ok=True)
     with open(os.path.join(p, '.claude-plugin', 'plugin.json'), 'w', encoding='utf-8') as f:
         json.dump(noi_dung, f)
+    return p
+
+def dung_plugin_moi(goc, marketplace, ten, skills=('a',)):
+    """Dựng một thư mục plugin giả theo cấu trúc MỚI (app đổi chỗ cài):
+    <goc>/plugins/marketplaces/<marketplace>/<ten>/.claude-plugin/plugin.json"""
+    p = os.path.join(goc, 'plugins', 'marketplaces', marketplace, ten)
+    os.makedirs(os.path.join(p, '.claude-plugin'), exist_ok=True)
+    with open(os.path.join(p, '.claude-plugin', 'plugin.json'), 'w', encoding='utf-8') as f:
+        json.dump({'name': ten, 'version': '1.0.0'}, f)
+    for s in skills:
+        os.makedirs(os.path.join(p, 'skills', s), exist_ok=True)
+        with open(os.path.join(p, 'skills', s, 'SKILL.md'), 'w', encoding='utf-8') as f:
+            f.write(f'---\nname: {s}\n---\n\nNoi dung.\n')
     return p
 
 def main():
@@ -67,6 +82,26 @@ def main():
         # Chiều 1 — phải tìm thấy dù bản nằm sau hai tầng ID phiên lồng nhau
         ktra('Tim thay ban nam sau 2 tang ID phien long nhau (dung dang may thuc)',
              len(kq2) == 1)
+
+    # --- LOI 1: vi tri MOI (app da doi cho cai plugin sang plugins/marketplaces/) ---
+    with tempfile.TemporaryDirectory() as t_moi:
+        dung_plugin_moi(t_moi, 'local-desktop-app-uploads', 'sht-skills')
+        kq_moi = tim_ban_dang_chay('sht-skills', t_moi)
+        # Chieu 1 — phai tim thay ban o vi tri MOI
+        ktra('Tim thay ban o vi tri MOI (plugins/marketplaces/.../.claude-plugin/plugin.json)',
+             len(kq_moi) == 1)
+        ktra('Duong dan vi tri MOI cung tro toi thu muc skills/',
+             all(p.endswith('skills') for p in kq_moi))
+
+    # --- LOI 1: CA HAI vi tri (CU + MOI) cung luc, duoi cung mot goc — khong dem trung ---
+    with tempfile.TemporaryDirectory() as t_ca_hai:
+        dung_plugin(t_ca_hai, 'FFF', 'sht-skills')          # kieu CU: rpm/plugin_FFF/...
+        dung_plugin_moi(t_ca_hai, 'mkt', 'sht-skills')      # kieu MOI: plugins/marketplaces/mkt/sht-skills/...
+        kq_ca_hai = tim_ban_dang_chay('sht-skills', t_ca_hai)
+        # Chieu 1 — phai tim thay CA HAI ban, mot o moi kieu cau truc
+        ktra('Tim thay ca hai vi tri (CU + MOI) duoi cung mot goc', len(kq_ca_hai) == 2)
+        # Chieu 2 — khong duoc dem trung (danh sach khong co phan tu lap lai)
+        ktra('Khong dem trung khi ca hai vi tri cung co ban', len(kq_ca_hai) == len(set(kq_ca_hai)))
 
     # --- Task 2: đọc thư mục và băm — khối riêng, không mượn thư mục tạm đã đóng ---
     with tempfile.TemporaryDirectory() as t3:
@@ -122,7 +157,6 @@ def main():
         ktra('Goi khong ton tai tra ve rong', doc_goi(os.path.join(t3, 'khong-co.plugin')) == {})
 
         # --- Task 3: phân loại phát hiện ---
-        from doi_chieu_ban import so_sanh
         A = {'sk1': (10, bam('a'))}
         B = {'sk1': (10, bam('b'))}
         ma = lambda kq: {x[0] for x in kq}
@@ -168,6 +202,21 @@ def main():
         AB = {'sk1': (10, bam('a')), 'sk2': (5, bam('c'))}
         ktra('V2 khi nguon thieu skill ma ban chay co', 'V2' in ma(so_sanh(A, {}, [AB])))
         ktra('Khong bao V2 khi nguon du skill', 'V2' not in ma(so_sanh(AB, {}, [AB])))
+
+        # --- LOI 2: "khong tim thay ban dang cai nao" phai la PHAT HIEN CAO (V0),
+        # tuyet doi khong duoc bao "sach". Ca nay phai TRUOT neu bo ban va di.
+        # Chieu no: chay=[] => phai co V0 muc CAO.
+        kq_v0 = xac_dinh_phat_hien(A, {}, [])
+        ktra('LOI 2 - chay rong thi phai co phat hien V0', 'V0' in ma(kq_v0))
+        ktra('LOI 2 - V0 muc CAO', all(x[1] == 'CAO' for x in kq_v0 if x[0] == 'V0'))
+        # Chieu im: co it nhat mot ban dang cai => KHONG duoc co V0
+        kq_khong_v0 = xac_dinh_phat_hien(A, {}, [A])
+        ktra('LOI 2 - da tim thay it nhat mot ban dang cai thi KHONG co V0',
+             'V0' not in ma(kq_khong_v0))
+        # V0 khong duoc chan phat hanh (giong V3/V4) — chi V1/V2 moi chan.
+        # Mo phong dung logic 'chan' cua main() tren ket qua co V0.
+        chan_gia_lap = [x for x in kq_v0 if x[0] in ('V1', 'V2')]
+        ktra('LOI 2 - V0 khong bi tinh vao nhom chan phat hanh (V1/V2)', chan_gia_lap == [])
 
     # --- I-3: hai thu tu co (--goi truoc hay sau nguon) phai cho CUNG ket qua qua CLI ---
     # Truoc ban vá, gia tri cua --goi (khong bat dau bang '--') bi nhat vao args vi tri
