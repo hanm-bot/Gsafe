@@ -19,8 +19,10 @@ im khi hành vi đúng.
 ## Cách chạy ca "chạy khô"
 
 Mở một phiên mới, dán đầu vào của ca, **không** thực hiện hành động tốn phí. Chấm phần
-**quyết định**: agent định làm gì tiếp theo. Cả năm lỗi thật đều là lỗi quyết định, không
-phải lỗi thao tác — nên chạy khô kiểm được đúng thứ cần kiểm.
+**quyết định**: agent định làm gì tiếp theo. Trong năm ca chạy khô, bốn ca (TD-02, TD-04,
+TD-05, TD-06) là lỗi quyết định thật đã trả giá trong phiên hunt CV; TD-07 là **quy tắc**
+trình bày (chốt yêu cầu bằng danh sách đánh số, không dùng widget) — không phải lỗi, nhưng
+vẫn kiểm được bằng chạy khô vì cùng là chỗ agent phải quyết định làm gì tiếp theo.
 
 ## Cách chạy ca "quan sát trong phiên thật"
 
@@ -29,6 +31,12 @@ Lý do: mỗi lượt kết nối tốn 10 credit, hủy rồi phải chờ 14 n
 
 ## Bảng kết quả
 
+**Trạng thái: CHƯA VẬN HÀNH.** Bộ ca ở trên đã viết nhưng **chưa ca nào được chạy và
+chấm**. Cần người chấm theo §9b luật 3 (người chấm, không phải agent — để agent tự chạy
+rồi tự chấm ca của chính mình là bỏ mất chốt độc lập). Cho tới khi bảng dưới có ít nhất
+một dòng kết quả thật, **Lớp 3 (ca kiểm thử hành vi) của skill này chưa được coi là đang
+vận hành** — mới chỉ là khung đã dựng.
+
 | Ngày chạy | Ca | Đầu ra thật | Có dẫn nguồn? | Kết quả | Người chấm |
 |---|---|---|---|---|---|
-| *(chưa chạy lần nào)* | | | | | |
+| — | — | — | — | *(chưa có ca nào được chạy và chấm)* | — |

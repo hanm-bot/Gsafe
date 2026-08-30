@@ -119,6 +119,7 @@ Chạy trước khi nói "đã xong". Lệnh chạy thành công **không đồn
 - [ ] Đã liệt kê danh mục file có hiệu lực cuối phiên, phân biệt file mình tạo với file gốc
 - [ ] Nếu deliverable có ràng buộc nội dung (thuần kỹ thuật / đối ngoại): đã chạy `grep` xác minh, không chỉ đọc bằng mắt (§6.2)
 - [ ] Tóm tắt bàn giao **ngắn** — chỉ nêu hành động ưu tiên và cảnh báo, không liệt kê lại toàn bộ nội dung file
+- [ ] Đã chạy tự kiểm §7 — mọi tuyên bố đều có nguồn dán kèm
 
 Skill nghiệp vụ bổ sung mục riêng của mình vào checklist này, không viết lại checklist mới.
 

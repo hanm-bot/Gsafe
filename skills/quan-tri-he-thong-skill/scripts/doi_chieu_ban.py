@@ -141,10 +141,22 @@ def so_sanh(nguon, goi, chay):
 
 def main():
     import sys
-    args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    # I-3: --goi nhận một giá trị theo sau (đường dẫn .plugin), giá trị đó KHÔNG bắt đầu
+    # bằng '--' nên sẽ bị lẫn vào args vị trí nếu chỉ lọc theo tiền tố '--'. Phải loại
+    # cả cờ '--goi' VÀ phần tử ngay sau nó khỏi args trước khi lấy args vị trí, để
+    # `--goi X <nguon>` và `<nguon> --goi X` cho cùng kết quả.
+    argv = list(sys.argv[1:])
+    duong_dan_goi = ''
+    if '--goi' in argv:
+        i = argv.index('--goi')
+        if i + 1 < len(argv):
+            duong_dan_goi = argv[i + 1]
+            del argv[i:i + 2]
+        else:
+            del argv[i:i + 1]
+    args = [a for a in argv if not a.startswith('--')]
     goc_nguon = os.path.abspath(args[0] if args else '.')
     nguon = doc_thu_muc(os.path.join(goc_nguon, 'skills'))
-    duong_dan_goi = sys.argv[sys.argv.index('--goi') + 1] if '--goi' in sys.argv else ''
     goi = doc_goi(duong_dan_goi) if duong_dan_goi else {}
     chay = [doc_thu_muc(p) for p in tim_ban_dang_chay()]
 

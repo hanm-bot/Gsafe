@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Ca kiểm thử cho doi_chieu_ban.py — mỗi ca kiểm HAI CHIỀU."""
-import json, os, sys, tempfile, zipfile
+import json, os, subprocess, sys, tempfile, zipfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from doi_chieu_ban import tim_ban_dang_chay, doc_thu_muc, doc_goi, bam
 
@@ -136,8 +136,28 @@ def main():
         # 'Khong bao V2 khi nguon du skill' o duoi, cung dung goi={} nhung ky vong V2
         # KHONG xuat hien — hai ky vong doi lap tren cung mot gia tri {} khong the cung
         # dung, da kiem chung bang cach bo guard: bo guard thi ca do lai trot).
-        goi_thieu_sk1 = {'sk_khac': (5, bam('c'))}
-        ktra('V2 khi goi thieu skill', 'V2' in ma(so_sanh(A, goi_thieu_sk1, [A])))
+        #
+        # V2 co HAI nhanh doc lap trong so_sanh(): "goi THIEU mot skill co o nguon" va
+        # "goi THUA mot skill khong co o nguon". Truoc day mot fixture (goi_thieu_sk1 =
+        # {'sk_khac': ...}) kich CA HAI nhanh cung luc — vua thieu 'sk1' cua nguon, vua
+        # thua 'sk_khac'. Tach thanh hai ca rieng de moi ca kiem dung MOT nhanh.
+        A2 = {'sk1': (10, bam('a')), 'sk2': (5, bam('b'))}
+
+        # Nhanh "thieu": goi co du 'sk2' nhung thieu 'sk1' cua nguon; khong co skill thua.
+        goi_thieu_sk1 = {'sk2': (5, bam('b'))}
+        kq_thieu = so_sanh(A2, goi_thieu_sk1, [A2])
+        ktra('V2 khi goi thieu mot skill cua nguon (chi nhanh thieu)',
+             any(x[0] == 'V2' and 'thiếu trong gói' in x[2] for x in kq_thieu))
+        ktra('Nhanh thieu: khong lan sang thong bao cua nhanh thua',
+             not any('không có ở nguồn' in x[2] for x in kq_thieu))
+
+        # Nhanh "thua": goi co du ca 'sk1' va 'sk2' cua nguon, them 'sk3' ma nguon khong co.
+        goi_thua_sk3 = {'sk1': (10, bam('a')), 'sk2': (5, bam('b')), 'sk3': (1, bam('c'))}
+        kq_thua = so_sanh(A2, goi_thua_sk3, [A2])
+        ktra('V2 khi goi thua mot skill nguon khong co (chi nhanh thua)',
+             any(x[0] == 'V2' and 'không có ở nguồn' in x[2] for x in kq_thua))
+        ktra('Nhanh thua: khong lan sang thong bao cua nhanh thieu',
+             not any('thiếu trong gói' in x[2] for x in kq_thua))
         ktra('V3 khi nguon khac ban dang chay', 'V3' in ma(so_sanh(A, A, [B])))
         ktra('V4 khi hai ban dang chay khac nhau', 'V4' in ma(so_sanh(A, A, [A, B])))
         # Chiều 2 — không báo nhầm
@@ -148,6 +168,35 @@ def main():
         AB = {'sk1': (10, bam('a')), 'sk2': (5, bam('c'))}
         ktra('V2 khi nguon thieu skill ma ban chay co', 'V2' in ma(so_sanh(A, {}, [AB])))
         ktra('Khong bao V2 khi nguon du skill', 'V2' not in ma(so_sanh(AB, {}, [AB])))
+
+    # --- I-3: hai thu tu co (--goi truoc hay sau nguon) phai cho CUNG ket qua qua CLI ---
+    # Truoc ban vá, gia tri cua --goi (khong bat dau bang '--') bi nhat vao args vi tri
+    # khi dat TRUOC nguon (`--goi X <nguon>`), lam goc_nguon bi doc nham thanh X. Ca nay
+    # phai truot neu bo ban vá o main() cua doi_chieu_ban.py.
+    with tempfile.TemporaryDirectory() as t4:
+        os.makedirs(os.path.join(t4, 'skills', 'sk1'), exist_ok=True)
+        with open(os.path.join(t4, 'skills', 'sk1', 'SKILL.md'), 'w', encoding='utf-8') as f:
+            f.write('dong 1\ndong 2\n')
+        goi_path = os.path.join(t4, 'goi.plugin')
+        with zipfile.ZipFile(goi_path, 'w') as zf:
+            zf.writestr('skills/sk1/SKILL.md', 'dong 1\ndong 2\n')
+
+        script = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'doi_chieu_ban.py')
+        env = dict(os.environ, PYTHONUTF8='1')
+        r_goi_truoc = subprocess.run(
+            [sys.executable, script, '--goi', goi_path, t4],
+            capture_output=True, text=True, encoding='utf-8', env=env)
+        r_goi_sau = subprocess.run(
+            [sys.executable, script, t4, '--goi', goi_path],
+            capture_output=True, text=True, encoding='utf-8', env=env)
+        ktra('I-3: --goi truoc hay sau nguon cho cung stdout',
+             r_goi_truoc.stdout == r_goi_sau.stdout)
+        ktra('I-3: --goi truoc hay sau nguon cho cung ma thoat',
+             r_goi_truoc.returncode == r_goi_sau.returncode)
+        # Khong khang dinh "sach" o day: main() con doi chieu voi MOI ban dang cai thuc
+        # tren may (tim_ban_dang_chay() khong nhan tham so trong main()), nen may co cai
+        # san sht-skills se tao ra V3/V4 hop le — khong lien quan gi den loi I-3. Thu doc
+        # lap duy nhat can kiem la hai thu tu cho CUNG mot ket qua, da kiem ben tren.
 
     print(f'\n---- KET QUA: {DAT} dat / {TRUOT} truot ----')
     sys.exit(0 if TRUOT == 0 else 1)

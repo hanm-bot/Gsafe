@@ -22,7 +22,7 @@ Phân biệt với `skill-creator`: skill-creator lo **bên trong** một skill 
 [4] Sửa description theo công thức 4 phần, luôn có vùng loại trừ               (§4)
 [5] Áp dụng thay đổi bằng save_skill (overwrite) — KHÔNG sửa file trên đĩa     (§5)
 [6] Chạy lại audit + cập nhật Sổ đăng bạ → phát hiện phải về 0 mức CAO         (§6)
-[7] Phát hành qua release.py — bảy cổng, trượt cổng nào là không ra file       (§6)
+[7] Phát hành qua release.py — tám cổng, trượt cổng nào là không ra file       (§6)
 ```
 
 Không bỏ bước [1]. Người dùng thường chỉ nhớ một triệu chứng ("skill này không tự chạy"), trong khi audit thường lôi ra 3–4 lỗi nặng hơn mà họ không biết.
@@ -31,7 +31,7 @@ Không bỏ bước [1]. Người dùng thường chỉ nhớ một triệu ch�
 
 ## 1. Audit trước, phán đoán sau
 
-Ghi script ở Phụ lục A ra file rồi chạy trên thư mục skill. Script bắt 6 lớp lỗi:
+Ghi script ở Phụ lục A ra file rồi chạy trên thư mục skill. Script bắt 12 lớp lỗi:
 
 | Mã | Lỗi | Mức |
 |---|---|---|
@@ -207,7 +207,13 @@ Skill chưa có sự cố thì file ca kiểm thử **rỗng có chủ ý** — 
 
 ## 10. Rà định kỳ
 
-Tác vụ `audit-skill-sht-hang-tuan` chạy sáng thứ Hai hàng tuần: bộ tự kiểm công cụ → audit 12 lớp → đối chiếu ba phiên bản (nguồn / file `.plugin` / bản đang cài).
+Tác vụ `audit-skill-sht-hang-tuan` chạy sáng thứ Hai hàng tuần: bộ tự kiểm công cụ → audit 11 lớp → đối chiếu ba phiên bản (nguồn / file `.plugin` / bản đang cài).
+
+**Chỉ 11/12 lớp, không phải 12.** Lệnh trong tác vụ không truyền `--personal`, vì tác vụ tự
+động không biết trước thư mục skill cá nhân nằm ở đâu trên máy người dùng. Thiếu
+`--personal` thì công cụ tự in *"chưa truyền --personal nên KHÔNG kiểm được E7"* — E7 (skill
+nhà nằm ngoài plugin / tồn tại hai bản song song) bị bỏ qua ở lần chạy tuần. Muốn kiểm cả
+E7 thì chạy tay: `audit_skills.py skills/ --personal <thư_mục_skill_cá_nhân> --plugin .`
 
 Nguyên tắc của tác vụ đó, giữ nguyên khi sửa nó:
 
@@ -244,9 +250,9 @@ Mỗi lần thêm/sửa/xóa skill: sửa **hàng có sẵn** trong sổ, không
 
 | File | Việc | Khi nào chạy |
 |---|---|---|
-| `audit_skills.py` | Quét 11 lớp lỗi E1–E11 | Bước [1] và [6] của luồng chuẩn |
-| `test_audit.py` | **Tự kiểm chính công cụ audit** — 29 ca, mỗi lớp lỗi kiểm hai chiều | Mỗi lần sửa `audit_skills.py`, và tự động ở cổng 1 khi phát hành |
-| `release.py` | Bảy cổng phát hành rồi mới đóng gói | Mọi lần ra bản mới — thay cho việc nén tay |
+| `audit_skills.py` | Quét 12 lớp lỗi E1–E12 | Bước [1] và [6] của luồng chuẩn |
+| `test_audit.py` | **Tự kiểm chính công cụ audit** — 32 ca, mỗi lớp lỗi kiểm hai chiều | Mỗi lần sửa `audit_skills.py`, và tự động ở cổng 1 khi phát hành |
+| `release.py` | Tám cổng phát hành rồi mới đóng gói | Mọi lần ra bản mới — thay cho việc nén tay |
 
 ```bash
 python3 scripts/release.py <thư_mục_gốc_plugin> --personal <skill_cá_nhân> --out <file.plugin>

@@ -5,7 +5,8 @@
 Dùng:
     python3 release.py <thư_mục_gốc_plugin> [--personal DIR] [--out FILE] [--check-only]
 
-Bảy cổng, trượt bất kỳ cổng nào là DỪNG, không tạo file .plugin:
+Tám cổng (0-7), trượt bất kỳ cổng nào là DỪNG, không tạo file .plugin:
+    0. Đối chiếu bản — nguồn không khuyết skill so với bản đang cài (doi_chieu_ban.py)
     1. Bộ tự kiểm của chính công cụ audit  (test_audit.py)
     2. Audit NỘI DUNG GÓI — không còn lỗi mức CAO (E7 phía cài đặt chỉ cảnh báo)
     3. Manifest hợp lệ: name kebab-case, version semver
@@ -165,7 +166,7 @@ def main():
         return 1
 
     if '--check-only' in sys.argv:
-        print('\n✅ Sáu cổng đều đạt (chế độ chỉ kiểm, không đóng gói).')
+        print('\n✅ Bảy cổng đều đạt (chế độ chỉ kiểm, không đóng gói).')
         return 0
 
     # 7 — nén rồi kiểm chính gói
@@ -194,7 +195,7 @@ def main():
             print('\n❌ DỪNG — gói không đạt, không ghi ra ngoài.')
             return 1
         shutil.copy(zpath, out)
-        print(f'\n✅ Bảy cổng đạt. Đã ghi: {out}')
+        print(f'\n✅ Tám cổng đạt. Đã ghi: {out}')
         print(f'   {name} v{ver} · {len(dirs)} skill · {size // 1024} KB')
         print('   Sau khi cài: xác nhận đủ số skill xuất hiện trước khi coi là phát hành xong.')
     finally:

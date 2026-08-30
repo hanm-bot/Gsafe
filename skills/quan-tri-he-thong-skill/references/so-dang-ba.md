@@ -1,6 +1,6 @@
 # SỔ ĐĂNG BẠ
 
-*Cập nhật lần cuối: 27/08/2026 — 12 skill, cả 12 đã đăng ký. 0 lỗi. Phiên bản v0.14.1.*
+*Cập nhật lần cuối: 30/08/2026 — 12 skill, cả 12 đã đăng ký. 0 lỗi. Phiên bản v0.15.0.*
 
 | Skill | Tầng | Sở hữu logic | Dùng chung với | Không đụng tới |
 |---|---|---|---|---|
