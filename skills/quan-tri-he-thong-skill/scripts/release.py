@@ -48,6 +48,21 @@ def main():
     skills_dir = os.path.join(root, 'skills')
     print(f'CỔNG PHÁT HÀNH — {root}\n')
 
+    # 0 — đối chiếu bản.
+    # CỐ Ý KHÔNG truyền --goi. Tại thời điểm phát hành, gói ở --out là bản CŨ;
+    # nguồn vừa sửa nên chắc chắn khác nó → cổng sẽ luôn trượt, không bao giờ
+    # ra được bản mới. So nguồn↔gói chuyển sang bước xác minh SAU phát hành.
+    # Cổng này chặn đúng một thứ: skill có ở bản đang cài mà THIẾU ở nguồn —
+    # dấu hiệu chắc chắn đang đóng gói từ nguồn khuyết, sẽ xoá skill khỏi bản
+    # cài của người dùng. V1/V3/V4 chỉ báo, vì hash không cho biết chiều lệch.
+    dc = subprocess.run(
+        [sys.executable, os.path.join(HERE, 'doi_chieu_ban.py'), root],
+        capture_output=True, text=True)
+    gate(0, 'Đối chiếu bản — nguồn không khuyết skill', dc.returncode == 0,
+         '' if dc.returncode == 0 else
+         'Nguồn thiếu skill mà bản đang cài có. Đóng gói lúc này sẽ xoá skill '
+         'khỏi bản cài. Chạy doi_chieu_ban.py để xem chi tiết.')
+
     # 1 — tự kiểm công cụ
     t = subprocess.run([sys.executable, os.path.join(HERE, 'test_audit.py')],
                        capture_output=True, text=True)
