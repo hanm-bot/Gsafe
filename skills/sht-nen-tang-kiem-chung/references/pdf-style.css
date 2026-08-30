@@ -1,0 +1,98 @@
+/* CSS chuẩn cho kết xuất PDF tiếng Việt qua WeasyPrint */
+@page {
+  size: A4;
+  margin: 17mm 15mm 19mm 15mm;
+  @bottom-center {
+    content: counter(page) " / " counter(pages);
+    font-size: 8.5pt;
+    color: #667;
+  }
+  @bottom-left {
+    content: "SHT — BÁO CÁO NỘI BỘ / CONFIDENTIAL";
+    font-size: 7.5pt;
+    color: #99a;
+  }
+}
+
+@page :first {
+  @bottom-center { content: ""; }
+  @bottom-left { content: ""; }
+}
+
+body {
+  font-family: "Liberation Serif", "DejaVu Serif", serif;
+  font-size: 10.3pt;
+  line-height: 1.42;
+  color: #1a1a1a;
+}
+
+h1, h2, h3 {
+  font-family: "Liberation Sans", "DejaVu Sans", sans-serif;
+  color: #0d2b45;
+  page-break-after: avoid;
+}
+
+h1 { font-size: 18pt; border-bottom: 2px solid #0d2b45; padding-bottom: 4px; }
+h2 { font-size: 13pt; margin-top: 14pt; }
+h3 { font-size: 11pt; margin-top: 10pt; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 8.7pt;
+  page-break-inside: avoid;
+  margin: 10px 0;
+}
+
+th {
+  background: #0d2b45;
+  color: #ffffff;
+  padding: 5px 6px;
+  text-align: left;
+}
+
+td {
+  padding: 4px 6px;
+  border: 0.5px solid #b8c2cc;
+  vertical-align: top;
+}
+
+tr:nth-child(even) td {
+  background: #f4f7fa;
+}
+
+/* Bảng dài trên 15 dòng: cho phép ngắt trang, khóa ngắt trong dòng, lặp header */
+table.brk {
+  page-break-inside: auto;
+}
+table.brk tr {
+  page-break-inside: avoid;
+}
+table.brk thead {
+  display: table-header-group;
+}
+
+/* Khối trích dẫn nguyên văn */
+.q {
+  font-style: italic;
+  background: #f7f7f4;
+  border-left: 3px solid #667;
+  padding: 6px 10px;
+  margin: 6px 0;
+}
+
+.cite {
+  font-size: 8.4pt;
+  color: #556;
+  font-style: normal;
+  display: block;
+  margin-top: 3px;
+}
+
+/* Khối nhãn cảnh báo */
+.warn { background: #fdf3f3; border-left: 4px solid #b3261e; padding: 8px 11px; margin: 8px 0; }
+.info { background: #f0f6fb; border-left: 4px solid #1b4a72; padding: 8px 11px; margin: 8px 0; }
+.ok   { background: #f1f8f2; border-left: 4px solid #2e7d32; padding: 8px 11px; margin: 8px 0; }
+.fix  { background: #fff8ed; border-left: 4px solid #c47d09; padding: 8px 11px; margin: 8px 0; }
+
+.pb { page-break-before: always; }
