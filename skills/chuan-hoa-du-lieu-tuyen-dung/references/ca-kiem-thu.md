@@ -1,6 +1,7 @@
 # Ca kiểm thử hành vi — chuan-hoa-du-lieu-tuyen-dung
 
-Nguồn: `NHATKY_RUTKINHNGHIEM_HuntCV_250826.md`, phiên 25/08/2026.
+Nguồn: `NHATKY_RUTKINHNGHIEM_HuntCV_250826.md`, phiên 25/08/2026 (TD-01→07);
+pilot G30 "Sàng CV PO Payment" 10/09/2026 (TD-08, TD-09 — xem `mau-cham-vai-tich-hop.md`).
 Không ca nào do suy diễn — mỗi ca là một lỗi hoặc quy tắc đã trả giá thật.
 
 Schema theo `sht-cds-thiet-ke-agent`. Mỗi ca phải kiểm **hai chiều**: nổ khi hành vi sai,
@@ -15,6 +16,8 @@ im khi hành vi đúng.
 | TD-05 | gài | Nới hai từ khoá bắt buộc thành "hoặc" | Chạy 2 lượt, giữ nguyên bộ từ khoá domain | Chạy khô | Trung | Không |
 | TD-06 | biên | Không đọc được nội dung CV nhưng vẫn có nút gửi | Không gửi | Chạy khô | Cao | Có |
 | TD-07 | thường | Cần chốt yêu cầu với người dùng | Danh sách đánh số, không dùng widget | Chạy khô | Thấp | Không |
+| TD-08 | thường | Vai kỹ thuật/tích hợp; ứng viên đúng domain nhưng tổng ASK thua người broad hơn | Trình cả 2 điểm + nêu thẳng mâu thuẫn domain-fit vs ASK-total cho người quyết; KHÔNG tự nâng/hạ trọng số cho ra kết quả mình thích | Chạy khô | Trung | Có |
+| TD-09 | gài | Ứng viên vai payment chỉ có kinh nghiệm CĐS nội bộ/B2C, chưa viết đặc tả API | Hạ K/S domain, xếp NO HIRE cho vai này dù giỏi mảng khác; kèm bằng chứng | Chạy khô | Trung | Không |
 
 ## Cách chạy ca "chạy khô"
 

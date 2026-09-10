@@ -1,6 +1,6 @@
 # SỔ ĐĂNG BẠ
 
-*Cập nhật lần cuối: 07/09/2026 — 13 skill, cả 13 đã đăng ký. 0 lỗi mức CAO; 0 mức THẤP. Phiên bản v0.16.3.*
+*Cập nhật lần cuối: 10/09/2026 — 13 skill, cả 13 đã đăng ký. 0 lỗi mức CAO. Phiên bản v0.16.5.*
 
 | Skill | Tầng | Sở hữu logic | Dùng chung với | Không đụng tới |
 |---|---|---|---|---|
@@ -11,12 +11,20 @@
 | `sht-qd-nhansu-alignment` | 1 | Đối chiếu thẩm quyền & quan hệ báo cáo giữa các QĐ (7 khía cạnh) · cơ chế Điều chỉnh vs Thay thế toàn bộ · thể thức QĐ | `chuan-hoa-du-lieu-nhansu` chốt tên trước; `sht-xacthuc-baocao-hoatdong` nếu Căn cứ có số liệu | Xác minh tên riêng; tính đúng đắn của số liệu |
 | `sht-xacthuc-baocao-hoatdong` | 1 | Truy số về truy vấn gốc · 4 bẫy dữ liệu Turso · thứ tự truy nguyên nhân khi lệch · nhãn ✅/⚠️/❓ | `sht-normalize-account` khi đếm khách hàng/chi nhánh; `sht-qd-nhansu-alignment` khi số vào QĐ | Gộp/rollup account; thể thức văn bản |
 | `sht-normalize-account` | 1 | Gộp account theo Mã Dự Án (`ma`) · parser mã CN · tự kiểm số chi nhánh | `sht-xacthuc-baocao-hoatdong` khi số liệu vào báo cáo | Danh tính người; tính đúng đắn của doanh số |
-| `chuan-hoa-du-lieu-tuyen-dung` | 1 | Săn CV & lọc cổng tuyển dụng · chấm ASK có bằng chứng (2 phiên bản trọng số: A30/S40/K30 ứng viên thường, A60/S30/K10 cán bộ quản lý) · đối chiếu 3P · **soạn JD mới kèm khảo sát lương thị trường 2 lớp khi chưa có JD (§2b)** · scorecard + infographic | `sht-nen-tang-kiem-chung`; `chuan-hoa-du-lieu-nhansu` khi ứng viên vào hồ sơ nội bộ | Hồ sơ nhân sự đã tuyển |
+| `chuan-hoa-du-lieu-tuyen-dung` | 1 | Săn CV & lọc cổng tuyển dụng · chấm ASK có bằng chứng (2 phiên bản trọng số: A30/S40/K30 ứng viên thường, A60/S30/K10 cán bộ quản lý) · đối chiếu 3P · **soạn JD mới kèm khảo sát lương thị trường 2 lớp khi chưa có JD (§2b)** · **mẫu chấm vai kỹ thuật/tích hợp: ánh xạ ASK↔domain, tiêu chí bối cảnh khớp đối tác, mâu thuẫn domain-fit vs ASK-total (`references/mau-cham-vai-tich-hop.md`)** · scorecard + infographic | `sht-nen-tang-kiem-chung`; `chuan-hoa-du-lieu-nhansu` khi ứng viên vào hồ sơ nội bộ | Hồ sơ nhân sự đã tuyển |
 | `ra-soat-hop-dong-vendor` | 1 | Gap analysis SoW/BRD · chuỗi Mua/Bán back-to-back · license & rủi ro pháp lý/kỹ thuật · đo tỷ lệ copy phụ lục & diff phiên bản · **tình trạng ký & gán toạ độ tệp-phiên bản cho từng khiếm khuyết (§0.2b)** · **đồng hồ hiệu lực (§0.3)** · **hệ tác nhân độc lập theo lớp (§0.4)** · **mâu thuẫn nội bộ trong cùng một văn kiện (§1.4b)** · **ba nhãn phát biểu: dữ kiện / vị thế / suy luận** | `sht-nen-tang-kiem-chung`; `chuan-hoa-ho-so-tai-lieu` khi có PDF scan; `superpowers:dispatching-parallel-agents` cho cơ chế dispatch chung | Dự án XDCB; hồ sơ nhân sự; thẩm quyền QĐ |
 | `chuan-hoa-ho-so-tai-lieu` | 1 | **Chuyển đổi & bóc tách mọi định dạng file (chủ sở hữu)** · trích dẫn có toạ độ · xếp hạng độ vững luận cứ · viết bản đối ngoại không đối kháng | `sht-nen-tang-kiem-chung`; `ra-soat-hop-dong-vendor` khi hồ sơ có hợp đồng CNTT | Soạn QĐ nhân sự; săn CV tuyển dụng; dự án XDCB |
 | `sht-cds-danh-gia-hien-trang` | 1 | Đánh giá hiện trạng & DMI 6 trụ cột · kiểm toán chất lượng dữ liệu 6 chiều · bản đồ điểm nghẽn As-Is · thẩm định Cổng G1 | `sht-nen-tang-kiem-chung` khi xuất báo cáo hiện trạng & bàn giao; `sht-cds-thiet-ke-prd` (bàn giao bảng điểm nghẽn As-Is sang Giai đoạn 03) | Rà soát hợp đồng CNTT; chuẩn hóa account CRM; bóc tách hồ sơ scan |
 | `sht-cds-thiet-ke-prd` | 1 | Thiết kế quy trình To-Be · soạn PRD 10 khối (mẫu ở references) · truy vết yêu cầu↔điểm nghẽn/KPI · NFR tuân thủ NĐ13/NHNN + sơ đồ luồng dữ liệu · đặc tả dữ liệu & tích hợp · MoSCoW & scope Pilot · review đối kháng PRD · nhánh hướng thi công trung lập | `sht-cds-danh-gia-hien-trang` (nhận bảng điểm nghẽn As-Is làm đầu vào); `sht-cds-thiet-ke-agent` (hand-off khi hướng chốt là AI agent); `sht-nen-tang-kiem-chung` khi bàn giao | Đo DMI/đánh giá hiện trạng; thiết kế nội tại AI agent; rà soát PRD/SoW hợp đồng vendor; dựng UI từ PRD |
 | `sht-cds-thiet-ke-agent` | 1 | Khai báo agent 3 chiều Purpose/Scope/Boundaries · 3 tầng confidence · Tiered Governance L1–L3 · bộ ca kiểm thử có ca gài · vòng đời sandbox→pilot→production→review | `sht-cds-danh-gia-hien-trang` (bắt buộc qua Giai đoạn 01 trước); `sht-cds-thiet-ke-prd` (PRD là đầu vào khi hướng thi công là agent); `sht-nen-tang-kiem-chung` khi bàn giao | Đo DMI/đánh giá hiện trạng; rà soát hợp đồng vendor; chuẩn hóa dữ liệu CRM |
+
+**Đã đóng (10/09/2026 — v0.16.5, PATCH):**
+
+Nguồn: pilot G30 nội bộ "Sàng CV PO Payment" (kế hoạch `plans/20260910-ap-dung-cd4-cd5-noi-bo/`, workspace `data/workspaces/Pilot_Sang_CV/`). **Quyết định kiến trúc: 0 skill mới** — bài học thuộc đúng miền săn CV/chấm ASK/soạn JD của `chuan-hoa-du-lieu-tuyen-dung`, theo §8 mặc định nghiêng về mục mới trong skill cũ.
+
+- **`chuan-hoa-du-lieu-tuyen-dung` +1 reference `mau-cham-vai-tich-hop.md`** cho vai kỹ thuật/tích hợp (PO/BA payment, sở hữu đặc tả API): (1) mẫu ánh xạ ASK↔domain JD; (2) tiêu chí bối cảnh **khớp cựu công ty ứng viên ↔ đối tác tích hợp trong JD** (ca thật: ứng viên từng làm VTC Pay = đúng đối tác SHT); (3) cách trình **mâu thuẫn domain-fit vs tổng ASK** cho người quyết, không tự nâng/hạ trọng số. Thân SKILL.md +1 con trỏ ở §5.1 (273 → 275 dòng, vẫn < 300).
+- **`references/ca-kiem-thu.md` +2 ca** (TD-08 mâu thuẫn domain-fit/ASK-total; TD-09 loại trừ vai payment thiếu đặc tả API). **Trạng thái: CHƯA VẬN HÀNH** — chờ người chấm độc lập theo §9b luật 3 (không để agent tự chạy tự chấm). Ghi chú: pilot G30 do chính Claude chạy tay là *bằng chứng phương pháp*, chưa thay được phép chấm độc lập.
+- **Phiên bản: PATCH** (0.16.4 → 0.16.5) — chỉ bổ sung nội dung trong đúng chủ sở hữu, không thêm/bỏ skill, không di chuyển logic. Kiểm E4/E6 với `sht-chuan-hoa-ho-so-ung-vien`/`sht-quy-trinh-tuyen-dung` khi audit.
 
 **Đã đóng (07/09/2026 — v0.16.3, PATCH):**
 

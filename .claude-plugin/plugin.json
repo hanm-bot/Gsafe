@@ -1,6 +1,6 @@
 {
   "name": "sht-skills",
-  "version": "0.16.4",
+  "version": "0.16.5",
   "description": "Bộ 13 skill nghiệp vụ nội bộ của Công ty CP Đầu tư Công nghệ SHT — kiểm chứng dữ liệu dự án, hồ sơ nhân sự, Quyết định tổ chức, tuyển dụng ASK/soạn JD, chuẩn hóa CRM, xác thực số liệu báo cáo, rà soát hợp đồng CNTT/SoW/license, bóc tách hồ sơ scan, đánh giá hiện trạng chuyển đổi số DMI, thiết kế quy trình To-Be & soạn PRD, cùng 2 skill nền tảng kiểm chứng chung và quản trị hệ thống.",
   "author": {
     "name": "Công ty CP Đầu tư Công nghệ SHT"

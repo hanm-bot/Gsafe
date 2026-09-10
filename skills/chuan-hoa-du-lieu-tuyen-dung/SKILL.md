@@ -122,6 +122,8 @@ Ngưỡng xếp loại: **≥4.2 STRONG HIRE · ≥3.6 HIRE · ≥3.0 MIXED · <
 
 **Bắt buộc có ít nhất một "tiêu chí bối cảnh"** trong Skills và một trong Knowledge, đo độ khớp với **nghiệp vụ thật của SHT**, tách riêng khỏi các tiêu chí khớp câu chữ JD. JD mô tả *đầu việc*, không mô tả *bối cảnh áp dụng* — đọc JD xong vẫn phải hỏi "vị trí này ở SHT thực tế làm gì". Ca thật: JD Mua hàng Nội địa không hề nói SHT mua vật tư cho **dự án cải tạo phòng giao dịch ngân hàng**; ứng viên mạnh ở **mua theo danh mục** (FMCG/bán lẻ, kế hoạch quý) trong khi SHT cần **mua theo dự án** (tiến độ gấp, chủng loại lẻ, bản vẽ chưa chốt) — hai mô hình khác nhau về nhịp làm việc.
 
+> **Vai kỹ thuật/tích hợp (PO/BA payment, sở hữu đặc tả API):** mở `references/mau-cham-vai-tich-hop.md` — mẫu ánh xạ ASK↔domain JD, tiêu chí bối cảnh "khớp cựu công ty ↔ đối tác tích hợp trong JD", và cách trình mâu thuẫn domain-fit vs tổng ASK cho người quyết.
+
 ### 5.2 Thiếu bằng chứng thì gắn nhãn, không trừ ngược điểm
 
 Phân biệt hai tình huống, đừng trộn lẫn:
