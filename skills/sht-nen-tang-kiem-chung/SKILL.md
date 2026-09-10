@@ -1,6 +1,6 @@
 ---
 name: "sht-nen-tang-kiem-chung"
-description: "Bốn quy tắc nền tảng áp cho MỌI deliverable của SHT, không phân biệt miền: (1) lan truyền hiệu chỉnh — khi số liệu/tên đổi thì tự quét và sửa mọi file đã tạo; (2) đổi tên hàng loạt an toàn — cụm bảo vệ, dry-run, không find/replace thẳng trên tên người tiếng Việt; (3) một tài liệu — một bản có hiệu lực, xóa bản cũ khi bàn giao, và ghi đúng thư mục đích — không đổ deliverable vào repo mã nguồn/kho skill; (4) checklist bàn giao chung & xuất 5 dạng báo cáo. LUÔN dùng skill này trước khi bàn giao bất kỳ file nào (docx/xlsx/pdf/pptx/biên bản/báo cáo), khi sửa con số hoặc cái tên xuất hiện ở nhiều file, khi người dùng nói \"sửa lại\", \"cập nhật\", \"đổi tên\", \"thay tên\", \"file nào mới nhất\", \"bản nào đúng\", \"lưu nhầm chỗ\", hoặc khi thư mục có nhiều phiên bản. KHÔNG dùng riêng lẻ để xử lý nghiệp vụ cụ thể — luôn dùng KÈM skill nghiệp vụ tương ứng (dự án, nhân sự, tuyển dụng, QĐ, CRM, hợp đồng, CĐS), skill này chỉ giữ phần quy tắc chung mà các skill đó trỏ về."
+description: "Bốn quy tắc nền tảng áp cho MỌI deliverable của SHT: lan truyền hiệu chỉnh khi số liệu hay tên đổi; đổi tên hàng loạt an toàn trên tên người tiếng Việt; một tài liệu một bản có hiệu lực và ghi đúng thư mục đích; checklist bàn giao cùng 5 dạng báo cáo chọn theo người đọc. LUÔN dùng trước khi bàn giao bất kỳ file nào (docx/xlsx/pdf/pptx/biên bản/báo cáo), khi sửa con số hay cái tên xuất hiện ở nhiều file, khi xuất PDF cần dò trang trống, khi người dùng nói \"sửa lại\", \"cập nhật\", \"đổi tên\", \"file nào mới nhất\", \"bản nào đúng\", \"lưu nhầm chỗ\", \"xoá bản cũ\", \"dọn thư mục\", hoặc khi thư mục có nhiều phiên bản. KHÔNG dùng riêng lẻ để xử lý nghiệp vụ cụ thể — luôn dùng KÈM skill nghiệp vụ tương ứng (dự án, nhân sự, tuyển dụng, QĐ, CRM, hợp đồng, CĐS); skill này chỉ giữ quy tắc chung mà các skill đó trỏ về."
 ---
 
 # Nền tảng kiểm chứng & bàn giao (SHT — tầng 0)
@@ -66,6 +66,8 @@ Sinh file mới mỗi lần sửa mà không hủy bản cũ tạo hỗn loạn 
 
 - Khi thay thế một tài liệu, **ghi rõ ngay trong chính văn bản**: "Bản này thay thế hoàn toàn bản trước, đề nghị hủy/không sử dụng bản cũ."
 - **Xóa bản cũ ngay tại thời điểm bàn giao.** Nếu lệnh xóa bị chặn quyền, **xin quyền rồi thực hiện** — không dừng ở việc khuyên người dùng tự xóa.
+- **Ghi tên bản bị thay thế vào bản có hiệu lực TRƯỚC khi xóa.** Không chỉ ghi "bản này thay thế bản trước" chung chung, mà liệt kê **tên tệp, ngày, và lý do hết hiệu lực của từng bản**, cộng với chỉ dẫn tới mục đính chính. Chỉ sau khi dấu vết đó nằm trong bản có hiệu lực thì mới được xóa. Đây là cách duy nhất thỏa mãn đồng thời hai yêu cầu vốn xung đột: *một bản có hiệu lực* và *giữ dấu vết kiểm toán*.
+- **Cẩn trọng đặc biệt khi bản cũ là cơ sở của một văn bản đã phát hành ra ngoài.** Nếu một công văn có số, có dấu đã gửi đối tác được dựng trên bản cũ, thì xóa bản cũ là mất căn cứ giải trình. Trường hợp này: ghi dấu vết theo gạch đầu dòng trên, **nêu rõ tình huống cho người dùng và để họ quyết** — xóa hay giữ, chứ không tự quyết một chiều.
 - **File trong thư mục người dùng chọn có thể bị hệ điều hành khóa** nếu đang mở ở Word/trình xem PDF trên máy họ; quyền cấp qua công cụ nội bộ không thắng được khóa cấp OS. Khi `rm`/ghi đè báo "Permission denied" dù đã xin quyền: thử lại 1–2 lần; nếu vẫn lỗi, lưu tạm bằng hậu tố `_v2`, báo người dùng đóng file gốc, rồi **hoàn tất đổi lại đúng tên chuẩn** ngay khi họ xác nhận. Không dừng ở việc báo lỗi suông.
 - Đặt tên file theo **nội dung + trạng thái hiệu lực**, không theo số lần sửa.
 - Sửa nhiều vòng trong cùng một phiên → **ghi đè lên cùng một file**.
@@ -99,8 +101,12 @@ Không có nguồn nào mặc định đúng hơn nguồn khác. CRM, dashboard,
 
 - Khi số liệu con người cung cấp lệch với hệ thống, **đừng mặc định hệ thống đúng**. Truy tiếp nguyên nhân lệch trước khi kết luận.
 - Khi một skill hay tài liệu cũ đã "chốt" một thông tin, vẫn đối chiếu lại với nguồn gốc mỗi lần tái sử dụng — không tin theo chỉ vì đã dùng nhiều lần.
+- **Tài liệu phân tích do phiên trước của CHÍNH MÌNH tạo ra thuộc diện phải kiểm chứng, ngang với nguồn hệ thống.** Đây là loại nguồn dễ tin nhất và vì thế nguy hiểm nhất: nó viết bằng giọng chắc chắn, đã được dùng lại nhiều lần, và thường không ai nghĩ tới việc kiểm lại. Trước khi dùng lại một **kết luận** (khác với một trích dẫn) từ tài liệu nội bộ cũ, mở nguồn gốc kiểm lại.
 
-**Ca thật:** dashboard CRM liệt kê 10 AM thuộc một trung tâm kinh doanh, người phụ trách nói "5/8". Truy tiếp thì 2 trong 10 AM đã nghỉ việc mà hệ thống chưa cập nhật; loại ra thì khớp chính xác. **Hệ thống mới là bên sai.**
+**Hai ca thật:**
+
+- Dashboard CRM liệt kê 10 AM thuộc một trung tâm kinh doanh, người phụ trách nói "5/8". Truy tiếp thì 2 trong 10 AM đã nghỉ việc mà hệ thống chưa cập nhật; loại ra thì khớp chính xác. **Hệ thống mới là bên sai.**
+- Phiên 03/09/2026: một tài liệu phân tích nội bộ kết luận hai văn kiện hợp đồng "đều chưa ký", và kết luận đó đã lan sang nhiều tài liệu sau. Render trang chữ ký của bản gốc cho thấy một trong hai **đã ký và đóng dấu đủ hai bên**. Kết luận sai suýt đi vào phát biểu tại phiên đàm phán, nơi nó sẽ bị bác ngay bằng văn kiện có chữ ký của chính lãnh đạo công ty. **Tài liệu của phiên trước mới là bên sai.**
 
 ---
 
@@ -115,7 +121,8 @@ Chạy trước khi nói "đã xong". Lệnh chạy thành công **không đồn
 - [ ] Nếu có đổi tên/số liệu: đã lan truyền sang **mọi** file (§1) và verify bằng cách trích xuất lại nội dung
 - [ ] Nếu có thay tên hàng loạt: đã quét lại `Anh Anh`/`Chị Chị`, cụm bảo vệ, và tiêu đề viết HOA (§2)
 - [ ] Đã **render ra ảnh và đọc từng trang** — không bàn giao file chưa nhìn tận mắt
-- [ ] Bản cũ vô hiệu đã bị **xóa thật**, không chỉ được khuyên xóa (§3)
+- [ ] Đã **dò trang trống bằng máy** sau khi xuất PDF, không dò bằng mắt (§6.1)
+- [ ] Bản cũ vô hiệu: tên và lý do hết hiệu lực đã ghi vào bản có hiệu lực, **rồi mới** xóa thật (§3)
 - [ ] Đã liệt kê danh mục file có hiệu lực cuối phiên, phân biệt file mình tạo với file gốc
 - [ ] Nếu deliverable có ràng buộc nội dung (thuần kỹ thuật / đối ngoại): đã chạy `grep` xác minh, không chỉ đọc bằng mắt (§6.2)
 - [ ] Tóm tắt bàn giao **ngắn** — chỉ nêu hành động ưu tiên và cảnh báo, không liệt kê lại toàn bộ nội dung file
@@ -143,7 +150,15 @@ Skill nghiệp vụ **chọn dạng cần dùng và bổ sung nội dung đặc 
 
 ### 6.1 Xuất file
 
-- **PDF**: WeasyPrint với file định kiểu chuẩn `references/pdf-style.css` (font Liberation/DejaVu cho tiếng Việt, bảng dài ngắt trang bằng `class="brk"`, header lặp lại). Không tự viết CSS mới cho từng báo cáo.
+**Kiểm công cụ TRƯỚC khi chọn đường, đừng tin ghi chú môi trường của phiên cũ.** Ghi chú môi trường có tuổi thọ ngắn hơn ghi chú nghiệp vụ. Chạy một lệnh dò (`which`, hoặc thử `import`) rồi mới quyết. Đã xảy ra: nhật ký một dự án ghi có `pdftoppm` và `pandoc`, phiên sau dựa vào đó và mất nhiều lượt thử vì cả hai đều không có trên máy.
+
+- **PDF — hai đường, chọn theo công cụ có thật:**
+  - *Đường A (ưu tiên khi có):* HTML → WeasyPrint với file định kiểu chuẩn `references/pdf-style.css` (font Liberation/DejaVu cho tiếng Việt, bảng dài ngắt trang bằng `class="brk"`, header lặp lại). Không tự viết CSS mới cho từng báo cáo.
+  - *Đường B (khi không có WeasyPrint, có Microsoft Word):* `python-docx` sinh `.docx` → xuất PDF bằng COM tới Word (`DispatchEx('Word.Application')`, `Documents.Open(src, ReadOnly=1)`, `SaveAs2(dst, FileFormat=17)`). Không dùng thư viện bọc sẵn `docx2pdf` — nó lỗi ở bước `Quit()`.
+- **Render trang PDF ra ảnh để nhìn** (bắt buộc theo §5): `pdftoppm` nếu có; nếu không thì `pymupdf` → `page.get_pixmap(dpi=110).save(...)`. Đây cũng là đường duy nhất đọc PDF scan tiếng Việt — **tuyệt đối không OCR**.
+- **Dò trang trống bằng máy sau mỗi lần xuất PDF.** Ngắt trang cưỡng bức rất dễ tạo trang trống khi nội dung trước đó vừa lấp gần hết trang. Cách dò: với từng trang, đếm ký tự thân trang **sau khi bỏ dòng chân trang**; dưới ~40 ký tự là trang trống. Tìm ra thì bỏ đúng lệnh ngắt gây ra nó, đừng bỏ bừa. Đã xảy ra: 3 trang trống trong 5 tài liệu của một phiên.
+- **Tiếng Việt trong python:** luôn đặt `PYTHONIOENCODING=utf-8` (Windows đặt cả `PYTHONUTF8=1`) trước khi chạy, nếu không lỗi `UnicodeEncodeError` do bảng mã hệ thống.
+- **Nội dung dài có tiếng Việt và nhiều dấu ngoặc kép:** ghi file bằng công cụ ghi file trực tiếp, **không** dùng heredoc qua shell — heredoc lớn hay lỗi cú pháp. Đây là ngoại lệ hợp lệ của nguyên tắc ưu tiên làm việc qua shell.
 - **Khổ cố định** (infographic, A4 ngang): tính trước bề rộng in được = bề rộng trang − 2×lề, ép `flex-wrap: nowrap` cho layout cột cố định. Đừng để trình duyệt tự tính rồi tràn trang.
 - **Excel có công thức**: viết công thức thật, không hard-code kết quả; chạy recalc yêu cầu `total_errors: 0`, rồi đọc lại **giá trị đã tính** cả cột chữ lẫn cột số.
 

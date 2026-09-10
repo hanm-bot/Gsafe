@@ -243,7 +243,7 @@ Khi hunt CV được đưa vào lịch chạy hàng ngày/định kỳ (không p
 **Agent không được tự thêm từ khóa vào bộ lọc của task định kỳ.** Đọc CV thấy một thuật ngữ hay (VD "FinOps") là cảm hứng để *đề xuất*, không phải lý do để tự chỉnh bộ lọc đang chạy. Đổi bộ lọc phải do người dùng yêu cầu rõ ràng, và phải cập nhật lại danh sách chip chuẩn + baseline trong chính task — nếu không, task và thực tế sẽ trôi xa nhau.
 
 
-## 10. Bàn giao
+## 10. Bàn giao (tuyển dụng)
 
 Tóm tắt cuối cùng phải **ngắn**: nêu 1–2 hành động ưu tiên rõ nhất (VD "liên hệ ứng viên X trước — điểm cao nhất khu vực Y"), 1–2 cảnh báo quan trọng nhất (vượt ngân sách, đã liên hệ trước nhưng chưa phản hồi...). Không liệt kê lại toàn bộ bảng điểm trong tin nhắn — dữ liệu đầy đủ đã nằm trong file Excel/PDF.
 
@@ -257,7 +257,7 @@ Xưng hô: xưng "em", gọi người dùng "anh"; trả lời tiếng Việt; s
 
 ---
 
-## Checklist trước khi bàn giao
+## Checklist trước khi bàn giao (riêng tuyển dụng)
 
 Chạy checklist nền ở `sht-nen-tang-kiem-chung` §5, rồi chạy tiếp checklist riêng của tuyển dụng ở `references/checklist-tuyen-dung.md` — mở khi sắp bàn giao, không nạp sẵn.
 

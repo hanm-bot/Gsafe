@@ -63,7 +63,7 @@ Nguyên tắc chi phối: **Một khẳng định chỉ có giá trị khi kèm 
 
 ---
 
-## GIAI ĐOẠN 5 — KẾT XUẤT BÁO CÁO
+## GIAI ĐOẠN 5 — XUẤT BÁO CÁO HỒ SƠ CÓ TOẠ ĐỘ GỐC
 
 Năm dạng báo cáo chuẩn, quy tắc chọn dạng, kỹ thuật xuất PDF/Excel và bước quét `grep` xác minh: theo `sht-nen-tang-kiem-chung` §6. Không định nghĩa lại ở đây.
 

@@ -55,6 +55,6 @@ dmi_score, level_label, gaps = calculate_dmi(scores)
 
 ## 5. Bước tiếp theo sau Cổng G1
 
-Vượt G1 xong, **không dừng ở báo cáo hiện trạng**. Điểm nghẽn đã định vị ở Bước 3 chính là đầu vào để chọn use-case tự động hóa — chuyển sang `sht-cds-thiet-ke-agent` để khai báo agent đủ 3 chiều, gán tầng confidence và chốt mức Tiered Governance trước khi đề xuất cho khách Bank/Telco.
+Vượt G1 xong, **không dừng ở báo cáo hiện trạng**. Bảng điểm nghẽn As-Is ở Bước 3 chính là **đầu vào cho `sht-cds-thiet-ke-prd`** (Giai đoạn 03): thiết kế quy trình To-Be và soạn PRD cho giải pháp — tài liệu yêu cầu trung lập mà mọi hướng thi công đều đọc. Chỉ **khi PRD đã chốt hướng thi công là AI agent** mới chuyển tiếp sang `sht-cds-thiet-ke-agent` để khai báo agent đủ 3 chiều, gán tầng confidence và chốt mức Tiered Governance trước khi đề xuất cho khách Bank/Telco.
 
 Không đề xuất một use-case AI nào khi chưa qua Giai đoạn 01 — thiếu bản đồ As-Is thì không chứng minh được agent giải quyết điểm nghẽn nào, và không có KPI gốc để đo cải thiện.

@@ -12,6 +12,7 @@ Tập hợp các điểm kiểm tra rủi ro chí tử khi rà soát hợp đồ
 - [ ] Định danh sản phẩm có nhất quán giữa tên file, tiêu đề, phụ lục?
 - [ ] Backend nằm trong scope của ai, hay chỉ là giả định *"available and ready"*?
 - [ ] Nhà cung cấp có làm lắp đặt và tích hợp hiện trường không? Thường là **không** — kiểm tra kỹ điều khoản GTC.
+- [ ] **Đếm số dòng trong bảng Deliverables.** Hạng mục nào không xuất hiện ở bảng này thì **chưa được cam kết bàn giao**, kể cả khi nó được mô tả kỹ trong tài liệu yêu cầu được dẫn chiếu. Một bảng Deliverables chỉ có 1 dòng cho một SoW nhiều hạng mục là cảnh báo đỏ.
 
 ---
 
@@ -46,7 +47,10 @@ Giấy chứng nhận license phải rà soát **như hợp đồng độc lập
 - [ ] **Giới hạn định lượng:** kết nối đồng thời, số terminal, số CPU/server — so sánh với số thực tế đang vận hành.
 - [ ] **Neo kỹ thuật:** khóa vào Machine ID, MAC, hostname, serial? Có điều khoản cấp lại khi migrate hạ tầng hoặc kích hoạt DR?
 - [ ] **Quyền cấp phép lại (sublicense):** có được phép cấp lại cho khách hàng cuối không? Tìm cả trong GTC và thỏa thuận khung. Đây là **quyền có lợi** thường bị bỏ sót.
+- [ ] **Giấy phép gắn theo từng thiết bị tương ứng?** Nếu thời hạn giấy phép được neo vào "thời gian sử dụng của thiết bị tương ứng", hỏi thẳng: **giấy phép có chuyển được từ máy hỏng sang máy thay thế không, thủ tục và thời gian bao lâu?** Đây là câu quyết định khả năng đáp ứng nghĩa vụ thay thế thiết bị ở lớp bán ra — khác với câu về migrate hạ tầng hay kích hoạt DR ở gạch đầu dòng trên.
+- [ ] **Nếu mốc hết hạn ĐÃ trôi qua trên một hệ thống đang khai thác:** đây là cảnh báo đỏ, không phải việc hành chính. Nêu trước mọi nội dung khác, và **đối chiếu tiến độ khắc phục với khoảng thời gian đã quá hạn** — nếu phương án gia hạn có tiến độ *giao hàng + cài đặt* dài hơn, thì câu cần hỏi đối tác không phải câu về giá mà là **phương án bảo đảm liên tục trong thời gian chờ**.
 - [ ] Giới hạn xuất xứ thiết bị; điều kiện thu hồi; thời hạn khắc phục vi phạm.
+- [ ] **Giấy phép vĩnh viễn nhưng có thể bị thu hồi** — tìm mâu thuẫn nội tại giữa điều khoản cấp phép vĩnh viễn và điều khoản thu hồi khi bên mua vi phạm. Nếu giấy phép gốc bị thu hồi hợp lệ thì nhà tích hợp không còn nguồn để cấp lại quyền sử dụng vĩnh viễn đã bán cho khách hàng cuối.
 
 ---
 
@@ -83,3 +87,5 @@ Giấy chứng nhận license phải rà soát **như hợp đồng độc lập
 - [ ] Trần trách nhiệm bồi thường có tương xứng với rủi ro thiệt hại tiềm tàng không? Danh mục ngoại lệ có đầy đủ?
 - [ ] Thời hạn hiệu lực của báo giá còn hay đã hết? Có điều kiện treo phát sinh chi phí không?
 - [ ] Số liệu có nhất quán giữa chữ số và chữ viết? Có các trường để trống dạng `[INSERT]`, ngày chưa điền?
+- [ ] **Luật áp dụng phải kiểm THEO TỪNG VĂN KIỆN, không theo quan hệ.** Bộ Điều kiện chung kèm một SoW có thể chọn luật và toà **nước ngoài** trong khi thoả thuận khung với cùng đối tác chọn luật Việt Nam. Khi lệch pha: chi phí và thời gian truy đòi tại toà nước ngoài có thể vượt giá trị hạng mục, khiến quyền truy đòi trên giấy không thực thi được.
+- [ ] **Điều khoản Entire Agreement** trong bộ Điều kiện chung kèm SoW: nó thay thế mọi thoả thuận trước đó *về cùng chủ đề*. Kiểm xem có làm mất hiệu lực cam kết nào đã đạt được ở các giai đoạn trước không.

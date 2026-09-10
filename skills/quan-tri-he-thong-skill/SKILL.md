@@ -224,6 +224,20 @@ Nguyên tắc của tác vụ đó, giữ nguyên khi sửa nó:
 
 ---
 
+## 11. Tiêu chuẩn cấu trúc Agent & Skill theo SHT-SOP-AI-02
+
+Khi thiết kế, audit hoặc nâng cấp bất kỳ Agent/Skill nào trong hệ sinh thái SHT, bắt buộc đối chiếu với:
+👉 `.agents/rules/agent_design_standards.md` (Quy chuẩn Quản trị & Thiết kế 12 Thành Phần của Agent tại SHT - SHT-SOP-AI-02).
+
+**5 Chốt chặn bắt buộc (Non-negotiables):**
+1. **Description 4 phần:** (Làm gì + Bắt bằng gì + Bắt cả khi không đúng từ khóa + Vùng loại trừ). Thiếu vùng loại trừ coi như chưa đạt. Độ dài ≤ 1024 ký tự.
+2. **SKILL.md tinh gọn:** ≤ 300 dòng; mẫu biểu, prompt dài đẩy vào `references/`.
+3. **Phân định môi trường:** Rạch ròi giữa Antigravity IDE (`.agents/rules/`, `.agents/scripts/`) và Claude Code CLI (`.claude/settings.json`, `.claude/commands/`, `CLAUDE.md`). Tuyệt đối không khai báo file giả.
+4. **Handoff Artifact:** Đặt tên IN HOA, bảng biểu cố định, chốt HITL rõ ràng.
+5. **Nguồn sự thật duy nhất:** Đăng ký vào Sổ đăng bạ & Sitemap `AGENTS.md`.
+
+---
+
 # PHỤ LỤC A — SCRIPT AUDIT
 
 Script nằm ở `scripts/audit_skills.py`. Chạy:
@@ -264,11 +278,11 @@ python3 scripts/release.py <thư_mục_gốc_plugin> --personal <skill_cá_nhân
 
 ## Bảo trì plugin `sht-skills`
 
-11 skill hiện có trong thư mục `skills/` của plugin `sht-skills` (đầy đủ 11 skill đã đăng ký trong Sổ đăng bạ). Hệ quả cho mọi lần nâng cấp về sau:
+13 skill hiện có trong thư mục `skills/` của plugin `sht-skills` (đầy đủ 13 skill đã đăng ký trong Sổ đăng bạ). Hệ quả cho mọi lần nâng cấp về sau:
 
 - **Sửa skill trong plugin thì sửa ở nguồn plugin rồi đóng gói lại**, không dùng `save_skill` — `save_skill` tạo bản skill cá nhân song song, gây hai bản cùng tên trôi khác nhau (đúng loại lỗi skill này sinh ra để chặn).
 - Tăng `version` trong `.claude-plugin/plugin.json` mỗi lần phát hành: sửa lỗi → PATCH, thêm/bỏ skill hoặc đổi ranh giới → MINOR.
 - **Đóng gói TỪ ĐÚNG folder nguồn của người dùng**, không từ bản cache plugin đang cài và không từ một bản copy cũ. Trước khi đóng gói, `diff` mục lục + số dòng giữa folder nguồn và bản cache: lệch nhau nghĩa là đã trôi nhánh, phải hợp nhất trước (đã xảy ra 23–24/08/2026 với skill tuyển dụng).
 - **Đóng gói bằng `scripts/release.py`, không nén tay.** Nó chạy tự kiểm → audit → kiểm manifest/nguồn/sổ → nén → kiểm lại chính gói. Trượt cổng nào là không ra file.
-- **Thư mục nguồn plugin chỉ được chứa 3 thứ: `.claude-plugin/`, `skills/`, `README.md`.** Phiên v0.9.0 phát hiện hai thư mục làm việc (`skill-upgrade-24082026/`, `skill-upgrade-25082026/`) nằm lẫn trong nguồn, chứa cả các file `.plugin` cũ — nên bản phát hành **gói luôn ba bản phát hành trước vào bên trong**, phình từ 129 KB lên 513 KB. Để lâu thì mỗi bản lại bọc bản trước, lớn theo cấp số nhân. Sau khi đóng gói, kiểm: kích thước không nhảy vọt bất thường, và `unzip -l <file>.plugin | grep -c 'skill-upgrade\|\.plugin$'` phải bằng 0. File nháp của phiên để ở thư mục làm việc của người dùng, không để trong nguồn plugin.
+- **Thư mục nguồn plugin chỉ được chứa 3 thứ: `.claude-plugin/`, `skills/`, `README.md`.** Phiên v0.9.0 phát hiện hai thư mục làm việc (`skill-upgrade-24082026/`, `skill-upgrade-25082026/`) nằm lẫn trong nguồn, chứa cả các file `.plugin` cũ — nên bản phát hành **gói luôn ba bản phát hành trước vào bên trong**, phình từ 129 KB lên 513 KB. Để lâu thì mỗi bản lại bọc bản trước, lớn theo cấp số nhân. Sau khi đóng gói, kiểm: kích thước không nhảy vọt bất thường, và `unzip -Z1 <file>.plugin | grep -c 'skill-upgrade\|\.plugin$'` phải bằng 0. **Dùng `-Z1`, không dùng `-l`** — `unzip -l` in dòng tiêu đề `Archive: <tên gói>.plugin`, dòng đó tự khớp mẫu `\.plugin$` nên phép kiểm luôn trả về ≥1 dù gói hoàn toàn sạch. Cảnh báo giả này đã xảy ra ở phiên 03/09/2026. File nháp của phiên để ở thư mục làm việc của người dùng, không để trong nguồn plugin.
 - Ghi thay đổi vào Sổ đăng bạ ngay trong cùng phiên phát hành.

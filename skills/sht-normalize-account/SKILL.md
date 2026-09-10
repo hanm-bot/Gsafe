@@ -22,7 +22,7 @@ Trong bảng `deals`, cột `kh` (tên khách hàng) do người nhập tay nên
 2. **Parse `ma` thất bại → gom vào 1 bucket "chưa xác định".** TUYỆT ĐỐI không fallback về gộp theo `kh` (sẽ phồng lại số account).
 3. **Chuẩn hóa xong → TỰ KIỂM.** Số mã CN phải ≤ danh mục CN thật (Vietinbank ~155). Vượt xa ⇒ dừng và nghi ngờ chính mình. Đừng mặc định phân tích đầu tiên là đúng.
 
-## Quy trình
+## Quy trình chuẩn hoá account
 1. Đọc `deals` với ít nhất `ma`, `kh` (và các cột phân tích cần thiết).
 2. Với mỗi dòng, gọi `account_key(ma, kh)` từ `scripts/normalize.py` → trả `(bank, code, key)`. Gộp theo `key`.
 3. Tên hiển thị: `clean_label(kh)` (lấy biến thể `kh` phổ biến nhất của nhóm).

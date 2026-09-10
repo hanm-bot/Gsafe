@@ -5,7 +5,7 @@ description: "Thiết kế & thẩm định use-case AI agentic trước khi đ�
 
 # Thiết kế & quản trị use-case AI agentic cho Bank/Telco
 
-Skill này lo **Giai đoạn 03 (Thiết kế giải pháp) · 04 (Pilot) · 06 (Quản trị rủi ro)** trong khung 11 giai đoạn CĐS của SHT. Giai đoạn 01 do `sht-cds-danh-gia-hien-trang` lo; quy tắc bàn giao do `sht-nen-tang-kiem-chung` lo.
+Skill này lo **phần thiết kế AI agent** của **Giai đoạn 03 (Thiết kế giải pháp) · 04 (Pilot) · 06 (Quản trị rủi ro)** trong khung 11 giai đoạn CĐS của SHT. Giai đoạn 01 do `sht-cds-danh-gia-hien-trang` lo. Phần **quy trình To-Be + PRD** của Giai đoạn 03 do `sht-cds-thiet-ke-prd` lo — **PRD là đầu vào của skill này** khi hướng thi công đã chốt là AI agent; đừng khai báo agent khi chưa có PRD hoặc bảng điểm nghẽn. Quy tắc bàn giao do `sht-nen-tang-kiem-chung` lo.
 
 Câu tổng kết của cả skill: **"Autonomy isn't risk. Unsupervised autonomy is risk."** Tự chủ không phải rủi ro; tự chủ *không có giám sát* mới là rủi ro.
 
@@ -190,7 +190,7 @@ Phân biệt **functional trust** (agent chạy đúng, giải thích rõ, escal
 
 ---
 
-## Checklist chốt trước khi trình đề xuất
+## Checklist chốt trước khi trình đề xuất agentic
 
 - [ ] Đã qua Giai đoạn 01 (hiện trạng) và 02 (use-case map về ít nhất 1 trụ)
 - [ ] Agent khai báo đủ Purpose · Scope · Boundaries

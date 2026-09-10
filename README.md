@@ -1,6 +1,6 @@
 # sht-skills
 
-Bộ skill nghiệp vụ nội bộ của **Công ty CP Đầu tư Công nghệ SHT**. Mười hai skill, chia ba tầng, mỗi logic có đúng một chủ sở hữu.
+Bộ skill nghiệp vụ nội bộ của **Công ty CP Đầu tư Công nghệ SHT**. Mười ba skill, chia ba tầng, mỗi logic có đúng một chủ sở hữu.
 
 Nguyên tắc xuyên suốt: **dữ liệu sai lan nhanh hơn dữ liệu đúng.** Một con số sai nhân bản ra 4–5 deliverable; một cái tên bị thay nhầm đi thẳng vào văn bản trình ký. Mọi skill ở đây tối ưu cho việc chặn lỗi sớm.
 
@@ -13,7 +13,7 @@ TẦNG 0 — NỀN TẢNG (Áp cho mọi miền)
   sht-nen-tang-kiem-chung          quy tắc chung + ghi đúng thư mục + checklist bàn giao + 5 dạng báo cáo
   quan-tri-he-thong-skill          quản trị chính hệ thống skill (audit, chống overlap, Sổ đăng bạ)
        ▲ trỏ về
-TẦNG 1 — NGHIỆP VỤ CHUYÊN SÂU (10 skill)
+TẦNG 1 — NGHIỆP VỤ CHUYÊN SÂU (11 skill)
   chuan-hoa-du-lieu-du-an          dữ liệu & tài liệu dự án XDCB/nội thất
   chuan-hoa-du-lieu-nhansu         xác minh danh tính nhân sự
   sht-qd-nhansu-alignment          soạn & rà soát Quyết định tổ chức
@@ -23,6 +23,7 @@ TẦNG 1 — NGHIỆP VỤ CHUYÊN SÂU (10 skill)
   ra-soat-hop-dong-vendor          gap analysis hợp đồng CNTT, chuỗi Mua/Bán back-to-back, license
   chuan-hoa-ho-so-tai-lieu         chuẩn hoá PDF scan/docx/xlsx thành dữ liệu trích dẫn được
   sht-cds-danh-gia-hien-trang      đánh giá hiện trạng & sẵn sàng chuyển đổi số (DMI 6 trụ cột)
+  sht-cds-thiet-ke-prd             thiết kế quy trình To-Be & soạn PRD (nhịp 02→03, trung lập hướng thi công)
   sht-cds-thiet-ke-agent           thiết kế & thẩm định use-case AI agentic (Purpose/Scope/Boundaries)
        ▼ gọi
 TẦNG 2 — ĐỊNH DẠNG ĐẦU RA (Skill dựng sẵn)
@@ -33,7 +34,7 @@ Skill tầng 1 **trỏ tới** tầng 0, không chép lại. Skill nhà không v
 
 ---
 
-## Mười một skill
+## Mười ba skill
 
 | Skill | Dùng khi |
 |---|---|
@@ -48,6 +49,8 @@ Skill tầng 1 **trỏ tới** tầng 0, không chép lại. Skill nhà không v
 | **ra-soat-hop-dong-vendor** | Rà soát hợp đồng CNTT, gap analysis spec vs SoW/BRD, chuỗi mua bán back-to-back, license |
 | **chuan-hoa-ho-so-tai-lieu** | Bóc tách PDF scan tiếng Việt, trích dẫn chứng cứ có toạ độ trang/điều, soạn báo cáo đối ngoại trung tính |
 | **sht-cds-danh-gia-hien-trang** | "Đánh giá hiện trạng CĐS", khảo sát DMI 6 trụ cột, kiểm toán dữ liệu 6 chiều, bản đồ điểm nghẽn As-Is trước Cổng G1 |
+| **sht-cds-thiet-ke-prd** | "Thiết kế PRD", "viết PRD", "quy trình To-Be", "chốt scope pilot" — nhận điểm nghẽn As-Is → thiết kế To-Be → soạn PRD cho giải pháp CĐS (Giai đoạn 03) |
+| **sht-cds-thiet-ke-agent** | "Thiết kế use-case AI", "AI được tự quyết đến đâu", "HITL" — khai báo agent 3 chiều, tầng confidence, Tiered Governance (khi PRD chốt hướng là agent) |
 
 Mỗi skill tự kích hoạt theo mô tả của nó — không cần gọi tên. Muốn gọi tay thì gõ `/<tên-skill>`.
 
@@ -84,4 +87,4 @@ Sổ đăng bạ — nguồn sự thật về quan hệ giữa các skill — n�
 
 Nội bộ SHT. Các skill dẫn chiếu dữ liệu và văn bản thật của công ty (hệ thống SHT Sales Pipeline trên Turso, Quyết định bổ nhiệm, khung lương 3P, hợp đồng CNTT, khung đánh giá DMI). Không phát hành ra ngoài.
 
-Phiên bản 0.5.0 — 24/08/2026.
+Phiên bản 0.16.0 — 07/09/2026.
