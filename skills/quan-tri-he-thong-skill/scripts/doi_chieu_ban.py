@@ -199,7 +199,21 @@ def main():
     goc_nguon = os.path.abspath(args[0] if args else '.')
     nguon = doc_thu_muc(os.path.join(goc_nguon, 'skills'))
     goi = doc_goi(duong_dan_goi) if duong_dan_goi else {}
-    chay = [doc_thu_muc(p) for p in tim_ban_dang_chay()]
+    # Đọc tên plugin từ chính manifest của goc_nguon — KHÔNG hardcode 'sht-skills',
+    # nếu không script sẽ so nguồn của một plugin bất kỳ với bản cài của plugin khác
+    # (đã xảy ra thật: release.py cho plugin 'grill-me' báo "thiếu 14 skill" vì so
+    # nhầm với bản cài 'sht-skills'). Không đọc được thì lùi về mặc định cũ để không
+    # phá hành vi hiện có của sht-skills.
+    ten_plugin = 'sht-skills'
+    manifest_nguon = os.path.join(goc_nguon, '.claude-plugin', 'plugin.json')
+    try:
+        with open(manifest_nguon, encoding='utf-8') as fh:
+            du_lieu_manifest = json.load(fh)
+        if isinstance(du_lieu_manifest, dict) and du_lieu_manifest.get('name'):
+            ten_plugin = du_lieu_manifest['name']
+    except (OSError, ValueError):
+        pass
+    chay = [doc_thu_muc(p) for p in tim_ban_dang_chay(ten_plugin=ten_plugin)]
 
     pd = xac_dinh_phat_hien(nguon, goi, chay)
     if not pd:

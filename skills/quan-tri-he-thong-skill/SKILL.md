@@ -278,7 +278,7 @@ python3 scripts/release.py <thư_mục_gốc_plugin> --personal <skill_cá_nhân
 
 ## Bảo trì plugin `sht-skills`
 
-13 skill hiện có trong thư mục `skills/` của plugin `sht-skills` (đầy đủ 13 skill đã đăng ký trong Sổ đăng bạ). Hệ quả cho mọi lần nâng cấp về sau:
+19 skill hiện có trong thư mục `skills/` của plugin `sht-skills` (đầy đủ 19 skill đã đăng ký trong Sổ đăng bạ). Hệ quả cho mọi lần nâng cấp về sau:
 
 - **Sửa skill trong plugin thì sửa ở nguồn plugin rồi đóng gói lại**, không dùng `save_skill` — `save_skill` tạo bản skill cá nhân song song, gây hai bản cùng tên trôi khác nhau (đúng loại lỗi skill này sinh ra để chặn).
 - Tăng `version` trong `.claude-plugin/plugin.json` mỗi lần phát hành: sửa lỗi → PATCH, thêm/bỏ skill hoặc đổi ranh giới → MINOR.

@@ -1,6 +1,6 @@
 # SỔ ĐĂNG BẠ
 
-*Cập nhật lần cuối: 10/09/2026 — 13 skill, cả 13 đã đăng ký. 0 lỗi mức CAO. Phiên bản v0.16.5.*
+*Cập nhật lần cuối: 14/09/2026 — 19 skill, cả 19 đã đăng ký. 0 lỗi mức CAO. Phiên bản v0.18.1.*
 
 | Skill | Tầng | Sở hữu logic | Dùng chung với | Không đụng tới |
 |---|---|---|---|---|
@@ -17,6 +17,48 @@
 | `sht-cds-danh-gia-hien-trang` | 1 | Đánh giá hiện trạng & DMI 6 trụ cột · kiểm toán chất lượng dữ liệu 6 chiều · bản đồ điểm nghẽn As-Is · thẩm định Cổng G1 | `sht-nen-tang-kiem-chung` khi xuất báo cáo hiện trạng & bàn giao; `sht-cds-thiet-ke-prd` (bàn giao bảng điểm nghẽn As-Is sang Giai đoạn 03) | Rà soát hợp đồng CNTT; chuẩn hóa account CRM; bóc tách hồ sơ scan |
 | `sht-cds-thiet-ke-prd` | 1 | Thiết kế quy trình To-Be · soạn PRD 10 khối (mẫu ở references) · truy vết yêu cầu↔điểm nghẽn/KPI · NFR tuân thủ NĐ13/NHNN + sơ đồ luồng dữ liệu · đặc tả dữ liệu & tích hợp · MoSCoW & scope Pilot · review đối kháng PRD · nhánh hướng thi công trung lập | `sht-cds-danh-gia-hien-trang` (nhận bảng điểm nghẽn As-Is làm đầu vào); `sht-cds-thiet-ke-agent` (hand-off khi hướng chốt là AI agent); `sht-nen-tang-kiem-chung` khi bàn giao | Đo DMI/đánh giá hiện trạng; thiết kế nội tại AI agent; rà soát PRD/SoW hợp đồng vendor; dựng UI từ PRD |
 | `sht-cds-thiet-ke-agent` | 1 | Khai báo agent 3 chiều Purpose/Scope/Boundaries · 3 tầng confidence · Tiered Governance L1–L3 · bộ ca kiểm thử có ca gài · vòng đời sandbox→pilot→production→review | `sht-cds-danh-gia-hien-trang` (bắt buộc qua Giai đoạn 01 trước); `sht-cds-thiet-ke-prd` (PRD là đầu vào khi hướng thi công là agent); `sht-nen-tang-kiem-chung` khi bàn giao | Đo DMI/đánh giá hiện trạng; rà soát hợp đồng vendor; chuẩn hóa dữ liệu CRM |
+| `sht-quan-tri-dn` | 1 | **Tầm điều phối cả đội** (chủ sở hữu): Cổng I/O 2 tầng (script + hook cấp user) · ngân sách token tổng 5 vai · Chốt chặn HITL Gate 1-3 & Sổ cái SHA-256 · quy tắc thẩm định QA Lớp 2 đối chiếu thực nghiệm (không tin báo cáo tự chấm, nghi ngờ HITL bất thường) · nhân rộng 9 phòng ban qua Blueprint + Workshop B5 | `sht-nen-tang-kiem-chung` khi bàn giao/xuất báo cáo; `sht-xacthuc-baocao-hoatdong` khi đối chiếu số liệu phản biện; trỏ xuống `sht-vai1..5` khi một nhân sự chỉ cần đúng một vai | Xác thực báo cáo doanh số/CRM thuần túy; xuất báo cáo PDF in ấn chuyên dụng; rà soát hợp đồng vendor; tuyển dụng/JD; quy trình chi tiết từng bước của một vai riêng lẻ (chủ sở hữu là `sht-vai1..5`) |
+| `sht-vai1-harvester` | 1 | **Tầm cá nhân một vai** (chủ sở hữu): quy trình thực thi 4 bước Thu thập/Làm sạch/Masking Vùng Đỏ của riêng Vai 1 | `sht-quan-tri-dn` §0 cho cơ chế Cổng I/O đầy đủ; vai kế tiếp `sht-vai2-analyzer` | Điều phối cả chuỗi 5 vai (`sht-quan-tri-dn`); phân tích/báo cáo/phản biện |
+| `sht-vai2-analyzer` | 1 | **Tầm cá nhân một vai** (chủ sở hữu): quy trình thực thi 4 bước Phân tích điểm nghẽn/5 Whys/Grounding của riêng Vai 2 | `sht-quan-tri-dn`; vai trước `sht-vai1-harvester`; vai sau `sht-vai3-dispatcher`/`sht-vai4-reporter` | Điều phối cả chuỗi 5 vai; làm sạch dữ liệu thô; soạn báo cáo |
+| `sht-vai3-dispatcher` | 1 | **Tầm cá nhân một vai** (chủ sở hữu): quy trình thực thi 4 bước Đôn đốc/soạn thông điệp nhắc việc/lập lịch của riêng Vai 3 | `sht-quan-tri-dn`; chạy song song `sht-vai2-analyzer`; vai sau `sht-vai4-reporter` | Điều phối cả chuỗi 5 vai; phân tích điểm nghẽn; soạn báo cáo điều hành |
+| `sht-vai4-reporter` | 1 | **Tầm cá nhân một vai** (chủ sở hữu): quy trình thực thi 4 bước soạn Báo cáo Điều hành 4 phần AIS48 của riêng Vai 4 | `sht-quan-tri-dn`; vai trước `sht-vai1..3`; vai sau (bắt buộc) `sht-vai5-critic` | Điều phối cả chuỗi 5 vai; phân tích điểm nghẽn; phản biện/duyệt |
+| `sht-vai5-critic` | 1 | **Tầm cá nhân một vai** (chủ sở hữu): quy trình thực thi 4 bước Phản biện đối kháng 3 tầng của riêng Vai 5; ghi Sổ Cái trỏ về `sht-quan-tri-dn` §2/§6 (không sở hữu lệnh ghi log) | `sht-quan-tri-dn` §2/§6 cho cơ chế Sổ Cái & bài học QA đầy đủ; vai trước (bắt buộc) `sht-vai4-reporter` | Điều phối cả chuỗi 5 vai; soạn bản nháp báo cáo ban đầu |
+
+**Đã đóng (14/09/2026 — v0.18.0, MINOR — THÊM 5 SKILL):**
+
+Nguồn: phiên thẩm định QA nhiều vòng cho kế hoạch nâng cấp kiến trúc AIS48 (`docs/audit/2026-09-14_QA-audit-*.md`) + yêu cầu song song của anh Hà cho Anti tạo trực tiếp 5 skill theo từng vai (không qua `save_skill`, ghi thẳng vào nguồn plugin). **Quyết định kiến trúc: +5 skill mới** — mỗi vai trong Đội 5 Agent (Blueprint `Playbooks-Thuc-Chien/01_Cau-truc-Workspace-9-Phong-ban/BLUEPRINT_DOI_5_AGENT_PHONG_BAN.md`) nay có skill riêng cho nhân sự chỉ cần tự tay làm đúng một vai, tách khỏi `sht-quan-tri-dn` vốn chỉ mô tả tầm điều phối cả đội.
+
+- **`sht-vai1-harvester` .. `sht-vai5-critic` (MỚI, tầng 1):** quy trình thực thi 4 bước của từng vai (Thu thập & Cổng I/O · Phân tích & Grounding · Đôn đốc & lập lịch · Báo cáo Điều hành 4 phần · Phản biện 3 tầng & Sổ Cái). Tạo bởi Anti trực tiếp trong nguồn plugin (không qua `save_skill`) theo yêu cầu của anh Hà, song song với việc Claude cập nhật `sht-quan-tri-dn`.
+- **Audit lần đầu phát hiện 1 mức CAO (E8, cả 5 skill chưa đăng ký) + 10 E6 (description mở đầu gần trùng khuôn "Kỹ năng chuyên môn Nhân sự Vai N") + 5 E3 (đảo cô lập, không skill nào trỏ qua lại với `sht-quan-tri-dn` hay với nhau).**
+- **Đã sửa theo §3 "Chốt chủ sở hữu":** Cổng I/O (2 tầng, bài học `"/test"`) và cơ chế Sổ Cái HITL/ghi log vẫn thuộc `sht-quan-tri-dn` (§0, §2, §6) — nội dung trùng ở `sht-vai1-harvester` Bước 2 và `sht-vai5-critic` Bước 4 được rút gọn thành con trỏ, không lặp lại lệnh/bài học. Mỗi vai giữ đúng phần **thực thi riêng** của mình (không ai khác có).
+- **Sửa E6 bằng chuyên biệt hoá mở đầu description** (theo mẹo §1): đổi khuôn chung "Kỹ năng chuyên môn Nhân sự Vai N (...)" thành động từ + đối tượng riêng của từng vai ("Bóc tách & làm sạch...", "Phân tích điểm nghẽn...", "Đôn đốc tiến độ...", "Soạn Báo cáo Điều hành...", "Phản biện độc lập..."), mỗi description đều có vùng loại trừ trỏ rõ tới `sht-quan-tri-dn` (điều phối cả chuỗi) và 2 vai liền kề.
+- **Sửa E3 bằng khối `> **Quan hệ:**` ở đầu mỗi skill** (vai trước/vai sau/điều phối tổng) + `sht-quan-tri-dn` §1 và description trỏ ngược xuống cả 5 vai.
+- **10 cảnh báo E4 còn lại (dòng `Mã định danh chuẩn AIS48: ... · Hạn mức: X`) là tín hiệu giả theo §1** — cùng một khuôn định dạng số liệu có chủ đích (mỗi vai tự nêu mã định danh + ngân sách token riêng), không phải logic bị trùng chủ sở hữu. Giữ nguyên, không đục thêm (§9).
+- **Đăng bạ & Manifest:** Tăng version MINOR `0.17.1` → `0.18.0`. Cập nhật Sổ đăng bạ đủ 19 hàng khớp 19 thư mục trong `skills/`.
+
+**Đã đóng (14/09/2026 — v0.18.1, PATCH):**
+
+Nguồn: anh Hà thử upload `sht-skills-0.18.0.plugin` lên marketplace desktop app → bị từ chối: *"Plugin description must be at most 500 characters"*. `description` trong `.claude-plugin/plugin.json` là 529 ký tự — vượt trần **của chính ứng dụng cài đặt** (khác trần 1024 ký tự áp cho `description` của từng SKILL.md, §4). `release.py` không có cổng nào kiểm giới hạn này nên gói 0.18.0 đóng "sạch" theo 9 cổng nhưng vẫn bị app từ chối khi cài — lỗ hổng phạm vi kiểm giống loại đã từng xảy ra với E7-E11 (§7): công cụ chỉ kiểm được đúng phạm vi nó biết trước.
+
+- **Rút `description` plugin từ 529 → 396 ký tự**, giữ nguyên đủ ý (19 skill, 5 vai, các miền nghiệp vụ chính), chỉ cắt bớt liệt kê.
+- **Dọn E9 phát sinh giữa chừng:** gói `sht-skills-0.18.0.plugin` từng bị đóng nhầm vào trong chính thư mục nguồn (`SKILL file/sht-skills/`) do gọi `release.py` không chỉ định `--out` ra ngoài — đã dọn sang `SKILL file/_plugin-builds/` (không xoá, theo luật cứng #3) và từ nay **luôn đóng gói ra thư mục `_plugin-builds/` bên ngoài nguồn**, không đóng vào chính `sht-skills/`.
+- **Ghi nhận việc còn thiếu ở `release.py`:** chưa có cổng kiểm giới hạn ký tự của `description` cấp plugin (500) — chỉ có cổng 3 kiểm manifest hợp lệ về cấu trúc, không kiểm độ dài theo giới hạn thật của app cài đặt. Để dịp sửa `release.py` sau, không sửa vội trong phiên này (đang ưu tiên ra bản cài được ngay).
+- **Phiên bản: PATCH** (`0.18.0` → `0.18.1`) — không thêm/bớt/di chuyển skill, chỉ sửa độ dài một trường trong manifest.
+
+**Đã đóng (11/09/2026 — v0.17.1, PATCH):**
+
+Nguồn: Đồng bộ tài liệu sau khi gỡ bỏ cờ `--approve-gate3` khỏi `.agents/scripts/sht_enterprise_squad_engine.py` và chuyển `--test-hitl` sang chế độ DRY-RUN (không tự động ghi Sổ Cái thật), căn cứ sự cố `HITL-20260911-005/006` và bản đính chính `HITL-20260911-007`.
+
+- **`sht-quan-tri-dn`:** Xoá bỏ mô tả cờ `--approve-gate3` khỏi `SKILL.md`. Cập nhật mô tả `--test-hitl` (chế độ DRY-RUN, in lệnh mẫu không ghi Sổ Cái thật). Ghi rõ nguyên tắc bất di bất dịch: mọi phê duyệt Gate 3 phải do chính Mr. Hà gõ trực tiếp trong phiên làm việc thật với Claude hoặc Antigravity, không qua cờ CLI tự động của engine.
+- **Manifest:** Tăng version PATCH `0.17.0` → `0.17.1` trong `.claude-plugin/plugin.json`.
+
+**Đã đóng (11/09/2026 — v0.17.0, MINOR — THÊM SKILL):**
+
+Nguồn: Kế hoạch triển khai Đội 5 Agent Quản trị Doanh nghiệp SHT (`plans/20260911-doi-agent-quan-tri-dn/`), nghiệm thu Gate 3 (`HITL-20260911-001/002`). **Quyết định kiến trúc: +1 skill mới** — đóng gói quy trình điều phối 5 Agent quản trị vận hành nội bộ theo chuẩn AIS48.
+
+- **`sht-quan-tri-dn` (MỚI, tầng 1, Giai đoạn 03/04):** Điều phối 5 vai (Thu thập SHT-CORP-HARVESTER, Phân tích SHT-CORP-ANALYST, Nhắc việc SHT-CORP-REMINDER, Báo cáo SHT-CORP-REPORTER, Phản biện SHT-CORP-AUDITOR), Lưới lọc an toàn Vùng Đỏ (tên tiếng Việt, PII, Lương), Quản trị ngân sách Token (Soft Cap 80%, Hard Stop 100%), Chốt chặn HITL Gate 3 ghi nhận Sổ Cái `HITL_APPROVAL_LEDGER.jsonl` (SHA-256).
+- **Đăng bạ & Manifest:** Tăng version MINOR `0.16.5` → `0.17.0` trong `plugin.json` (14 skill). Cập nhật Sổ đăng bạ đủ 14 hàng khớp 14 thư mục trong `skills/`.
+
 
 **Đã đóng (10/09/2026 — v0.16.5, PATCH):**
 

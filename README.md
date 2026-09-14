@@ -1,6 +1,6 @@
 # sht-skills
 
-Bộ skill nghiệp vụ nội bộ của **Công ty CP Đầu tư Công nghệ SHT**. Mười ba skill, chia ba tầng, mỗi logic có đúng một chủ sở hữu.
+Bộ skill nghiệp vụ nội bộ của **Công ty CP Đầu tư Công nghệ SHT**. Mười chín skill, chia bốn tầng, mỗi logic có đúng một chủ sở hữu.
 
 Nguyên tắc xuyên suốt: **dữ liệu sai lan nhanh hơn dữ liệu đúng.** Một con số sai nhân bản ra 4–5 deliverable; một cái tên bị thay nhầm đi thẳng vào văn bản trình ký. Mọi skill ở đây tối ưu cho việc chặn lỗi sớm.
 
@@ -25,6 +25,15 @@ TẦNG 1 — NGHIỆP VỤ CHUYÊN SÂU (11 skill)
   sht-cds-danh-gia-hien-trang      đánh giá hiện trạng & sẵn sàng chuyển đổi số (DMI 6 trụ cột)
   sht-cds-thiet-ke-prd             thiết kế quy trình To-Be & soạn PRD (nhịp 02→03, trung lập hướng thi công)
   sht-cds-thiet-ke-agent           thiết kế & thẩm định use-case AI agentic (Purpose/Scope/Boundaries)
+
+TẦNG 1B — ĐỘI 5 AGENT QUẢN TRỊ DOANH NGHIỆP / AIS48 (6 skill)
+  sht-quan-tri-dn                  điều phối cả chuỗi 5 vai + nhân rộng 9 phòng ban (Cổng I/O, Sổ Cái HITL)
+       ▼ gọi từng vai khi nhân sự tự làm một vai riêng lẻ
+  sht-vai1-harvester               [DEPT]-01 thu thập, làm sạch, Masking Vùng Đỏ
+  sht-vai2-analyzer                [DEPT]-02 phân tích điểm nghẽn, 5 Whys, Grounding
+  sht-vai3-dispatcher              [DEPT]-03 đôn đốc tiến độ, soạn nhắc việc, lập lịch
+  sht-vai4-reporter                [DEPT]-04 soạn Báo cáo Điều hành 4 phần AIS48
+  sht-vai5-critic                  [DEPT]-05 phản biện độc lập, tờ trình HITL, Sổ Cái SHA-256
        ▼ gọi
 TẦNG 2 — ĐỊNH DẠNG ĐẦU RA (Skill dựng sẵn)
   docx · xlsx · pptx · pdf
@@ -34,7 +43,7 @@ Skill tầng 1 **trỏ tới** tầng 0, không chép lại. Skill nhà không v
 
 ---
 
-## Mười ba skill
+## Mười chín skill
 
 | Skill | Dùng khi |
 |---|---|
@@ -51,6 +60,12 @@ Skill tầng 1 **trỏ tới** tầng 0, không chép lại. Skill nhà không v
 | **sht-cds-danh-gia-hien-trang** | "Đánh giá hiện trạng CĐS", khảo sát DMI 6 trụ cột, kiểm toán dữ liệu 6 chiều, bản đồ điểm nghẽn As-Is trước Cổng G1 |
 | **sht-cds-thiet-ke-prd** | "Thiết kế PRD", "viết PRD", "quy trình To-Be", "chốt scope pilot" — nhận điểm nghẽn As-Is → thiết kế To-Be → soạn PRD cho giải pháp CĐS (Giai đoạn 03) |
 | **sht-cds-thiet-ke-agent** | "Thiết kế use-case AI", "AI được tự quyết đến đâu", "HITL" — khai báo agent 3 chiều, tầng confidence, Tiered Governance (khi PRD chốt hướng là agent) |
+| **sht-quan-tri-dn** | Vận hành quy trình quản trị tuần, giám sát đầu việc liên phòng ban, `/goal` `/teamwork` `/schedule`, thẩm định QA Lớp 2, dựng Đội 5 Agent cho phòng ban mới |
+| **sht-vai1-harvester** | "Làm sạch dữ liệu", "ẩn danh hồ sơ", "mask PII" — tự tay làm sạch dữ liệu thô trước khi giao bước phân tích |
+| **sht-vai2-analyzer** | "Vì sao trễ", "phân tích nguyên nhân", "5 Whys" — chẩn đoán chỉ tiêu/đầu việc bị lệch, đèn giao thông 3 mức |
+| **sht-vai3-dispatcher** | "Nhắc việc", "soạn tin đôn đốc", "ai đang trễ hạn" — phân loại quá hạn/sắp hạn, soạn nhắc việc 4 phần |
+| **sht-vai4-reporter** | "Viết báo cáo điều hành", "tóm tắt cho sếp" — Báo cáo Điều hành 4 phần AIS48, kiểm soát ngân sách token |
+| **sht-vai5-critic** | "Phản biện", "kiểm tra chéo trước khi trình", "rà số liệu" — thẩm tra 3 tầng, tờ trình HITL, Sổ Cái SHA-256 |
 
 Mỗi skill tự kích hoạt theo mô tả của nó — không cần gọi tên. Muốn gọi tay thì gõ `/<tên-skill>`.
 
@@ -87,4 +102,4 @@ Sổ đăng bạ — nguồn sự thật về quan hệ giữa các skill — n�
 
 Nội bộ SHT. Các skill dẫn chiếu dữ liệu và văn bản thật của công ty (hệ thống SHT Sales Pipeline trên Turso, Quyết định bổ nhiệm, khung lương 3P, hợp đồng CNTT, khung đánh giá DMI). Không phát hành ra ngoài.
 
-Phiên bản 0.16.0 — 07/09/2026.
+Phiên bản 0.18.1 — 14/09/2026.
