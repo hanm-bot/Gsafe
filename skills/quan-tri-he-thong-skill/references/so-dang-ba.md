@@ -1,6 +1,6 @@
 # SỔ ĐĂNG BẠ
 
-*Cập nhật lần cuối: 14/09/2026 — 19 skill, cả 19 đã đăng ký. 0 lỗi mức CAO. Phiên bản v0.18.1.*
+*Cập nhật lần cuối: 14/09/2026 — 19 skill, cả 19 đã đăng ký. 0 lỗi mức CAO. Phiên bản v0.18.2.*
 
 | Skill | Tầng | Sở hữu logic | Dùng chung với | Không đụng tới |
 |---|---|---|---|---|
@@ -44,6 +44,14 @@ Nguồn: anh Hà thử upload `sht-skills-0.18.0.plugin` lên marketplace deskto
 - **Dọn E9 phát sinh giữa chừng:** gói `sht-skills-0.18.0.plugin` từng bị đóng nhầm vào trong chính thư mục nguồn (`SKILL file/sht-skills/`) do gọi `release.py` không chỉ định `--out` ra ngoài — đã dọn sang `SKILL file/_plugin-builds/` (không xoá, theo luật cứng #3) và từ nay **luôn đóng gói ra thư mục `_plugin-builds/` bên ngoài nguồn**, không đóng vào chính `sht-skills/`.
 - **Ghi nhận việc còn thiếu ở `release.py`:** chưa có cổng kiểm giới hạn ký tự của `description` cấp plugin (500) — chỉ có cổng 3 kiểm manifest hợp lệ về cấu trúc, không kiểm độ dài theo giới hạn thật của app cài đặt. Để dịp sửa `release.py` sau, không sửa vội trong phiên này (đang ưu tiên ra bản cài được ngay).
 - **Phiên bản: PATCH** (`0.18.0` → `0.18.1`) — không thêm/bớt/di chuyển skill, chỉ sửa độ dài một trường trong manifest.
+
+**Đã đóng (14/09/2026 — v0.18.2, PATCH):**
+
+Nguồn: thẩm định ngược sau phiên nâng cấp Đội 5 Agent — phát hiện `doi_chieu_ban.py` (công cụ đối chiếu 3 bản: nguồn/gói/bản cài, dùng ở cổng 0 của `release.py`) hardcode tên plugin `'sht-skills'` khi dò bản đang cài, thay vì đọc từ manifest của chính thư mục nguồn đang được kiểm. Sự cố thật: chạy `release.py` cho plugin `grill-me` nhưng công cụ lại đi so với bản cài của `sht-skills`, báo nhầm "thiếu 14 skill".
+
+- **Sửa `tim_ban_dang_chay()` gọi từ `main()` trong `doi_chieu_ban.py`:** đọc `name` từ `.claude-plugin/plugin.json` của thư mục nguồn đang kiểm để xác định tên plugin cần dò bản cài; đọc lỗi hoặc thiếu trường thì lùi về mặc định `'sht-skills'` để không phá hành vi hiện có.
+- **Phạm vi ảnh hưởng:** chỉ tác động khi dùng `release.py`/`doi_chieu_ban.py` cho một plugin khác `sht-skills` (ví dụ `grill-me`) đang cùng máy có bản `sht-skills` cài sẵn. Không đổi hành vi đóng gói `sht-skills` chính nó.
+- **Phiên bản: PATCH** (`0.18.1` → `0.18.2`) — chỉ sửa lỗi logic một script nội bộ, không thêm/bớt/di chuyển skill.
 
 **Đã đóng (11/09/2026 — v0.17.1, PATCH):**
 
