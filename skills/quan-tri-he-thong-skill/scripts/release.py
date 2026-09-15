@@ -26,6 +26,9 @@ cổng chặn thì đáng tin.
 """
 import json, os, re, subprocess, sys, tempfile, zipfile, shutil
 
+if sys.platform == 'win32' and hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 ALLOWED = {'.claude-plugin', 'skills', 'README.md', 'agents',
            '.mcp.json', 'CONNECTORS.md', 'hooks'}

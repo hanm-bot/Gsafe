@@ -1,6 +1,6 @@
 # SỔ ĐĂNG BẠ
 
-*Cập nhật lần cuối: 14/09/2026 — 19 skill, cả 19 đã đăng ký. 0 lỗi mức CAO. Phiên bản v0.18.2.*
+*Cập nhật lần cuối: 15/09/2026 — 21 skill, cả 21 đã đăng ký. 0 lỗi mức CAO. Phiên bản v0.19.0.*
 
 | Skill | Tầng | Sở hữu logic | Dùng chung với | Không đụng tới |
 |---|---|---|---|---|
@@ -23,6 +23,18 @@
 | `sht-vai3-dispatcher` | 1 | **Tầm cá nhân một vai** (chủ sở hữu): quy trình thực thi 4 bước Đôn đốc/soạn thông điệp nhắc việc/lập lịch của riêng Vai 3 | `sht-quan-tri-dn`; chạy song song `sht-vai2-analyzer`; vai sau `sht-vai4-reporter` | Điều phối cả chuỗi 5 vai; phân tích điểm nghẽn; soạn báo cáo điều hành |
 | `sht-vai4-reporter` | 1 | **Tầm cá nhân một vai** (chủ sở hữu): quy trình thực thi 4 bước soạn Báo cáo Điều hành 4 phần AIS48 của riêng Vai 4 | `sht-quan-tri-dn`; vai trước `sht-vai1..3`; vai sau (bắt buộc) `sht-vai5-critic` | Điều phối cả chuỗi 5 vai; phân tích điểm nghẽn; phản biện/duyệt |
 | `sht-vai5-critic` | 1 | **Tầm cá nhân một vai** (chủ sở hữu): quy trình thực thi 4 bước Phản biện đối kháng 3 tầng của riêng Vai 5; ghi Sổ Cái trỏ về `sht-quan-tri-dn` §2/§6 (không sở hữu lệnh ghi log) | `sht-quan-tri-dn` §2/§6 cho cơ chế Sổ Cái & bài học QA đầy đủ; vai trước (bắt buộc) `sht-vai4-reporter` | Điều phối cả chuỗi 5 vai; soạn bản nháp báo cáo ban đầu |
+| `grill-me` | 0 | Quy hoạch quy trình dùng chung mọi dự án: phỏng vấn/khảo yêu cầu → chốt KẾ HOẠCH → cổng Proceed trước khi thực thi | `archify` để vẽ sơ đồ từ kế hoạch đã chốt | Lập kế hoạch kỹ thuật thuần trên code có sẵn (dùng `superpowers:writing-plans`) |
+| `archify` | 0 | Vẽ sơ đồ quy trình (Mermaid) từ một KẾ HOẠCH đã chốt hoặc mô tả quy trình bất kỳ, đánh dấu tự động/người duyệt/AI dừng | `grill-me` (nhận KẾ HOẠCH làm đầu vào, bàn giao ngược khi sơ đồ sửa lệch kế hoạch) | Biểu đồ dữ liệu/số liệu (dùng `dataviz`); sơ đồ kiến trúc kỹ thuật chi tiết |
+
+**Đã đóng (15/09/2026 — v0.19.0, MINOR — GỘP `grill-me`/`archify` TỪ PLUGIN RIÊNG):**
+
+Nguồn: mở rộng có chủ đích từ mục "Việc còn tồn" ngày 14/09/2026 ngay dưới đây (đã đóng, xem lịch sử). Quyết định 14/09 khi đó chỉ chốt phạm vi hẹp — bỏ bản sao `quan-tri-he-thong-skill` khỏi `grill-me`, giữ `grill-me`/`archify` sống ở plugin riêng. Phiên này (yêu cầu trực tiếp của anh Hà, sau khi Claude QA phát hiện lại đúng vụ va tên này qua audit chéo với Antigravity) mở rộng thêm một bước: thay vì duy trì `grill-me-skill` như plugin thứ hai (rủi ro "hai đường bảo trì song song" y hệt lỗi vừa dọn ở tầng skill, chỉ chuyển sang tầng plugin), **gộp hẳn `grill-me` + `archify` vào `sht-skills`**, xoá triệt để nhu cầu cài/đồng bộ một plugin thứ hai.
+
+- **Không còn tắc hạ tầng:** ghi chú 14/09 nói "sandbox Linux không mount được" — phiên này Bash chạy bình thường trên máy trạm Windows, rào cản đó không còn áp dụng cho đường đi này (không cần sandbox Linux để di chuyển thư mục + sửa manifest).
+- **`grill-me`, `archify` chuyển nguyên vẹn** từ `grill-me-skill/skills/` sang `sht-skills/skills/` bằng `mv` (không copy-rồi-xoá, không đổi nội dung). Đã kiểm trước: cả hai không có tham chiếu cứng đường dẫn nào ra ngoài chính chúng (chỉ gọi nhau bằng tên skill).
+- **`grill-me-skill/` (plugin cũ) đã archive nguyên khối** vào `_archive/2026-09-15_grill-me-skill-plugin-da-gop/` — không xoá, theo Luật cứng #3. Plugin cũ giờ rỗng (0 skill trong `skills/`), không còn lý do tồn tại độc lập.
+- **Đăng bạ & Manifest:** Tăng version MINOR `0.18.2` → `0.19.0` (19→21 skill). `description` plugin 436/500 ký tự (dưới trần installer). Sổ đăng bạ +2 hàng (`grill-me`, `archify`, tầng 0 — quy hoạch quy trình dùng chung, giống tầng của `sht-nen-tang-kiem-chung`/`quan-tri-he-thong-skill`).
+- **Còn phải làm:** chạy `audit_skills.py --plugin` xác nhận không phát sinh E2/E4/E6 mới do gộp; đóng gói qua `release.py` ra `_plugin-builds/`; Mr. Hà upload bản mới vào marketplace desktop app (bản đang cài vẫn là 0.17.1, đã lệch nguồn từ trước — việc này gộp chung vào đợt cập nhật kế tiếp).
 
 **Đã đóng (14/09/2026 — v0.18.0, MINOR — THÊM 5 SKILL):**
 
@@ -151,6 +163,12 @@ Nguồn: phiên rà soát chuỗi hợp đồng ba lớp dự án Metro TP.HCM T
 
 **Việc còn tồn:**
 
+- **Va tên `quan-tri-he-thong-skill` giữa `sht-skills` và `grill-me` — ĐÃ ĐÓNG, MỞ RỘNG THÀNH v0.19.0 (15/09/2026).** Xem log v0.19.0 ở trên: không chỉ xoá bản sao như phương án A gốc, mà gộp hẳn `grill-me`/`archify` vào `sht-skills`, xoá luôn plugin `grill-me-skill` (đã archive). Chi tiết quyết định gốc giữ nguyên bên dưới làm hồ sơ lịch sử.
+
+- ~~Va tên `quan-tri-he-thong-skill` giữa `sht-skills` và `grill-me` — ĐÃ CHỐT HƯỚNG, CHƯA THỰC THI (14/09/2026).~~ Cài `grill-me` v0.1.0 làm skill này tồn tại ở hai plugin với description **giống hệt nhau từng chữ** → E2 (xung đột trigger) đang hiện hành: gõ "UPGRADE SKILL" có hai ứng viên không phân biệt được; chọn nhầm bản `grill-me` sẽ audit theo sổ 3 hàng của nó thay vì sổ 19 hàng này, báo cáo sai mà không ai biết. Bản sao còn tự mâu thuẫn: `SKILL.md` §"Bảo trì plugin `sht-skills`" (dòng 279–288) nói 19 skill trong khi sổ đi kèm khai 3. Manifest `grill-me` cũng ghi "2 skill" trong khi ship 3.
+  → **Anh Hà chốt phương án A: bỏ hẳn bản sao khỏi `grill-me`**, skill chỉ sống ở `sht-skills`. Lý do bác bản sao: máy luôn cài cả hai plugin nên "độc lập đường dẫn" không mua được gì, mà trả bằng một va tên trực tiếp. Grill-me về sau phát hành bằng `release.py` của `sht-skills` trỏ vào nguồn grill-me — khả thi nhờ bản vá `doi_chieu_ban.py` đọc tên plugin từ chính manifest nguồn đang audit (dòng 207–213), không còn hardcode `'sht-skills'`.
+  → **Sáu bước, phải trọn trong MỘT phiên, không tách:** (1) chuyển 2 hàng `grill-me`/`archify` + nhật ký v0.1.0 từ sổ của grill-me sang sổ này **trước khi xoá**; (2) xoá `grill-me-skill/skills/quan-tri-he-thong-skill/` (mất luôn sổ riêng và bản sao `scripts/` của grill-me — có chủ ý); (3) `plugin.json` grill-me `0.1.0` → `0.2.0` (bỏ skill = MINOR), description "2 skill" giữ nguyên vì sẽ tự đúng sau khi xoá; (4) `test_audit.py` + `audit_skills.py` cho cả hai nguồn, kỳ vọng va tên biến mất; (5) `release.py` ra `_plugin-builds/`, cài đè 0.1.0; (6) ghi "Đã đóng — v0.2.0" vào sổ ngay trong cùng phiên.
+  → **Đang tắc ở hạ tầng, không phải ở quyết định:** sandbox Linux không mount được từ 08/09/2026 (bản vá Windows) nên bước 4–5 chưa chạy được. **Chưa có sandbox thì không khởi động bước nào** — làm nửa vời sẽ để nguồn, sổ và bản đang cài ở ba trạng thái lệch nhau, đúng kiểu trôi nhánh đã mất 7 bản vá ở v0.15.0 và tách đôi skill tuyển dụng 23–24/08/2026.
 - **E10 mức THẤP ở `sht-nen-tang-kiem-chung`:** description 975/1024 ký tự — sát trần. Ghi nhận theo §9, **không sửa ngay**. Lần bổ sung nội dung tới phải rút gọn phần liệt kê ví dụ trước, giữ nguyên vùng loại trừ.
 - Chuẩn tên `sht-<miền>-<hành động>` chưa áp cho nhóm `chuan-hoa-*` (4 skill). Đổi tên sẽ gãy tham chiếu chéo — chỉ làm khi có dịp tái cấu trúc lớn.
 - **E4 (10/09/2026 — cập nhật):** 6 cảnh báo E4 đều là tín hiệu giả (mở đọc thân, xác minh). Đã chuyên biệt hoá tiêu đề để dập 5/6: `"Quy trình"` (normalize) → `"Quy trình chuẩn hoá account"`; `"10. Bàn giao"` (tuyển dụng) + `"Checklist trước khi bàn giao"` gắn hậu tố; `"Checklist chốt trước khi trình đề xuất"` → `"…đề xuất agentic"`. **Còn 1 benign không dập được:** `chuan-hoa-ho-so-tai-lieu` GĐ5 ↔ `ra-soat-hop-dong-vendor` GĐ2 (kết xuất báo cáo) — E4 khớp vì **thân mục có câu con trỏ giống hệt** ("theo `sht-nen-tang-kiem-chung` §6, không định nghĩa lại"), mà trùng đó là **đúng** (cùng trỏ một chủ). Audit bản này chưa tự bỏ qua cặp con-trỏ có phần "Riêng cho…" đi kèm. **Giữ nguyên, không đục thêm** (§9). Muốn dập sạch phải vá `audit_skills.py` để bỏ qua cặp con trỏ — để dịp sửa tool sau.

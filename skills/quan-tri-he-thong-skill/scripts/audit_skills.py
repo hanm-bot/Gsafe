@@ -20,6 +20,9 @@ skill nằm sai chỗ (E7), Sổ đăng bạ lệch thực tế (E8), nguồn/g�
 import sys, os, re, json, unicodedata
 from itertools import combinations
 
+if sys.platform == 'win32' and hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
 OVERSIZE_LINES = 300
 OVERLAP_TITLE = 0.55        # ngưỡng tương đồng TIÊU ĐỀ
 OVERLAP_BODY = 0.35         # ngưỡng tương đồng NỘI DUNG — phải vượt cả hai mới báo
