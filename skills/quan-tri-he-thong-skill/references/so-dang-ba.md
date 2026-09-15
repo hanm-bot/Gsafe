@@ -1,6 +1,6 @@
 # SỔ ĐĂNG BẠ
 
-*Cập nhật lần cuối: 15/09/2026 — 21 skill, cả 21 đã đăng ký. 0 lỗi mức CAO. Phiên bản v0.19.0.*
+*Cập nhật lần cuối: 15/09/2026 — 21 skill, cả 21 đã đăng ký. 0 lỗi mức CAO. Phiên bản v0.19.0 — ✅ ĐÃ PHÁT HÀNH.*
 
 | Skill | Tầng | Sở hữu logic | Dùng chung với | Không đụng tới |
 |---|---|---|---|---|
@@ -34,7 +34,11 @@ Nguồn: mở rộng có chủ đích từ mục "Việc còn tồn" ngày 14/09
 - **`grill-me`, `archify` chuyển nguyên vẹn** từ `grill-me-skill/skills/` sang `sht-skills/skills/` bằng `mv` (không copy-rồi-xoá, không đổi nội dung). Đã kiểm trước: cả hai không có tham chiếu cứng đường dẫn nào ra ngoài chính chúng (chỉ gọi nhau bằng tên skill).
 - **`grill-me-skill/` (plugin cũ) đã archive nguyên khối** vào `_archive/2026-09-15_grill-me-skill-plugin-da-gop/` — không xoá, theo Luật cứng #3. Plugin cũ giờ rỗng (0 skill trong `skills/`), không còn lý do tồn tại độc lập.
 - **Đăng bạ & Manifest:** Tăng version MINOR `0.18.2` → `0.19.0` (19→21 skill). `description` plugin 436/500 ký tự (dưới trần installer). Sổ đăng bạ +2 hàng (`grill-me`, `archify`, tầng 0 — quy hoạch quy trình dùng chung, giống tầng của `sht-nen-tang-kiem-chung`/`quan-tri-he-thong-skill`).
-- **Còn phải làm:** chạy `audit_skills.py --plugin` xác nhận không phát sinh E2/E4/E6 mới do gộp; đóng gói qua `release.py` ra `_plugin-builds/`; Mr. Hà upload bản mới vào marketplace desktop app (bản đang cài vẫn là 0.17.1, đã lệch nguồn từ trước — việc này gộp chung vào đợt cập nhật kế tiếp).
+- **✅ ĐÃ PHÁT HÀNH (15/09/2026):**
+  - **Audit:** `audit_skills.py skills --plugin .` → **0 lỗi mức CAO**; còn 10 E4 (nhóm false-positive "Mã định danh AIS48… Hạn mức" trùng khuôn định dạng số, không trùng logic — chủ đích) + 1 E5 (`quan-tri-he-thong-skill` 288/300 dòng, sát ngưỡng).
+  - **Đóng gói:** `_plugin-builds/sht-skills-v0.19.0.plugin` (225 KB).
+  - **Đã cài desktop app:** phiên làm việc xác nhận nạp được `sht-skills:archify` + `sht-skills:grill-me`.
+  - **Đã push GitHub `Gsafe/qa-hanh-vi`:** commit `19cab19`; xác minh `git ls-remote` remote=`19cab19`, ahead/behind `0	0` → nguồn–gói cài–remote thống nhất 0.19.0.
 
 **Đã đóng (14/09/2026 — v0.18.0, MINOR — THÊM 5 SKILL):**
 
