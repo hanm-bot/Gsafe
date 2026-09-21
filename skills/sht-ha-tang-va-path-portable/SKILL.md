@@ -1,7 +1,7 @@
 ---
 name: sht-ha-tang-va-path-portable
 version: 1.0
-description: Phát hiện và sửa đường dẫn hardcode theo máy/môi trường cụ thể (path tác giả, ổ đĩa cũ, tên thư mục đã đổi) trong script/hook/skill, chuyển sang tự suy đường dẫn để chạy được trên mọi máy — kiểm bằng cách chạy thật từ thư mục làm việc khác. LUÔN dùng khi một script/skill báo lỗi "không tìm thấy file" dù file rõ ràng có tồn tại, khi mang một gói skill/script sang máy khác thì không chạy, khi vừa đổi tên/di chuyển thư mục dự án, hoặc khi rà thấy chuỗi kiểu `c:\Users\<tên người>\...` hay `D:\` trong code. KHÔNG dùng để viết skill mới từ đầu, không dùng để kiểm skill có chạy đúng logic nghiệp vụ hay không (dùng sht-qa-kiem-chung-skill-hook) — skill này chỉ lo một việc: đường dẫn có tự trỏ đúng bất kể máy nào không.
+description: Phát hiện và sửa đường dẫn hardcode theo máy/môi trường cụ thể (path tác giả, ổ đĩa cũ, tên thư mục đã đổi) trong script/hook/skill, chuyển sang tự suy đường dẫn để chạy được trên mọi máy — kiểm bằng cách chạy thật từ thư mục làm việc khác. LUÔN dùng khi một script/skill báo lỗi "không tìm thấy file" dù file rõ ràng có tồn tại, khi mang một gói skill/script sang máy khác thì không chạy, khi vừa đổi tên/di chuyển thư mục dự án, hoặc khi rà thấy chuỗi kiểu "c:\Users\ tên người dùng cụ thể \..." hay "D:\" trong code. KHÔNG dùng để viết skill mới từ đầu, không dùng để kiểm skill có chạy đúng logic nghiệp vụ hay không (dùng sht-qa-kiem-chung-skill-hook) — skill này chỉ lo một việc: đường dẫn có tự trỏ đúng bất kể máy nào không.
 ---
 
 # Kỹ Sư Hạ Tầng & Path Portable

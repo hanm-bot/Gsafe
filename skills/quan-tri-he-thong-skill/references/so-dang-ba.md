@@ -1,6 +1,6 @@
 # SỔ ĐĂNG BẠ
 
-*Cập nhật lần cuối: 21/09/2026 — 28 skill, cả 28 đã đăng ký. v0.20.0 đã phát hành (7 skill mới, đủ 9 cổng). Phiên bản v0.21.0 — ⚠️ CHỜ PHÁT HÀNH (nâng khung phân loại phát biểu lên §8 tầng nền, rút gọn 2 skill trùng logic).*
+*Cập nhật lần cuối: 21/09/2026 — 28 skill, cả 28 đã đăng ký. v0.20.0 đã phát hành (7 skill mới, đủ 9 cổng). Phiên bản v0.21.1 — ⚠️ CHỜ PHÁT HÀNH (v0.21.0: nâng khung phân loại phát biểu lên §8 tầng nền; v0.21.1: PATCH — sửa 2 lỗi UI upload không bị `release.py` 9 cổng bắt: description plugin >500 ký tự, thẻ giống XML trong description skill; đã thêm 2 kiểm này vào Cổng 3).*
 
 | Skill | Tầng | Sở hữu logic | Dùng chung với | Không đụng tới |
 |---|---|---|---|---|

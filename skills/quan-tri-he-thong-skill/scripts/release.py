@@ -9,7 +9,8 @@ Chín cổng (0-8), trượt bất kỳ cổng nào là DỪNG, không tạo fil
     0. Đối chiếu bản — nguồn không khuyết skill so với bản đang cài (doi_chieu_ban.py)
     1. Bộ tự kiểm của chính công cụ audit  (test_audit.py)
     2. Audit NỘI DUNG GÓI — không còn lỗi mức CAO (E7 phía cài đặt chỉ cảnh báo)
-    3. Manifest hợp lệ: name kebab-case, version semver
+    3. Manifest hợp lệ: name kebab-case, version semver, description plugin ≤500 ký tự,
+       description skill không chứa thẻ giống XML (UI upload từ chối cả hai)
     4. Không trùng số hiệu với gói cũ — version nguồn khác version trong --out cũ
     5. Nguồn sạch: không lẫn thư mục nháp, không có .plugin cũ bên trong
     6. Mọi skill có SKILL.md
@@ -111,17 +112,47 @@ def main():
          '' if n_hi == 0 else f'{n_hi} lỗi CAO. Chạy audit_skills.py để xem chi tiết.')
 
     # 3 — manifest
+    # Hai kiểm dưới đây (độ dài description plugin, thẻ XML trong description
+    # skill) bị bắt bởi UI upload của Claude Code desktop, KHÔNG bị bắt bởi bộ
+    # cổng này trước 21/09/2026 — một bản .plugin đã qua đủ 9 cổng vẫn bị UI
+    # từ chối lúc upload vì description plugin dài 520 ký tự (>500) và
+    # description của một skill dùng `<tên người>` làm placeholder bị hiểu
+    # nhầm là thẻ XML. Thêm ở đây để cổng phát hành bắt được TRƯỚC khi đóng
+    # gói, không phải để người dùng tự phát hiện lúc upload thủ công.
     mf = os.path.join(root, '.claude-plugin', 'plugin.json')
     ok3, d3, ver, name = False, 'thiếu .claude-plugin/plugin.json', None, None
     if os.path.isfile(mf):
         try:
             m = json.load(open(mf, encoding='utf-8'))
             name, ver = m.get('name', ''), m.get('version', '')
+            plugin_desc = m.get('description', '')
             ok3 = bool(re.fullmatch(r'[a-z0-9]+(-[a-z0-9]+)*', name)) and \
-                bool(re.fullmatch(r'\d+\.\d+\.\d+', ver))
-            d3 = f'{name} v{ver}' if ok3 else f'name/version không hợp lệ: "{name}" / "{ver}"'
+                bool(re.fullmatch(r'\d+\.\d+\.\d+', ver)) and \
+                len(plugin_desc) <= 500
+            if not ok3:
+                if len(plugin_desc) > 500:
+                    d3 = f'description plugin dài {len(plugin_desc)} ký tự (>500, UI upload sẽ từ chối)'
+                else:
+                    d3 = f'name/version không hợp lệ: "{name}" / "{ver}"'
+            else:
+                d3 = f'{name} v{ver}'
         except Exception as e:
             d3 = f'JSON hỏng: {e}'
+
+    xml_like = []
+    for d in sorted(os.listdir(skills_dir)) if os.path.isdir(skills_dir) else []:
+        sk_md = os.path.join(skills_dir, d, 'SKILL.md')
+        if not os.path.isfile(sk_md):
+            continue
+        content = open(sk_md, encoding='utf-8').read()
+        dm = re.search(r'^description:\s*(.*?)(?=\n---|\n[a-z_]+:)', content, re.DOTALL | re.MULTILINE)
+        if dm and re.search(r'<[a-zA-Z]', dm.group(1)):
+            xml_like.append(d)
+    if xml_like:
+        ok3 = False
+        d3 = (d3 + '; ' if ok3 is False and d3 else '') + \
+            f'description chứa ký tự giống thẻ XML ("<chữ") — UI upload từ chối: {", ".join(xml_like)}'
+
     gate(3, 'Manifest hợp lệ', ok3, d3)
 
     # 4 — không trùng số hiệu với gói cũ.
