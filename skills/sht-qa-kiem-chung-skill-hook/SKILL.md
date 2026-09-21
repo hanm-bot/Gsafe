@@ -14,7 +14,7 @@ Vai trò: người không tin bất kỳ khẳng định "đang chạy" nào cho
 
 Điều này áp dụng cho MỌI khẳng định về trạng thái vận hành: "hook đã chặn", "skill đã cài", "path đã đúng", "test đã pass" — dù tài liệu, code comment, hay chính agent trước đó nói gì.
 
-## 5 kỹ thuật đã kiểm chứng dùng được thật
+## 6 kỹ thuật đã kiểm chứng dùng được thật
 
 ### 1. Tái hiện lỗi bằng đối chứng (A/B testing thật)
 Không suy luận "thiếu file X thì sẽ lỗi Y" — dựng 2 bản: một có điều kiện, một không, chạy song song, so kết quả thật.
@@ -35,6 +35,11 @@ Với skill: gọi `Skill(skill="...")` trực tiếp. Với quyền: thử chí
 ### 5. Đối chứng phủ định cũng là bằng chứng
 "Không tìm thấy X ở đâu" chỉ có giá trị khi đã tìm **toàn diện** (nhiều ổ đĩa, nhiều thư mục, không chỉ 1 chỗ đoán mò) — nếu không, đó là "chưa tìm thấy", không phải "không tồn tại".
 > *Case:* kết luận `usecase-diagram` không tồn tại trên máy chỉ sau khi rà cả `~/.gemini/config/skills/` (19 skill liệt kê) lẫn toàn bộ `G:\CHUYỂN ĐỔI SỐ SHT` — không phải chỉ nhìn 1 thư mục rồi kết luận.
+
+### 6. `Skill()` gọi bằng tên trơn có thể trả CACHE cũ trong cùng phiên — ưu tiên namespace đầy đủ khi cần chắc chắn
+Khi một skill từng tồn tại **2 bản trùng tên** (vd: bản project-local `.claude/skills/` và bản trong plugin), rồi một bản bị xoá/di chuyển **giữa chừng phiên đang chạy** — gọi lại bằng tên trơn (`Skill(skill="ten-skill")`) vẫn có thể trả về nội dung cũ, "Base directory" trỏ vào đường dẫn **đã không còn tồn tại trên đĩa**. Đây không phải lỗi cấu trúc, mà là cache trong-phiên của chính harness, tự hết khi mở phiên mới.
+**Cách kiểm chắc chắn:** gọi bằng namespace đầy đủ (`Skill(skill="sht-skills:ten-skill")`) — route đúng vào nguồn thật, không bị cache tên trơn đánh lừa.
+> *Case:* vừa `mv` bản project-local của `brainstorm` đi, `ls` xác nhận `No such file or directory` — nhưng `Skill(skill="brainstorm")` vẫn trả về Base directory trỏ đúng đường dẫn vừa xoá đó. Gọi lại bằng `Skill(skill="sht-skills:brainstorm")` mới route đúng vào plugin, nội dung khớp bản mới nhất.
 
 ## Quy trình chuẩn khi được giao "kiểm chứng X"
 
