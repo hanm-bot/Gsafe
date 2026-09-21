@@ -64,7 +64,7 @@ def main():
     # cài của người dùng. V1/V3/V4 chỉ báo, vì hash không cho biết chiều lệch.
     dc = subprocess.run(
         [sys.executable, os.path.join(HERE, 'doi_chieu_ban.py'), root],
-        capture_output=True, text=True)
+        capture_output=True, text=True, encoding='utf-8', errors='replace')
     # main() của doi_chieu_ban.py chỉ trả 0 hoặc 1 — bất kỳ mã thoát KHÁC (ví dụ 2:
     # không tìm thấy file khi bị đổi tên/xoá nhầm) chắc chắn không phải "có phát hiện
     # thật", mà là công cụ không chạy được nổi. Traceback trong stderr là dấu hiệu
@@ -93,7 +93,7 @@ def main():
 
     # 1 — tự kiểm công cụ
     t = subprocess.run([sys.executable, os.path.join(HERE, 'test_audit.py')],
-                       capture_output=True, text=True)
+                       capture_output=True, text=True, encoding='utf-8', errors='replace')
     gate(1, 'Bộ tự kiểm audit_skills.py', t.returncode == 0,
          '' if t.returncode == 0 else
          f"{t.stdout.count('❌')} ca trượt — sửa công cụ trước khi tin kết quả audit")
@@ -104,7 +104,7 @@ def main():
     # không phải lỗi của gói — chặn phát hành vì nó là sai phạm vi, và sẽ khoá
     # cứng việc ra bản mới chỉ vì người dùng chưa kịp xoá một skill cũ.
     a = subprocess.run([sys.executable, os.path.join(HERE, 'audit_skills.py'),
-                        skills_dir, '--plugin', root], capture_output=True, text=True)
+                        skills_dir, '--plugin', root], capture_output=True, text=True, encoding='utf-8', errors='replace')
     hi = re.search(r'\((\d+) mức CAO', a.stdout)
     n_hi = int(hi.group(1)) if hi else (0 if a.returncode == 0 else 1)
     gate(2, 'Audit nội dung gói — 0 lỗi mức CAO', n_hi == 0,
@@ -183,7 +183,7 @@ def main():
     if personal:
         pa = subprocess.run([sys.executable, os.path.join(HERE, 'audit_skills.py'),
                              skills_dir, '--personal', personal, '--json'],
-                            capture_output=True, text=True)
+                            capture_output=True, text=True, encoding='utf-8', errors='replace')
         try:
             e7 = [f for f in json.loads(pa.stdout) if f['code'] == 'E7']
         except Exception:

@@ -1,12 +1,12 @@
 ---
 name: "sht-vai5-critic"
-description: "Phản biện độc lập đối kháng và quản trị Sổ Cái HITL của một vai trò cụ thể (Critic `[DEPT]-05`): thẩm tra 3 tầng (số liệu chân thực / logic-thẩm quyền / tuân thủ Vùng Đỏ), lập tờ trình HITL, ghi Sổ Cái SHA-256 khi lãnh đạo phê duyệt. LUÔN dùng khi một nhân sự cần tự tay kiểm tra chéo một báo cáo/kế hoạch trước khi trình ký — kể cả khi họ chỉ nói 'phản biện', 'kiểm tra chéo trước khi trình', 'rà số liệu có đúng không'. KHÔNG dùng để điều phối toàn bộ chuỗi 5 vai (dùng `sht-quan-tri-dn`), hay soạn bản nháp báo cáo ban đầu (`sht-vai4-reporter`)."
+description: "Phản biện độc lập đối kháng và quản trị Sổ Cái HITL của một vai trò cụ thể (Critic `[DEPT]-05`): thẩm tra 3 tầng (số liệu chân thực / logic-thẩm quyền / tuân thủ Vùng Đỏ), lập tờ trình HITL, ghi Sổ Cái SHA-256 khi lãnh đạo phê duyệt. LUÔN dùng khi một nhân sự cần tự tay kiểm tra chéo một báo cáo/kế hoạch trước khi trình ký — kể cả khi họ chỉ nói 'phản biện', 'kiểm tra chéo trước khi trình', 'rà số liệu có đúng không'. KHÔNG dùng để điều phối toàn bộ chuỗi 5 vai (dùng `sht-quan-tri-dn`), hay soạn bản nháp báo cáo ban đầu (`sht-vai3-reporter`)."
 ---
 
 # KỸ NĂNG CHUYÊN MÔN VAI 5: PHẢN BIỆN ĐỘC LẬP & PHÁP TRỊ SỔ CÁI HITL
 ### Mã định danh chuẩn AIS48: `[DEPT]-05` / `SHT-CORP-05` · Hạn mức: 15,000 tokens
 
-> **Quan hệ:** Vai trước (bắt buộc): `sht-vai4-reporter`. Là chốt cuối trước khi trình con người. Điều phối toàn chuỗi + ngân sách token tổng: `sht-quan-tri-dn`.
+> **Quan hệ:** Vai trước (bắt buộc): `sht-vai3-reporter`. Là chốt cuối trước khi trình con người. Điều phối toàn chuỗi + ngân sách token tổng: `sht-quan-tri-dn`.
 
 ---
 

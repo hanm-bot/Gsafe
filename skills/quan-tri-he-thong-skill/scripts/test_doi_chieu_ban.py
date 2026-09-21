@@ -203,6 +203,31 @@ def main():
         ktra('V2 khi nguon thieu skill ma ban chay co', 'V2' in ma(so_sanh(A, {}, [AB])))
         ktra('Khong bao V2 khi nguon du skill', 'V2' not in ma(so_sanh(AB, {}, [AB])))
 
+        # --- Task 02: Khai báo đổi tên ---
+        # Ca 1: Đúng (cho qua)
+        # Nguồn có 'sk_moi', bản chạy có 'sk_cu'. Khai báo 'sk_cu' -> 'sk_moi'.
+        nguon_doi = {'sk_moi': (10, bam('m'))}
+        chay_doi = {'sk_cu': (10, bam('c'))}
+        dt_dung = [{"tu": "sk_cu", "sang": "sk_moi"}]
+        kq_dt_dung = so_sanh(nguon_doi, {}, [chay_doi], doi_ten=dt_dung)
+        ktra('Khai bao dung: khong co V2', 'V2' not in ma(kq_dt_dung))
+        ktra('Khai bao dung: co V2R', 'V2R' in ma(kq_dt_dung))
+
+        # Ca 2: Sai #1 (tên mới không có ở nguồn)
+        # Nguồn KHÔNG có 'sk_moi', bản chạy có 'sk_cu'.
+        nguon_sai = {'sk_khac': (10, bam('k'))}
+        kq_dt_sai1 = so_sanh(nguon_sai, {}, [chay_doi], doi_ten=dt_dung)
+        ktra('Khai bao sai (ten moi ko co o nguon): van chan V2', 'V2' in ma(kq_dt_sai1))
+        ktra('Khai bao sai (ten moi ko co o nguon): khong co V2R', 'V2R' not in ma(kq_dt_sai1))
+
+        # Ca 3: Sai #2 (skill khác thiếu ở nguồn, không nằm trong khai báo)
+        chay_doi_kem_loi = {'sk_cu': (10, bam('c')), 'sk_loi': (1, bam('l'))}
+        kq_dt_sai2 = so_sanh(nguon_doi, {}, [chay_doi_kem_loi], doi_ten=dt_dung)
+        ktra('Khai bao dung nhung skill khac loi: van chan V2 cho skill khac',
+             any(x[0] == 'V2' and 'sk_loi' in x[2] for x in kq_dt_sai2))
+        ktra('Khai bao dung nhung skill khac loi: van co V2R cho skill dung',
+             any(x[0] == 'V2R' and 'sk_cu' in x[2] for x in kq_dt_sai2))
+
         # --- LOI 2: "khong tim thay ban dang cai nao" phai la PHAT HIEN CAO (V0),
         # tuyet doi khong duoc bao "sach". Ca nay phai TRUOT neu bo ban va di.
         # Chieu no: chay=[] => phai co V0 muc CAO.

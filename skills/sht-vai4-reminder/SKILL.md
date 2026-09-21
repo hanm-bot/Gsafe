@@ -1,17 +1,17 @@
 ---
-name: "sht-vai3-dispatcher"
-description: "Đôn đốc tiến độ và soạn thông điệp nhắc việc của một vai trò cụ thể (Dispatcher `[DEPT]-03`): phân loại quá hạn/sắp hạn/mốc tuần tới, soạn bản nháp nhắc việc 4 phần lịch sự, thiết lập lịch /schedule định kỳ. LUÔN dùng khi một nhân sự cần tự tay nhắc ai đó trước một hạn chót — kể cả khi họ chỉ nói 'nhắc việc', 'soạn tin đôn đốc', 'ai đang trễ hạn'. KHÔNG dùng để điều phối toàn bộ chuỗi 5 vai (dùng `sht-quan-tri-dn`), phân tích điểm nghẽn (`sht-vai2-analyzer`), hay soạn báo cáo điều hành (`sht-vai4-reporter`)."
+name: "sht-vai4-reminder"
+description: "Đôn đốc tiến độ và soạn thông điệp nhắc việc của một vai trò cụ thể (Reminder `[DEPT]-04`): phân loại quá hạn/sắp hạn/mốc tuần tới, soạn bản nháp nhắc việc 4 phần lịch sự, thiết lập lịch /schedule định kỳ. LUÔN dùng khi một nhân sự cần tự tay nhắc ai đó trước một hạn chót — kể cả khi họ chỉ nói 'nhắc việc', 'soạn tin đôn đốc', 'ai đang trễ hạn'. KHÔNG dùng để điều phối toàn bộ chuỗi 5 vai (dùng `sht-quan-tri-dn`), phân tích điểm nghẽn (`sht-vai2-analyzer`), hay soạn báo cáo điều hành (`sht-vai3-reporter`)."
 ---
 
-# KỸ NĂNG CHUYÊN MÔN VAI 3: ĐÔN ĐỐC TIẾN ĐỘ & LẬP LỊCH TÁC CHIẾN
-### Mã định danh chuẩn AIS48: `[DEPT]-03` / `SHT-CORP-03` · Hạn mức: 8,000 tokens
+# KỸ NĂNG CHUYÊN MÔN VAI 4: ĐÔN ĐỐC TIẾN ĐỘ & LẬP LỊCH TÁC CHIẾN
+### Mã định danh chuẩn AIS48: `[DEPT]-04` / `SHT-CORP-04` · Hạn mức: 8,000 tokens
 
-> **Quan hệ:** Chạy song song hoặc ngay sau `sht-vai2-analyzer`. Vai kế tiếp: `sht-vai4-reporter`. Điều phối toàn chuỗi + ngân sách token tổng: `sht-quan-tri-dn`.
+> **Quan hệ:** Chạy song song hoặc ngay sau `sht-vai2-analyzer`. Vai kế tiếp: `sht-vai3-reporter`. Điều phối toàn chuỗi + ngân sách token tổng: `sht-quan-tri-dn`.
 
 ---
 
 ## 🎯 1. SỨ MỆNH & PHẠM VI CHUYÊN MÔN
-Nhân sự Vai 3 là "Người thúc đẩy nhịp độ" của phòng ban. Nhiệm vụ chính là đảm bảo không công việc nào bị lãng quên, cảnh báo sớm trước khi xảy ra trễ hạn và **soạn thảo các bản nháp thông điệp đôn đốc rõ ràng, lịch sự, đúng người, đúng việc, đúng mốc thời gian**.
+Nhân sự Vai 4 là "Người thúc đẩy nhịp độ" của phòng ban. Nhiệm vụ chính là đảm bảo không công việc nào bị lãng quên, cảnh báo sớm trước khi xảy ra trễ hạn và **soạn thảo các bản nháp thông điệp đôn đốc rõ ràng, lịch sự, đúng người, đúng việc, đúng mốc thời gian**.
 
 ---
 
@@ -26,7 +26,7 @@ Nhân sự Vai 3 là "Người thúc đẩy nhịp độ" của phòng ban. Nhi�
 - Đối chiếu ngày hiện tại với trường `deadline` của từng nhiệm vụ.
 
 ### Bước 2: Phân loại theo 3 Nhóm Cảnh báo
-- **Nhóm 1: Đã Quá hạn (Overdue):** Cần thông báo ngay cho người phụ trách và Trưởng bộ phận.
+- **Nhóm 1: Đã Quá hạn (Overdue) & CHƯA BẮT ĐẦU trễ hạn:** Cần thông báo ngay cho người phụ trách và Trưởng bộ phận. Tuyệt đối không bỏ qua các việc "Chưa bắt đầu" đã qua hạn chót.
 - **Nhóm 2: Sắp đến hạn ($\le 2$ ngày hoặc $\le 48$ giờ):** Gửi thông điệp nhắc nhở nhẹ nhàng kèm danh sách tài liệu cần nộp.
 - **Nhóm 3: Mốc quan trọng trong tuần kế tiếp:** Lập danh sách chuẩn bị sớm.
 
@@ -45,8 +45,8 @@ Mỗi thông điệp phải tuân thủ cấu trúc 4 phần:
 
 ### Bước 4: Thiết lập Lập lịch Định kỳ (/schedule)
 Cấu hình các mốc tự động hóa đôn đốc bằng lệnh Antigravity CLI:
-- Nhắc việc đầu tuần: `/schedule "0 7 * * 1" prompt="Chạy Vai 3 kiểm tra hạn chót tuần mới"` (Thứ Hai 07:00).
-- Nhắc việc cuối tuần: `/schedule "30 16 * * 5" prompt="Chạy Vai 3 đôn đốc nộp báo cáo tuần"` (Thứ Sáu 16:30).
+- Nhắc việc đầu tuần: `/schedule "0 7 * * 1" prompt="Chạy Vai 4 kiểm tra hạn chót tuần mới"` (Thứ Hai 07:00).
+- Nhắc việc cuối tuần: `/schedule "30 16 * * 5" prompt="Chạy Vai 4 đôn đốc nộp báo cáo tuần"` (Thứ Sáu 16:30).
 - Xuất kết quả vào tệp: `DANH_SACH_NHAC_VIEC_DON_DOC.md`.
 
 ---

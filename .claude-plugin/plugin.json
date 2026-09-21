@@ -1,7 +1,7 @@
 {
   "name": "sht-skills",
-  "version": "0.19.0",
-  "description": "Bộ 21 skill nghiệp vụ nội bộ của SHT — điều phối Đội 5 Agent quản trị doanh nghiệp (AIS48) + 5 skill riêng theo vai (Harvester/Analyzer/Dispatcher/Reporter/Critic), kiểm chứng dữ liệu dự án/nhân sự, Quyết định tổ chức, tuyển dụng ASK/JD, chuẩn hóa CRM, xác thực báo cáo, rà soát hợp đồng CNTT, bóc tách hồ sơ scan, đánh giá DMI, thiết kế PRD, quy hoạch quy trình (grill-me/archify), cùng 2 skill nền tảng kiểm chứng & quản trị hệ thống.",
+  "version": "0.20.0",
+  "description": "Bộ 28 skill nghiệp vụ nội bộ của SHT — điều phối Đội 5 Agent quản trị doanh nghiệp (AIS48) + 5 skill riêng theo vai (Harvester/Analyzer/Reporter/Reminder/Critic), kiểm chứng dữ liệu dự án/nhân sự, Quyết định tổ chức, tuyển dụng ASK/JD, chuẩn hóa CRM, xác thực báo cáo, rà soát hợp đồng CNTT, bóc tách hồ sơ scan, đánh giá DMI, thiết kế PRD (CĐS + Enterprise tổng quát), brainstorm & render sơ đồ UML, quy hoạch quy trình (grill-me/archify), cùng 4 skill nền tảng kiểm chứng/vá hạ tầng/quản trị tài liệu/quản trị trí nhớ.",
   "author": {
     "name": "Công ty CP Đầu tư Công nghệ SHT"
   },

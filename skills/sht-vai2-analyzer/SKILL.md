@@ -1,12 +1,12 @@
 ---
 name: "sht-vai2-analyzer"
-description: "Phân tích điểm nghẽn vận hành của một vai trò cụ thể (Analyzer `[DEPT]-02`): so khớp tiến độ thực tế với kế hoạch cơ sở, phân loại 3 mức đèn giao thông, truy vết nguyên nhân gốc rễ 5 Whys, trích dẫn tọa độ Second Brain Grounding. LUÔN dùng khi một nhân sự cần tự tay chẩn đoán vì sao một chỉ tiêu/đầu việc bị lệch — kể cả khi họ chỉ nói 'vì sao trễ', 'phân tích nguyên nhân', '5 Whys'. KHÔNG dùng để điều phối toàn bộ chuỗi 5 vai (dùng `sht-quan-tri-dn`), làm sạch dữ liệu thô (`sht-vai1-harvester`), hay soạn thông điệp đôn đốc (`sht-vai3-dispatcher`)."
+description: "Phân tích điểm nghẽn vận hành của một vai trò cụ thể (Analyzer `[DEPT]-02`): so khớp tiến độ thực tế với kế hoạch cơ sở, phân loại 3 mức đèn giao thông, truy vết nguyên nhân gốc rễ 5 Whys, trích dẫn tọa độ Second Brain Grounding. LUÔN dùng khi một nhân sự cần tự tay chẩn đoán vì sao một chỉ tiêu/đầu việc bị lệch — kể cả khi họ chỉ nói 'vì sao trễ', 'phân tích nguyên nhân', '5 Whys'. KHÔNG dùng để điều phối toàn bộ chuỗi 5 vai (dùng `sht-quan-tri-dn`), làm sạch dữ liệu thô (`sht-vai1-harvester`), hay soạn thông điệp đôn đốc (`sht-vai4-reminder`)."
 ---
 
 # KỸ NĂNG CHUYÊN MÔN VAI 2: PHÂN TÍCH ĐIỂM NGHẼN & GROUNDING ĐỐI SOÁT
 ### Mã định danh chuẩn AIS48: `[DEPT]-02` / `SHT-CORP-02` · Hạn mức: 12,000 tokens
 
-> **Quan hệ:** Vai trước: `sht-vai1-harvester`. Vai kế tiếp: `sht-vai3-dispatcher` (chạy song song được) và `sht-vai4-reporter`. Điều phối toàn chuỗi + ngân sách token tổng: `sht-quan-tri-dn`.
+> **Quan hệ:** Vai trước: `sht-vai1-harvester`. Vai kế tiếp: `sht-vai4-reminder` (chạy song song được) và `sht-vai3-reporter`. Điều phối toàn chuỗi + ngân sách token tổng: `sht-quan-tri-dn`.
 
 ---
 
@@ -22,12 +22,12 @@ Nhân sự Vai 2 là "Bộ não chẩn đoán" của phòng ban. Nhiệm vụ c�
 ```
 
 ### Bước 1: Tiếp nhận Dữ liệu Sạch từ Vai 1
-- Đọc tệp `DU_LIEU_LAM_SACH.md`. Kiểm tra sự hiện diện của nhãn xác thực `[IO_GATE_VERIFIED]`.
+- Đọc tệp `DU_LIEU_LAM_SACH.md` (hoặc `DU_LIEU_QUAN_TRI_SACH.md`). Kiểm tra sự hiện diện của nhãn xác thực `[IO_GATE_VERIFIED]`.
 - Nạp kế hoạch cơ sở (Baseline / KPI targets) của phòng ban.
 
 ### Bước 2: So khớp Tiến độ & Phân loại 3 Mức độ Rủi ro
 Tính toán tỷ lệ hoàn thành và phân loại các đầu việc/chỉ tiêu theo chuẩn đèn giao thông:
-- 🔴 **MỨC ĐỎ (Nghiêm trọng / Trễ hạn):** Công việc đã quá hạn chót hoặc chỉ tiêu hụt > 20% so với kế hoạch cơ sở.
+- 🔴 **MỨC ĐỎ (Nghiêm trọng / Trễ hạn):** Công việc đã quá hạn chót, trạng thái "CHƯA BẮT ĐẦU" mà hạn chót đã qua (được xếp cùng mức quá hạn hoặc nặng hơn, không được bỏ qua), hoặc chỉ tiêu hụt > 20% so với kế hoạch cơ sở.
 - 🟡 **MỨC VÀNG (Cảnh báo / Nguy cơ trễ):** Công việc còn $\le 2$ ngày đến hạn hoặc chỉ tiêu đạt từ 80% - 95%.
 - 🟢 **MỨC XANH (Bình thường / Đạt chuẩn):** Đúng tiến độ, số liệu khớp hoàn toàn.
 

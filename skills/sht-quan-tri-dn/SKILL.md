@@ -1,6 +1,6 @@
 ---
 name: "sht-quan-tri-dn"
-description: "Điều phối Đội 5 Agent Quản trị Doanh nghiệp chuẩn AIS48 (5 vai: Harvester/Analyzer/Dispatcher/Reporter/Auditor), cả quy mô nội bộ lẫn nhân rộng 9 phòng ban SHT qua Blueprint + Workshop B5, bảo vệ bởi Cổng I/O 2 tầng (script + hook cấp user chặn PII) và Sổ Cái HITL SHA-256. LUÔN dùng khi vận hành quy trình quản trị tuần, giám sát đầu việc liên phòng ban, kiểm soát tiến độ 11 giai đoạn CĐS, chạy /goal /teamwork /schedule, thẩm định QA Lớp 2 một kế hoạch/walkthrough do Anti soạn (đối chiếu thực nghiệm, không tin báo cáo tự chấm), hoặc dựng Đội 5 Agent cho phòng ban mới — kể cả khi chỉ nói 'thẩm định QA', 'audit chéo', 'kích hoạt workshop phòng ban'. KHÔNG dùng khi chỉ xác thực báo cáo doanh số/CRM (dùng sht-xacthuc-baocao-hoatdong), xuất PDF kiểm chứng in ấn (dùng sht-nen-tang-kiem-chung), hoặc khi một nhân sự chỉ cần tự làm đúng một vai riêng lẻ (dùng sht-vai1..5)."
+description: "Điều phối Đội 5 Agent Quản trị Doanh nghiệp chuẩn AIS48 (5 vai: Harvester/Analyzer/Reminder/Reporter/Critic), cả quy mô nội bộ lẫn nhân rộng 9 phòng ban SHT qua Blueprint + Workshop B5, bảo vệ bởi Cổng I/O 2 tầng (script + hook cấp user chặn PII) và Sổ Cái HITL SHA-256. LUÔN dùng khi vận hành quy trình quản trị tuần, giám sát đầu việc liên phòng ban, kiểm soát tiến độ 11 giai đoạn CĐS, chạy /goal /teamwork /schedule, thẩm định QA Lớp 2 một kế hoạch/walkthrough do Anti soạn (đối chiếu thực nghiệm, không tin báo cáo tự chấm), hoặc dựng Đội 5 Agent cho phòng ban mới — kể cả khi chỉ nói 'thẩm định QA', 'audit chéo', 'kích hoạt workshop phòng ban'. KHÔNG dùng khi chỉ xác thực báo cáo doanh số/CRM (dùng sht-xacthuc-baocao-hoatdong), xuất PDF kiểm chứng in ấn (dùng sht-nen-tang-kiem-chung), hoặc khi một nhân sự chỉ cần tự làm đúng một vai riêng lẻ (dùng sht-vai1..5)."
 ---
 
 # KỸ NĂNG: ĐỘI 5 AGENT QUẢN TRỊ DOANH NGHIỆP TRÊN ANTIGRAVITY (SHT-AIS48)
@@ -17,7 +17,7 @@ Nguyên liệu nạp vào Vai 1 (Harvester) — và mọi thao tác ghi file c�
 
 ## 1. NGUYÊN TẮC VẬN HÀNH 5 VAI TRÒ
 
-Khi kích hoạt kỹ năng này, hệ thống vận hành theo chuỗi 5 vai chuyên biệt với điểm bàn giao chuẩn hóa. Đây là mô tả **ở tầm điều phối cả đội** — khi một nhân sự cụ thể chỉ cần tự tay thực hiện đúng một vai (không điều phối cả chuỗi), dùng skill riêng của vai đó để có đầy đủ quy trình thực thi từng bước: `sht-vai1-harvester`, `sht-vai2-analyzer`, `sht-vai3-dispatcher`, `sht-vai4-reporter`, `sht-vai5-critic`.
+Khi kích hoạt kỹ năng này, hệ thống vận hành theo chuỗi 5 vai chuyên biệt với điểm bàn giao chuẩn hóa. Đây là mô tả **ở tầm điều phối cả đội** — khi một nhân sự cụ thể chỉ cần tự tay thực hiện đúng một vai (không điều phối cả chuỗi), dùng skill riêng của vai đó để có đầy đủ quy trình thực thi từng bước: `sht-vai1-harvester`, `sht-vai2-analyzer`, `sht-vai4-reminder`, `sht-vai3-reporter`, `sht-vai5-critic`.
 
 1. **Vai 1 · Thu Thập (`SHT-CORP-HARVESTER`):**
    - Đọc dữ liệu từ workspace mục tiêu (CSV, Excel, Task tracker), sau khi đã qua Cổng I/O (Mục 0).

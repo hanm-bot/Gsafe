@@ -12,7 +12,12 @@ import glob
 import hashlib
 import json
 import os
+import sys
 import zipfile
+
+if sys.platform == 'win32' and hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+    sys.stderr.reconfigure(encoding='utf-8')
 
 # Vị trí CŨ: phiên làm việc cục bộ của app desktop (session-scoped).
 GOC_CU_MAC_DINH = os.path.expandvars(
@@ -109,7 +114,7 @@ def doc_goi(duong_dan_plugin):
     return ket_qua
 
 
-def so_sanh(nguon, goi, chay):
+def so_sanh(nguon, goi, chay, doi_ten=()):
     """Trả về [(ma, muc, mo_ta)]. V1/V2 chặn phát hành; V3/V4 chỉ báo."""
     pd = []
 
@@ -136,9 +141,17 @@ def so_sanh(nguon, goi, chay):
         for s in sorted(set(b) - set(nguon)):
             if s not in da_bao:
                 da_bao.add(s)
-                pd.append(('V2', 'CAO',
-                           f'{s}: có ở bản đang chạy #{i + 1}, THIẾU ở nguồn — '
-                           f'đóng gói lúc này sẽ xoá skill khỏi bản cài'))
+                khai_bao = next((dt for dt in doi_ten if isinstance(dt, dict) and dt.get("tu") == s), None)
+                if khai_bao and khai_bao.get("sang") in nguon:
+                    sang = khai_bao.get("sang")
+                    hitl = khai_bao.get("hitl", "Không rõ HITL")
+                    pd.append(('V2R', 'THẤP',
+                               f'{s}: có ở bản đang chạy #{i + 1}, THIẾU ở nguồn — '
+                               f'đã khai báo đổi tên sang {sang} (theo {hitl})'))
+                else:
+                    pd.append(('V2', 'CAO',
+                               f'{s}: có ở bản đang chạy #{i + 1}, THIẾU ở bản nguồn — '
+                               f'đóng gói lúc này sẽ xoá skill khỏi bản cài'))
 
     # V3 — nguồn khác bản đang chạy
     for i, b in enumerate(chay):
@@ -158,7 +171,7 @@ def so_sanh(nguon, goi, chay):
     return pd
 
 
-def xac_dinh_phat_hien(nguon, goi, chay):
+def xac_dinh_phat_hien(nguon, goi, chay, doi_ten=()):
     """so_sanh() cộng thêm một phát hiện V0 khi `chay` rỗng.
 
     Nguyên tắc chung: MỘT PHÉP KIỂM KHÔNG TÌM THẤY ĐỐI TƯỢNG ĐỂ KIỂM phải báo
@@ -171,7 +184,7 @@ def xac_dinh_phat_hien(nguon, goi, chay):
     thuộc việc máy này có cài hay không. Nhưng nó phải hiện rõ trong báo cáo và
     làm dòng tổng kết không được in "sạch".
     """
-    pd = so_sanh(nguon, goi, chay)
+    pd = so_sanh(nguon, goi, chay, doi_ten)
     if not chay:
         pd.insert(0, ('V0', 'CAO',
                        'Không tìm thấy bản đang cài nào — hoặc plugin chưa được cài '
@@ -215,7 +228,17 @@ def main():
         pass
     chay = [doc_thu_muc(p) for p in tim_ban_dang_chay(ten_plugin=ten_plugin)]
 
-    pd = xac_dinh_phat_hien(nguon, goi, chay)
+    doi_ten = []
+    file_khai_bao = os.path.join(goc_nguon, '.claude-plugin', 'doi-ten-da-xac-nhan.json')
+    try:
+        with open(file_khai_bao, encoding='utf-8') as fh:
+            doi_ten = json.load(fh)
+            if not isinstance(doi_ten, list):
+                doi_ten = []
+    except (OSError, ValueError):
+        pass
+
+    pd = xac_dinh_phat_hien(nguon, goi, chay, doi_ten)
     if not pd:
         print(f'ĐỐI CHIẾU BẢN — sạch. {len(nguon)} skill, {len(chay)} bản đang cài.')
         return 0

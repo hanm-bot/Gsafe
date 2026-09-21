@@ -1,6 +1,6 @@
 ---
 name: "sht-vai1-harvester"
-description: "Bóc tách & làm sạch nguyên liệu nghiệp vụ đầu vào của một vai trò cụ thể (Harvester `[DEPT]-01`): tiếp nhận file, gọi Cổng I/O, thực thi Masking Vùng Đỏ (CCCD/STK/lương/họ tên) thành mã ẩn danh. LUÔN dùng khi một nhân sự cần tự tay làm sạch dữ liệu thô trước khi giao cho bước phân tích — kể cả khi họ chỉ nói 'làm sạch dữ liệu', 'ẩn danh hồ sơ', 'mask PII'. KHÔNG dùng để điều phối toàn bộ chuỗi 5 vai cho cả đội (dùng `sht-quan-tri-dn`), phân tích điểm nghẽn (`sht-vai2-analyzer`), hay soạn báo cáo (`sht-vai4-reporter`)."
+description: "Bóc tách & làm sạch nguyên liệu nghiệp vụ đầu vào của một vai trò cụ thể (Harvester `[DEPT]-01`): tiếp nhận file, gọi Cổng I/O, thực thi Masking Vùng Đỏ (CCCD/STK/lương/họ tên) thành mã ẩn danh. LUÔN dùng khi một nhân sự cần tự tay làm sạch dữ liệu thô trước khi giao cho bước phân tích — kể cả khi họ chỉ nói 'làm sạch dữ liệu', 'ẩn danh hồ sơ', 'mask PII'. KHÔNG dùng để điều phối toàn bộ chuỗi 5 vai cho cả đội (dùng `sht-quan-tri-dn`), phân tích điểm nghẽn (`sht-vai2-analyzer`), hay soạn báo cáo (`sht-vai3-reporter`)."
 ---
 
 # KỸ NĂNG CHUYÊN MÔN VAI 1: THU THẬP, LÀM SẠCH & KIỂM SOÁT CỔNG I/O
