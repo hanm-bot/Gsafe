@@ -209,6 +209,24 @@ xuất hiện thêm một lần "báo xong chưa kiểm chứng", lần đó là
 
 ---
 
+## 8. Phân loại phát biểu theo độ chắc chắn
+
+Trước đây khung này được viết lại độc lập ở `chuan-hoa-ho-so-tai-lieu` ("Quan sát/Suy luận/Giả định") và `ra-soat-hop-dong-vendor` ("dữ kiện/vị thế/suy luận") — hai tên gọi khác nhau cho cùng một logic, có nguy cơ trôi xa nhau. Từ nay chỉ có một bản, ở đây.
+
+Mọi phát biểu trong một deliverable rơi vào đúng một trong ba mức:
+
+| Mức | Định nghĩa | Được viết như sự thật? |
+|---|---|---|
+| **1. Dữ kiện (Quan sát)** | Có nguyên văn trong nguồn/văn kiện — ai đọc lại cũng thấy y hệt | Có |
+| **2. Vị thế / Suy luận có căn cứ** | Rút ra từ (1) bằng logic rõ ràng, nhưng bên khác/nguồn khác chưa xác nhận | Không — phải nêu rõ đây là suy luận/quan điểm của mình, kèm căn cứ dẫn tới |
+| **3. Giả định** | Chưa có căn cứ trực tiếp, đang đoán | Không — chuyển thành câu hỏi, không đưa vào văn bản chính thức |
+
+Gắn nhãn **trước khi viết**, không gắn sau khi đã lỡ viết như sự thật. Khi không chắc một câu thuộc mức nào, coi là mức 3.
+
+Skill nghiệp vụ có thể đặt tên riêng cho ba mức này theo đúng thuật ngữ miền của mình (ví dụ "đã ký/chưa ký" cho hợp đồng, "đã đối chiếu/chưa kiểm được" cho số liệu) — miễn giữ đúng bản chất ba tầng và **trỏ về mục này** thay vì định nghĩa lại từ đầu.
+
+---
+
 # PHỤ LỤC — CỤM BẢO VỆ KHI ĐỔI TÊN HÀNG LOẠT
 
 ```json

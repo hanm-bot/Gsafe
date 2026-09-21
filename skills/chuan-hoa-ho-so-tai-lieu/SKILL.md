@@ -13,7 +13,7 @@ Nguyên tắc chi phối: **Một khẳng định chỉ có giá trị khi kèm 
 
 ## NGUYÊN TẮC CỐT LÕI — DỮ KIỆN PHẢI MỞ LẠI ĐƯỢC
 1. **Chép nguyên văn, không nhớ lại rồi viết:** Ghi số điều và số trang ngay lúc trích.
-2. **Phân biệt ba loại phát biểu:** *Quan sát* (thấy trên văn bản) — *Suy luận* (rút ra từ quan sát) — *Giả định* (chưa có căn cứ). Gắn nhãn rõ ràng trong báo cáo.
+2. **Phân loại phát biểu theo độ chắc chắn:** theo `sht-nen-tang-kiem-chung` §8 (Dữ kiện/Vị thế-Suy luận/Giả định). Gắn nhãn rõ ràng trong báo cáo.
 3. **Đếm bằng máy, không đếm bằng mắt:** Mọi con số về số lượng đều phải qua `grep -c` hoặc script đếm.
 4. **Xác định đúng chủ thể trước khi phân tích:** Đọc trang đầu xác định pháp nhân và Mã số thuế (MST). Cùng MST = cùng pháp nhân; khác MST = công ty liên kết (chứng cứ gián tiếp).
 5. **Bản đầu chưa bao giờ đúng hoàn toàn:** Tài liệu ra ngoài tổ chức bắt buộc qua kiểm chứng độc lập bằng subagent.

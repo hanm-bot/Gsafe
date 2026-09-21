@@ -1,6 +1,6 @@
 # sht-skills
 
-Bộ skill nghiệp vụ nội bộ của **Công ty CP Đầu tư Công nghệ SHT**. Mười chín skill, chia bốn tầng, mỗi logic có đúng một chủ sở hữu.
+Bộ skill nghiệp vụ nội bộ của **Công ty CP Đầu tư Công nghệ SHT**. 28 skill, chia bốn tầng, mỗi logic có đúng một chủ sở hữu.
 
 Nguyên tắc xuyên suốt: **dữ liệu sai lan nhanh hơn dữ liệu đúng.** Một con số sai nhân bản ra 4–5 deliverable; một cái tên bị thay nhầm đi thẳng vào văn bản trình ký. Mọi skill ở đây tối ưu cho việc chặn lỗi sớm.
 
@@ -43,7 +43,7 @@ Skill tầng 1 **trỏ tới** tầng 0, không chép lại. Skill nhà không v
 
 ---
 
-## Mười chín skill
+## 28 skill
 
 | Skill | Dùng khi |
 |---|---|
@@ -63,9 +63,18 @@ Skill tầng 1 **trỏ tới** tầng 0, không chép lại. Skill nhà không v
 | **sht-quan-tri-dn** | Vận hành quy trình quản trị tuần, giám sát đầu việc liên phòng ban, `/goal` `/teamwork` `/schedule`, thẩm định QA Lớp 2, dựng Đội 5 Agent cho phòng ban mới |
 | **sht-vai1-harvester** | "Làm sạch dữ liệu", "ẩn danh hồ sơ", "mask PII" — tự tay làm sạch dữ liệu thô trước khi giao bước phân tích |
 | **sht-vai2-analyzer** | "Vì sao trễ", "phân tích nguyên nhân", "5 Whys" — chẩn đoán chỉ tiêu/đầu việc bị lệch, đèn giao thông 3 mức |
-| **sht-vai3-dispatcher** | "Nhắc việc", "soạn tin đôn đốc", "ai đang trễ hạn" — phân loại quá hạn/sắp hạn, soạn nhắc việc 4 phần |
-| **sht-vai4-reporter** | "Viết báo cáo điều hành", "tóm tắt cho sếp" — Báo cáo Điều hành 4 phần AIS48, kiểm soát ngân sách token |
+| **sht-vai3-reporter** | "Viết báo cáo điều hành", "tóm tắt cho sếp" — Báo cáo Điều hành 4 phần AIS48, kiểm soát ngân sách token |
+| **sht-vai4-reminder** | "Nhắc việc", "soạn tin đôn đốc", "ai đang trễ hạn" — phân loại quá hạn/sắp hạn, soạn nhắc việc 4 phần |
 | **sht-vai5-critic** | "Phản biện", "kiểm tra chéo trước khi trình", "rà số liệu" — thẩm tra 3 tầng, tờ trình HITL, Sổ Cái SHA-256 |
+| **brainstorm** | Bóc tách ý tưởng thô thành Bản đặc tả Brainstorm 12 phần qua phỏng vấn sâu 7 nhóm (Deep Interview). |
+| **prd-architect** | Thiết kế PRD Enterprise, phỏng vấn sâu 7 nhóm nghiệp vụ, xuất sơ đồ trực quan và báo cáo HTML Single-Page. |
+| **usecase-diagram** | Render sơ đồ PlantUML (Use Case, Activity) thành ảnh vector .svg, hỗ trợ `prd-architect`. |
+| **sht-qa-kiem-chung-skill-hook** | Kiểm chứng bằng hành vi thật xem skill/hook có đang chạy không, tránh kết luận sai lệch giữa tài liệu và thực tế. |
+| **sht-ha-tang-va-path-portable** | Phát hiện và sửa đường dẫn hardcode, đảm bảo tương thích đường dẫn portable trên mọi máy. |
+| **sht-quan-tri-hien-phap-tai-lieu** | Giữ tài liệu vận hành (CLAUDE.md, README) khớp đúng thực tế máy hiện tại khi phát hiện sai lệch. |
+| **sht-quan-tri-tri-nho-lien-phien** | Quản trị bộ nhớ liên phiên, quyết định ghi/xóa memory thay vì tạo mới, giữ trạng thái memory luôn chính xác. |
+| **archify** | Vẽ sơ đồ quy trình (workflow diagram) từ một kế hoạch đã chốt hoặc mô tả quy trình bằng Mermaid. |
+| **grill-me** | Phỏng vấn/khảo sát người dùng để làm rõ yêu cầu, chốt phương án thành kế hoạch trước khi thực thi. |
 
 Mỗi skill tự kích hoạt theo mô tả của nó — không cần gọi tên. Muốn gọi tay thì gõ `/<tên-skill>`.
 
@@ -102,4 +111,4 @@ Sổ đăng bạ — nguồn sự thật về quan hệ giữa các skill — n�
 
 Nội bộ SHT. Các skill dẫn chiếu dữ liệu và văn bản thật của công ty (hệ thống SHT Sales Pipeline trên Turso, Quyết định bổ nhiệm, khung lương 3P, hợp đồng CNTT, khung đánh giá DMI). Không phát hành ra ngoài.
 
-Phiên bản 0.18.1 — 14/09/2026.
+Phiên bản 0.21.0 — 21/09/2026.

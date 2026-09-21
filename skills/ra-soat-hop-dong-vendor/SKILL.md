@@ -22,7 +22,7 @@ Ba chế độ rà soát, chọn theo cấu trúc hồ sơ:
 5. **Ghi nhận điểm tốt của đối tác:** Nêu cụ thể điểm tích cực để tăng độ tin cậy phần phê bình.
 6. **Đính chính công khai:** Nếu bản trước phát hành có lỗi, xuất bản mục đính chính kèm nguyên nhân kỹ thuật.
 7. **Mỗi khiếm khuyết phải có toạ độ tệp + phiên bản:** Câu hỏi đầu tiên không phải *"khiếm khuyết này nặng đến đâu"* mà *"khiếm khuyết này thuộc văn kiện nào"*. Không có toạ độ tệp thì **không** đưa vào văn bản gửi ra ngoài. Xem §0.2b.
-8. **Ba nhãn phát biểu — gắn nhãn trước khi viết:** (a) **dữ kiện** có trong văn kiện đã ký của cả hai bên; (b) **vị thế của mình**, có căn cứ nhưng đối phương chưa xác nhận; (c) **suy luận** chưa có căn cứ văn bản. Chỉ loại (a) được phát biểu như sự thật. Loại (b) nêu đúng là quan điểm của mình kèm căn cứ; loại (c) chuyển thành câu hỏi.
+8. **Phân loại phát biểu theo độ chắc chắn — gắn nhãn trước khi viết:** theo `sht-nen-tang-kiem-chung` §8 (Dữ kiện có trong văn kiện đã ký cả hai bên / Vị thế-Suy luận có căn cứ nhưng đối phương chưa xác nhận / Giả định chưa có căn cứ văn bản).
 
 ---
 
