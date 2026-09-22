@@ -171,6 +171,16 @@ Bản có ràng buộc về nội dung phải được **quét bằng `grep`**, 
 
 Quét xong vẫn phải render ra ảnh và đọc từng trang (§5).
 
+### 6.3 Văn phong người thật cho văn bản hành chính
+
+Văn bản hành chính (QĐ · công văn · biên bản · tờ trình) do AI soạn dễ lộ "giọng AI" — sáo rỗng, bị động giấu chủ thể, kết cụt, tô hồng trạng thái — làm mất uy tín dù thể thức đúng. Sau khi có bản đúng thể thức, **chấm giọng theo rubric 7 tiêu chí** ở `references/rubric-van-phong-nguoi.md` (rút từ mẫu thật SHT). Hai tiêu chí **phải đạt**: #3 câu chủ động chủ thể rõ, #7 trung thực trạng thái.
+
+- Giọng văn do **người soát** chấm ĐẠT/CHƯA — **không** chặn cứng bằng máy (giọng là chủ quan; hook chỉ canh phần truy vết).
+- Truy vết nguồn để ở **file `.nguon.md` đi kèm** cùng thư mục, giữ nguyên thể thức văn bản chính; mục **Căn cứ** là hình chiếu rút gọn của nó. Quy ước đầy đủ trong file rubric.
+- Tiêu chí #7 giao với luật cứng #1/#2: "đã ký / đã hoàn tất / đang vận hành" phải truy được về `.nguon` hoặc mang nhãn ⚠️ / `DA-DOI-CHIEU-NGUON` (§8).
+
+Skill nghiệp vụ soạn văn bản hành chính **trỏ về mục này**, không chép lại rubric.
+
 ---
 
 ## 7. Tự kiểm trước khi báo xong

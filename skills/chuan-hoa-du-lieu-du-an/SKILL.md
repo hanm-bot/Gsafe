@@ -239,6 +239,7 @@ Chạy **sau** checklist nền ở `sht-nen-tang-kiem-chung` §5, không thay th
 - [ ] Từ khóa nghiệp vụ giữ nguyên, không bị "chuẩn hóa cho đẹp" (§6)
 - [ ] Từ vựng trạng thái đúng bậc — không nhầm "CĐT đã nhận" với "đã ký" (§7)
 - [ ] Nếu phục dựng/hợp nhất văn bản có mẫu gốc: đã đối chiếu đủ 4 yếu tố thể thức — quốc hiệu/tiêu ngữ, font/màu, khung bảng-ảnh, watermark (§9)
+- [ ] Nếu deliverable là **văn bản hành chính** (công văn/biên bản/tờ trình): giọng đã chấm theo rubric văn phong người thật `sht-nen-tang-kiem-chung` §6.3, và nguồn để ở file `.nguon.md` kèm
 - [ ] Đã `ls -la` xác minh file PDF/Excel đầu ra thực sự mới, không phải bản cũ sót lại (§10)
 
 ## Phụ lục E — Xử lý sự cố kỹ thuật thường gặp

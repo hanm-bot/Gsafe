@@ -103,6 +103,8 @@ Chạy **sau** checklist nền ở `sht-nen-tang-kiem-chung` §5, không thay th
 - [ ] Danh tính mọi người được nhắc đã chốt với QĐ/hợp đồng gốc (`chuan-hoa-du-lieu-nhansu`)
 - [ ] Số liệu ở phần Căn cứ đã mang nhãn ✅ hoặc ⚠️, không còn ❓ (`sht-xacthuc-baocao-hoatdong`)
 - [ ] Đã đối chiếu với ≥1 văn bản tiền lệ thật cho định dạng
+- [ ] **Giọng** chấm theo rubric văn phong người thật `sht-nen-tang-kiem-chung` §6.3 — người soát gật; ít nhất #3 (câu chủ động) và #7 (trung thực trạng thái) ĐẠT
+- [ ] Mọi "đã ký / đã hiệu lực / đã hoàn tất" ở Căn cứ truy được về file `.nguon.md` kèm, hoặc mang nhãn ⚠️ (§6.3)
 - [ ] Đã lập bảng đối chiếu đủ 7 khía cạnh với mọi QĐ liên quan
 - [ ] Mọi điểm 🔴/🟡 đã được người quyết định xác nhận mức quyền hạn cụ thể
 - [ ] Đã chọn rõ cơ chế: điều chỉnh hay thay thế toàn bộ — có xác nhận của người quyết định
