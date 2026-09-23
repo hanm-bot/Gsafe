@@ -235,6 +235,32 @@ Gắn nhãn **trước khi viết**, không gắn sau khi đã lỡ viết như 
 
 Skill nghiệp vụ có thể đặt tên riêng cho ba mức này theo đúng thuật ngữ miền của mình (ví dụ "đã ký/chưa ký" cho hợp đồng, "đã đối chiếu/chưa kiểm được" cho số liệu) — miễn giữ đúng bản chất ba tầng và **trỏ về mục này** thay vì định nghĩa lại từ đầu.
 
+## 9. Đường ống xuất bản 5 lớp (chốt 23/09/2026)
+
+Áp cho **công văn ra ngoài · QĐ nhân sự · báo cáo điều hành · biên bản**. Ba script ở `scripts/`:
+
+| Lớp | Chạy gì | Chế độ |
+|---|---|---|
+| L1 Pháp lý — Căn cứ QĐ phải truy được | Hook `chan-can-cu-khong-nguon.cjs` (cấp user) | **Chặn cứng** lúc ghi |
+| L3 Giọng văn | `python cham_van_phong.py VANBAN.md` | Cảnh báo, luôn exit 0 |
+| L4 Định dạng Word | `python kiem_xuat_ban_docx.py VANBAN.docx` | **Chặn cứng**, exit 2 khi lỗi nặng |
+| L5 Trình duyệt | `python phieu_xuat_ban.py VANBAN.md --docx VANBAN.docx [--ra-ngoai]` | Gộp 3 lớp thành 1 phiếu |
+
+Chạy L5 là đủ — nó tự gọi L3 và L4. Exit 2 = chưa đủ điều kiện trình.
+
+**Vì sao giọng văn không chặn cứng:** giọng là phán đoán định tính, máy chặn theo từ khoá sẽ
+chặn nhầm văn bản thật (một công văn hoàn toàn có thể cần chữ "toàn diện" đúng nghĩa).
+`cham_van_phong.py` đọc luật thẳng từ `references/rubric-van-phong-nguoi.md` — sửa rubric là
+bộ chấm đổi theo, không có bản luật thứ hai.
+
+**Phiếu không tự phê duyệt.** Người duyệt đọc xong mới chạy `ghi-log-hitl.py --append`
+(câu lệnh in sẵn cuối phiếu), rồi mới xuất bản.
+
+**Phân công từng người:** `references/phan-vai-duong-ong-xuat-ban.md` — năm phiếu việc khớp
+năm lớp (Chuẩn bị hồ sơ · Rà pháp lý · Soạn thảo · Kiểm xuất bản · Trình duyệt), mỗi phiếu
+ghi đầu vào, lệnh chạy, tiêu chí ĐẠT, giao cho ai, kèm cạm bẫy đã gặp thật. Bảng đó là phân
+công, không định nghĩa luật — luật vẫn ở skill chủ sở hữu tương ứng.
+
 ---
 
 # PHỤ LỤC — CỤM BẢO VỆ KHI ĐỔI TÊN HÀNG LOẠT

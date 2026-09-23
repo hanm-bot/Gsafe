@@ -2,7 +2,7 @@
 name: "sht-cds-thiet-ke-prd"
 description: >-
   Phân tích quy trình To-Be và soạn PRD cho giải pháp chuyển đổi số B2B theo Giai đoạn 03 phương pháp luận SHT — biến bảng điểm nghẽn As-Is (từ Giai đoạn 01) thành PRD: luồng To-Be, yêu cầu chức năng/phi chức năng, user story, tiêu chí nghiệm thu, đặc tả dữ liệu & tích hợp, tuân thủ NĐ13/NHNN, ưu tiên MoSCoW, truy vết yêu cầu↔điểm nghẽn/ROI trước Cổng G2/G3.
-  LUÔN dùng khi người dùng nói "thiết kế PRD", "viết PRD", "đặc tả yêu cầu", "quy trình To-Be" — kể cả khi chỉ mô tả một quy trình cần số hoá mà chưa nhắc chữ PRD.
+  LUÔN dùng khi người dùng nói "thiết kế PRD", "viết PRD", "đặc tả yêu cầu", "quy trình To-Be" — kể cả khi chỉ mô tả một quy trình cần số hoá mà chưa nhắc chữ PRD. KHÔNG dùng cho PRD sản phẩm/tính năng phần mềm nội bộ không thuộc phạm vi CĐS 11 giai đoạn Bank/Telco (dùng `prd-architect`).
   Khi giải pháp chốt là AI agent, chuyển phần thiết kế agent sang sht-cds-thiet-ke-agent; bàn giao theo sht-nen-tang-kiem-chung.
   KHÔNG dùng để đo DMI/đánh giá hiện trạng (dùng sht-cds-danh-gia-hien-trang), thiết kế nội tại AI agent (dùng sht-cds-thiet-ke-agent), rà soát PRD/SoW trong hợp đồng vendor (dùng ra-soat-hop-dong-vendor), hay dựng UI từ PRD.
 ---

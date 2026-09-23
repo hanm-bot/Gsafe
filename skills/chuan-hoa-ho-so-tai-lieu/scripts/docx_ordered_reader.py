@@ -18,7 +18,9 @@ def read_docx(docx_path, out_txt_path):
             p = Paragraph(child, d)
             text = p.text.strip()
             if text:
-                out.append(f"[{p.style.name}] {text}")
+                # p.style có thể là None khi đoạn không gán style tường minh
+                ten_style = p.style.name if p.style is not None else 'Không rõ'
+                out.append(f"[{ten_style}] {text}")
         elif child.tag.endswith('}tbl'):
             tb = Table(child, d)
             out.append(f"=== TABLE {table_idx} ===")
@@ -33,6 +35,12 @@ def read_docx(docx_path, out_txt_path):
     print(f"Đã xuất: {out_txt_path} ({len(out)} dòng)")
 
 if __name__ == '__main__':
+    # Windows mặc định cp1252: in tiếng Việt ra stdout sẽ vỡ UnicodeEncodeError
+    # SAU KHI file đã ghi xong, khiến script trông như thất bại dù đã chạy đúng.
+    for _luong in (sys.stdout, sys.stderr):
+        if hasattr(_luong, 'reconfigure'):
+            _luong.reconfigure(encoding='utf-8', errors='replace')
+
     if len(sys.argv) < 3:
         print("Sử dụng: python docx_ordered_reader.py <input.docx> <output.txt>")
         sys.exit(1)
