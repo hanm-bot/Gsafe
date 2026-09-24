@@ -1,6 +1,6 @@
 # sht-skills
 
-Bộ skill nghiệp vụ nội bộ của **Công ty CP Đầu tư Công nghệ SHT**. 28 skill, chia bốn tầng, mỗi logic có đúng một chủ sở hữu.
+Bộ skill nghiệp vụ nội bộ của **Công ty CP Đầu tư Công nghệ SHT**. 29 skill, chia bốn tầng, mỗi logic có đúng một chủ sở hữu.
 
 Nguyên tắc xuyên suốt: **dữ liệu sai lan nhanh hơn dữ liệu đúng.** Một con số sai nhân bản ra 4–5 deliverable; một cái tên bị thay nhầm đi thẳng vào văn bản trình ký. Mọi skill ở đây tối ưu cho việc chặn lỗi sớm.
 
@@ -43,7 +43,7 @@ Skill tầng 1 **trỏ tới** tầng 0, không chép lại. Skill nhà không v
 
 ---
 
-## 28 skill
+## 29 skill
 
 | Skill | Dùng khi |
 |---|---|
@@ -61,6 +61,7 @@ Skill tầng 1 **trỏ tới** tầng 0, không chép lại. Skill nhà không v
 | **sht-cds-thiet-ke-prd** | "Thiết kế PRD", "viết PRD", "quy trình To-Be", "chốt scope pilot" — nhận điểm nghẽn As-Is → thiết kế To-Be → soạn PRD cho giải pháp CĐS (Giai đoạn 03) |
 | **sht-cds-thiet-ke-agent** | "Thiết kế use-case AI", "AI được tự quyết đến đâu", "HITL" — khai báo agent 3 chiều, tầng confidence, Tiered Governance (khi PRD chốt hướng là agent) |
 | **sht-quan-tri-dn** | Vận hành quy trình quản trị tuần, giám sát đầu việc liên phòng ban, `/goal` `/teamwork` `/schedule`, thẩm định QA Lớp 2, dựng Đội 5 Agent cho phòng ban mới |
+| **sht-jev-cong-quyet-dinh** | "Chạy ca thật", "JEV", "cổng quyết định", "chấp nhận/bác/sai JEV-…", "vá cổng" — vận hành cổng 3 ngả nội bộ, ghi phản hồi xác thực Sổ Cái, luật ca thật trên kho nguồn, phiếu việc 4 vai |
 | **sht-vai1-harvester** | "Làm sạch dữ liệu", "ẩn danh hồ sơ", "mask PII" — tự tay làm sạch dữ liệu thô trước khi giao bước phân tích |
 | **sht-vai2-analyzer** | "Vì sao trễ", "phân tích nguyên nhân", "5 Whys" — chẩn đoán chỉ tiêu/đầu việc bị lệch, đèn giao thông 3 mức |
 | **sht-vai3-reporter** | "Viết báo cáo điều hành", "tóm tắt cho sếp" — Báo cáo Điều hành 4 phần AIS48, kiểm soát ngân sách token |
@@ -111,4 +112,4 @@ Sổ đăng bạ — nguồn sự thật về quan hệ giữa các skill — n�
 
 Nội bộ SHT. Các skill dẫn chiếu dữ liệu và văn bản thật của công ty (hệ thống SHT Sales Pipeline trên Turso, Quyết định bổ nhiệm, khung lương 3P, hợp đồng CNTT, khung đánh giá DMI). Không phát hành ra ngoài.
 
-Phiên bản 0.22.0 — 22/09/2026.
+Phiên bản 0.23.0 — 25/09/2026.

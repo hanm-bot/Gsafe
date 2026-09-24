@@ -1,6 +1,6 @@
 ---
 name: "sht-quan-tri-dn"
-description: "Điều phối Đội 5 Agent Quản trị Doanh nghiệp chuẩn AIS48 (5 vai: Harvester/Analyzer/Reminder/Reporter/Critic), cả quy mô nội bộ lẫn nhân rộng 9 phòng ban SHT qua Blueprint + Workshop B5, bảo vệ bởi Cổng I/O 2 tầng (script + hook cấp user chặn PII) và Sổ Cái HITL SHA-256. LUÔN dùng khi vận hành quy trình quản trị tuần, giám sát đầu việc liên phòng ban, kiểm soát tiến độ 11 giai đoạn CĐS, chạy /goal /teamwork /schedule, thẩm định QA Lớp 2 một kế hoạch/walkthrough do Anti soạn (đối chiếu thực nghiệm, không tin báo cáo tự chấm), hoặc dựng Đội 5 Agent cho phòng ban mới — kể cả khi chỉ nói 'thẩm định QA', 'audit chéo', 'kích hoạt workshop phòng ban'. KHÔNG dùng khi chỉ xác thực báo cáo doanh số/CRM (dùng sht-xacthuc-baocao-hoatdong), xuất PDF kiểm chứng in ấn (dùng sht-nen-tang-kiem-chung), hoặc khi một nhân sự chỉ cần tự làm đúng một vai riêng lẻ (dùng sht-vai1..5)."
+description: "Điều phối Đội 5 Agent Quản trị Doanh nghiệp chuẩn AIS48 (5 vai: Harvester/Analyzer/Reminder/Reporter/Critic), cả quy mô nội bộ lẫn nhân rộng 9 phòng ban SHT qua Blueprint + Workshop B5, bảo vệ bởi Cổng I/O 2 tầng (script + hook cấp user chặn PII) và Sổ Cái HITL SHA-256. LUÔN dùng khi vận hành quy trình quản trị tuần, giám sát đầu việc liên phòng ban, kiểm soát tiến độ 11 giai đoạn CĐS, chạy /goal /teamwork /schedule, thẩm định QA Lớp 2 một kế hoạch/walkthrough do Anti soạn (đối chiếu thực nghiệm, không tin báo cáo tự chấm), hoặc dựng Đội 5 Agent cho phòng ban mới — kể cả khi chỉ nói 'thẩm định QA', 'audit chéo', 'kích hoạt workshop phòng ban'. KHÔNG dùng khi chỉ xác thực báo cáo doanh số/CRM (dùng sht-xacthuc-baocao-hoatdong), xuất PDF kiểm chứng in ấn (dùng sht-nen-tang-kiem-chung), khi một nhân sự chỉ cần tự làm đúng một vai riêng lẻ (dùng sht-vai1..5), hoặc khi vận hành cổng quyết định JEV / chạy ca thật JEV (dùng sht-jev-cong-quyet-dinh)."
 ---
 
 # KỸ NĂNG: ĐỘI 5 AGENT QUẢN TRỊ DOANH NGHIỆP TRÊN ANTIGRAVITY (SHT-AIS48)
@@ -118,6 +118,13 @@ Soft Cap = 80% tổng (41.600 token): kích hoạt chế độ tóm tắt ngắn
 3. **Băm SHA-256 hợp lệ trong Sổ Cái chỉ chứng minh bản ghi không bị sửa sau khi ghi — KHÔNG chứng minh hành động phê duyệt là thật.** Bất kỳ bản ghi HITL nào có `actor` lệch định dạng chuẩn (`hanm@shtech.com.vn`) hoặc `command_text` đọc như agent tự thuật lại hành động của chính mình (thay vì lời một người ra lệnh), đều phải dừng lại dùng AskUserQuestion hỏi trực tiếp người có thẩm quyền trước khi dùng bản ghi đó làm căn cứ ban hành — không tự kết luận theo bất kỳ chiều nào dù chuỗi băm PASS 100%.
 4. **Ghi phiếu kiểm toán theo 5 mục cố định:** Kết luận ngắn / Phát hiện (kèm mức độ 🔴 nghiêm trọng · 🟡 cần sửa · ℹ️ nhẹ) / Phần đã tự kiểm và xác nhận đúng / Đề xuất Audit chéo / Checklist hành động cho Anti — không viết tự do ngoài khuôn này.
 5. **Chỉ trả kế hoạch về sửa khi phát hiện thật sự chặn** (overclaim phạm vi khiến người đọc hiểu sai mức hoàn thành, lỗ hổng bảo mật tái hiện được, số liệu bịa đặt hoặc suy luận vượt quá bằng chứng đưa ra). Phát hiện mức nhẹ (lệch 1 dòng đếm, mô tả matcher sai câu chữ, timestamp lệch vài giây) ghi nhận nhưng không chặn tiến độ.
+6. **Kiểm mtime trước khi QA.** "Đã nộp" không có nghĩa là file đã đổi — phiên 24–25/09/2026 gặp 4 lần. So giờ sửa report/code/sổ với lần QA trước; không đổi thì báo lại, không QA lại bản cũ.
+7. **Chạy lại trên bản sao cô lập, đo kho thật bằng md5 trước/sau.** Script phản biện của QA phải từ chối chạy khi chưa trỏ vào bản sao; bên thực thi sửa script QA thì `diff` với bản gốc trước khi tin kết quả.
+8. **Tối đa 2 vòng sửa, không dời cột gôn.** Phát hiện mới ngoài phạm vi phiếu trước → tiền điều kiện bước sau hoặc RFC cho Mr. Hà, không trả vòng 3. Lỗi do spec của QA viết lỏng → nhận lỗi, sửa nhỏ không tính vòng.
+9. **Không tự chấm sản phẩm của chính mình.** Claude soạn thì Anti kiểm, Claude chỉ đối chiếu report với thực tế.
+10. **Rà rác sau mỗi lần nộp:** thư mục `scratch/` trong kho, file trích văn bản hồ sơ nguồn, report đặt sai thư mục, bản sao code nằm trong kho.
+
+Trình tự QA riêng cho cổng quyết định JEV: `sht-jev-cong-quyet-dinh` → `references/phan-vai-jev.md` §C.
 
 ---
 

@@ -11,6 +11,8 @@ Câu tổng kết của cả skill: **"Autonomy isn't risk. Unsupervised autonom
 
 Nguồn: *The Agentic Bank* (Driss Temsamani) Ch.3–5, 7 · tài liệu 11 giai đoạn CĐS SHT mục 04, 06 · bài học vận hành nội bộ.
 
+> Skill này **thiết kế** cổng cho khách. Cổng quyết định SHT **tự vận hành** nội bộ (file thật, luật ca thật, phân vai) nằm ở `sht-jev-cong-quyet-dinh` — dùng làm bằng chứng "SHT đã tự chạy" khi trình bày với khách.
+
 ---
 
 ## CỔNG CHẶN — kiểm trước khi làm bất cứ việc gì
