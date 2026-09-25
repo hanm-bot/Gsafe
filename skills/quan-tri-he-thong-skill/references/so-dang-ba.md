@@ -2,6 +2,8 @@
 
 *Cập nhật lần cuối: 25/09/2026 — **29 skill, cả 29 đã đăng ký** (đếm lại 25/09: 29 thư mục có `SKILL.md` trong `skills/`, khớp 29 dòng bảng dưới). Phiên bản **v0.23.0** — MINOR: thêm `sht-jev-cong-quyet-dinh` (tầng 1, từ dự án SHT-RJMW-01). Dòng đầu sổ này trước đó vẫn ghi 28 dù bảng đã có dòng thứ 29 — đã sửa.*
 
+*Phiên bản **v0.23.1** (25/09/2026) — PATCH, không thêm/bỏ skill: đóng gói lại sau khi sửa dòng đầu Sổ đăng bạ (28→29) và bỏ số cứng "19 skill" trong `quan-tri-he-thong-skill/SKILL.md`. Nâng số hiệu vì gói 0.23.0 đã phát hành lên Organization library lúc 01:19 trước khi sửa; build lại cùng số 0.23.0 thì hai gói khác nội dung trùng số hiệu, không phân biệt được trên trang quản trị và bản tải lên không thay được bản cũ.*
+
 *Lần cập nhật trước: 23/09/2026 — 28 skill, cả 28 đã đăng ký. v0.21.2 và v0.22.0 đã phát hành và đã cài. Phiên bản **v0.22.1** — phiên 23/09: `sht-nen-tang-kiem-chung` thêm §9 Đường ống xuất bản 5 lớp, 3 script (`cham_van_phong.py`, `kiem_xuat_ban_docx.py`, `phieu_xuat_ban.py`) và `references/phan-vai-duong-ong-xuat-ban.md` (5 phiếu việc theo vai A–E); `chuan-hoa-ho-so-tai-lieu/scripts/docx_ordered_reader.py` vá 2 lỗi (stdout cp1252, `p.style` None). PATCH vì không thêm/bỏ skill và không đổi ranh giới. Cố ý KHÔNG tạo skill vai mới — phân vai đặt ở references của skill chủ sở hữu để tránh tranh trigger với `sht-vai1..vai5` (chuỗi AIS48, khác mục đích).*
 
 | Skill | Tầng | Sở hữu logic | Dùng chung với | Không đụng tới |
