@@ -92,11 +92,15 @@ Trùng mã + trùng nội dung → "đã xử lý"; trùng mã + khác nội dun
 Chỉ tỷ lệ `SAI` dùng cho hiệu chỉnh tin cậy. `BI_BAC`/`SAI` bắt buộc `--ly-do`.
 
 **Trình tự ghi (chỉ khi người duyệt nói thật trong phiên):**
-1. `ghi-log-hitl.py --append … --command "<nguyên văn người duyệt>" --target "<…>#<ma_quyet_dinh>"` — **một bản ghi cho đúng một quyết định**; một câu duyệt nhiều quyết định thì tách nhiều bản ghi cùng nguyên văn.
+1. `ghi-log-hitl.py --append --gate "Phan hoi JEV" … --command "<nguyên văn người duyệt>" --target "<…>#<ma_quyet_dinh>"` — **một bản ghi cho đúng một quyết định**; một câu duyệt nhiều quyết định thì tách nhiều bản ghi cùng nguyên văn. *(Nhãn theo SHT-SOP-AI-01 1.2 RACI dòng 14; trước 26/09/2026 các bản ghi phản hồi mang nhãn "Gate 2" — giữ nguyên, không sửa sổ.)*
 2. `ghi_phan_hoi_jev.py --ma-quyet-dinh <ma> --ket-qua <…> --ma-hitl <id vừa ghi> --nguyen-van "<y hệt command_text>" [--ly-do …] [--tra-loi …]` — công cụ tự kiểm mã HITL có thật, nguyên văn khớp từng ký tự, đích sau `#` khớp **chính xác** mã quyết định.
 3. `ghi-log-hitl.py --verify` + `tong_hop_phan_hoi_jev.py`.
 
 Giữ nguyên văn cả khi có lỗi gõ ("Châp nhận") — công cụ so từng ký tự. Sổ chỉ ghi thêm; không phân loại lại mẫu cũ.
+
+**Gom lô (SOP-AI-01 1.2, tối đa 1 lô/ngày)** — khi hàng chờ có nhiều quyết định cần phản hồi: trình **một thẻ**, mỗi quyết định một câu hỏi, rồi ghi **một** bản ghi `--gate "Phan hoi JEV (lo)" --target "data/_he-thong/jev#LO:<ma1>,<ma2>" --command "<ma1>=CHAP_NHAN; <ma2>=SAI: <lý do>"` và chạy `ghi_phan_hoi_jev.py --lo --ma-hitl <id>`. Công cụ ghi **tất cả hoặc không mục nào**: từ chối khi một mã lặp lại, khi tập mã trong câu khác tập mã sau `#LO:`, khi `SAI`/`BI_BAC` thiếu lý do. Lý do được chứa `;` (chỉ tách ở `;` đứng ngay trước `JEV-`).
+
+**Chỉ Mr. Hà ra phản hồi** (Q9, `HITL-20260926-007`): cả chế độ đơn lẫn lô từ chối khi bản ghi HITL có `actor` khác đúng `hanm@shtech.com.vn`.
 
 ---
 

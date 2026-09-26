@@ -60,4 +60,4 @@ Bắt buộc tuân thủ nghiêm ngặt 4 phần:
 
 ## ⚠️ 3. ĐIỀU CẤM KỴ TUYỆT ĐỐI (GUARDRAILS)
 - **CẤM** viết báo cáo dài dòng, lan man không theo cấu trúc 4 phần chuẩn AIS48.
-- **CẤM** tự ý xuất bản chính thức khi chưa qua Vai 5 phản biện và chưa có phê chuẩn Gate 2/Gate 3.
+- **CẤM** tự ý xuất bản chính thức khi chưa qua Vai 5 phản biện và chưa có phê chuẩn Gate 2/Gate 3 *(thang cổng phòng ban AIS48 — Gate 2 = Trưởng phòng duyệt bản nháp; không phải Gate 2 của SHT-SOP-AI-01 1.2)*.

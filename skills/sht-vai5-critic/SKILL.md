@@ -44,6 +44,7 @@ Xuất bản tệp: `PHIEU_PHAN_BIEN_VA_TO_TRINH_HITL.md`.
   * **Gate 3 (Xuất bản chính thức ra toàn công ty / Khách hàng):** Lập phiếu kính trình **Mr. Hà (Ban Giám đốc)** phê chuẩn.
 
 ### Bước 4: Quản trị Ghi Sổ Cái HITL Ledger (Chốt 10 SOP-AI-01)
+⚠️ *26/09/2026:* SOP-AI-01 1.2 thu hẹp nhãn `Gate 2` trong Sổ Cái chỉ còn nghĩa đổi phạm vi/RFC. Gate 2 phòng ban ở Bước 3 **chưa có nhãn riêng** (việc mở M8, xem `sht-quan-tri-dn` §7) — trước khi có, hỏi Mr. Hà trước khi ghi một phê duyệt của Trưởng phòng vào Sổ Cái.
 Khi Lãnh đạo ra lệnh phê duyệt, ghi log qua `ghi-log-hitl.py --append` rồi `--verify` — **lệnh đầy đủ, chuẩn `actor`/`command_text`, và bài học "băm PASS không chứng minh hành động là thật": xem `sht-quan-tri-dn` §2 và §6, không lặp lại ở đây.** Vai này chỉ chịu trách nhiệm: xác định đúng thời điểm ghi (sau khi Bước 2 đạt 100%) và không tự ý bỏ qua bước xác thực toàn vẹn sau ghi.
 
 ---

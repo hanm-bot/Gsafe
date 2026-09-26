@@ -137,3 +137,5 @@ Khi dựng Đội 5 Agent cho một phòng ban cụ thể (Giai đoạn 2 chuẩ
 - **Theo dõi tiến độ:** `Playbooks-Thuc-Chien/01_Cau-truc-Workspace-9-Phong-ban/BANG_THEO_DOI_TIEN_DO_WORKSHOP_9_PHONG_BAN.md` và các hồ sơ đã điền trong `workshops/`
 
 Nguyên tắc phân cấp giữ nguyên cho mọi phòng ban: **Gate 1 và Gate 2** (kế hoạch, nghiệm thu nội bộ) do **Trưởng phòng ban** phê duyệt; **Gate 3** (xuất bản chính thức/ra ngoài) luôn giữ riêng cho **Mr. Hà**, ghi Sổ Cái SHA-256 theo đúng Mục 2. Mỗi đội phòng ban dùng chung một Cổng I/O (Mục 0) — không cài đặt lại logic Masking riêng lẻ.
+
+> **Đừng lẫn thang cổng.** Gate 1/2/3 ở mục này là thang duyệt **của phòng ban AIS48** (Trưởng phòng / Mr. Hà). Nó khác Gate của `SHT-SOP-AI-01` 1.2 (từ 26/09/2026, Gate 2 của SOP chỉ còn nghĩa đổi phạm vi / chọn phương án RFC giữa Claude–Anti–Mr. Hà). Nhãn Sổ Cái riêng cho cổng phòng ban **chưa có** — là việc mở M8 (`docs/audit/2026-09-26_GATE3-SHT-UPSA-01.md`), phải xong trước khi nhân rộng cho phòng ban đầu tiên ghi sổ.

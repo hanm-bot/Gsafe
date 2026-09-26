@@ -12,7 +12,7 @@ Triad theo `SHT-SOP-AI-01`: Claude (kiến trúc & QA) · Anti (thực thi) · M
 
 **Các bước:**
 1. **Hỏi chọn ca, đừng tự chọn** khi phạm vi chưa được duyệt — đưa 3–4 ứng viên kèm lý do ca đó là phép thử tốt (câu trả lời mơ hồ như "2, 3" thì hỏi lại một câu sắc).
-2. Ghi phạm vi vào Sổ Cái (`ghi-log-hitl.py --append`, `--gate "Gate 2"`) bằng **nguyên văn** câu chọn.
+2. Ghi phạm vi vào Sổ Cái (`ghi-log-hitl.py --append`, `--gate "Chon ca / Quyen du lieu"`) bằng **nguyên văn** câu chọn. Nếu chọn ca ngay lúc duyệt task thì gộp vào Gate 1 của task đó (SHT-SOP-AI-01 1.2, RACI dòng 15; trước 26/09/2026 ghi là "Gate 2").
 3. **Dò trước bằng chứng theo tên file** trong kho nguồn và workspace để biết bẫy của ca nằm đâu — nhưng **không** đưa đáp án vào task. Chỉ đặt luật chung (truy nguồn, không suy từ tên file, nêu phạm vi đã tìm…) để kiểm được bên thực thi có đọc thật không.
 4. Viết task ở `plans/<dự án>/buoc-NN/task-NN.md`: câu hỏi nghiệp vụ nguyên văn, luật riêng của ca, chuẩn P7, DoD đo được, nơi nộp report.
 5. Khi Mr. Hà bổ sung thông tin giữa chừng (ví dụ "PO-38 đang hoàn thiện", "họp Ingenico ngày mai") → cập nhật task bằng mục có ngày + nguyên văn, **không** viết đè.
@@ -76,9 +76,9 @@ Quy tắc chung: `sht-quan-tri-dn` §6. Phiếu này là trình tự riêng cho 
 ## Vai D — Người duyệt HITL (Mr. Hà)
 
 **Việc của vai:**
-1. **Chọn phạm vi** (ca nào, workspace nào, ngưỡng nào) — mọi phạm vi mới là một Gate 2.
+1. **Chọn phạm vi** (ca nào, workspace nào, ngưỡng nào) — mọi phạm vi mới là một bản ghi `Chon ca / Quyen du lieu` (không còn gọi là Gate 2: từ SOP-AI-01 1.2, Gate 2 chỉ dành cho đổi phạm vi dự án và chọn phương án RFC — mục 4 dưới đây).
 2. **Trả lời câu hỏi `HOI_NGUOI`** bằng hiểu biết hoặc văn kiện anh có (ca NDA: anh đưa bản ATG đã ký vào kho, câu trả lời vào `tra_loi`).
-3. **Ra phản hồi** bằng một câu có mã quyết định: *"Chấp nhận JEV-…"*, *"Bác JEV-…, lý do: …"*, *"Sai JEV-…, lý do: …"*. Chọn theo nghĩa ở `SKILL.md` §4 — nhầm BI_BAC với SAI làm lệch số liệu hiệu chỉnh.
+3. **Ra phản hồi** (nhãn `Phan hoi JEV`; nhiều quyết định thì duyệt một lô/ngày — `SKILL.md` §4) bằng một câu có mã quyết định: *"Chấp nhận JEV-…"*, *"Bác JEV-…, lý do: …"*, *"Sai JEV-…, lý do: …"*. Chọn theo nghĩa ở `SKILL.md` §4 — nhầm BI_BAC với SAI làm lệch số liệu hiệu chỉnh.
 4. **Quyết RFC** khi QA đã hết 2 vòng: vòng ngoại lệ có khung, hay đóng có điều kiện.
 5. **Cấp và thu quyền** (đọc kho nguồn bằng Python, vòng qua sandbox) — ghi phạm vi vào `00_NGUON-HO-SO.md`.
 6. **Nghiệm thu** từng bước và Gate 3 (cho phép sửa bản đồ 5 lớp, `AI_Architecture_Core.md`).
