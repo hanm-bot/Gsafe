@@ -124,6 +124,14 @@ Sau khi trình plan, **DỪNG và chờ phê duyệt**. Nguyên tắc:
 - Nếu giữa chừng phát sinh việc lệch khỏi plan (thêm phạm vi, đổi phương án, chi phí vượt) → **dừng, nêu thay đổi, xin duyệt lại** phần đó (Human Checkpoint) rồi mới làm tiếp.
 - Với việc nhạy cảm (tiền/hợp đồng/xuất kho), giữ đúng điểm người duyệt đã ghi trong plan — không tự phê duyệt thay người.
 
+## Vị trí trong khung giải quyết vấn đề (B2) — đầu vào & phân nhánh
+grill-me là **B2** của khung 5 bước SHT (bản đồ: `docs/HE-DIEU-HANH-AI-5-LOP.md` mục 1c).
+- **Đầu vào từ B1:** nếu nhóm 2 ra "rải rác nhiều nguồn / chưa gom" hoặc dữ liệu có tên người, CCCD, lương → dừng khảo, chuyển sang skill chuẩn hoá đúng loại trước (`chuan-hoa-ho-so-tai-lieu`, `chuan-hoa-du-lieu-du-an`, `-nhansu`, `-tuyen-dung`, `sht-normalize-account`; che PII bằng `sht-vai1-harvester`). Đầu ra đã chuẩn hoá quay về làm câu trả lời nhóm 2.
+- **Chọn nhánh ở pha ②** — ghi một dòng `Nhánh: QUY TRÌNH | SẢN PHẨM` vào đầu KẾ HOẠCH:
+  - **QUY TRÌNH** (sắp lại/tự động hoá một chuỗi việc đang có) → sang thẳng `archify`.
+  - **SẢN PHẨM** (cần dựng một công cụ/tính năng/agent mới, có người dùng, màn hình, luật nghiệp vụ) → `brainstorm` bóc tách → PRD → `archify`. Bán cho khách Bank/Telco thì trước PRD **bắt buộc** qua Giai đoạn 01–02 (luật cứng #4).
+- **Sau khi sơ đồ chốt:** chọn đường ray triển khai bằng `sht-cds-thiet-ke-agent/references/chon-duong-ray.md` trước khi dựng. Người duyệt ray, AI chỉ đề xuất.
+
 ## Bàn giao archify
 Trong lúc chốt plan, có thể đề xuất: **"Muốn mình vẽ sơ đồ quy trình từ kế hoạch này không?"** → gọi skill **archify** vẽ workflow (đánh dấu chỗ tự động / người duyệt / chỗ AI dừng). Nhìn sơ đồ → chỉnh plan nếu cần → **rồi mới qua cổng Proceed** → từ plan đã duyệt mới dựng.
 

@@ -61,6 +61,8 @@ Thiết kế tài liệu **Yêu Cầu Sản Phẩm Toàn Diện (Enterprise PRD)
 ---
 
 ### Giai Đoạn 2: Phỏng Vấn Sâu 7 Nhóm Nghiệp Vụ (Strict 7-Group Deep Dive)
+> **Đầu vào là Bản đặc tả Brainstorm 12 phần** (từ skill `brainstorm`, bước B3 của khung giải quyết vấn đề SHT — `docs/HE-DIEU-HANH-AI-5-LOP.md` mục 1c): ánh xạ các mục đã có sang 7 nhóm dưới đây, **chỉ hỏi nhóm còn trống hoặc mâu thuẫn**. Không phỏng vấn lại từ đầu.
+
 Hỏi lần lượt từng nhóm, mỗi lượt hỏi tập trung 2-3 câu hỏi cốt lõi bằng tiếng Việt:
 
 #### Nhóm 1: Nhóm Người Dùng & Phân Quyền (Roles & Access)
@@ -144,3 +146,6 @@ Khi người dùng đồng ý:
    - Sinh ra file `docs/{feature}/prd/{feature}-prd.html` hoàn chỉnh.
 4. **Báo cáo kết quả**:
    - Hiển thị tóm tắt, đường dẫn file Markdown và hướng dẫn mở file HTML trên trình duyệt hoặc in PDF.
+5. **Bàn giao B5 → chọn đường ray** (khung giải quyết vấn đề SHT):
+   - Luồng nghiệp vụ tổng thể cho người đọc phi kỹ thuật (tự động / người duyệt / AI dừng) → `archify`. Sơ đồ UML chi tiết đã có ở bước 1.
+   - Trước khi dựng: chọn đường ray bằng `../sht-cds-thiet-ke-agent/references/chon-duong-ray.md` và ghi kết quả vào cuối PRD.

@@ -171,6 +171,11 @@ Kết xuất theo `sht-nen-tang-kiem-chung` §6, hai bản:
 
 Chạy checklist bàn giao của `sht-nen-tang-kiem-chung` (ghi đúng thư mục đích, một bản có hiệu lực, dò trang trống khi xuất PDF, tự kiểm trước khi báo xong).
 
+**Trong khung giải quyết vấn đề SHT (B4 → B5)** — bản đồ `docs/HE-DIEU-HANH-AI-5-LOP.md` mục 1c:
+- **Đầu vào có thể là Bản đặc tả Brainstorm 12 phần** (skill `brainstorm`): dùng làm nguyên liệu cho §2–§3, nhưng **không thay** bảng điểm nghẽn Giai đoạn 01. Cổng chặn đầu skill vẫn áp.
+- **Sau khi PRD chốt:** vẽ luồng To-Be cho Sponsor bằng `archify` (Mermaid, đánh dấu điểm người duyệt). Use Case / Swimlane PlantUML thì dùng `usecase-diagram`, **chỉ với sơ đồ trừu tượng**, không có tên/số liệu khách, vì skill đó gửi nội dung ra internet.
+- **Đường ray triển khai:** chọn bằng `../sht-cds-thiet-ke-agent/references/chon-duong-ray.md` song song với nhánh §7.
+
 ---
 
 ## Checklist chốt trước khi trình PRD

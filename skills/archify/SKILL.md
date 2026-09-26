@@ -32,5 +32,8 @@ Mặc định vẽ bằng **Mermaid** (`flowchart TD`) đặt trong khối ```me
 ## Bàn giao ngược `grill-me`
 Nếu người dùng chỉnh sửa luồng ngay trên sơ đồ (thêm bước, đổi loại ký hiệu một bước) và đầu vào ban đầu là KẾ HOẠCH từ `grill-me`, nhắc người dùng: thay đổi này cần phản ánh ngược lại vào KẾ HOẠCH gốc trước khi qua Cổng Proceed của `grill-me` — không để sơ đồ và kế hoạch lệch nhau, sơ đồ chỉ là hình chiếu của kế hoạch, không phải bản thay thế.
 
+## Vị trí trong khung giải quyết vấn đề (B5)
+archify là bước cuối trước **cổng chọn đường ray** (bản đồ `docs/HE-DIEU-HANH-AI-5-LOP.md` mục 1c). Đầu vào có thể là KẾ HOẠCH của `grill-me` (nhánh QUY TRÌNH) hoặc một PRD đã chốt (`prd-architect` / `sht-cds-thiet-ke-prd`, nhánh SẢN PHẨM). Với PRD thì vẽ luồng To-Be tổng thể và giữ đúng điểm người duyệt đã ghi trong PRD. Sơ đồ chốt xong thì gợi ý chọn ray bằng `../sht-cds-thiet-ke-agent/references/chon-duong-ray.md`, không tự chốt ray.
+
 ## Ranh giới — giữ skill gọn
 Không tự vẽ thêm chi tiết kỹ thuật không có trong kế hoạch gốc (không tự bịa tên hệ thống, tên bảng dữ liệu, tên API). Không dùng skill này để vẽ biểu đồ số liệu/thống kê (việc của `dataviz`) hay sơ đồ kiến trúc phần mềm chi tiết (class/sequence diagram cấp code) — chỉ vẽ đúng một luồng quy trình nghiệp vụ ở mức người đọc phi kỹ thuật cũng hiểu được.

@@ -197,4 +197,8 @@ Khi tôi đưa ra một ý tưởng tính năng/sản phẩm mới hoặc gõ l�
 
 ## Dùng kèm
 
+**Vị trí trong khung giải quyết vấn đề (B3)** — bản đồ `docs/HE-DIEU-HANH-AI-5-LOP.md` mục 1c:
+- **Đầu vào:** KẾ HOẠCH của `grill-me` ghi `Nhánh: SẢN PHẨM`. Dùng lại câu trả lời đã có trong plan đó, **không hỏi lại** nhóm nào đã rõ. Nếu `grill-me` ghi `Nhánh: QUY TRÌNH` thì không cần brainstorm — sang thẳng `archify`.
+- **Đầu ra → B4 PRD:** việc nội bộ → `prd-architect @<file-brainstorm.md>`. Việc bán cho khách Bank/Telco → `sht-cds-thiet-ke-prd`, nhưng **chỉ sau khi** đã có Báo cáo hiện trạng (Giai đoạn 01, `sht-cds-danh-gia-hien-trang`) và use-case nằm trong Backlog Giai đoạn 02 (luật cứng #4).
+
 Khi bàn giao Bản đặc tả Brainstorm cho người đọc ngoài (không phải nội bộ kỹ thuật), áp dụng thêm quy tắc chung ở `sht-nen-tang-kiem-chung` (checklist bàn giao, chọn dạng báo cáo theo người đọc).

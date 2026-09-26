@@ -13,6 +13,8 @@ Nguồn: *The Agentic Bank* (Driss Temsamani) Ch.3–5, 7 · tài liệu 11 giai
 
 > Skill này **thiết kế** cổng cho khách. Cổng quyết định SHT **tự vận hành** nội bộ (file thật, luật ca thật, phân vai) nằm ở `sht-jev-cong-quyet-dinh` — dùng làm bằng chứng "SHT đã tự chạy" khi trình bày với khách.
 
+> **Chọn đường ray triển khai** (Ray 1 skill/agent · Ray 3 hybrid có cổng · Ray 2 app đầy đủ) sau khi plan/PRD đã chốt: `references/chon-duong-ray.md`. Bảng đó dùng được cho cả việc nội bộ — với việc nội bộ, cổng chặn 01/02 bên dưới không áp.
+
 ---
 
 ## CỔNG CHẶN — kiểm trước khi làm bất cứ việc gì

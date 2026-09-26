@@ -1,6 +1,6 @@
 {
   "name": "sht-skills",
-  "version": "0.23.1",
+  "version": "0.24.0",
   "description": "Bộ 29 skill nghiệp vụ nội bộ của SHT — Đội 5 Agent quản trị doanh nghiệp (AIS48), kiểm chứng dữ liệu dự án/nhân sự, Quyết định tổ chức, tuyển dụng ASK/JD, chuẩn hóa CRM, xác thực báo cáo, rà soát hợp đồng CNTT, bóc tách hồ sơ scan, đánh giá DMI, thiết kế PRD (CĐS + tổng quát), brainstorm & sơ đồ UML, quy hoạch quy trình, cổng quyết định JEV nội bộ, cùng 4 skill nền tảng kiểm chứng/hạ tầng/tài liệu/trí nhớ.",
   "author": {
     "name": "Công ty CP Đầu tư Công nghệ SHT"
