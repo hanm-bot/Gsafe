@@ -112,4 +112,4 @@ Sổ đăng bạ — nguồn sự thật về quan hệ giữa các skill — n�
 
 Nội bộ SHT. Các skill dẫn chiếu dữ liệu và văn bản thật của công ty (hệ thống SHT Sales Pipeline trên Turso, Quyết định bổ nhiệm, khung lương 3P, hợp đồng CNTT, khung đánh giá DMI). Không phát hành ra ngoài.
 
-Phiên bản 0.24.2 — 26/09/2026.
+Phiên bản 0.25.0 — 26/09/2026.

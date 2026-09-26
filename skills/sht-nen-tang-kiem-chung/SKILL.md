@@ -237,6 +237,8 @@ Skill nghiệp vụ có thể đặt tên riêng cho ba mức này theo đúng t
 
 ## 9. Đường ống xuất bản 5 lớp (chốt 23/09/2026)
 
+> **Quy chuẩn .docx = Nghị định 30/2020/NĐ-CP** (Mr. Hà, 26/09/2026, `HITL-20260926-020`). Tầng 1 kỹ thuật trình bày (A4, lề 20–25/20–25/30–35/15–20 mm, Times New Roman đen, nội dung 13–14, giãn dòng 1–1,5, số trang giữa lề trên, trang đầu không số) áp cho **mọi** `.docx` làm cho Mr. Hà; Tầng 2 thể thức đầy đủ áp cho 29 loại văn bản hành chính. Thông số + trang dẫn bản gốc: `references/the-thuc-nd30.md`. Thiếu thành phần thể thức (số, ký hiệu, người ký…) → để trống theo mẫu và hỏi, **không bịa**.
+
 Áp cho **công văn ra ngoài · QĐ nhân sự · báo cáo điều hành · biên bản**. Ba script ở `scripts/`:
 
 | Lớp | Chạy gì | Chế độ |
