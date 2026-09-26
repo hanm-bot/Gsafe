@@ -1,7 +1,7 @@
 ---
 name: sht-jev-cong-quyet-dinh
 version: 1.0
-description: "Vận hành cổng quyết định JEV nội bộ của SHT (chuỗi RAG → JEV → MCP → Workflow): lập quyết định có kiểu theo schema, cho qua cổng 3 ngả TỰ LÀM / NGƯỜI DUYỆT / CHỈ GHI LOG, ghi phản hồi CHAP_NHAN / BI_BAC / SAI có xác thực Sổ Cái HITL, và chạy ca thật trên kho nguồn khách mà không suy trạng thái từ tên file, chữ gõ sẵn hay tài liệu phân tích; kèm phiếu việc 4 vai (kiến trúc, lập quyết định, QA Lớp 2, người duyệt). LUÔN dùng khi nói 'chạy ca thật', 'JEV', 'cổng quyết định', 'hàng chờ duyệt', 'ghi phản hồi', 'chấp nhận/bác/sai JEV-…', 'vá cổng', hoặc khi agent sắp kết luận trạng thái hồ sơ khách để hành động — kể cả khi không nhắc chữ JEV. KHÔNG dùng để thiết kế use-case agentic bán cho khách (dùng sht-cds-thiet-ke-agent), không dùng cho chuỗi báo cáo quản trị 5 vai AIS48 (dùng sht-quan-tri-dn, sht-vai1..5), không thay quy tắc QA Lớp 2 chung (sht-quan-tri-dn §6)."
+description: "Vận hành cổng quyết định JEV nội bộ của SHT (chuỗi RAG → JEV → MCP → Workflow): lập quyết định có kiểu theo schema, cho qua cổng 3 ngả TỰ LÀM / NGƯỜI DUYỆT / CHỈ GHI LOG, ghi phản hồi CHAP_NHAN / BI_BAC / SAI có xác thực Sổ Cái HITL, và chạy ca thật trên kho nguồn khách mà không suy trạng thái từ tên file, chữ gõ sẵn hay tài liệu phân tích; kèm phiếu việc 4 vai (kiến trúc, lập quyết định, QA Lớp 2, người duyệt). LUÔN dùng khi nói 'chạy ca thật', 'JEV', 'cổng quyết định', 'hàng chờ duyệt', 'ghi phản hồi', 'chấp nhận/bác/sai JEV-…', 'vá cổng', hoặc khi agent sắp kết luận trạng thái hồ sơ khách để hành động — kể cả khi không nhắc chữ JEV. KHÔNG dùng để thiết kế use-case agentic bán cho khách (dùng sht-cds-thiet-ke-agent), không dùng cho chuỗi báo cáo quản trị 5 vai AIS48 (dùng sht-quan-tri-dn, sht-vai1..5), không thay quy tắc QA Lớp 2 chung (sht-quan-tri-dn §6), không dùng để điều phối cả dự án nhiều bước Claude–Anti (dùng sht-van-hanh-triad)."
 ---
 
 # Cổng quyết định JEV — vận hành nội bộ SHT
@@ -158,6 +158,7 @@ Toàn bộ tư duy, việc đã làm, việc chưa làm của phiên: `reference
 ## 9. Dùng kèm
 
 - `sht-quan-tri-dn` §6 — quy tắc QA Lớp 2 chung khi thẩm định sản phẩm của Anti (vai C dùng kèm).
+- `sht-van-hanh-triad` — khi cổng JEV chỉ là một bước trong dự án nhiều bước Claude–Anti (plan, phiếu giao, 2 vòng QA, RFC).
 - `sht-nen-tang-kiem-chung` — một bản có hiệu lực, bàn giao, phân loại phát biểu Dữ kiện/Suy luận/Giả định.
 - `sht-cds-thiet-ke-agent` — khi cần **thiết kế** cổng tương tự cho khách (skill này chỉ **vận hành** cổng của SHT).
 - `sht-qa-kiem-chung-skill-hook` — khi câu hỏi là "hook/chốt có thật sự chạy không".

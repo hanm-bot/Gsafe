@@ -124,6 +124,12 @@ Soft Cap = 80% tổng (41.600 token): kích hoạt chế độ tóm tắt ngắn
 9. **Không tự chấm sản phẩm của chính mình.** Claude soạn thì Anti kiểm, Claude chỉ đối chiếu report với thực tế.
 10. **Rà rác sau mỗi lần nộp:** thư mục `scratch/` trong kho, file trích văn bản hồ sơ nguồn, report đặt sai thư mục, bản sao code nằm trong kho.
 
+11. **Soi bằng chứng chép lại** (dự án SHT-UPSA-01, 26/09/2026 — 5 bước liên tiếp): thư mục tạm, thời gian chạy, số dòng hay mã băm **trùng** report trước là bằng chứng không hợp lệ. Đột biến phải chứng minh **test FAIL**; output vẫn báo đúng lỗi mà đột biến lẽ ra đã tắt nghĩa là đột biến chưa được áp.
+12. **Văn bản .docx: kiểm bằng Word, không bằng trích text.** Xuất PDF qua Word, liệt kê phông nhúng, nhìn ảnh trang 1 so với mẫu gốc (chuẩn NĐ30: `sht-nen-tang-kiem-chung` §9).
+13. **Ca đối kháng phải đổi cả những thứ báo cáo không nhắc tới** — style, vị trí (ô bảng, khung), tên lạ. Mọi ca thử chỉ dùng style `Normal` đã để lọt lỗ `Body Text` qua hai bước.
+14. **Phân loại lỗi của phiếu hay của bên thực thi.** Phiếu viết lỏng → QA nhận, đính chính task. Bên thực thi **lách chốt kiểm** thay vì báo vướng → lỗi mức CAO, ghi rõ trong phiếu và dòng "Ghi cho M5".
+
+Trình tự cả vòng Claude–Anti (phiếu giao, 2 vòng, RFC, nghiệm thu, phân vai): `sht-van-hanh-triad`.
 Trình tự QA riêng cho cổng quyết định JEV: `sht-jev-cong-quyet-dinh` → `references/phan-vai-jev.md` §C.
 
 ---

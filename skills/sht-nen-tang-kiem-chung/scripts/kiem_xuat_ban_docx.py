@@ -271,7 +271,10 @@ def kiem_nd30_tang_1(tai_lieu, theme_map, num_to_abs, abs_to_ilvl):
         st_name = p.style.name if p.style else ""
         
         # 6.6, 6.7, 6.9
-        is_normal = (st_name == "Normal" or not st_name) and not p._p.xpath('ancestor::w:tbl')
+        # RFC-03: "nội dung" xác định theo VAI TRÒ đoạn, không theo tên style — mọi đoạn ngoài bảng,
+        # trừ khối mã (ngoại lệ HITL-20260926-021) và tiêu đề (tiêu đề chỉ kiểm cỡ chữ 13–14).
+        is_heading = st_name.startswith("Heading") or st_name == "Title"
+        is_normal = (not p._p.xpath('ancestor::w:tbl')) and st_name != "NĐ30 Khối mã" and not is_heading
         
         if is_normal:
             # 6.6 Giãn dòng
@@ -363,8 +366,8 @@ def kiem_nd30_tang_1(tai_lieu, theme_map, num_to_abs, abs_to_ilvl):
             size = get_eff_size(r, p)
             if size < 11:
                 loi.append((NANG, f"Đoạn {p_idx} ({preview}): cỡ chữ {size} < 11"))
-            elif is_normal and size < 13:
-                loi.append((NANG, f"Đoạn {p_idx} ({preview}): nội dung cỡ {size} < 13"))
+            elif (is_normal or is_heading) and not (13 <= size <= 14):
+                loi.append((NANG, f"Đoạn {p_idx} ({preview}): {'tiêu đề' if is_heading else 'nội dung'} cỡ {size} ngoài 13–14"))
                 
     # Check tables
     for t_idx, t in enumerate(tai_lieu.tables, start=1):
@@ -373,10 +376,63 @@ def kiem_nd30_tang_1(tai_lieu, theme_map, num_to_abs, abs_to_ilvl):
                 for p in cell.paragraphs:
                     for run in p.runs:
                         if not run.text.strip(): continue
+                        cs = run.font.size.pt if run.font.size else (p.style.font.size.pt if p.style and p.style.font.size else None)
+                        if cs is not None and not (11 <= cs <= 14) and not (p.style and p.style.name == "NĐ30 Khối mã"):
+                            loi.append((NANG, f"Bảng {t_idx}: ô hàng {r_idx+1} cỡ chữ {cs} ngoài 11–14"))
                         color = run.font.color.rgb if run.font and run.font.color else None
                         if color is not None and str(color) == "FFFFFF":
                             loi.append((NANG, f"Bảng {t_idx}: có chữ trắng (ô hàng {r_idx+1})"))
 
+    return loi
+
+def kiem_nd30_tang_2(tai_lieu, loai):
+    loi = []
+    texts = [p.text.strip() for p in tai_lieu.paragraphs if p.text.strip()]
+    for t in tai_lieu.tables:
+        for row in t.rows:
+            for cell in row.cells:
+                for p in cell.paragraphs:
+                    if p.text.strip():
+                        texts.append(p.text.strip())
+    text_all = "\n".join(texts)
+    
+    if "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM" not in text_all:
+        loi.append((NANG, "Thiếu CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"))
+    if "Độc lập - Tự do - Hạnh phúc" not in text_all:
+        loi.append((NANG, "Thiếu Độc lập - Tự do - Hạnh phúc"))
+        
+    if "Nơi nhận:" not in text_all:
+        loi.append((NANG, "Thiếu Nơi nhận:"))
+    if "- Lưu: VT" not in text_all and "Lưu: VT" not in text_all:
+        loi.append((NANG, "Thiếu dòng Lưu: VT"))
+        
+    if loai in ["BC", "BB"]:
+        if f"/{loai}-" not in text_all:
+            loi.append((NANG, f"Ký hiệu sai quy tắc (phải chứa /{loai}-)"))
+    elif loai == "CV":
+        # CV không được có chữ viết tắt tên loại, cụ thể là /CV-
+        if "/CV-" in text_all:
+            loi.append((NANG, "Ký hiệu sai quy tắc (CV không được chứa /CV-)"))
+        if "V/v" not in text_all:
+            loi.append((NANG, "Thiếu V/v"))
+            
+    if loai == "BB":
+        # BB không có dòng ngày ở đầu (kiểm tra bảng đầu tiên và 5 đoạn đầu)
+        found_date = False
+        if tai_lieu.tables:
+            for row in tai_lieu.tables[0].rows:
+                for cell in row.cells:
+                    for p in cell.paragraphs:
+                        txt = p.text.strip().lower()
+                        if "ngày" in txt and "tháng" in txt and "năm" in txt:
+                            found_date = True
+        for p in tai_lieu.paragraphs[:5]:
+            txt = p.text.strip().lower()
+            if "ngày" in txt and "tháng" in txt and "năm" in txt:
+                found_date = True
+        if found_date:
+            loi.append((NANG, "Biên bản không được có dòng ngày tháng năm ở đầu văn bản"))
+                
     return loi
 
 
@@ -389,6 +445,7 @@ def main():
     p.add_argument("docx", help="File .docx cần kiểm")
     p.add_argument("--watermark-bat-buoc", action="store_true",
                    help="Bản gốc có watermark — thiếu là lỗi NẶNG")
+    p.add_argument("--loai", choices=["BB", "CV", "BC"], help="Loại văn bản để kiểm tra Thể thức Tầng 2")
     tham_so = p.parse_args()
 
     duong_dan = Path(tham_so.docx)
@@ -406,6 +463,8 @@ def main():
     loi += loi_watermark
     num_to_abs, abs_to_ilvl = doc_numbering(duong_dan)
     loi += kiem_nd30_tang_1(tai_lieu, theme_map, num_to_abs, abs_to_ilvl)
+    if tham_so.loai:
+        loi += kiem_nd30_tang_2(tai_lieu, tham_so.loai)
 
     nang = [m for m in loi if m[0] == NANG]
     nhe = [m for m in loi if m[0] == NHE]

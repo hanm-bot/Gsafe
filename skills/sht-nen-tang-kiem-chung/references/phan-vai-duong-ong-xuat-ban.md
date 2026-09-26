@@ -103,6 +103,16 @@ python cham_van_phong.py VANBAN.md
 Đọc phiếu, sửa những chỗ mình thấy đúng, giữ lại những chỗ mình thấy máy bắt sai — **và ghi lại
 vì sao giữ**, để Vai E khỏi hỏi lại.
 
+Sinh `.docx` theo NĐ30 (`references/the-thuc-nd30.md`) — **không** dựng tay trong Word:
+
+```bash
+python .agents/scripts/sinh-word-tu-md.py VANBAN.md                # Tầng 1: quy chế, tài liệu nội bộ
+python .agents/scripts/sinh_van_ban_nd30.py VANBAN.md VANBAN.docx  # Tầng 2: front matter loai: BB|CV|BC
+```
+
+Khoá thiếu thì bộ sinh để `…` và in dòng `THIẾU:` — **không** tự điền số, ngày, người ký. Sửa văn
+bản thì sửa `.md` rồi sinh lại, không sửa tay `.docx`.
+
 **Cạm bẫy đã gặp thật**
 
 - **Máy không kết luận thay người.** Từ trong danh sách "mùi AI" chỉ sai khi rải trang trí. Một
@@ -146,9 +156,15 @@ trang quan trọng ra ảnh và nhìn**: trang chữ ký, trang có bảng.
   khi* file đã ghi xong, khiến script trông như thất bại dù đã chạy đúng. Luôn
   `sys.stdout.reconfigure(encoding='utf-8')` đầu chương trình.
 - Bảng dài thì bật lặp hàng tiêu đề (`w:tblHeader`) và chống cắt hàng (`w:cantSplit`).
+- **Đổi style để lọt máy kiểm là lách chốt** (SHT-UPSA-01 P5d, 26/09/2026): một bộ sinh đặt đoạn
+  sang `Body Text` vì L4 khi đó chỉ kiểm style `Normal`. Nay L4 kiểm theo vai trò đoạn (mọi đoạn
+  ngoài bảng trừ khối mã; tiêu đề 13–14; ô bảng 11–14). Máy chặn nhầm một đoạn đúng NĐ30 thì báo
+  vướng, không đổi style.
+- Văn bản Tầng 2 chạy thêm `--loai BB|CV|BC`; xem ảnh trang 1 so với Mẫu 1.4 / 1.5 / 1.9 bản gốc
+  (Quốc hiệu một dòng, "Lưu: VT" không lặp, biên bản không có dòng địa danh–ngày).
 
-**Tiêu chí ĐẠT:** `kiem_xuat_ban_docx.py` exit 0 · PDF không trang trống · đã render và nhìn
-trang chữ ký cùng mọi trang có bảng.
+**Tiêu chí ĐẠT:** `kiem_xuat_ban_docx.py` exit 0 · PDF qua Word chỉ nhúng Times New Roman (+ Consolas
+cho khối mã) · PDF không trang trống · đã render và nhìn trang chữ ký cùng mọi trang có bảng.
 
 **Luật ở đâu:** `sht-nen-tang-kiem-chung` §6.1 (kết xuất, dò trang trống), §9 (đường ống).
 **Giao cho:** Vai E.

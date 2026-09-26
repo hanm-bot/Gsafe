@@ -32,7 +32,7 @@
 | Khoản / Điểm | Khoản: số Ả Rập + "."; điểm: a), b), c)… theo bảng chữ cái tiếng Việt, cỡ = lời văn, đứng (tr.25) | ⚠️ |
 | Phụ lục | "Phụ lục" + số (La Mã nếu ≥ 2 phụ lục): dòng riêng, canh giữa, in thường 14 đứng đậm; tên phụ lục in hoa 13–14 đứng đậm (tr.28); số trang phụ lục đánh riêng (tr.29) | ⚠️ |
 
-## 2. Tầng 2 — thành phần thể thức (Phụ lục I, Phần I, Mục II–III — lời văn tr.21–30; bảng tổng hợp kỹ thuật trình bày tr.32–34 — *Claude đọc tr.34, chưa đọc tr.32–33; các cỡ/kiểu chữ dưới đây lấy từ lời văn tr.21–30*)
+## 2. Tầng 2 — thành phần thể thức (Phụ lục I, Phần I, Mục II–III — lời văn tr.21–30; bảng tổng hợp "V. Mẫu chữ và chi tiết trình bày thể thức văn bản hành chính" tr.32–34 — *cập nhật 26/09/2026: Claude đã đọc bù tr.32–33 (Mr. Hà duyệt trong phiên). Toàn bộ cỡ/kiểu chữ ở bảng dưới **khớp** bảng tr.32–33; phần mới xem mục 2a*)
 | Ô | Thành phần | Chữ | Cỡ | Kiểu | Ghi chú |
 |---|---|---|---|---|---|
 | 1 | **Quốc hiệu** "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM" | In hoa | 12–13 | Đứng, đậm | Trên cùng, bên phải trang đầu |
@@ -58,6 +58,33 @@
 | 13 | Địa chỉ, thư điện tử, website, điện thoại, Fax | In thường | 11–12 | Đứng | Trang đầu, dưới một đường kẻ liền hết chiều ngang vùng trình bày |
 
 **Sơ đồ bố trí các ô (tr.31):** ô 2–3 bên trái, ô 1–4 bên phải cùng hàng; 5a giữa; 5b dưới ô 3; 9a dưới 5a; 10a/10b bên trái trên nội dung; 6 nội dung giữa trang; khối ký 7a–8–7c–7b bên phải; 9b + 12 bên trái ngang khối ký; 13 cuối trang; 11 và 14 trên cùng.
+
+## 2a. Bổ sung từ bảng tr.32–33 (đọc 26/09/2026)
+**Luật thống nhất cỡ chữ** (chú thích 1, tr.32): trong cùng một văn bản, các thành phần tăng hoặc giảm cỡ chữ phải **cùng chiều**. Hai bộ ví dụ trong bản gốc: Quốc hiệu 13 · Tiêu ngữ 14 · địa danh + ngày 14; **hoặc** Quốc hiệu 12 · Tiêu ngữ 13 · địa danh + ngày 13. Không trộn hai bộ, ví dụ Quốc hiệu 12 đi với Tiêu ngữ 14.
+
+**Mục 6 — nội dung văn bản** (tr.33): in thường, cỡ 13–14, kiểu đứng. Mọi dòng dưới đây đều cỡ 13–14.
+
+| Bố cục | Thành phần | Chữ | Kiểu | Ví dụ trong bản gốc |
+|---|---|---|---|---|
+| **6a — có phần, chương, mục, tiểu mục, điều, khoản, điểm** | Từ "Phần"/"Chương" + số thứ tự | In thường | Đứng, đậm | Phần I · Chương I |
+| | Tiêu đề phần, chương | In hoa | Đứng, đậm | QUY ĐỊNH CHUNG |
+| | Từ "Mục" + số thứ tự | In thường | Đứng, đậm | Mục 1 |
+| | Tiêu đề mục | In hoa | Đứng, đậm | QUẢN LÝ VĂN BẢN |
+| | Từ "Tiểu mục" + số thứ tự | In thường | Đứng, đậm | Tiểu mục 1 |
+| | Tiêu đề tiểu mục | In hoa | Đứng, đậm | QUẢN LÝ VĂN BẢN ĐI |
+| | Điều | In thường | Đứng, đậm | Điều 1. Bản sao văn bản |
+| | Khoản | In thường | Đứng | 1. Các hình thức … |
+| | Điểm | In thường | Đứng | a) Đối với … |
+| **6b — có phần, mục, khoản, điểm** (dạng Báo cáo) | Từ "Phần" + số thứ tự | In thường | Đứng, đậm | Phần I |
+| | Tiêu đề phần | In hoa | Đứng, đậm | TÌNH HÌNH THỰC HIỆN NHIỆM VỤ … |
+| | Số thứ tự và tiêu đề mục | **In hoa** | Đứng, đậm | I. NHỮNG KẾT QUẢ … |
+| | Khoản có tiêu đề | In thường | Đứng, đậm | 1. Phạm vi và đối tượng áp dụng |
+| | Khoản không có tiêu đề | In thường | Đứng | 1. Quyết định này có hiệu lực … |
+| | Điểm | In thường | Đứng | a) Đối với … |
+
+**Mục 7** (tr.33) khớp với 7a/7b ở trên: quyền hạn người ký (TM., KT. …) **và** chức vụ người ký đều in hoa, cỡ 13–14, đứng, đậm; họ tên in thường, cỡ 13–14, đứng, đậm.
+
+⚠️ **Lệch có thể có, chưa sửa:** `sinh_van_ban_nd30.py` in tiêu đề markdown cấp 2 và cấp 3 bằng chữ thường, đậm. Nếu cấp 2 ứng với "I. …" (mục theo 6b) thì dòng đó phải **in hoa**. Script chưa chốt cấp tiêu đề markdown nào ứng với thành phần nào. Chưa sửa vì bản script hiện tại đang ở vòng Anti QA đảo vai (RFC-03). Sửa lúc này sẽ đổi SHA-256 mà Anti đang kiểm.
 
 ## 3. Viết tắt tên loại văn bản (Phụ lục III, Mục I — tr.40)
 NQ Nghị quyết (cá biệt) · QĐ Quyết định (cá biệt) · CT Chỉ thị · QC Quy chế · QyĐ Quy định · TC Thông cáo · TB Thông báo · HD Hướng dẫn · CTr Chương trình · KH Kế hoạch · PA Phương án · ĐA Đề án · DA Dự án · BC Báo cáo · BB Biên bản · TTr Tờ trình · HĐ Hợp đồng · CĐ Công điện · BGN Bản ghi nhớ · BTT Bản thỏa thuận · GUQ Giấy ủy quyền · GM Giấy mời · GGT Giấy giới thiệu · GNP Giấy nghỉ phép · PG Phiếu gửi · PC Phiếu chuyển · PB Phiếu báo. Bản sao: SY Bản sao y · TrS Bản trích sao · SL Bản sao lục.
