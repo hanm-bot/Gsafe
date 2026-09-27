@@ -159,6 +159,16 @@ def doc_numbering(duong_dan):
                     abs_to_ilvl[abs_id][ilvl] = font_dict
     return num_to_abs, abs_to_ilvl
 
+
+def get_text(p):
+    text = ""
+    for r in p.runs:
+        if r.font.hidden or (r._r.rPr is not None and len(r._r.rPr.xpath('./w:vanish')) > 0):
+            continue
+        text += r.text
+    return text
+
+
 def kiem_nd30_tang_1(tai_lieu, theme_map, num_to_abs, abs_to_ilvl):
     loi = []
     
@@ -223,6 +233,41 @@ def kiem_nd30_tang_1(tai_lieu, theme_map, num_to_abs, abs_to_ilvl):
         # Not implementing full size inheritance, just assume 13 if missing
         return 13
 
+    def _doc_ke_thua(p, thuoc_tinh):
+        val = getattr(p.paragraph_format, thuoc_tinh)
+        if val is not None:
+            if thuoc_tinh == 'line_spacing':
+                return val if not isinstance(val, Length) else None
+            return val.pt
+            
+        if thuoc_tinh == 'line_spacing':
+            sp = p._p.xpath('./w:pPr/w:spacing')
+            if sp and sp[0].get(qn('w:line')) and sp[0].get(qn('w:lineRule'), 'auto') == 'auto':
+                return int(sp[0].get(qn('w:line'))) / 240
+
+        st = p.style
+        seen = set()
+        while st is not None and st.name not in seen:
+            seen.add(st.name)
+            if hasattr(st, "paragraph_format"):
+                s_val = getattr(st.paragraph_format, thuoc_tinh)
+                if s_val is not None:
+                    if thuoc_tinh == 'line_spacing':
+                        return s_val if not isinstance(s_val, Length) else None
+                    return s_val.pt
+            st = st.base_style
+            
+        sp = tai_lieu.styles.element.xpath('./w:docDefaults/w:pPrDefault/w:pPr/w:spacing')
+        if sp:
+            if thuoc_tinh == 'space_before' and sp[0].get(qn('w:before')):
+                return int(sp[0].get(qn('w:before'))) / 20
+            if thuoc_tinh == 'space_after' and sp[0].get(qn('w:after')):
+                return int(sp[0].get(qn('w:after'))) / 20
+            if thuoc_tinh == 'line_spacing' and sp[0].get(qn('w:line')) and sp[0].get(qn('w:lineRule'), 'auto') == 'auto':
+                return int(sp[0].get(qn('w:line'))) / 240
+                
+        return 0 if thuoc_tinh != 'line_spacing' else None
+
     # Section checks (6.1, 6.2, 6.8)
     total_pages = 2 # approximation, 6.8 ignores if 1 page, we just assume >1 for test
     for i, sec in enumerate(tai_lieu.sections):
@@ -240,6 +285,8 @@ def kiem_nd30_tang_1(tai_lieu, theme_map, num_to_abs, abs_to_ilvl):
         b = sec.bottom_margin.mm if sec.bottom_margin else 0
         l = sec.left_margin.mm if sec.left_margin else 0
         r = sec.right_margin.mm if sec.right_margin else 0
+        g = sec.gutter.mm if sec.gutter else 0
+        l += g
         
         if not (19.5 <= t <= 25.5 and 19.5 <= b <= 25.5 and 29.5 <= l <= 35.5 and 14.5 <= r <= 20.5):
             loi.append((NANG, f"Section {i+1}: lề sai {t:.1f}/{b:.1f}/{l:.1f}/{r:.1f}mm"))
@@ -248,7 +295,7 @@ def kiem_nd30_tang_1(tai_lieu, theme_map, num_to_abs, abs_to_ilvl):
         # Since finding PAGE in header is complex with docx, we just check the XML
         has_page = False
         header_center = False
-        first_page_ok = sec.different_first_page_header_footer
+        first_page_ok = sec.different_first_page_header_footer if i == 0 else True
         
         for hdr in [sec.header, sec.first_page_header, sec.even_page_header]:
             if hdr and not hdr.is_linked_to_previous:
@@ -264,35 +311,55 @@ def kiem_nd30_tang_1(tai_lieu, theme_map, num_to_abs, abs_to_ilvl):
             loi.append((NANG, f"Section {i+1}: không có số trang (trường PAGE)"))
 
     # Paragraph checks
-    for p_idx, p in enumerate(tai_lieu.paragraphs, start=1):
-        txt = p.text.strip()
+    # R2 (HITL-20260927-001): đoạn trong textbox (w:txbxContent) không nằm trong tai_lieu.paragraphs
+    # → gom thêm và kiểm như đoạn nội dung. Bỏ bản mc:Fallback (VML trùng bản DrawingML).
+    from docx.text.paragraph import Paragraph
+    doan_textbox = [Paragraph(el, tai_lieu._body) for el in etree._Element.xpath(
+        tai_lieu.element.body, './/w:txbxContent[not(ancestor::mc:Fallback)]//w:p',
+        namespaces={"w": NS_W[1:-1], "mc": "http://schemas.openxmlformats.org/markup-compatibility/2006"})]
+    id_textbox = {id(p._p) for p in doan_textbox}
+    TIEU_DE_TOI_DA = 200  # ký tự; tiêu đề dài hơn = văn xuôi đội lốt tiêu đề → kiểm như nội dung
+    for p_idx, p in enumerate(list(tai_lieu.paragraphs) + doan_textbox, start=1):
+        txt = get_text(p).strip()
         if not txt: continue
         preview = txt[:30]
         st_name = p.style.name if p.style else ""
-        
+        la_textbox = id(p._p) in id_textbox
+
         # 6.6, 6.7, 6.9
         # RFC-03: "nội dung" xác định theo VAI TRÒ đoạn, không theo tên style — mọi đoạn ngoài bảng,
         # trừ khối mã (ngoại lệ HITL-20260926-021) và tiêu đề (tiêu đề chỉ kiểm cỡ chữ 13–14).
-        is_heading = st_name.startswith("Heading") or st_name == "Title"
-        is_normal = (not p._p.xpath('ancestor::w:tbl')) and st_name != "NĐ30 Khối mã" and not is_heading
-        
-        if is_normal:
-            # 6.6 Giãn dòng
-            ls = p.paragraph_format.line_spacing
-            if ls is None and p.style and hasattr(p.style, "paragraph_format"):
-                ls = p.style.paragraph_format.line_spacing
-            if ls is not None and ls > 1.5:
-                loi.append((NANG, f"Đoạn {p_idx} ({preview}): giãn dòng > 1.5"))
+        # R2: đoạn trong textbox luôn là nội dung; tiêu đề dài quá TIEU_DE_TOI_DA ký tự là nội dung;
+        # giãn dòng ≤ 1,5 áp cho MỌI đoạn ngoài bảng, kể cả tiêu đề và khối mã.
+        is_heading = (st_name.startswith("Heading") or st_name == "Title") and not la_textbox \
+            and len(txt) <= TIEU_DE_TOI_DA
             
+        # R4-2: "tiêu đề" phải vừa là style tiêu đề vừa có outline < 10
+        try:
+            outline_lvl = p.paragraph_format.outline_level
+        except Exception:
+            outline_lvl = 10 # body text
+        if outline_lvl is None or outline_lvl >= 10:
+            is_heading = False
+            
+        la_khoi_ma = st_name == "NĐ30 Khối mã" and not la_textbox
+        ngoai_bang = la_textbox or not p._p.xpath('ancestor::w:tbl')
+        is_normal = ngoai_bang and not la_khoi_ma and not is_heading
+
+        if ngoai_bang:
+            # 6.6 Giãn dòng
+            ls = _doc_ke_thua(p, 'line_spacing')
+            if isinstance(ls, float) and ls < 0.95:  # R7 (NA-R6-2): tối thiểu 1 dòng
+                loi.append((NANG, f"Đoạn {p_idx} ({preview}): giãn dòng {ls:g} < 1"))
+            if ls is not None and ls > 1.5:
+                vai = "tiêu đề" if is_heading else ("khối mã" if la_khoi_ma else ("textbox" if la_textbox else "nội dung"))
+                loi.append((NANG, f"Đoạn {p_idx} ({preview}): {vai} giãn dòng {ls:g} > 1.5"))
+
+        if is_normal:
+
             # 6.7 Khoảng cách đoạn
-            sb = p.paragraph_format.space_before.pt if p.paragraph_format.space_before is not None else None
-            sa = p.paragraph_format.space_after.pt if p.paragraph_format.space_after is not None else None
-            if sb is None and p.style and hasattr(p.style, "paragraph_format"):
-                sb = p.style.paragraph_format.space_before.pt if p.style.paragraph_format.space_before is not None else 0
-            if sa is None and p.style and hasattr(p.style, "paragraph_format"):
-                sa = p.style.paragraph_format.space_after.pt if p.style.paragraph_format.space_after is not None else 0
-            sb = sb if sb is not None else 0
-            sa = sa if sa is not None else 0
+            sb = _doc_ke_thua(p, 'space_before')
+            sa = _doc_ke_thua(p, 'space_after')
             if sb + sa < 6:
                 loi.append((NANG, f"Đoạn {p_idx} ({preview}): khoảng cách đoạn < 6pt"))
                 
@@ -333,10 +400,11 @@ def kiem_nd30_tang_1(tai_lieu, theme_map, num_to_abs, abs_to_ilvl):
         
         for r_idx, r in enumerate(p.runs):
             if not r.text.strip(): continue
+            if r.font.hidden: continue
             
             # 6.3 Font
             fonts = get_eff_fonts(r, p)
-            if st_name == "NĐ30 Khối mã":
+            if la_khoi_ma:
                 pass
             else:
                 for script, f_name in fonts.items():
@@ -368,32 +436,49 @@ def kiem_nd30_tang_1(tai_lieu, theme_map, num_to_abs, abs_to_ilvl):
                 loi.append((NANG, f"Đoạn {p_idx} ({preview}): cỡ chữ {size} < 11"))
             elif (is_normal or is_heading) and not (13 <= size <= 14):
                 loi.append((NANG, f"Đoạn {p_idx} ({preview}): {'tiêu đề' if is_heading else 'nội dung'} cỡ {size} ngoài 13–14"))
+            elif la_khoi_ma and size > 14:
+                # R3: ngoại lệ khối mã (HITL-20260926-021) chỉ cho phông đơn cách cỡ ≥ 11, không cho cỡ tuỳ ý
+                loi.append((NANG, f"Đoạn {p_idx} ({preview}): khối mã cỡ {size} ngoài 11–14"))
                 
     # Check tables
+    # R3 (HITL-20260927-001): duyệt theo XML mọi w:p trong từng hàng của bảng cấp đầu — gồm cả
+    # bảng lồng trong bảng và textbox trong ô (python-docx cell.paragraphs chỉ lấy đoạn trực tiếp).
+    # Khối mã trong ô bảng cũng phải 11–14 (không còn miễn trừ cỡ).
+    from docx.text.paragraph import Paragraph
     for t_idx, t in enumerate(tai_lieu.tables, start=1):
-        for r_idx, row in enumerate(t.rows):
-            for c_idx, cell in enumerate(row.cells):
-                for p in cell.paragraphs:
-                    for run in p.runs:
-                        if not run.text.strip(): continue
-                        cs = run.font.size.pt if run.font.size else (p.style.font.size.pt if p.style and p.style.font.size else None)
-                        if cs is not None and not (11 <= cs <= 14) and not (p.style and p.style.name == "NĐ30 Khối mã"):
-                            loi.append((NANG, f"Bảng {t_idx}: ô hàng {r_idx+1} cỡ chữ {cs} ngoài 11–14"))
-                        color = run.font.color.rgb if run.font and run.font.color else None
-                        if color is not None and str(color) == "FFFFFF":
-                            loi.append((NANG, f"Bảng {t_idx}: có chữ trắng (ô hàng {r_idx+1})"))
+        for r_idx, tr in enumerate(t._tbl.xpath('./w:tr')):
+            for p_el in tr.xpath('.//w:p[not(ancestor::w:txbxContent)]'):
+                p = Paragraph(p_el, t)
+                long_nhau = len(p_el.xpath('ancestor::w:tbl')) > 1
+                vi_tri = f"Bảng {t_idx}: {'bảng lồng trong ' if long_nhau else ''}ô hàng {r_idx+1}"
+                for run in p.runs:
+                    if not run.text.strip(): continue
+                    if run.font.hidden: continue
+                    cs = run.font.size.pt if run.font.size else (p.style.font.size.pt if p.style and p.style.font.size else None)
+                    if cs is not None and not (11 <= cs <= 14):
+                        loi.append((NANG, f"{vi_tri} cỡ chữ {cs} ngoài 11–14"))
+                    color = run.font.color.rgb if run.font and run.font.color else None
+                    if color is not None and str(color) == "FFFFFF":
+                        loi.append((NANG, f"{vi_tri}: có chữ trắng"))
 
     return loi
 
+def dong_dia_danh_ngay(txt):
+    """Dòng "<Địa danh>, ngày … tháng … năm …" (ô 4). NH-2: dòng có nhãn "…: …, ngày …" trong thân
+    Biên bản (vd "Thời gian bắt đầu: 8 giờ, ngày …") KHÔNG phải ô 4 — Mẫu 1.9 có dòng đó."""
+    import re
+    return bool(re.match(r"^(?!.*giờ)([^:,]{1,40},?\s*)?ngày\s.*tháng.*năm", txt.strip(), re.IGNORECASE))
+
+
 def kiem_nd30_tang_2(tai_lieu, loai):
     loi = []
-    texts = [p.text.strip() for p in tai_lieu.paragraphs if p.text.strip()]
+    texts = [get_text(p).strip() for p in tai_lieu.paragraphs if get_text(p).strip()]
     for t in tai_lieu.tables:
         for row in t.rows:
             for cell in row.cells:
                 for p in cell.paragraphs:
-                    if p.text.strip():
-                        texts.append(p.text.strip())
+                    if get_text(p).strip():
+                        texts.append(get_text(p).strip())
     text_all = "\n".join(texts)
     
     if "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM" not in text_all:
@@ -406,7 +491,7 @@ def kiem_nd30_tang_2(tai_lieu, loai):
     if "- Lưu: VT" not in text_all and "Lưu: VT" not in text_all:
         loi.append((NANG, "Thiếu dòng Lưu: VT"))
         
-    if loai in ["BC", "BB"]:
+    if loai != "CV":
         if f"/{loai}-" not in text_all:
             loi.append((NANG, f"Ký hiệu sai quy tắc (phải chứa /{loai}-)"))
     elif loai == "CV":
@@ -423,15 +508,15 @@ def kiem_nd30_tang_2(tai_lieu, loai):
             for row in tai_lieu.tables[0].rows:
                 for cell in row.cells:
                     for p in cell.paragraphs:
-                        txt = p.text.strip().lower()
-                        if "ngày" in txt and "tháng" in txt and "năm" in txt:
-                            found_date = True
-        for p in tai_lieu.paragraphs[:5]:
-            txt = p.text.strip().lower()
-            if "ngày" in txt and "tháng" in txt and "năm" in txt:
-                found_date = True
+                        if dong_dia_danh_ngay(get_text(p)):
+                            found_date = get_text(p)
+        for p in tai_lieu.paragraphs:
+            if get_text(p).strip().upper().startswith("BIÊN BẢN"):
+                break
+            if dong_dia_danh_ngay(get_text(p)):
+                found_date = get_text(p)
         if found_date:
-            loi.append((NANG, "Biên bản không được có dòng ngày tháng năm ở đầu văn bản"))
+            loi.append((NANG, f"Biên bản không được có dòng ngày tháng năm ở đầu văn bản (Found: {found_date})"))
                 
     return loi
 
@@ -445,7 +530,8 @@ def main():
     p.add_argument("docx", help="File .docx cần kiểm")
     p.add_argument("--watermark-bat-buoc", action="store_true",
                    help="Bản gốc có watermark — thiếu là lỗi NẶNG")
-    p.add_argument("--loai", choices=["BB", "CV", "BC"], help="Loại văn bản để kiểm tra Thể thức Tầng 2")
+    p.add_argument("--loai", choices=["BB", "CV", "BC", "CT", "QC", "QyĐ", "TC", "TB", "HD", "CTr", "KH", "PA", "ĐA", "DA", "TTr", "GUQ", "PG", "PC", "PB"],
+                   help="Loại văn bản để kiểm tra Thể thức Tầng 2 (Mẫu 1.4 / 1.5 / 1.9)")
     tham_so = p.parse_args()
 
     duong_dan = Path(tham_so.docx)
