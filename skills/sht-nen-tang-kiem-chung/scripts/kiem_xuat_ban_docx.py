@@ -475,9 +475,13 @@ TEN_LOAI = {
     "GM": "GIẤY MỜI", "GGT": "GIẤY GIỚI THIỆU", "GNP": "GIẤY NGHỈ PHÉP",
 }
 # Dòng đặc trưng bắt buộc của từng mẫu riêng (khớp nguyên dòng, hoặc chứa cụm)
-DONG_DAC_TRUNG = {
-    "NQ": ("dong", "QUYẾT NGHỊ:"), "QĐ": ("dong", "QUYẾT ĐỊNH:"), "CĐ": ("duoi", " điện:"),
-    "GM": ("chua", "trân trọng kính mời"), "GGT": ("chua", "trân trọng giới thiệu"), "GNP": ("chua", "cấp cho:"),
+DONG_DAC_TRUNG = {  # (mô tả, điều kiện trên đoạn) — vị trí xét trong kiem_nd30_tang_2
+    "NQ": ("QUYẾT NGHỊ:", lambda t: t == "QUYẾT NGHỊ:"),
+    "QĐ": ("QUYẾT ĐỊNH:", lambda t: t == "QUYẾT ĐỊNH:"),
+    "CĐ": ("… điện:", lambda t: t.endswith(" điện:")),
+    "GM": ("… trân trọng kính mời: …", lambda t: "trân trọng kính mời:" in t),
+    "GGT": ("… trân trọng giới thiệu:", lambda t: t.endswith("trân trọng giới thiệu:")),
+    "GNP": ("Xét Đơn đề nghị nghỉ phép … cấp cho:", lambda t: t.startswith("Xét Đơn") and t.endswith("cấp cho:")),
 }
 
 
@@ -521,15 +525,31 @@ def kiem_nd30_tang_2(tai_lieu, loai):
     elif "/CV-" in dong_so[0]:
         # CV không được có chữ viết tắt tên loại
         loi.append((NANG, "Ký hiệu sai quy tắc (CV không được chứa /CV-)"))
+    # QA Đợt 2 (L1, L2, V4 — 27/09/2026): xét VỊ TRÍ, không dò chuỗi con toàn văn bản.
+    #  - tên loại (ô 5a) phải là một trong 3 đoạn thân đầu tiên (ngay sau bảng đầu văn bản);
+    #  - GGT/GNP (Mẫu 1.8/1.10) không có trích yếu dưới tên loại;
+    #  - dòng đặc trưng của CĐ/GM/GGT/GNP phải là đoạn thân NGAY SAU tên loại; NQ/QĐ là một dòng riêng sau tên loại.
+    than = [get_text(p).strip() for p in tai_lieu.paragraphs if get_text(p).strip()]
     ten_loai = TEN_LOAI.get(loai)
-    if ten_loai and not any(t.split("\n")[0].strip() == ten_loai for t in texts):
-        loi.append((NANG, f"Thiếu tên loại \"{ten_loai}\" (ô 5a) — hoặc tên loại không khớp --loai {loai}"))
-    kieu_dt = DONG_DAC_TRUNG.get(loai)
-    if kieu_dt:
-        kieu, cum = kieu_dt
-        co = any((t == cum) if kieu == "dong" else (t.endswith(cum) if kieu == "duoi" else cum in t) for t in texts)
+    idx_ten = None
+    if ten_loai:
+        idx_ten = next((i for i, t in enumerate(than[:3]) if t.split("\n")[0].strip() == ten_loai), None)
+        if idx_ten is None:
+            loi.append((NANG, f"Thiếu tên loại \"{ten_loai}\" ở đầu văn bản (ô 5a) — hoặc tên loại không khớp --loai {loai}"))
+    if idx_ten is not None and loai in ("GGT", "GNP"):
+        du = [x.strip() for x in than[idx_ten].split("\n")[1:] if x.strip() and set(x.strip()) - {"_"}]
+        if du:
+            loi.append((NANG, f"{ten_loai} không có trích yếu (Mẫu {'1.8' if loai == 'GGT' else '1.10'}), thấy: \"{du[0][:40]}\""))
+    dt = DONG_DAC_TRUNG.get(loai)
+    if dt and idx_ten is not None:
+        mo_ta, dung = dt
+        if loai in ("NQ", "QĐ"):
+            co = any(dung(t) for t in than[idx_ten + 1:])
+        else:
+            co = idx_ten + 1 < len(than) and dung(than[idx_ten + 1])
         if not co:
-            loi.append((NANG, f"Thiếu dòng đặc trưng \"{cum.strip()}\" của mẫu {TEN_LOAI[loai]}"))
+            loi.append((NANG, f"Thiếu dòng đặc trưng \"{mo_ta}\" của mẫu {ten_loai}"
+                              f"{'' if loai in ('NQ', 'QĐ') else ' (phải là đoạn ngay sau tên loại)'}"))
     if loai == "CV" and "V/v" not in text_all:
         loi.append((NANG, "Thiếu V/v"))
             
