@@ -463,6 +463,16 @@ def kiem_nd30_tang_1(tai_lieu, theme_map, num_to_abs, abs_to_ilvl):
 
     return loi
 
+# Tên loại (ô 5a) theo NĐ30 Phụ lục III: Mẫu 1.4 (17 loại, ghi chú 6 tr.47) + Biên bản (Mẫu 1.9).
+# Công văn không có tên loại. Phải khớp LOAI_MAU_14 trong .agents/scripts/sinh_van_ban_nd30.py.
+TEN_LOAI = {
+    "CT": "CHỈ THỊ", "QC": "QUY CHẾ", "QyĐ": "QUY ĐỊNH", "TC": "THÔNG CÁO", "TB": "THÔNG BÁO",
+    "HD": "HƯỚNG DẪN", "CTr": "CHƯƠNG TRÌNH", "KH": "KẾ HOẠCH", "PA": "PHƯƠNG ÁN", "ĐA": "ĐỀ ÁN",
+    "DA": "DỰ ÁN", "BC": "BÁO CÁO", "TTr": "TỜ TRÌNH", "GUQ": "GIẤY ỦY QUYỀN", "PG": "PHIẾU GỬI",
+    "PC": "PHIẾU CHUYỂN", "PB": "PHIẾU BÁO", "BB": "BIÊN BẢN",
+}
+
+
 def dong_dia_danh_ngay(txt):
     """Dòng "<Địa danh>, ngày … tháng … năm …" (ô 4). NH-2: dòng có nhãn "…: …, ngày …" trong thân
     Biên bản (vd "Thời gian bắt đầu: 8 giờ, ngày …") KHÔNG phải ô 4 — Mẫu 1.9 có dòng đó."""
@@ -491,15 +501,23 @@ def kiem_nd30_tang_2(tai_lieu, loai):
     if "- Lưu: VT" not in text_all and "Lưu: VT" not in text_all:
         loi.append((NANG, "Thiếu dòng Lưu: VT"))
         
-    if loai != "CV":
-        if f"/{loai}-" not in text_all:
-            loi.append((NANG, f"Ký hiệu sai quy tắc (phải chứa /{loai}-)"))
-    elif loai == "CV":
-        # CV không được có chữ viết tắt tên loại, cụ thể là /CV-
-        if "/CV-" in text_all:
-            loi.append((NANG, "Ký hiệu sai quy tắc (CV không được chứa /CV-)"))
-        if "V/v" not in text_all:
-            loi.append((NANG, "Thiếu V/v"))
+    # L-1 (QA Tầng 2 Đợt 1, 27/09/2026): ký hiệu phải nằm ĐÚNG dòng "Số:" (ô 3), không phải chuỗi con bất kỳ
+    # trong thân (vd "Căn cứ Chỉ thị số 03/CT-…"); và tên loại (ô 5a) phải là một dòng riêng đúng loại.
+    import re
+    dong_so = [t for t in texts if re.match(r"^Số\s*:", t)]
+    if not dong_so:
+        loi.append((NANG, "Thiếu dòng \"Số:\" (ô 3)"))
+    elif loai != "CV":
+        if not re.match(rf"^Số\s*:\s*[^/\s]*/{re.escape(loai)}-", dong_so[0]):
+            loi.append((NANG, f"Ký hiệu sai quy tắc: dòng \"{dong_so[0][:40]}\" phải có dạng Số: …/{loai}-…"))
+    elif "/CV-" in dong_so[0]:
+        # CV không được có chữ viết tắt tên loại
+        loi.append((NANG, "Ký hiệu sai quy tắc (CV không được chứa /CV-)"))
+    ten_loai = TEN_LOAI.get(loai)
+    if ten_loai and not any(t.split("\n")[0].strip() == ten_loai for t in texts):
+        loi.append((NANG, f"Thiếu tên loại \"{ten_loai}\" (ô 5a) — hoặc tên loại không khớp --loai {loai}"))
+    if loai == "CV" and "V/v" not in text_all:
+        loi.append((NANG, "Thiếu V/v"))
             
     if loai == "BB":
         # BB không có dòng ngày ở đầu (kiểm tra bảng đầu tiên và 5 đoạn đầu)
