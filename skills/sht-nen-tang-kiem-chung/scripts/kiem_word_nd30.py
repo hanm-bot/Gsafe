@@ -283,7 +283,8 @@ def kiem_doan(doc, loi, p, vung, idx):
         import re
         la_dia_danh = bool(re.match(r"^(?!.*giờ)([^:,]{1,40},?\s*)?ngày\s.*tháng.*năm", txt_doan, re.IGNORECASE))
         la_noi_nhan = txt_doan.startswith("Nơi nhận:")
-        la_can_cu = txt_doan.lower().startswith("căn cứ")
+        # ô 6 căn cứ ban hành: "Căn cứ …" và "Theo đề nghị của …" in nghiêng (Mẫu 1.2/1.3 tr.43–44)
+        la_can_cu = txt_doan.lower().startswith(("căn cứ", "theo đề nghị của"))
         la_ghi_chu = txt_doan.startswith("(") or txt_doan.startswith("[") or txt_doan.startswith("BẢN IN DẪN XUẤT") or \
             txt_doan.startswith("CÔNG TY CỔ PHẦN") or txt_doan.startswith("Không ") or txt_doan.startswith("Tài liệu này") or \
             txt_doan.startswith("Nguyên tắc") or txt_doan.startswith("Mỗi ") or txt_doan.startswith("Giai đoạn ") or \

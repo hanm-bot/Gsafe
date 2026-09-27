@@ -470,6 +470,14 @@ TEN_LOAI = {
     "HD": "HƯỚNG DẪN", "CTr": "CHƯƠNG TRÌNH", "KH": "KẾ HOẠCH", "PA": "PHƯƠNG ÁN", "ĐA": "ĐỀ ÁN",
     "DA": "DỰ ÁN", "BC": "BÁO CÁO", "TTr": "TỜ TRÌNH", "GUQ": "GIẤY ỦY QUYỀN", "PG": "PHIẾU GỬI",
     "PC": "PHIẾU CHUYỂN", "PB": "PHIẾU BÁO", "BB": "BIÊN BẢN",
+    # Đợt 2 — mẫu riêng: 1.1 tr.42, 1.2–1.3 tr.43–44, 1.6 tr.49, 1.7 tr.50, 1.8 tr.51, 1.10 tr.53
+    "NQ": "NGHỊ QUYẾT", "QĐ": "QUYẾT ĐỊNH", "CĐ": "CÔNG ĐIỆN",
+    "GM": "GIẤY MỜI", "GGT": "GIẤY GIỚI THIỆU", "GNP": "GIẤY NGHỈ PHÉP",
+}
+# Dòng đặc trưng bắt buộc của từng mẫu riêng (khớp nguyên dòng, hoặc chứa cụm)
+DONG_DAC_TRUNG = {
+    "NQ": ("dong", "QUYẾT NGHỊ:"), "QĐ": ("dong", "QUYẾT ĐỊNH:"), "CĐ": ("duoi", " điện:"),
+    "GM": ("chua", "trân trọng kính mời"), "GGT": ("chua", "trân trọng giới thiệu"), "GNP": ("chua", "cấp cho:"),
 }
 
 
@@ -516,6 +524,12 @@ def kiem_nd30_tang_2(tai_lieu, loai):
     ten_loai = TEN_LOAI.get(loai)
     if ten_loai and not any(t.split("\n")[0].strip() == ten_loai for t in texts):
         loi.append((NANG, f"Thiếu tên loại \"{ten_loai}\" (ô 5a) — hoặc tên loại không khớp --loai {loai}"))
+    kieu_dt = DONG_DAC_TRUNG.get(loai)
+    if kieu_dt:
+        kieu, cum = kieu_dt
+        co = any((t == cum) if kieu == "dong" else (t.endswith(cum) if kieu == "duoi" else cum in t) for t in texts)
+        if not co:
+            loi.append((NANG, f"Thiếu dòng đặc trưng \"{cum.strip()}\" của mẫu {TEN_LOAI[loai]}"))
     if loai == "CV" and "V/v" not in text_all:
         loi.append((NANG, "Thiếu V/v"))
             
@@ -548,7 +562,7 @@ def main():
     p.add_argument("docx", help="File .docx cần kiểm")
     p.add_argument("--watermark-bat-buoc", action="store_true",
                    help="Bản gốc có watermark — thiếu là lỗi NẶNG")
-    p.add_argument("--loai", choices=["BB", "CV", "BC", "CT", "QC", "QyĐ", "TC", "TB", "HD", "CTr", "KH", "PA", "ĐA", "DA", "TTr", "GUQ", "PG", "PC", "PB"],
+    p.add_argument("--loai", choices=["BB", "CV", "BC", "CT", "QC", "QyĐ", "TC", "TB", "HD", "CTr", "KH", "PA", "ĐA", "DA", "TTr", "GUQ", "PG", "PC", "PB", "NQ", "QĐ", "CĐ", "GM", "GGT", "GNP"],
                    help="Loại văn bản để kiểm tra Thể thức Tầng 2 (Mẫu 1.4 / 1.5 / 1.9)")
     tham_so = p.parse_args()
 
