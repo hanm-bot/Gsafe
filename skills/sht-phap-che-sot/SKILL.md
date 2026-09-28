@@ -132,4 +132,4 @@ Trước khi bàn giao kết quả, agent bắt buộc kiểm tra 12 tiêu chí 
 - **Quyết định nhân sự:** Khi cần soạn thảo hoặc căn chỉnh thể thức Quyết định nhân sự, chuyển tiếp sang `sht-qd-nhansu-alignment`.
 - **Kiến trúc hồ sơ:** Khi cần quy hoạch toàn diện danh mục hồ sơ pháp lý theo các pha vòng đời, bàn giao cho `sht-kien-truc-ho-so`.
 - **Xuất bản & Kiểm chứng:** Mọi hoạt động bàn giao, kiểm chứng số liệu và xuất bản văn bản tuân thủ chuẩn `sht-nen-tang-kiem-chung`.
-- **Đại diện tác nghiệp:** Agent phụ trách chuyên trách vai pháp chế trong hệ thống là `sht-legal`.
+- **Đại diện tác nghiệp (chỉ khi mở dự án SHT):** Nếu phiên có agent `sht-legal` (khai báo ở `.claude/agents/` của dự án SHT, **không** đóng trong gói plugin này), có thể giao vai pháp chế cho agent đó. Không có thì tự làm theo skill này — không coi là lỗi.
