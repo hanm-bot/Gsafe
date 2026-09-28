@@ -21,7 +21,31 @@
 
 Rút từ đối chiếu mẫu thật ↔ bản nháp giọng máy. Dùng **chỉ khi có nội dung thật đỡ**, không rải trang trí:
 
-`đột phá` · `toàn diện` · `mạnh mẽ` · `vượt trội` · `tối ưu hoá` · `nâng tầm` · `trong bối cảnh … ngày càng` · `nhằm … và …` (cấu trúc đối xứng rỗng) · `giải pháp toàn diện` · `đồng hành` · `song hành` · mở bài kiểu "Kính thưa Quý vị, trong thời đại…".
+`đột phá` · `toàn diện` · `mạnh mẽ` · `vượt trội` · `tối ưu hoá` · `nâng tầm` · `trong bối cảnh … ngày càng` · `nhằm … và …` (cấu trúc đối xứng rỗng) · `giải pháp toàn diện` · `đồng hành` · `song hành` · `Key insights:` · `Note:` · `Summary:` · `Takeaway:` · mở bài kiểu "Kính thưa Quý vị, trong thời đại…".
+
+## Trình bày chữ và dấu câu
+
+Mức: **nên**, người soát chấm.
+
+- **Dấu câu và khoảng cách:** Dấu câu sát chữ trước, cách chữ sau. Ngoặc đơn cách ngoài, sát trong (AI48S `review/punctuation.md:11-23`).
+- **Oxford comma `, và`:** Chỉ là **cảnh báo**, vì nối hai mệnh đề đôi khi vẫn đúng (AI48S `review/punctuation.md:60-66`).
+- **Trộn tiếng Anh:** Tránh, **trừ** danh sách từ ngành giữ nguyên: SLA, API, POS, TMS, PO, BRD, SoW; được bổ sung, phải ghi lý do (AI48S `review/anti-ai.md:18-22`).
+- **Phân cấp tiêu đề:** Tiêu đề không viết hoa mọi chữ kiểu tiếng Anh. Tiêu đề cấp 2 trở xuống chỉ hoa chữ đầu và tên riêng (AI48S `review/capitalization.md:10-24`).
+- **Viết hoa theo Phụ lục II NĐ30:** Trỏ `references/the-thuc-nd30.md`, không chép lại. **Ngoại lệ bắt buộc ghi rõ:** "Bên", "hai Bên", "Bên Bán/Bên Mua", "Quý Công ty", "Ông/Bà" là đúng (AI48S `review/capitalization.md:10-18`).
+- **Lạm dụng từ nối:** Lạm dụng một từ nối nhiều lần: người soát đếm (> 3 lần/bài). **Không** đưa "Tuy nhiên", "Do đó", "Tóm lại" vào danh sách mùi AI (AI48S `review/anti-ai.md:42`).
+- **Hai điều không lấy từ AI48S và lý do:**
+  - "gạch ngang cách hai bên": xung đột ký hiệu `CV-SHT-223`.
+  - "hạn chế dấu hai chấm": xung đột ô thể thức "Kính gửi:", "Nơi nhận:".
+
+## Chế độ BLUF — tờ trình, báo cáo nội bộ gửi lãnh đạo
+
+Áp dụng cho: **tờ trình, báo cáo nội bộ gửi lãnh đạo** (AI48S `publishing/executive-summary.md:13-39, :44`).
+
+- **Bốn ô theo thứ tự:** Đề xuất cần duyệt → Bối cảnh → Giải pháp → Hiệu quả dự kiến và rủi ro.
+- **Dung lượng:** Không quá 1 trang A4.
+- **Đối soát số liệu:** Mọi số phải có dòng trong `.nguon`.
+- **Phạm vi áp dụng:** **Chỉ** dùng cho văn bản nội bộ. Công văn đối ngoại vẫn theo tiêu chí #1 (mở bằng bối cảnh).
+- **Ranh giới:** **Không** chép: "Kết quả cam kết", "ĐỘ ĐỘT PHÁ", "khóa chặt", các con số minh hoạ (dòng 19, 27, 36, 46 của nguồn). Ghi chú: `sht-vai3-reporter` giữ báo cáo điều hành 4 phần AIS48; chế độ này không tạo trigger mới.
 
 ## Nối với Giám tính AI — luật cứng #1 & #2
 

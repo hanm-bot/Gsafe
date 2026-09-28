@@ -96,6 +96,13 @@ hoặc ghi dòng `DA-DOI-CHIEU-NGUON`.
 
 **Việc phải làm**
 
+1. **Chọn khung:**
+   - (i) Văn bản đối ngoại: áp dụng rubric #1–#7;
+   - (ii) Tờ trình hoặc báo cáo nội bộ gửi lãnh đạo: áp dụng chế độ BLUF.
+   *Lưu ý:* Văn bản gửi ra ngoài sẽ bị chặn gạch dài ở bước xuất bản (`HITL-20260927-023`, ⚠️ **chưa dựng**, chờ task script).
+
+2. **Chấm giọng:**
+
 ```bash
 python cham_van_phong.py VANBAN.md
 ```
