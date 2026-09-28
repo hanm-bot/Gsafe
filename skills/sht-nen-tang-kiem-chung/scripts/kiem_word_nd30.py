@@ -441,6 +441,13 @@ def kiem_pdf(pdf, le_tren_pt, le_trai_pt, le_phai_pt):
 
 
 def main():
+    # Windows mặc định cp1252: in tiếng Việt hoặc ký hiệu ra stdout sẽ vỡ
+    # UnicodeEncodeError. Nguy nhất là nó làm vỡ CHÍNH câu báo lỗi bên dưới,
+    # khiến người chạy thấy traceback thay vì lý do thật (ca 28/09/2026).
+    for _luong in (sys.stdout, sys.stderr):
+        if hasattr(_luong, "reconfigure"):
+            _luong.reconfigure(encoding="utf-8", errors="replace")
+
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("docx")
     ap.add_argument("--giu-pdf", help="lưu PDF xuất qua Word vào đường dẫn này (mặc định: thư mục tạm)")
