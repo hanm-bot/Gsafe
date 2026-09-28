@@ -55,4 +55,9 @@ def fix_cached_values(xlsx_path, cell_values_dict, sheet_name="sheet1.xml"):
         shutil.rmtree(tmp_dir)
 
 if __name__ == '__main__':
+    # Windows mặc định cp1252: in tiếng Việt/ký hiệu ra stdout sẽ vỡ
+    # UnicodeEncodeError. Chốt chung cho mọi script có in — Cổng 9 release.py.
+    for _luong in (sys.stdout, sys.stderr):
+        if hasattr(_luong, 'reconfigure'):
+            _luong.reconfigure(encoding='utf-8', errors='replace')
     print("Mô đun excel_xml_fix: Import và gọi hàm fix_cached_values(xlsx_path, cell_values_dict)")

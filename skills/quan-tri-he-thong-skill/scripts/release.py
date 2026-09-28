@@ -5,7 +5,7 @@
 Dùng:
     python3 release.py <thư_mục_gốc_plugin> [--personal DIR] [--out FILE] [--check-only]
 
-Chín cổng (0-8), trượt bất kỳ cổng nào là DỪNG, không tạo file .plugin:
+Mười cổng (0-9), trượt bất kỳ cổng nào là DỪNG, không tạo file .plugin:
     0. Đối chiếu bản — nguồn không khuyết skill so với bản đang cài (doi_chieu_ban.py)
     1. Bộ tự kiểm của chính công cụ audit  (test_audit.py)
     2. Audit NỘI DUNG GÓI — không còn lỗi mức CAO (E7 phía cài đặt chỉ cảnh báo)
@@ -16,6 +16,7 @@ Chín cổng (0-8), trượt bất kỳ cổng nào là DỪNG, không tạo fil
     6. Mọi skill có SKILL.md
     7. Sổ đăng bạ khớp số lượng thư mục skill
     8. Gói sau khi nén: 0 đường dẫn dấu gạch ngược, đủ số SKILL.md
+    9. Script trong gói in tiếng Việt phải tự đặt stdout UTF-8 (cp1252 Windows)
 
 VÌ SAO: các lỗi phát hành đã gặp trong thực tế đều do người/agent quên một
 bước thủ công — gói nén trên Windows sinh đường dẫn gạch ngược (plugin cài vào
@@ -25,7 +26,55 @@ tiếp giữ nguyên version trong khi nguồn đã đổi (gói cũ có thể �
 không ai truy được nó đã đi tới đâu). Checklist trong đầu không đáng tin;
 cổng chặn thì đáng tin.
 """
-import json, os, re, subprocess, sys, tempfile, zipfile, shutil
+import ast, json, os, re, subprocess, sys, tempfile, zipfile, shutil
+
+
+def _dong_in_khong_ascii(src):
+    """Dòng đầu tiên có print()/write() mang chuỗi ngoài ASCII. None nếu không có.
+
+    Chỉ soi chuỗi nằm TRONG lời gọi in — chữ tiếng Việt ở chú thích hay ở nội
+    dung ghi ra file không làm vỡ stdout nên không tính.
+    """
+    try:
+        cay = ast.parse(src)
+    except SyntaxError:
+        return None
+    for nut in ast.walk(cay):
+        if not isinstance(nut, ast.Call):
+            continue
+        h = nut.func
+        ten = h.id if isinstance(h, ast.Name) else (h.attr if isinstance(h, ast.Attribute) else None)
+        if ten not in ('print', 'write'):
+            continue
+        for con in ast.walk(nut):
+            if isinstance(con, ast.Constant) and isinstance(con.value, str) \
+                    and any(ord(c) > 127 for c in con.value):
+                return nut.lineno
+    return None
+
+
+def _da_dat_utf8(src):
+    """Script đã tự lo stdout UTF-8 chưa — kiểm LỜI GỌI THẬT, không kiểm chuỗi ký tự.
+
+    Kiểm bằng chuỗi từng cho dương tính giả: một file chỉ *nhắc* chữ "reconfigure"
+    trong docstring đã được coi là đạt (ca 28/09/2026, phát hiện nhờ chính bộ kiểm
+    hai chiều của cổng này).
+    """
+    try:
+        cay = ast.parse(src)
+    except SyntaxError:
+        return True  # không phân tích được thì không kết tội
+    for nut in ast.walk(cay):
+        if isinstance(nut, ast.Call):
+            h = nut.func
+            ten = h.attr if isinstance(h, ast.Attribute) else (h.id if isinstance(h, ast.Name) else None)
+            if ten in ('reconfigure', 'TextIOWrapper'):
+                return True
+        # os.environ['PYTHONUTF8'] = '1'
+        if isinstance(nut, ast.Subscript) and isinstance(nut.slice, ast.Constant) \
+                and nut.slice.value == 'PYTHONUTF8':
+            return True
+    return False
 
 if sys.platform == 'win32' and hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -256,11 +305,30 @@ def main():
         size = os.path.getsize(zpath)
         gate(8, 'Gói đạt chuẩn', not bs and n_sk == len(dirs),
              f'{n_sk}/{len(dirs)} SKILL.md · {len(bs)} đường dẫn gạch ngược · {size // 1024} KB')
+
+        # 9 — script in tiếng Việt phải tự đặt stdout UTF-8, nếu không sẽ vỡ
+        # UnicodeEncodeError trên Windows (cp1252). Kiểm trên CHÍNH gói vừa nén.
+        pham = []
+        with zipfile.ZipFile(zpath) as z:
+            for n in z.namelist():
+                if not (n.startswith('skills/') and '/scripts/' in n and n.endswith('.py')):
+                    continue
+                try:
+                    src = z.read(n).decode('utf-8')
+                except (UnicodeDecodeError, KeyError):
+                    continue
+                dong = _dong_in_khong_ascii(src)
+                if dong and not _da_dat_utf8(src):
+                    pham.append(f'{n}:{dong}')
+        gate(9, 'Script in tiếng Việt đã đặt stdout UTF-8', not pham,
+             '; '.join(pham[:4]) + (f' (+{len(pham) - 4} file nữa)' if len(pham) > 4 else '')
+             if pham else f'{len([n for n in names if "/scripts/" in n and n.endswith(".py")])} script đã soi')
+
         if FAILS:
             print('\n❌ DỪNG — gói không đạt, không ghi ra ngoài.')
             return 1
         shutil.copy(zpath, out)
-        print(f'\n✅ Chín cổng đạt. Đã ghi: {out}')
+        print(f'\n✅ Mười cổng đạt. Đã ghi: {out}')
         print(f'   {name} v{ver} · {len(dirs)} skill · {size // 1024} KB')
         print('   Sau khi cài: xác nhận đủ số skill xuất hiện trước khi coi là phát hành xong.')
     finally:

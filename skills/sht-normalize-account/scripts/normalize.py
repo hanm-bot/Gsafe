@@ -18,6 +18,7 @@ Dùng:
   bank, code, key = account_key(ma, kh)
 Chạy self-test:  python3 normalize.py
 """
+import sys
 import re, unicodedata
 
 # ---- khử dấu (giữ Đ/đ -> D/d vì NFD không tách được) ----
@@ -119,6 +120,11 @@ def validate_branch_count(n_codes: int, official: int = 155):
 
 # --------------------------- SELF-TEST (offline) ---------------------------
 if __name__ == "__main__":
+    # Windows mặc định cp1252: in tiếng Việt/ký hiệu ra stdout sẽ vỡ
+    # UnicodeEncodeError. Chốt chung cho mọi script có in — Cổng 9 release.py.
+    for _luong in (sys.stdout, sys.stderr):
+        if hasattr(_luong, 'reconfigure'):
+            _luong.reconfigure(encoding='utf-8', errors='replace')
     CASES = [
         ("26VTBTN007", None, "VTBTN"),
         ("2024VTBBHN002 khai trương PGD Ngọc", None, "VTBBHN"),   # năm 4 số + mô tả

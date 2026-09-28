@@ -166,6 +166,11 @@ def strip_accents_upper(s):
 
 
 def main():
+    # Windows mặc định cp1252: in tiếng Việt/ký hiệu ra stdout sẽ vỡ
+    # UnicodeEncodeError. Chốt chung cho mọi script có in — Cổng 9 release.py.
+    for _luong in (sys.stdout, sys.stderr):
+        if hasattr(_luong, 'reconfigure'):
+            _luong.reconfigure(encoding='utf-8', errors='replace')
     ap = argparse.ArgumentParser(description='Thay thế tên hàng loạt an toàn.')
     ap.add_argument('--file', required=True, help='File cần xử lý')
     ap.add_argument('--rules', help='File rules.json')

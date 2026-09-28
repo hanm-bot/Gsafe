@@ -3,6 +3,7 @@ Script tinh toan chi so San sang Chuyen doi so (Digital Maturity Index - DMI)
 theo khung danh gia 6 tru cot SHT / Vietduc AI.
 """
 
+import sys
 from typing import Dict, List, Tuple
 
 PILLARS = {
@@ -71,6 +72,11 @@ def analyze_bottlenecks(process_list: List[Dict]) -> List[Dict]:
 
 
 if __name__ == "__main__":
+    # Windows mặc định cp1252: in tiếng Việt/ký hiệu ra stdout sẽ vỡ
+    # UnicodeEncodeError. Chốt chung cho mọi script có in — Cổng 9 release.py.
+    for _luong in (sys.stdout, sys.stderr):
+        if hasattr(_luong, 'reconfigure'):
+            _luong.reconfigure(encoding='utf-8', errors='replace')
     test_scores = {
         "van_hoa": 3.0,
         "du_lieu": 1.5,
