@@ -80,9 +80,9 @@ Giấy chứng nhận license phải rà soát **như hợp đồng độc lập
 
 ## 7. Cảnh báo đỏ — Thương mại & Pháp lý (Việt Nam)
 *(Bỏ mục này nếu người dùng yêu cầu báo cáo thuần kỹ thuật)*
-- [ ] Lãi chậm thanh toán: kiểm tra mức trần tối đa 20%/năm theo Điều 468 Bộ luật Dân sự 2015.
-- [ ] Phạt vi phạm hợp đồng: mức trần 8% giá trị phần nghĩa vụ bị vi phạm theo Điều 301 Luật Thương mại 2005.
-- [ ] Giá đã bao gồm thuế VAT chưa? Bên nào chịu? Lưu ý: chuyển giao phần mềm và dịch vụ phần mềm không chịu thuế GTGT.
+- [ ] Lãi chậm thanh toán: kiểm mức trần theo luật hiện hành tại ngày ký — lấy căn cứ qua `sht-phap-che-sot`.
+- [ ] Phạt vi phạm hợp đồng: kiểm mức trần theo luật hiện hành tại ngày ký — lấy căn cứ qua `sht-phap-che-sot`.
+- [ ] Giá đã bao gồm thuế GTGT chưa? Bên nào chịu? Đối tượng chịu/không chịu thuế của phần mềm: lấy căn cứ qua `sht-phap-che-sot`.
 - [ ] **Chồng chế tài:** phạt vi phạm + hoàn trả + bồi thường 100% có thể dẫn tới tổng chế tài vượt 200% giá trị hợp đồng.
 - [ ] Trần trách nhiệm bồi thường có tương xứng với rủi ro thiệt hại tiềm tàng không? Danh mục ngoại lệ có đầy đủ?
 - [ ] Thời hạn hiệu lực của báo giá còn hay đã hết? Có điều kiện treo phát sinh chi phí không?

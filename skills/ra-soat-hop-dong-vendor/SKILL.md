@@ -1,6 +1,6 @@
 ---
 name: "ra-soat-hop-dong-vendor"
-description: "Rà soát, đối chiếu và phân tích khoảng trống (gap analysis) hợp đồng CNTT, chuỗi hợp đồng nhiều bên (back-to-back), SoW/BRD, license phần mềm và phân lớp trách nhiệm kỹ thuật - thương mại. LUÔN dùng skill này khi người dùng yêu cầu \"rà soát hợp đồng\", \"gap analysis hợp đồng\", \"đối chiếu spec với hợp đồng\", \"kiểm tra rủi ro back-to-back\", \"rà soát license\", \"kiểm tra SoW/BRD\", \"chuỗi hợp đồng mua bán CNTT\", \"đối soát giấy phép\", \"giấy phép hết hạn\", \"hợp đồng này đã ký chưa\", \"đây là bản dự thảo hay bản ký\", kể cả khi chỉ gửi tập hồ sơ hợp đồng scan/text kèm yêu cầu đánh giá trước khi ký. KHÔNG dùng skill này để chuẩn hóa hồ sơ scan/PDF đa định dạng chung chung (dùng `chuan-hoa-ho-so-tai-lieu`), không dùng cho Quyết định nhân sự (dùng `sht-qd-nhansu-alignment`), và không dùng cho tài liệu dự án XDCB/nội thất (dùng `chuan-hoa-du-lieu-du-an`)."
+description: "Rà soát, đối chiếu và phân tích khoảng trống (gap analysis) hợp đồng CNTT, chuỗi hợp đồng nhiều bên (back-to-back), SoW/BRD, license phần mềm và phân lớp trách nhiệm kỹ thuật - thương mại. LUÔN dùng skill này khi người dùng yêu cầu \"rà soát hợp đồng\", \"gap analysis hợp đồng\", \"đối chiếu spec với hợp đồng\", \"kiểm tra rủi ro back-to-back\", \"rà soát license\", \"kiểm tra SoW/BRD\", \"chuỗi hợp đồng mua bán CNTT\", \"đối soát giấy phép\", \"giấy phép hết hạn\", \"hợp đồng này đã ký chưa\", \"đây là bản dự thảo hay bản ký\", kể cả khi chỉ gửi tập hồ sơ hợp đồng scan/text kèm yêu cầu đánh giá trước khi ký. KHÔNG dùng skill này để chuẩn hóa hồ sơ scan/PDF đa định dạng chung chung (dùng `chuan-hoa-ho-so-tai-lieu`), không dùng cho Quyết định nhân sự (dùng `sht-qd-nhansu-alignment`), và không dùng cho tài liệu dự án XDCB/nội thất (dùng `chuan-hoa-du-lieu-du-an`); không tự tra hay khẳng định hiệu lực văn bản quy phạm pháp luật (trần phạt, trần lãi, thuế) — dùng `sht-phap-che-sot`."
 ---
 
 # Rà soát hợp đồng CNTT — Gap Analysis, Chuỗi & Đặc tả (SHT)
@@ -138,7 +138,7 @@ Tra cứu chi tiết 7 nhóm rủi ro chí tử tại `references/red-flags-hop-
 4. Rủi ro Giấy chứng nhận LICENSE (hạn dùng, cấm bên thứ 3, định lượng node).
 5. Rủi ro Nghiệm thu & SLA Vận hành (deemed acceptance, back-to-back SLA).
 6. Rủi ro Mã nguồn & IP (Source code escrow, OSS compliance).
-7. Rủi ro Thương mại & Pháp lý Việt Nam (trần lãi 20% Đ468 BLDS, trần phạt 8% Đ301 LTM).
+7. Rủi ro Thương mại & Pháp lý Việt Nam (căn cứ pháp lý và mức trần: `sht-phap-che-sot`).
 
 ---
 
