@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Quét sức khỏe hệ thống skill SHT — 12 lớp lỗi E1..E12.
+"""Quét sức khỏe hệ thống skill SHT — 13 lớp lỗi E1..E13.
 
 Dùng:
     python3 audit_skills.py <thư_mục_skills> [tuỳ chọn]
@@ -16,8 +16,17 @@ LỊCH SỬ: bản E1–E6 chỉ soi nội dung BÊN TRONG các SKILL.md. Phiên
 v0.9.0 có 4 lỗi thật thì nó bắt được 1 — ba lỗi lọt đều nằm ngoài phạm vi đó:
 skill nằm sai chỗ (E7), Sổ đăng bạ lệch thực tế (E8), nguồn/gói bẩn (E9).
 Đừng thu hẹp phạm vi trở lại.
+
+E13 (0.28.4): E1 đọc frontmatter bằng regex nên bỏ lọt 3 skill có `: ` trong
+description (YAML hỏng → skill không bao giờ tự kích hoạt) và 1 skill bị cắt
+mô tả ở ` #`. Lỗi sống từ ≤0.23.1 đến 0.28.3, phiên Cowork phát hiện 28/09.
+E13 đọc bằng trình YAML thật, như harness đọc.
 """
 import sys, os, re, json, unicodedata
+try:
+    import yaml
+except ImportError:          # thiếu PyYAML thì E13 báo CAO, không lặng lẽ bỏ qua
+    yaml = None
 from itertools import combinations
 
 if sys.platform == 'win32' and hasattr(sys.stdout, 'reconfigure'):
@@ -66,6 +75,7 @@ def parse(path):
             break
         if blocks == 0:
             body = '\n'.join(lines[i + 1:close])
+            fm['_text'] = body
             m = re.search(r'^name:\s*["\']?([^"\'\n]+)', body, re.M)
             if m:
                 fm['name'] = m.group(1).strip()
@@ -155,6 +165,22 @@ def audit(root, personal=None, plugin_root=None):
             add('THẤP', 'E10', n,
                 f'description {len(d)}/{DESC_MAX} ký tự — sát trần, lần bổ sung tới sẽ vỡ')
 
+        # --- E13 frontmatter phải đọc được bằng YAML thật, mô tả không bị cắt
+        if '_text' in s['fm']:
+            if yaml is None:
+                add('CAO', 'E13', n, 'Thiếu PyYAML — không kiểm được frontmatter như harness đọc (pip install pyyaml)')
+            else:
+                try:
+                    y = yaml.safe_load(s['fm']['_text'])
+                    yd = y.get('description') if isinstance(y, dict) else None
+                    if d and not yd:
+                        add('CAO', 'E13', n, 'YAML đọc ra không có `description` — skill không tự kích hoạt')
+                    elif d and len(norm(str(yd))) < 0.9 * len(norm(d)):
+                        add('CAO', 'E13', n, f'YAML cắt description {len(d)} → {len(str(yd))} ký tự '
+                            '(thường do ` #` hoặc `: `) — bọc bằng `>-`')
+                except yaml.YAMLError as e:
+                    add('CAO', 'E13', n, f'Frontmatter không phải YAML hợp lệ ({str(e).splitlines()[0]}) '
+                        '— skill không tự kích hoạt; bọc description bằng `>-`')
         # --- E12 description thiếu VÙNG LOẠI TRỪ
         # §4 gọi đây là "phần bị bỏ quên nhiều nhất, và là thuốc chữa E6 hiệu quả
         # nhất". Thiếu nó thì hai skill cùng miền chắc chắn tranh nhau kích hoạt,

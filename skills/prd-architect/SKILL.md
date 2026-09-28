@@ -1,6 +1,7 @@
 ---
 name: prd-architect
-description: Nhạc trưởng thiết kế PRD Enterprise TỔNG QUÁT (Silicon Valley standard, KHÔNG gắn phương pháp luận CĐS 11 giai đoạn của SHT): Phỏng vấn sâu ý tưởng 7 nhóm nghiệp vụ (Deep Brainstorm), tự động phân tích tín hiệu logic để sinh các sơ đồ trực quan tương ứng (Use Case, Swimlane, Sequence, ERD, State Machine) và xuất bản song song cả tài liệu Markdown chuẩn Git lẫn bản báo cáo HTML Single-Page tuyệt đẹp. KHÔNG dùng cho PRD giải pháp chuyển đổi số bán cho khách hàng Bank/Telco theo Giai đoạn 03 phương pháp luận SHT (dùng `sht-cds-thiet-ke-prd` — bắt buộc qua Giai đoạn 01/02 trước); chỉ dùng skill này cho PRD sản phẩm/tính năng phần mềm nội bộ hoặc dự án không thuộc phạm vi CĐS 11 giai đoạn.
+description: >-
+  Nhạc trưởng thiết kế PRD Enterprise TỔNG QUÁT (Silicon Valley standard, KHÔNG gắn phương pháp luận CĐS 11 giai đoạn của SHT): Phỏng vấn sâu ý tưởng 7 nhóm nghiệp vụ (Deep Brainstorm), tự động phân tích tín hiệu logic để sinh các sơ đồ trực quan tương ứng (Use Case, Swimlane, Sequence, ERD, State Machine) và xuất bản song song cả tài liệu Markdown chuẩn Git lẫn bản báo cáo HTML Single-Page tuyệt đẹp. KHÔNG dùng cho PRD giải pháp chuyển đổi số bán cho khách hàng Bank/Telco theo Giai đoạn 03 phương pháp luận SHT (dùng `sht-cds-thiet-ke-prd` — bắt buộc qua Giai đoạn 01/02 trước); chỉ dùng skill này cho PRD sản phẩm/tính năng phần mềm nội bộ hoặc dự án không thuộc phạm vi CĐS 11 giai đoạn.
 ---
 
 # /prd-architect - Enterprise PRD & Visual System Designer

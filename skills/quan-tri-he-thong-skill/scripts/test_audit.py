@@ -274,6 +274,29 @@ def run():
         mkskill(r, 'skill-mot-hai'); mkskill(r, 'skill-hai-ba'); mkskill(r, 'skill-ba-bon')
         case('E10 âm tính — description ngắn thì im', codes(r), must_not=['E10'])
 
+        # ---------- E13 frontmatter phải là YAML hợp lệ ----------
+        # Viết thẳng file: mkskill luôn bọc ngoặc kép nên không tái hiện được lỗi.
+        def raw(r, name, desc_line):
+            d = os.path.join(r, name); os.makedirs(d)
+            open(os.path.join(d, 'SKILL.md'), 'w', encoding='utf-8').write(
+                f'---\nname: {name}\n{desc_line}\n---\n\n# {name}\n\n## Mục A\n\nNội dung.\n')
+
+        r = os.path.join(tmp, 'e13a'); os.makedirs(r)
+        mkskill(r, 'skill-mot-hai'); mkskill(r, 'skill-hai-ba')
+        raw(r, 'skill-hai-cham', 'description: Làm việc X (bản chuẩn): phỏng vấn sâu. KHÔNG dùng cho Y.')
+        case('E13 dương tính — `: ` trần trong description làm YAML hỏng', codes(r), must_have=['E13'])
+
+        r = os.path.join(tmp, 'e13b'); os.makedirs(r)
+        mkskill(r, 'skill-mot-hai'); mkskill(r, 'skill-hai-ba')
+        raw(r, 'skill-thang', 'description: Ghi trí nhớ đúng chỗ, cấm theo luật cứng #5 và rất nhiều chữ '
+            'phía sau bị YAML coi là ghi chú nên mất hết khỏi mô tả khi harness đọc.')
+        case('E13 dương tính — ` #` cắt cụt description', codes(r), must_have=['E13'])
+
+        r = os.path.join(tmp, 'e13c'); os.makedirs(r)
+        mkskill(r, 'skill-mot-hai'); mkskill(r, 'skill-hai-ba')
+        raw(r, 'skill-gap-khoi', 'description: >-\n  Làm việc X (bản chuẩn): phỏng vấn sâu, luật cứng #5.\n  KHÔNG dùng cho Y.')
+        case('E13 âm tính — khối `>-` đọc đủ thì im', codes(r), must_not=['E13'])
+
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 

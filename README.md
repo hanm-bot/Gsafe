@@ -1,6 +1,6 @@
 # sht-skills
 
-Bộ skill nghiệp vụ nội bộ của **Công ty CP Đầu tư Công nghệ SHT**. 30 skill, chia bốn tầng, mỗi logic có đúng một chủ sở hữu.
+Bộ skill nghiệp vụ nội bộ của **Công ty CP Đầu tư Công nghệ SHT**. 32 skill, chia bốn tầng, mỗi logic có đúng một chủ sở hữu.
 
 Nguyên tắc xuyên suốt: **dữ liệu sai lan nhanh hơn dữ liệu đúng.** Một con số sai nhân bản ra 4–5 deliverable; một cái tên bị thay nhầm đi thẳng vào văn bản trình ký. Mọi skill ở đây tối ưu cho việc chặn lỗi sớm.
 
@@ -13,7 +13,7 @@ TẦNG 0 — NỀN TẢNG (Áp cho mọi miền)
   sht-nen-tang-kiem-chung          quy tắc chung + ghi đúng thư mục + checklist bàn giao + 5 dạng báo cáo
   quan-tri-he-thong-skill          quản trị chính hệ thống skill (audit, chống overlap, Sổ đăng bạ)
        ▲ trỏ về
-TẦNG 1 — NGHIỆP VỤ CHUYÊN SÂU (11 skill)
+TẦNG 1 — NGHIỆP VỤ CHUYÊN SÂU (13 skill)
   chuan-hoa-du-lieu-du-an          dữ liệu & tài liệu dự án XDCB/nội thất
   chuan-hoa-du-lieu-nhansu         xác minh danh tính nhân sự
   sht-qd-nhansu-alignment          soạn & rà soát Quyết định tổ chức
@@ -25,14 +25,16 @@ TẦNG 1 — NGHIỆP VỤ CHUYÊN SÂU (11 skill)
   sht-cds-danh-gia-hien-trang      đánh giá hiện trạng & sẵn sàng chuyển đổi số (DMI 6 trụ cột)
   sht-cds-thiet-ke-prd             thiết kế quy trình To-Be & soạn PRD (nhịp 02→03, trung lập hướng thi công)
   sht-cds-thiet-ke-agent           thiết kế & thẩm định use-case AI agentic (Purpose/Scope/Boundaries)
+  sht-kien-truc-ho-so              quy hoạch bộ hồ sơ theo vòng đời H1–H5, Gap Matrix
+  sht-phap-che-sot                 tra & trích căn cứ VBQPPL có hiệu lực tại mốc vụ việc (SOT)
 
 TẦNG 1B — ĐỘI 5 AGENT QUẢN TRỊ DOANH NGHIỆP / AIS48 (6 skill)
   sht-quan-tri-dn                  điều phối cả chuỗi 5 vai + nhân rộng 9 phòng ban (Cổng I/O, Sổ Cái HITL)
        ▼ gọi từng vai khi nhân sự tự làm một vai riêng lẻ
   sht-vai1-harvester               [DEPT]-01 thu thập, làm sạch, Masking Vùng Đỏ
   sht-vai2-analyzer                [DEPT]-02 phân tích điểm nghẽn, 5 Whys, Grounding
-  sht-vai3-dispatcher              [DEPT]-03 đôn đốc tiến độ, soạn nhắc việc, lập lịch
-  sht-vai4-reporter                [DEPT]-04 soạn Báo cáo Điều hành 4 phần AIS48
+  sht-vai3-reporter                [DEPT]-03 soạn Báo cáo Điều hành 4 phần AIS48
+  sht-vai4-reminder                [DEPT]-04 đôn đốc tiến độ, soạn nhắc việc, lập lịch
   sht-vai5-critic                  [DEPT]-05 phản biện độc lập, tờ trình HITL, Sổ Cái SHA-256
        ▼ gọi
 TẦNG 2 — ĐỊNH DẠNG ĐẦU RA (Skill dựng sẵn)
@@ -43,7 +45,7 @@ Skill tầng 1 **trỏ tới** tầng 0, không chép lại. Skill nhà không v
 
 ---
 
-## 30 skill
+## 32 skill
 
 | Skill | Dùng khi |
 |---|---|
@@ -59,6 +61,8 @@ Skill tầng 1 **trỏ tới** tầng 0, không chép lại. Skill nhà không v
 | **chuan-hoa-ho-so-tai-lieu** | Bóc tách PDF scan tiếng Việt, trích dẫn chứng cứ có toạ độ trang/điều, soạn báo cáo đối ngoại trung tính |
 | **sht-cds-danh-gia-hien-trang** | "Đánh giá hiện trạng CĐS", khảo sát DMI 6 trụ cột, kiểm toán dữ liệu 6 chiều, bản đồ điểm nghẽn As-Is trước Cổng G1 |
 | **sht-cds-thiet-ke-prd** | "Thiết kế PRD", "viết PRD", "quy trình To-Be", "chốt scope pilot" — nhận điểm nghẽn As-Is → thiết kế To-Be → soạn PRD cho giải pháp CĐS (Giai đoạn 03) |
+| **sht-kien-truc-ho-so** | "Lập hồ sơ", "còn thiếu giấy tờ gì", "gap matrix" — định vị pha H1–H5, Gap Matrix có đường dẫn bằng chứng, điểm sẵn sàng đếm file thật |
+| **sht-phap-che-sot** | "Căn cứ pháp lý", "điều nào quy định", "luật còn hiệu lực không" — trích nguyên văn có toạ độ Điều/Khoản, hiệu lực tại mốc vụ việc, bảng SOT |
 | **sht-cds-thiet-ke-agent** | "Thiết kế use-case AI", "AI được tự quyết đến đâu", "HITL" — khai báo agent 3 chiều, tầng confidence, Tiered Governance (khi PRD chốt hướng là agent) |
 | **sht-quan-tri-dn** | Vận hành quy trình quản trị tuần, giám sát đầu việc liên phòng ban, `/goal` `/teamwork` `/schedule`, thẩm định QA Lớp 2, dựng Đội 5 Agent cho phòng ban mới |
 | **sht-jev-cong-quyet-dinh** | "Chạy ca thật", "JEV", "cổng quyết định", "chấp nhận/bác/sai JEV-…", "vá cổng" — vận hành cổng 3 ngả nội bộ, ghi phản hồi xác thực Sổ Cái, luật ca thật trên kho nguồn, phiếu việc 4 vai |
@@ -113,4 +117,4 @@ Sổ đăng bạ — nguồn sự thật về quan hệ giữa các skill — n�
 
 Nội bộ SHT. Các skill dẫn chiếu dữ liệu và văn bản thật của công ty (hệ thống SHT Sales Pipeline trên Turso, Quyết định bổ nhiệm, khung lương 3P, hợp đồng CNTT, khung đánh giá DMI). Không phát hành ra ngoài.
 
-Phiên bản 0.25.0 — 26/09/2026.
+Phiên bản 0.28.4 — 28/09/2026.

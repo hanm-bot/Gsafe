@@ -1,7 +1,8 @@
 ---
 name: sht-quan-tri-tri-nho-lien-phien
 version: 1.0
-description: Quyết định sự thật nào đáng lưu vào memory liên phiên, cập nhật file memory sẵn có thay vì tạo trùng, đánh dấu rõ trạng thái "đã giải quyết" khi tình huống đổi, và giữ MEMORY.md luôn khớp với nội dung thật bên trong. LUÔN dùng trước khi ghi bất kỳ trí nhớ liên phiên nào, khi một phát hiện trước đó vừa được xử lý xong (cần cập nhật lại memory cũ, không phải viết đè), hoặc khi nghi ngờ MEMORY.md đang nói sai lệch so với memory/*.md bên trong. KHÔNG dùng để quyết định lưu dữ liệu nhạy cảm khách hàng (bị cấm bởi luật cứng #5), không thay thế việc đọc `00_NGUON-HO-SO.md` của workspace — skill này chỉ lo trí nhớ CỦA CHÍNH AGENT giữa các phiên, không phải hồ sơ nghiệp vụ của khách hàng.
+description: >-
+  Quyết định sự thật nào đáng lưu vào memory liên phiên, cập nhật file memory sẵn có thay vì tạo trùng, đánh dấu rõ trạng thái "đã giải quyết" khi tình huống đổi, và giữ MEMORY.md luôn khớp với nội dung thật bên trong. LUÔN dùng trước khi ghi bất kỳ trí nhớ liên phiên nào, khi một phát hiện trước đó vừa được xử lý xong (cần cập nhật lại memory cũ, không phải viết đè), hoặc khi nghi ngờ MEMORY.md đang nói sai lệch so với memory/*.md bên trong. KHÔNG dùng để quyết định lưu dữ liệu nhạy cảm khách hàng (bị cấm bởi luật cứng #5), không thay thế việc đọc `00_NGUON-HO-SO.md` của workspace — skill này chỉ lo trí nhớ CỦA CHÍNH AGENT giữa các phiên, không phải hồ sơ nghiệp vụ của khách hàng.
 ---
 
 # Thủ Kho Trí Nhớ Liên Phiên
