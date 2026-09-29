@@ -1,6 +1,6 @@
 ---
 name: "chuan-hoa-du-lieu-tuyen-dung"
-description: "Săn CV, chấm điểm ứng viên, và soạn JD mới kèm khảo sát lương thị trường cho SHT — tìm & lọc trên cổng tuyển dụng (TopCV/VietnamWorks/LinkedIn) với bộ lọc đã test bằng số liệu, đọc chi tiết CV, chấm theo mô hình ASK (nhân viên/ứng viên thường: Attitude 30%/Skills 40%/Knowledge 30%; cán bộ quản lý: A60/S30/K10) có bằng chứng trích dẫn, đối chiếu lương kỳ vọng với khung 3P hoặc benchmark thị trường mới dựng, và xuất song song infographic PDF + Excel scorecard theo chuẩn màu/font SHT. Dùng khi người dùng yêu cầu \"săn CV\", \"hunt CV\", \"tìm ứng viên\", \"lọc hồ sơ\", \"chấm điểm ứng viên\", \"lập scorecard tuyển dụng\", \"so ứng viên\", \"soạn JD\", \"khảo sát lương\", hoặc thao tác trên cổng tuyển dụng — kể cả khi chỉ gõ vỏn vẹn \"hunt CV\" hay \"viết JD cho anh\" mà không nêu chi tiết. KHÔNG dùng cho hồ sơ nhân sự đã tuyển (việc của chuan-hoa-du-lieu-nhansu). Luôn dùng KÈM sht-nen-tang-kiem-chung cho quy tắc bàn giao chung."
+description: "Săn CV, chấm ứng viên theo ASK có bằng chứng, soạn JD và khảo sát lương thị trường cho SHT; xuất infographic PDF + Excel scorecard. LUÔN dùng khi nói \"hunt CV\", \"săn CV\", \"lọc hồ sơ\", \"chấm điểm ứng viên\", \"soạn JD\", \"khảo sát lương\", kể cả khi chỉ gõ cộc lốc. KHÔNG dùng cho hồ sơ nhân sự đã tuyển (chuan-hoa-du-lieu-nhansu)."
 ---
 
 # Chuẩn hóa dữ liệu tuyển dụng (SHT)

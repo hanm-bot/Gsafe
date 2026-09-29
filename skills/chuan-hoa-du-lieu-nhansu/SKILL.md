@@ -1,6 +1,6 @@
 ---
 name: "chuan-hoa-du-lieu-nhansu"
-description: "Xác minh danh tính nhân sự trong hồ sơ tổ chức/nhân sự tại SHT — chốt tên riêng với nguồn chính thức (QĐ bổ nhiệm/hợp đồng) TRƯỚC khi sản xuất tài liệu, phân biệt nhiều người trùng tên trong cùng bối cảnh, và tách đúng \"vai\" khi một người kiêm nhiệm nhiều chức danh. LUÔN dùng skill này khi soạn/sửa hồ sơ nhân sự — bổ nhiệm, đánh giá cán bộ, onboarding, biên bản họp có nhắc tên người — đặc biệt khi có từ 2 người trở lên khả năng trùng tên/trùng họ trong cùng luồng công việc, hoặc khi một người giữ đồng thời nhiều chức danh. Dùng cùng lúc với sht-qd-nhansu-alignment khi việc là rà soát/soạn Quyết định, với sht-xacthuc-baocao-hoatdong khi hồ sơ có số liệu từ CRM/dashboard, và với sht-nen-tang-kiem-chung cho quy tắc lan truyền hiệu chỉnh & bàn giao. KHÔNG dùng cho ứng viên chưa tuyển (việc của chuan-hoa-du-lieu-tuyen-dung) hay cho thẩm quyền/mô hình tổ chức trong văn bản QĐ (việc của sht-qd-nhansu-alignment)."
+description: "Xác minh danh tính nhân sự trong hồ sơ SHT: chốt tên với QĐ/hợp đồng trước khi soạn, tách người trùng tên, tách vai khi kiêm nhiệm. LUÔN dùng khi soạn hồ sơ bổ nhiệm, đánh giá cán bộ, onboarding, biên bản có tên người, nhất là khi có người trùng tên/họ. KHÔNG dùng cho ứng viên chưa tuyển (chuan-hoa-du-lieu-tuyen-dung) hay thẩm quyền trong QĐ (sht-qd-nhansu-alignment)."
 ---
 
 # Chuẩn hóa dữ liệu nhân sự (SHT)

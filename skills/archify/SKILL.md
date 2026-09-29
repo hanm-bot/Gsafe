@@ -1,6 +1,6 @@
 ---
 name: archify
-description: "Vẽ sơ đồ quy trình (workflow diagram) từ một KẾ HOẠCH đã chốt hoặc một mô tả quy trình bất kỳ, đánh dấu rõ bước tự động hoá / điểm người duyệt / chỗ AI dừng chờ xác nhận bằng Mermaid flowchart. LUÔN dùng khi người dùng nói \"vẽ sơ đồ quy trình\", \"archify\", \"vẽ workflow\", \"trực quan hoá kế hoạch\", hoặc ngay sau khi grill-me chốt xong một KẾ HOẠCH và người dùng muốn xem sơ đồ. KHÔNG dùng để tự lập kế hoạch từ đầu (dùng grill-me hoặc superpowers:writing-plans), không dùng cho biểu đồ dữ liệu/số liệu (dùng dataviz), không dùng để vẽ sơ đồ kiến trúc kỹ thuật chi tiết (class/sequence diagram) nằm ngoài phạm vi một quy trình nghiệp vụ."
+description: "Vẽ sơ đồ quy trình Mermaid từ kế hoạch đã chốt hoặc mô tả quy trình, đánh dấu bước tự động, điểm người duyệt, chỗ AI dừng chờ. LUÔN dùng khi nói \"vẽ sơ đồ quy trình\", \"archify\", \"vẽ workflow\", hoặc sau khi grill-me chốt kế hoạch. KHÔNG dùng để lập kế hoạch (grill-me), vẽ biểu đồ số liệu (dataviz), hay sơ đồ kiến trúc kỹ thuật chi tiết."
 ---
 
 # Archify — Vẽ Sơ Đồ Quy Trình Từ Kế Hoạch

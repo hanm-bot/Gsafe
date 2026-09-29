@@ -1,11 +1,6 @@
 ---
 name: "sht-cds-danh-gia-hien-trang"
-description: >-
-  Đánh giá hiện trạng và mức độ sẵn sàng chuyển đổi số (Digital Maturity Index — DMI) cho doanh nghiệp B2B theo Giai đoạn 01 phương pháp luận SHT/Vietduc AI — khảo sát 6 trụ cột, kiểm toán chất lượng dữ liệu 6 chiều, rà soát hạ tầng API/webhook, lập bản đồ điểm nghẽn quy trình As-Is, lập Báo cáo Hiện trạng trước Cổng kiểm soát G1.
-  LUÔN dùng khi người dùng nói "đánh giá hiện trạng CĐS", "khảo sát DMI", "đo maturity", "tính điểm DMI", "tìm điểm nghẽn quy trình", hoặc chuẩn bị tư vấn lộ trình CĐS.
-  Xong Giai đoạn 01 thì chuyển sang sht-cds-thiet-ke-agent; xuất báo cáo và bàn giao theo sht-nen-tang-kiem-chung.
-  KHÔNG dùng cho rà soát hợp đồng vendor (dùng ra-soat-hop-dong-vendor), chuẩn hóa account CRM (dùng sht-normalize-account), hay bóc tách hồ sơ scan (dùng chuan-hoa-ho-so-tai-lieu).
-
+description: "Đánh giá hiện trạng và mức sẵn sàng CĐS (DMI) Giai đoạn 01 SHT: 6 trụ cột, chất lượng dữ liệu, hạ tầng API, điểm nghẽn As-Is, báo cáo trước cổng G1. LUÔN dùng khi nói \"đánh giá hiện trạng\", \"khảo sát DMI\", \"đo maturity\", \"tìm điểm nghẽn\", hoặc chuẩn bị tư vấn lộ trình CĐS. KHÔNG dùng cho rà hợp đồng vendor, chuẩn hoá CRM (sht-normalize-account), bóc hồ sơ scan (chuan-hoa-ho-so-tai-lieu)."
 ---
 
 # Đánh giá Hiện trạng & Sẵn sàng Chuyển đổi số (SHT Phase 01)

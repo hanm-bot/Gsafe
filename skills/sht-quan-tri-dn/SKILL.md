@@ -1,6 +1,6 @@
 ---
 name: "sht-quan-tri-dn"
-description: "Điều phối Đội 5 Agent Quản trị Doanh nghiệp chuẩn AIS48 (5 vai: Harvester/Analyzer/Reminder/Reporter/Critic), cả quy mô nội bộ lẫn nhân rộng 9 phòng ban SHT qua Blueprint + Workshop B5, bảo vệ bởi Cổng I/O 2 tầng (script + hook cấp user chặn PII) và Sổ Cái HITL SHA-256. LUÔN dùng khi vận hành quy trình quản trị tuần, giám sát đầu việc liên phòng ban, kiểm soát tiến độ 11 giai đoạn CĐS, chạy /goal /teamwork /schedule, thẩm định QA Lớp 2 một kế hoạch/walkthrough do Anti soạn (đối chiếu thực nghiệm, không tin báo cáo tự chấm), hoặc dựng Đội 5 Agent cho phòng ban mới — kể cả khi chỉ nói 'thẩm định QA', 'audit chéo', 'kích hoạt workshop phòng ban'. KHÔNG dùng khi chỉ xác thực báo cáo doanh số/CRM (dùng sht-xacthuc-baocao-hoatdong), xuất PDF kiểm chứng in ấn (dùng sht-nen-tang-kiem-chung), khi một nhân sự chỉ cần tự làm đúng một vai riêng lẻ (dùng sht-vai1..5), hoặc khi vận hành cổng quyết định JEV / chạy ca thật JEV (dùng sht-jev-cong-quyet-dinh)."
+description: "Điều phối Đội 5 Agent quản trị AIS48 (Harvester/Analyzer/Reminder/Reporter/Critic), nhân rộng 9 phòng ban, Cổng I/O chặn PII, Sổ Cái HITL; thẩm định QA Lớp 2 kế hoạch của Anti. LUÔN dùng khi chạy quản trị tuần, giám sát việc liên phòng ban, \"thẩm định QA\", \"audit chéo\", \"workshop phòng ban\". KHÔNG dùng cho xác thực doanh số (sht-xacthuc-baocao-hoatdong), một vai riêng lẻ (sht-vai1..5), cổng JEV (sht-jev-cong-quyet-dinh)."
 ---
 
 # KỸ NĂNG: ĐỘI 5 AGENT QUẢN TRỊ DOANH NGHIỆP TRÊN ANTIGRAVITY (SHT-AIS48)

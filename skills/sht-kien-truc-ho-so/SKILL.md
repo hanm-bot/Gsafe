@@ -1,9 +1,6 @@
 ---
 name: "sht-kien-truc-ho-so"
-description: >-
-  Quy hoạch bộ hồ sơ cho một nghiệp vụ tại SHT (nội bộ hoặc bán cho khách Bank/Telco) — định vị hồ sơ đang ở pha nào trong vòng đời H1 Khởi tạo · H2 Thẩm định · H3 Pháp lý · H4 Vận hành · H5 Nghiệm thu, lập Gap Matrix đã có / cần bổ sung / tài liệu tiếp theo có đường dẫn bằng chứng, tính điểm sẵn sàng bằng đếm file thật, và bóc tách từng tài liệu thành khung Word / Excel / Slide đo ni đóng giày theo người duyệt.
-  LUÔN dùng khi người dùng nói "lập hồ sơ", "quy hoạch tài liệu", "thiếu giấy tờ gì", "còn thiếu hồ sơ gì", "gap matrix", "vòng đời hồ sơ", "chuẩn bị hồ sơ trình ký", "bộ hồ sơ gồm những gì" — kể cả khi chỉ đưa một tập file kèm câu hỏi "đủ chưa".
-  KHÔNG dùng để trích chứng cứ/đọc nội dung tài liệu đã có (dùng chuan-hoa-ho-so-tai-lieu), rà soát điều khoản hợp đồng (dùng ra-soat-hop-dong-vendor), soạn QĐ nhân sự (dùng sht-qd-nhansu-alignment), đo DMI (dùng sht-cds-danh-gia-hien-trang), soạn PRD (dùng sht-cds-thiet-ke-prd), hay tự xuất bản file — xuất bản và bàn giao theo sht-nen-tang-kiem-chung.
+description: "Quy hoạch bộ hồ sơ một nghiệp vụ SHT theo vòng đời H1–H5, lập Gap Matrix đã có/cần bổ sung có bằng chứng, tính điểm sẵn sàng bằng đếm file thật. LUÔN dùng khi nói \"lập hồ sơ\", \"thiếu giấy tờ gì\", \"gap matrix\", \"hồ sơ trình ký gồm gì\", kể cả khi chỉ đưa tập file hỏi \"đủ chưa\". KHÔNG dùng để trích chứng cứ (chuan-hoa-ho-so-tai-lieu), rà hợp đồng (ra-soat-hop-dong-vendor), soạn QĐ (sht-qd-nhansu-alignment), đo DMI, soạn PRD."
 ---
 
 # Kiến trúc hồ sơ doanh nghiệp (SHT)

@@ -1,7 +1,7 @@
 ---
 name: sht-jev-cong-quyet-dinh
 version: 1.0
-description: "Vận hành cổng quyết định JEV nội bộ của SHT (chuỗi RAG → JEV → MCP → Workflow): lập quyết định có kiểu theo schema, cho qua cổng 3 ngả TỰ LÀM / NGƯỜI DUYỆT / CHỈ GHI LOG, ghi phản hồi CHAP_NHAN / BI_BAC / SAI có xác thực Sổ Cái HITL, và chạy ca thật trên kho nguồn khách mà không suy trạng thái từ tên file, chữ gõ sẵn hay tài liệu phân tích; kèm phiếu việc 4 vai (kiến trúc, lập quyết định, QA Lớp 2, người duyệt). LUÔN dùng khi nói 'chạy ca thật', 'JEV', 'cổng quyết định', 'hàng chờ duyệt', 'ghi phản hồi', 'chấp nhận/bác/sai JEV-…', 'vá cổng', hoặc khi agent sắp kết luận trạng thái hồ sơ khách để hành động — kể cả khi không nhắc chữ JEV. KHÔNG dùng để thiết kế use-case agentic bán cho khách (dùng sht-cds-thiet-ke-agent), không dùng cho chuỗi báo cáo quản trị 5 vai AIS48 (dùng sht-quan-tri-dn, sht-vai1..5), không thay quy tắc QA Lớp 2 chung (sht-quan-tri-dn §6), không dùng để điều phối cả dự án nhiều bước Claude–Anti (dùng sht-van-hanh-triad)."
+description: "Vận hành cổng quyết định JEV nội bộ SHT: lập quyết định theo schema, qua cổng TỰ LÀM / NGƯỜI DUYỆT / CHỈ GHI LOG, ghi phản hồi CHAP_NHAN/BI_BAC/SAI vào Sổ Cái HITL, chạy ca thật không suy trạng thái từ tên file. LUÔN dùng khi nói \"JEV\", \"chạy ca thật\", \"cổng quyết định\", \"ghi phản hồi\", kể cả khi agent sắp kết luận trạng thái hồ sơ khách để hành động. KHÔNG dùng cho use-case bán khách (sht-cds-thiet-ke-agent), chuỗi 5 vai AIS48, điều phối dự án (sht-van-hanh-triad)."
 ---
 
 # Cổng quyết định JEV — vận hành nội bộ SHT

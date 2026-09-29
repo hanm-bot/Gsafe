@@ -1,6 +1,6 @@
 ---
 name: "sht-vai4-reminder"
-description: "Đôn đốc tiến độ và soạn thông điệp nhắc việc của một vai trò cụ thể (Reminder `[DEPT]-04`): phân loại quá hạn/sắp hạn/mốc tuần tới, soạn bản nháp nhắc việc 4 phần lịch sự, thiết lập lịch /schedule định kỳ. LUÔN dùng khi một nhân sự cần tự tay nhắc ai đó trước một hạn chót — kể cả khi họ chỉ nói 'nhắc việc', 'soạn tin đôn đốc', 'ai đang trễ hạn'. KHÔNG dùng để điều phối toàn bộ chuỗi 5 vai (dùng `sht-quan-tri-dn`), phân tích điểm nghẽn (`sht-vai2-analyzer`), hay soạn báo cáo điều hành (`sht-vai3-reporter`)."
+description: "Đôn đốc tiến độ của một vai trò cụ thể (Reminder `[DEPT]-04`): phân loại quá hạn/sắp hạn, soạn tin nhắc việc 4 phần lịch sự, đặt lịch /schedule. LUÔN dùng khi một nhân sự cần nhắc ai đó trước hạn chót, kể cả khi chỉ nói \"nhắc việc\", \"ai đang trễ hạn\". KHÔNG dùng để điều phối 5 vai (sht-quan-tri-dn), phân tích (sht-vai2-analyzer), soạn báo cáo (sht-vai3-reporter)."
 ---
 
 # KỸ NĂNG CHUYÊN MÔN VAI 4: ĐÔN ĐỐC TIẾN ĐỘ & LẬP LỊCH TÁC CHIẾN

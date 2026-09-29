@@ -1,8 +1,7 @@
 ---
 name: sht-qa-kiem-chung-skill-hook
 version: 1.0
-description: >-
-  Kiểm chứng bằng hành vi thật xem một skill/hook/chốt cưỡng chế có đang thực sự chạy hay chỉ mới được khai báo trong tài liệu — tái hiện lỗi bằng đối chứng, so checksum có chuẩn hoá, chạy lại bộ test sẵn có, gọi thẳng công cụ thật để lấy bằng chứng quyết định thay vì đọc code suy luận. LUÔN dùng trước khi kết luận "skill X đang chạy", "hook Y đã chặn thật", "phiên bản Z đã cài đúng" — bất kỳ câu kết luận nào về trạng thái RUNNING của một thành phần harness. KHÔNG dùng để tự thiết kế skill mới từ đầu (dùng skill-creator), không dùng để audit quan hệ giữa các skill (dùng sht-skills:quan-tri-he-thong-skill) — skill này chỉ lo một câu hỏi duy nhất: "cái này có THẬT SỰ chạy không, hay chỉ là tài liệu nói vậy?"
+description: "Kiểm chứng bằng hành vi thật một skill/hook/chốt cưỡng chế có đang chạy hay chỉ được khai báo: tái hiện đối chứng, so checksum chuẩn hoá, chạy test sẵn có, gọi thẳng công cụ. LUÔN dùng trước khi kết luận \"skill X đang chạy\", \"hook Y đã chặn\", \"bản Z đã cài đúng\". KHÔNG dùng để thiết kế skill mới (skill-creator) hay audit quan hệ giữa skill (quan-tri-he-thong-skill)."
 ---
 
 # QA / Kiểm Chứng Viên Skill & Hook

@@ -1,7 +1,7 @@
 ---
 name: sht-van-hanh-triad
 version: 1.0
-description: "Điều phối một dự án nhiều bước theo bộ ba Claude – Antigravity (Anti) – Mr. Hà (quy chế SHT-SOP-AI-01): thẩm định và đo trước khi lập plan, viết phiếu giao việc có DoD chống bằng chứng giả, QA Lớp 2 độc lập trên bản sao, tối đa 2 vòng rồi RFC, trình nghiệm thu Gate 3 và ghi Sổ Cái HITL — mỗi người một phiếu vai (điều phối, thực thi, QA, người duyệt, soạn văn bản NĐ30). Dùng khi người dùng gõ \"giao Anti làm…\", \"đọc report-XX, đối chiếu DoD và audit chéo\", \"soạn RFC\", \"nghiệm thu P…\", \"duyệt Gate…\", \"lên implementation plan\", kể cả khi họ không nhắc SOP hay Triad mà chỉ đưa việc cần chia bước, giao người khác làm rồi kiểm. KHÔNG dùng để vận hành cổng quyết định JEV (dùng sht-jev-cong-quyet-dinh), chuỗi báo cáo quản trị 5 vai AIS48 (sht-quan-tri-dn, sht-vai1..5), thiết kế use-case agentic cho khách (sht-cds-thiet-ke-agent), phỏng vấn làm rõ yêu cầu (grill-me), phát hành skill (quan-tri-he-thong-skill), hay chỉ soạn/kiểm một văn bản đơn lẻ (sht-nen-tang-kiem-chung §9)."
+description: "Điều phối dự án nhiều bước theo bộ ba Claude – Anti – Mr. Hà (SHT-SOP-AI-01): đo trước khi lập plan, phiếu giao việc có DoD, QA Lớp 2 độc lập, RFC, Gate 3 và Sổ Cái HITL. LUÔN dùng khi nói \"giao Anti làm…\", \"đối chiếu DoD\", \"soạn RFC\", \"nghiệm thu P…\", \"duyệt Gate\", kể cả khi chỉ đưa việc cần chia bước giao người khác. KHÔNG dùng cho cổng JEV (sht-jev-cong-quyet-dinh), chuỗi 5 vai AIS48 (sht-quan-tri-dn), phỏng vấn yêu cầu (grill-me), phát hành skill."
 ---
 
 # Vận hành bộ ba Claude – Anti – Mr. Hà (SHT-SOP-AI-01)

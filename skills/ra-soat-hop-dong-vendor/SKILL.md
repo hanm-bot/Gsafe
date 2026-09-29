@@ -1,6 +1,6 @@
 ---
 name: "ra-soat-hop-dong-vendor"
-description: "Rà soát, đối chiếu và phân tích khoảng trống (gap analysis) hợp đồng CNTT, chuỗi hợp đồng nhiều bên (back-to-back), SoW/BRD, license phần mềm và phân lớp trách nhiệm kỹ thuật - thương mại. LUÔN dùng skill này khi người dùng yêu cầu \"rà soát hợp đồng\", \"gap analysis hợp đồng\", \"đối chiếu spec với hợp đồng\", \"kiểm tra rủi ro back-to-back\", \"rà soát license\", \"kiểm tra SoW/BRD\", \"chuỗi hợp đồng mua bán CNTT\", \"đối soát giấy phép\", \"giấy phép hết hạn\", \"hợp đồng này đã ký chưa\", \"đây là bản dự thảo hay bản ký\", kể cả khi chỉ gửi tập hồ sơ hợp đồng scan/text kèm yêu cầu đánh giá trước khi ký. KHÔNG dùng skill này để chuẩn hóa hồ sơ scan/PDF đa định dạng chung chung (dùng `chuan-hoa-ho-so-tai-lieu`), không dùng cho Quyết định nhân sự (dùng `sht-qd-nhansu-alignment`), và không dùng cho tài liệu dự án XDCB/nội thất (dùng `chuan-hoa-du-lieu-du-an`); không tự tra hay khẳng định hiệu lực văn bản quy phạm pháp luật (trần phạt, trần lãi, thuế) — dùng `sht-phap-che-sot`."
+description: "Rà soát và gap analysis hợp đồng CNTT, chuỗi back-to-back, SoW/BRD, license và phân lớp trách nhiệm. LUÔN dùng khi nói \"rà soát hợp đồng\", \"đối chiếu spec với hợp đồng\", \"rà license\", \"hợp đồng này đã ký chưa\", kể cả khi chỉ gửi tập hợp đồng trước khi ký. KHÔNG dùng để chuẩn hoá hồ sơ scan chung (chuan-hoa-ho-so-tai-lieu), QĐ nhân sự (sht-qd-nhansu-alignment), hồ sơ XDCB (chuan-hoa-du-lieu-du-an), tra hiệu lực luật (sht-phap-che-sot)."
 ---
 
 # Rà soát hợp đồng CNTT — Gap Analysis, Chuỗi & Đặc tả (SHT)

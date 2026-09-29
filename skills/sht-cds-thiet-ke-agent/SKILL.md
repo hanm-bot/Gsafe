@@ -1,6 +1,6 @@
 ---
 name: "sht-cds-thiet-ke-agent"
-description: "Thiết kế & thẩm định use-case AI agentic trước khi đề xuất cho khách Bank/Telco — khai báo agent đủ 3 chiều Purpose/Scope/Boundaries, gán 3 tầng confidence (tự hành động / người duyệt / chỉ ghi log), chọn mức Tiered Governance L1-L2-L3, dựng bộ ca kiểm thử có ca gài, chốt vòng đời sandbox→pilot→production→review và 4 hạng mục bàn giao. LUÔN dùng khi người dùng nói \"thiết kế use-case AI\", \"AI được tự quyết đến đâu\", \"chatbot cho ngân hàng\", \"mức tự động hóa\", \"kiểm thử chất lượng AI\", \"HITL\", \"agent có tự chạy được không\", \"khách hỏi nếu AI sai thì ai chịu\" — kể cả khi chỉ mô tả tình huống mà không nhắc chữ \"agentic\". Dùng KÈM sht-cds-danh-gia-hien-trang (bắt buộc qua Giai đoạn 01 trước) và sht-nen-tang-kiem-chung (bàn giao). KHÔNG dùng để đo DMI/đánh giá hiện trạng, rà soát hợp đồng vendor, hay chuẩn hóa dữ liệu CRM."
+description: "Thiết kế và thẩm định use-case AI agentic cho khách Bank/Telco: Purpose/Scope/Boundaries, 3 tầng confidence, Governance L1-L3, ca kiểm thử có ca gài, vòng đời sandbox→production. LUÔN dùng khi nói \"thiết kế use-case AI\", \"AI được tự quyết đến đâu\", \"HITL\", \"AI sai thì ai chịu\", kể cả khi không nhắc chữ agentic. Phải qua Giai đoạn 01 trước. KHÔNG dùng để đo DMI, rà hợp đồng vendor, chuẩn hoá CRM."
 ---
 
 # Thiết kế & quản trị use-case AI agentic cho Bank/Telco

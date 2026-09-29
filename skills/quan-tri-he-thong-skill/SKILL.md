@@ -1,6 +1,6 @@
 ---
 name: "quan-tri-he-thong-skill"
-description: "Quản trị logic của TOÀN BỘ hệ thống skill SHT — audit định kỳ để phát hiện overlap (hai skill dạy cùng một logic), xung đột trigger (hai description tranh nhau kích hoạt), tham chiếu gãy (skill trỏ tới skill không tồn tại), frontmatter hỏng và skill phình quá khổ; quyết định \"logic này thuộc skill nào\"; và thực hiện nâng cấp skill theo quy trình an toàn có kiểm chứng ngược. LUÔN dùng skill này khi người dùng nói \"upgrade skill\", \"nâng cấp skill\", \"rà soát skill\", \"audit skill\", \"skill bị trùng/chồng chéo/xung đột\", \"skill không tự kích hoạt\", \"gộp skill\", \"tách skill\", \"skill nào dùng khi nào\", hoặc khi chuẩn bị TẠO MỘT SKILL MỚI mà hệ thống đã có skill cùng miền nghiệp vụ — kể cả khi họ chỉ gõ vỏn vẹn \"UPGRADE SKILL\". KHÔNG dùng skill này để viết nội dung nghiệp vụ bên trong một skill đơn lẻ (đó là việc của skill-creator); skill này chỉ lo quan hệ GIỮA các skill."
+description: "Quản trị quan hệ GIỮA các skill SHT: audit overlap, xung đột trigger, tham chiếu gãy, frontmatter hỏng, skill quá khổ; chốt logic thuộc skill nào; nâng cấp và phát hành an toàn. LUÔN dùng khi nói \"upgrade skill\", \"audit skill\", \"skill trùng/xung đột\", \"skill không tự kích hoạt\", \"gộp/tách skill\", hoặc trước khi tạo skill mới trong miền đã có. KHÔNG dùng để viết nội dung bên trong một skill (skill-creator)."
 ---
 
 # Quản trị logic hệ thống skill (SHT)

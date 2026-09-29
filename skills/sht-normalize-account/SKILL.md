@@ -1,15 +1,6 @@
 ---
 name: sht-normalize-account
-description: >-
-  Chuẩn hóa danh tính khách hàng/tài khoản trong dữ liệu SHT Sales Pipeline (Turso/Base.vn CRM)
-  trước khi phân tích theo account, chi nhánh, hoặc Account 360. LUÔN dùng skill này bất cứ khi nào
-  làm việc với bảng `deals`, đếm số khách hàng/chi nhánh, gộp/rollup theo account, hay tính điểm
-  sức khỏe account — kể cả khi người dùng không nói chữ "chuẩn hóa". Skill đóng gói bài học xương máu:
-  gộp account phải theo Mã Dự Án có cấu trúc (`ma`), KHÔNG theo tên khách hàng free-text (`kh`) — làm
-  sai chỗ này sẽ tách khống 1 chi nhánh thành hàng trăm account ảo. Khi con số sẽ vào văn bản
-  chính thức, chuyển tiếp sang `sht-xacthuc-baocao-hoatdong`. KHÔNG dùng skill này để kiểm
-  tính đúng đắn của doanh số (việc của `sht-xacthuc-baocao-hoatdong`) hay xác minh danh tính
-  người (việc của `chuan-hoa-du-lieu-nhansu`).
+description: "Chuẩn hoá danh tính khách hàng/account trong SHT Sales Pipeline (Turso/Base.vn): gộp theo Mã Dự Án `ma`, KHÔNG theo tên free-text `kh`. LUÔN dùng khi làm với bảng `deals`, đếm khách/chi nhánh, rollup theo account, Account 360, kể cả khi không nói \"chuẩn hoá\". KHÔNG dùng để kiểm đúng doanh số (sht-xacthuc-baocao-hoatdong) hay xác minh tên người (chuan-hoa-du-lieu-nhansu)."
 ---
 
 # Chuẩn hóa account SHT Sales Pipeline

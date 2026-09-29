@@ -1,7 +1,6 @@
 ---
 name: sht-quan-tri-hien-phap-tai-lieu
-version: 1.0
-description: Giữ tài liệu vận hành (CLAUDE.md, README, bảng hiệu lực) khớp đúng thực tế máy/hệ thống hiện tại khi phát hiện lệch — sửa bằng cách thêm ghi chú cập nhật kèm ngày cạnh chỗ sai, không viết đè log lịch sử; lan truyền một sự thật đã đổi sang MỌI nơi đang trích dẫn nó. LUÔN dùng khi phát hiện tài liệu vận hành nói khác thực tế đã kiểm chứng (đường dẫn, tên thư mục, số phiên bản, trạng thái ✅/⚠️), khi một cái tên/con số xuất hiện ở nhiều file cần sửa đồng loạt, hoặc trước khi bàn giao tài liệu cần đối chiếu tính nhất quán. KHÔNG dùng để soạn tài liệu nghiệp vụ mới từ đầu, không thay thế sht-nen-tang-kiem-chung (quy tắc chung cho MỌI deliverable) — skill này chuyên riêng cho tài liệu VẬN HÀNH/HIẾN PHÁP của hệ thống, không phải sản phẩm giao khách hàng.
+description: "Giữ tài liệu vận hành (CLAUDE.md, README, bảng hiệu lực) khớp thực tế đã kiểm: ghi chú cập nhật kèm ngày cạnh chỗ sai, không viết đè lịch sử, lan truyền sự thật đã đổi sang mọi nơi trích nó. LUÔN dùng khi tài liệu vận hành nói khác thực tế (đường dẫn, phiên bản, ✅/⚠️). KHÔNG dùng để soạn tài liệu nghiệp vụ mới hay sản phẩm giao khách; quy tắc chung cho deliverable ở sht-nen-tang-kiem-chung."
 ---
 
 # Quản Trị Tài Liệu / Hiến Pháp

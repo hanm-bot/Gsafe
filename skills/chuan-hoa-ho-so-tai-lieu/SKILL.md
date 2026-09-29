@@ -1,6 +1,6 @@
 ---
 name: "chuan-hoa-ho-so-tai-lieu"
-description: "Chuẩn hoá hồ sơ tài liệu dự án/pháp lý đa định dạng (PDF scan tiếng Việt, docx, xlsx, JSON) thành dữ liệu trích dẫn được có toạ độ trang và điều khoản, và kết xuất báo cáo đa góc nhìn (nội bộ, đối ngoại không đối kháng, điều hành). LUÔN dùng skill này khi người dùng yêu cầu \"chuẩn hóa hồ sơ\", \"đọc PDF scan tiếng Việt\", \"trích dẫn chứng cứ từ tài liệu\", \"đối chiếu hồ sơ pháp lý\", \"kiểm kê tài liệu dự án\", \"viết báo cáo đối ngoại không xung đột\", \"đối chiếu nhiều văn bản scan\", kể cả khi gửi tập tài liệu scan hỗn hợp kèm yêu cầu trích xuất chứng cứ. KHÔNG dùng skill này cho rà soát hợp đồng CNTT/SoW/Gap analysis chuyên sâu (dùng `ra-soat-hop-dong-vendor`), không dùng cho hồ sơ nhân sự (dùng `chuan-hoa-du-lieu-nhansu`), và không dùng cho tài liệu dự án XDCB/nội thất có bóc băng ghi âm (dùng `chuan-hoa-du-lieu-du-an`)."
+description: "Chuẩn hoá hồ sơ dự án/pháp lý đa định dạng (PDF scan tiếng Việt, docx, xlsx) thành dữ liệu trích dẫn được có toạ độ trang, điều khoản; xuất báo cáo nội bộ/đối ngoại/điều hành. LUÔN dùng khi nói \"chuẩn hoá hồ sơ\", \"đọc PDF scan\", \"trích chứng cứ\", \"kiểm kê tài liệu\", \"báo cáo đối ngoại\". KHÔNG dùng cho hợp đồng CNTT (ra-soat-hop-dong-vendor), nhân sự (chuan-hoa-du-lieu-nhansu), XDCB có ghi âm (chuan-hoa-du-lieu-du-an)."
 ---
 
 # Chuẩn hoá hồ sơ tài liệu thành dữ liệu trích dẫn được (SHT)

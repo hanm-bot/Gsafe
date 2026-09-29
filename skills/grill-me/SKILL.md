@@ -1,6 +1,6 @@
 ---
 name: grill-me
-description: "Phỏng vấn/\"khảo\" người dùng để làm rõ yêu cầu, chốt phương án thành KẾ HOẠCH và chờ PROCEED trước khi thực thi. Trình option dạng nút bấm để chọn. Dùng khi yêu cầu còn mơ hồ, khi cần chốt bài toán/tiêu chí ĐẠT, khi cần một bản plan để phê duyệt, hoặc khi người dùng nói \"grill me\", \"khảo tôi\", \"phỏng vấn tôi\", \"làm rõ yêu cầu\", \"chốt bài toán\", \"lên kế hoạch\". KHÔNG dùng khi yêu cầu đã đủ rõ và chỉ cần lập kế hoạch kỹ thuật thuần túy trên code có sẵn (dùng superpowers:brainstorming hoặc superpowers:writing-plans), và không tự vẽ sơ đồ quy trình (sau khi chốt plan, gọi archify)."
+description: "Phỏng vấn người dùng làm rõ yêu cầu, chốt phương án thành KẾ HOẠCH có tiêu chí ĐẠT, chờ PROCEED trước khi làm; trình lựa chọn dạng nút bấm. LUÔN dùng khi yêu cầu mơ hồ, hoặc nói \"grill me\", \"khảo tôi\", \"làm rõ yêu cầu\", \"chốt bài toán\", \"lên kế hoạch\". KHÔNG dùng khi chỉ cần plan kỹ thuật trên code (superpowers:writing-plans), không tự vẽ sơ đồ (archify)."
 ---
 
 # Grill Me — Khảo → Chốt kế hoạch → Proceed → Thực thi

@@ -1,11 +1,6 @@
 ---
 name: "chuan-hoa-du-lieu-du-an"
-description: >-
-  Kiểm chứng nguồn và dựng tài liệu dự án XDCB/thiết kế/nội thất của SHT — bốn cổng kiểm transcript ghi âm, xác định đúng người phát ngôn bằng bằng chứng trong âm thanh, truy vết từng ý về mốc thời gian có thật, đối chiếu chéo nhiều nguồn để lộ mâu thuẫn, kiểm chứng ngày tháng qua metadata file và epoch timestamp ẩn trong tên ảnh, giữ nguyên thể thức và watermark khi phục dựng văn bản hành chính gốc.
-  LUÔN dùng khi soạn biên bản họp từ ghi âm/transcript, cần prompt transcribe, lập bảng tiến độ, công văn, báo cáo khảo sát; hoặc khi người dùng nói "sửa số liệu", "sửa người nói", "giữ nguyên template gốc", "ảnh này chụp ngày nào" — kể cả khi không nhắc chữ "chuẩn hóa".
-  Dùng KÈM sht-nen-tang-kiem-chung, và chuan-hoa-du-lieu-nhansu khi tài liệu có tên người.
-  KHÔNG dùng cho ứng viên tuyển dụng hay dữ liệu CRM.
-
+description: "Kiểm chứng nguồn và dựng tài liệu dự án XDCB/thiết kế/nội thất SHT: kiểm transcript ghi âm, xác định người nói, đối chiếu chéo nguồn, kiểm ngày qua metadata ảnh, giữ thể thức văn bản gốc. LUÔN dùng khi soạn biên bản từ ghi âm, bảng tiến độ, công văn, hoặc nói \"sửa người nói\", \"ảnh này chụp ngày nào\". KHÔNG dùng cho ứng viên tuyển dụng hay dữ liệu CRM."
 ---
 
 # Dữ liệu & tài liệu dự án XDCB / nội thất (SHT)
