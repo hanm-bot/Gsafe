@@ -94,7 +94,7 @@ Sáu nhóm NFR bắt buộc cân nhắc:
 | Nhóm | Chốt gì |
 |---|---|
 | **Bảo mật & quyền** | Least-privilege, phân tách dữ liệu, ai thấy gì |
-| **Tuân thủ** | **Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15** + **NĐ 356/2025/NĐ-CP** (hiệu lực 01/01/2026; NĐ 13/2023 hết hiệu lực từ cùng ngày) là nền (`sht-phap-che-sot/references/danh-muc-van-ban-goc.md` §4) *(sửa 30/09/2026, v0.30.2 — tra qua `sht-phap-che-sot`)*; Bank thêm quy định **NHNN** về ATTT hệ thống; có yếu tố nước ngoài thì đối chiếu EU AI Act / NIST AI RMF |
+| **Tuân thủ** | **Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15** + **NĐ 356/2025/NĐ-CP** (hiệu lực 01/01/2026; NĐ 13/2023 hết hiệu lực từ cùng ngày) là nền (`sht-phap-che-sot/references/danh-muc-van-ban-goc.md` §4) *(sửa 30/09/2026, v0.30.2 — tra qua `sht-phap-che-sot`)*; Bank thêm quy định **NHNN** về ATTT hệ thống; giải pháp có AI thêm **Luật Trí tuệ nhân tạo 134/2025/QH15** (checklist mục 2b); có yếu tố nước ngoài thì đối chiếu EU AI Act / NIST AI RMF |
 | **Luồng dữ liệu cá nhân** | **Sơ đồ luồng dữ liệu** — trả lời "dữ liệu KH có rời hạ tầng khách không?" bằng sơ đồ, không bằng lời hứa |
 | **Hiệu năng & tải** | SLA, thông lượng, thời gian phản hồi — số, không tính từ |
 | **HITL & phê duyệt** | Mọi bước chạm **tiền hoặc PII** mặc định HITL: hệ thống gợi ý, **người duyệt** thực thi |
