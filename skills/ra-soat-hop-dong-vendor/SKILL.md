@@ -79,7 +79,7 @@ Mọi mốc hiệu lực trong hồ sơ nằm rải ở các văn kiện khác n
 
 Hai quy tắc đọc bảng này:
 
-- **Mốc đã trôi qua trên một hệ thống đang khai thác là cảnh báo đỏ, không phải việc hành chính.** Nêu trước mọi nội dung khác.
+- **Mốc đã trôi qua trên một hệ thống đang khai thác là cảnh báo đỏ, không phải việc hành chính — nhưng CHỈ SAU KHI đã xác minh nó còn treo thật.** Hồ sơ trong workspace thường đóng băng ở một mốc quá khứ trong khi việc kinh doanh chạy tiếp. Trước khi viết "đã hết hạn / chưa gia hạn / còn treo": đọc `data/workspaces/<ws>/00_NGUON-HO-SO.md` (hồ sơ cập nhật đến ngày nào), kiểm thư mục gốc; không kiểm được thì **hỏi người** và gắn nhãn "chưa đối chiếu". Đã xác minh còn treo thì mới nêu trước mọi nội dung khác. *(Thêm 30/09/2026, v0.28.7 — ca thật 03/09 và lặp lại 05/09/2026: một hạng mục đã hoàn tất bị báo còn treo và nâng thành cảnh báo ưu tiên cao nhất, cả hai lần trích đúng nguyên văn mà sai thực tế.)*
 - **Đối chiếu tiến độ khắc phục với mức độ cấp thiết.** Nếu phương án gia hạn có tiến độ *giao hàng + cài đặt* dài hơn khoảng thời gian đã quá hạn, thì câu cần hỏi đối tác **không phải câu về giá** mà là *phương án bảo đảm liên tục trong thời gian chờ*.
 
 ### 0.4 Hệ tác nhân độc lập theo lớp (hồ sơ lớn, Chế độ B và C)

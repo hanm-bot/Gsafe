@@ -31,7 +31,7 @@ Không bỏ bước [1]. Người dùng thường chỉ nhớ một triệu ch�
 
 ## 1. Audit trước, phán đoán sau
 
-Ghi script ở Phụ lục A ra file rồi chạy trên thư mục skill. Script bắt 12 lớp lỗi:
+Ghi script ở Phụ lục A ra file rồi chạy trên thư mục skill. Script bắt 13 lớp lỗi:
 
 | Mã | Lỗi | Mức |
 |---|---|---|
@@ -47,6 +47,7 @@ Ghi script ở Phụ lục A ra file rồi chạy trên thư mục skill. Script
 | E10 | `description` vượt hoặc sát trần 1024 ký tự | CAO–THẤP |
 | E11 | Sổ khai báo quan hệ mà SKILL.md không nhắc | TRUNG |
 | E12 | `description` thiếu vùng loại trừ "KHÔNG dùng…" | THẤP |
+| E13 | Frontmatter không đọc được bằng trình YAML thật / mô tả bị cắt | CAO |
 
 Chi tiết từng lớp, cách xử lý và lý do chọn ngưỡng: `references/bang-loi.md`.
 
@@ -207,9 +208,9 @@ Skill chưa có sự cố thì file ca kiểm thử **rỗng có chủ ý** — 
 
 ## 10. Rà định kỳ
 
-Tác vụ `audit-skill-sht-hang-tuan` chạy sáng thứ Hai hàng tuần: bộ tự kiểm công cụ → audit 11 lớp → đối chiếu ba phiên bản (nguồn / file `.plugin` / bản đang cài).
+Tác vụ `audit-skill-sht-hang-tuan` chạy sáng thứ Hai hàng tuần: bộ tự kiểm công cụ → audit 12 lớp → đối chiếu ba phiên bản (nguồn / file `.plugin` / bản đang cài).
 
-**Chỉ 11/12 lớp, không phải 12.** Lệnh trong tác vụ không truyền `--personal`, vì tác vụ tự
+**Chỉ 12/13 lớp, không phải 13.** Lệnh trong tác vụ không truyền `--personal`, vì tác vụ tự
 động không biết trước thư mục skill cá nhân nằm ở đâu trên máy người dùng. Thiếu
 `--personal` thì công cụ tự in *"chưa truyền --personal nên KHÔNG kiểm được E7"* — E7 (skill
 nhà nằm ngoài plugin / tồn tại hai bản song song) bị bỏ qua ở lần chạy tuần. Muốn kiểm cả
@@ -264,7 +265,7 @@ Mỗi lần thêm/sửa/xóa skill: sửa **hàng có sẵn** trong sổ, không
 
 | File | Việc | Khi nào chạy |
 |---|---|---|
-| `audit_skills.py` | Quét 12 lớp lỗi E1–E12 | Bước [1] và [6] của luồng chuẩn |
+| `audit_skills.py` | Quét 13 lớp lỗi E1–E13 | Bước [1] và [6] của luồng chuẩn |
 | `test_audit.py` | **Tự kiểm chính công cụ audit** — 32 ca, mỗi lớp lỗi kiểm hai chiều | Mỗi lần sửa `audit_skills.py`, và tự động ở cổng 1 khi phát hành |
 | `release.py` | Mười cổng phát hành rồi mới đóng gói | Mọi lần ra bản mới — thay cho việc nén tay |
 

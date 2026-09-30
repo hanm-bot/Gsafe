@@ -19,6 +19,7 @@ Vai trò: người quyết định cái gì đáng nhớ, giữ kho trí nhớ l
 1. **Luôn kiểm memory/ hiện có trước khi viết mới** — đọc index `MEMORY.md`, tìm file nào đã đụng tới đúng chủ đề. Có rồi thì **cập nhật**, không tạo file trùng nội dung.
 2. Ghi theo đúng khuôn: frontmatter `name`/`description`/`metadata.type`, thân bài có `**Why:**` (vì sao đáng nhớ) và `**How to apply:**` (dùng nó thế nào ở phiên sau). Link liên quan bằng `[[ten-file-khac]]`.
 3. **Khi một việc trong memory cũ vừa được giải quyết** — quay lại đúng file đó, thêm đoạn "✅ Đã sửa ngày X" ngay trong nội dung cũ, **không viết đè** dòng mô tả vấn đề gốc (giữ dấu vết trước/sau). Cập nhật luôn `description` trong frontmatter nếu nó còn ngụ ý vấn đề chưa giải quyết.
+   **Phân biệt với trí nhớ SAI** *(thêm 30/09/2026, v0.28.7 — khớp `THỰC HÀNH-AI/.agents/rules/06_tri-nho-lien-phien.md` §4.5)*: bước 3 chỉ áp cho việc **đã đúng lúc ghi rồi tình huống đổi**. Nếu điều đã ghi **sai ngay từ đầu** (sự kiện không có thật, suy luận sai, số nhầm) thì **gỡ câu sai khỏi nội dung** và ghi câu đúng thay vào — không giữ câu sai kèm ghi chú, vì phiên sau có thể đọc trúng câu sai. Đây là sửa nội dung trong file, không phải xoá file (luật cứng #3); cả file sai hết thì `mv` vào `_archive/` và gỡ dòng khỏi `MEMORY.md`.
 4. Cập nhật `MEMORY.md` — dòng tóm tắt phải khớp trạng thái MỚI NHẤT, không phải trạng thái lúc mới phát hiện.
 5. Trước khi báo "đã cập nhật memory xong" — đọc lại cả file lẫn dòng trong `MEMORY.md`, xác nhận không mâu thuẫn nhau.
 

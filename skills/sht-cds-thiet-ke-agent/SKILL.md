@@ -65,11 +65,11 @@ Confidence phải **tính được**, không cảm tính. Cấu thành: độ nh
 
 | Tầng | Hành vi | Vai trò |
 |---|---|---|
-| **Cao** | **Tự hành động** — chạy phản ứng đã cấp phép trước (chặn giao dịch gian lận rõ ràng, khoá tài khoản bị xâm nhập) | Người thực thi |
+| **Cao** | **Tự hành động** — chạy phản ứng đã cấp phép trước, **chỉ với use-case đã phân loại rủi ro Thấp**. Use-case chạm tiền/tài khoản (chặn giao dịch, khoá tài khoản) là rủi ro Cao: dù điểm tin cậy cao vẫn phải qua người duyệt, trừ khi Governance L3 cấp phép riêng bằng văn bản | Người thực thi |
 | **Trung bình** | **Đối tác của người** — chuẩn bị tóm tắt kèm ngữ cảnh (sự cố trước, rủi ro đã biết, lịch sử khách) rồi chuyển người duyệt | *Decision concierge*, **không phải quan toà** |
 | **Thấp** | **Quan sát thầm lặng** — ghi log, gắn thẻ phân tích sau. Góp vào trí nhớ tổ chức mà không tạo nhiễu | Bộ nhớ |
 
-Ngưỡng **không cố định**: agent nhận feedback (được chấp nhận / bị override / bị đánh dấu lỗi) → huấn luyện lại → điều chỉnh ngưỡng.
+Ngưỡng khởi điểm khi chưa có dữ liệu hiệu chỉnh: **≥90** tự làm (chỉ rủi ro Thấp) · **70–89** người duyệt trước khi gửi · **50–69** chỉ ghi log · **<50** trả bản PARTIAL, không kết luận. Sau đó ngưỡng **không cố định**: agent nhận feedback (được chấp nhận / bị override / bị đánh dấu lỗi) → huấn luyện lại → điều chỉnh ngưỡng.
 
 **Ví dụ ba tầng trên cùng một khách:** quẹt thẻ Chicago 14:00, 30 phút sau quẹt Miami → bất khả thi địa lý → **chặn ngay** (cao). Quán cà phê mới nhưng đúng giờ, đúng khu, đúng mức chi → **cho qua + ghi lại** (thấp). Cửa hàng xa xỉ đã từng đến nhưng số tiền gấp đôi → **dừng, gắn cờ, chuyển người** (trung bình).
 

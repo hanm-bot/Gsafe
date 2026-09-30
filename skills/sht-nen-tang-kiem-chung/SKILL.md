@@ -65,10 +65,10 @@ Nguyên tắc này cũng áp khi **bổ sung ngữ cảnh giữa phiên** (VD "a
 Sinh file mới mỗi lần sửa mà không hủy bản cũ tạo hỗn loạn phiên bản: thư mục đầy `_v2`, `_v3`, `_040826`, `_UPGRADED`, và **không ai biết bản nào đúng để trình ký**. Đã xảy ra: 7 phiên bản cùng một biên bản họp.
 
 - Khi thay thế một tài liệu, **ghi rõ ngay trong chính văn bản**: "Bản này thay thế hoàn toàn bản trước, đề nghị hủy/không sử dụng bản cũ."
-- **Xóa bản cũ ngay tại thời điểm bàn giao.** Nếu lệnh xóa bị chặn quyền, **xin quyền rồi thực hiện** — không dừng ở việc khuyên người dùng tự xóa.
-- **Ghi tên bản bị thay thế vào bản có hiệu lực TRƯỚC khi xóa.** Không chỉ ghi "bản này thay thế bản trước" chung chung, mà liệt kê **tên tệp, ngày, và lý do hết hiệu lực của từng bản**, cộng với chỉ dẫn tới mục đính chính. Chỉ sau khi dấu vết đó nằm trong bản có hiệu lực thì mới được xóa. Đây là cách duy nhất thỏa mãn đồng thời hai yêu cầu vốn xung đột: *một bản có hiệu lực* và *giữ dấu vết kiểm toán*.
-- **Cẩn trọng đặc biệt khi bản cũ là cơ sở của một văn bản đã phát hành ra ngoài.** Nếu một công văn có số, có dấu đã gửi đối tác được dựng trên bản cũ, thì xóa bản cũ là mất căn cứ giải trình. Trường hợp này: ghi dấu vết theo gạch đầu dòng trên, **nêu rõ tình huống cho người dùng và để họ quyết** — xóa hay giữ, chứ không tự quyết một chiều.
-- **File trong thư mục người dùng chọn có thể bị hệ điều hành khóa** nếu đang mở ở Word/trình xem PDF trên máy họ; quyền cấp qua công cụ nội bộ không thắng được khóa cấp OS. Khi `rm`/ghi đè báo "Permission denied" dù đã xin quyền: thử lại 1–2 lần; nếu vẫn lỗi, lưu tạm bằng hậu tố `_v2`, báo người dùng đóng file gốc, rồi **hoàn tất đổi lại đúng tên chuẩn** ngay khi họ xác nhận. Không dừng ở việc báo lỗi suông.
+- **Vô hiệu bản cũ ngay tại thời điểm bàn giao bằng cách `mv` vào `_archive/`** — không xoá (luật cứng #3). Lệnh xoá bị chặn là chốt `permissions.deny` đang làm đúng việc: **không xin tháo chốt, không tìm đường vòng.** *(Sửa 30/09/2026, v0.28.7 — bản cũ dạy "xin quyền rồi xoá", trái luật cứng #3.)*
+- **Ghi tên bản bị thay thế vào bản có hiệu lực TRƯỚC khi xóa.** Không chỉ ghi "bản này thay thế bản trước" chung chung, mà liệt kê **tên tệp, ngày, và lý do hết hiệu lực của từng bản**, cộng với chỉ dẫn tới mục đính chính. Chỉ sau khi dấu vết đó nằm trong bản có hiệu lực thì mới chuyển bản cũ vào `_archive/`. Đây là cách duy nhất thỏa mãn đồng thời hai yêu cầu vốn xung đột: *một bản có hiệu lực* và *giữ dấu vết kiểm toán*.
+- **Cẩn trọng đặc biệt khi bản cũ là cơ sở của một văn bản đã phát hành ra ngoài.** Nếu một công văn có số, có dấu đã gửi đối tác được dựng trên bản cũ, thì bản cũ phải còn truy được để giải trình. Trường hợp này: ghi dấu vết theo gạch đầu dòng trên, **nêu rõ tình huống cho người dùng và để họ quyết** — lưu trữ hay giữ nguyên tại chỗ, chứ không tự quyết một chiều.
+- **File trong thư mục người dùng chọn có thể bị hệ điều hành khóa** nếu đang mở ở Word/trình xem PDF trên máy họ; quyền cấp qua công cụ nội bộ không thắng được khóa cấp OS. Khi `mv`/ghi báo "Permission denied": thử lại 1–2 lần; nếu vẫn lỗi, lưu tạm bằng hậu tố `_v2`, báo người dùng đóng file gốc, rồi **hoàn tất đổi lại đúng tên chuẩn** ngay khi họ xác nhận. Không dừng ở việc báo lỗi suông.
 - Đặt tên file theo **nội dung + trạng thái hiệu lực**, không theo số lần sửa.
 - Sửa nhiều vòng trong cùng một phiên → **ghi đè lên cùng một file**.
 - Cuối phiên, liệt kê danh mục file có hiệu lực, phân biệt rõ **file mình tạo** với **file gốc của người dùng** (không bao giờ tự động xóa file gốc).
@@ -122,7 +122,7 @@ Chạy trước khi nói "đã xong". Lệnh chạy thành công **không đồn
 - [ ] Nếu có thay tên hàng loạt: đã quét lại `Anh Anh`/`Chị Chị`, cụm bảo vệ, và tiêu đề viết HOA (§2)
 - [ ] Đã **render ra ảnh và đọc từng trang** — không bàn giao file chưa nhìn tận mắt
 - [ ] Đã **dò trang trống bằng máy** sau khi xuất PDF, không dò bằng mắt (§6.1)
-- [ ] Bản cũ vô hiệu: tên và lý do hết hiệu lực đã ghi vào bản có hiệu lực, **rồi mới** xóa thật (§3)
+- [ ] Bản cũ vô hiệu: tên và lý do hết hiệu lực đã ghi vào bản có hiệu lực, **rồi mới** `mv` vào `_archive/` — không xoá (§3)
 - [ ] Đã liệt kê danh mục file có hiệu lực cuối phiên, phân biệt file mình tạo với file gốc
 - [ ] Nếu deliverable có ràng buộc nội dung (thuần kỹ thuật / đối ngoại): đã chạy `grep` xác minh, không chỉ đọc bằng mắt (§6.2)
 - [ ] Tóm tắt bàn giao **ngắn** — chỉ nêu hành động ưu tiên và cảnh báo, không liệt kê lại toàn bộ nội dung file
