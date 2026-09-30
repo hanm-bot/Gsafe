@@ -194,6 +194,8 @@ Mỗi skill giữ ca của mình ở `references/ca-kiem-thu.md`. Khung dùng ch
 
 1. **Ca chỉ mọc từ sự cố thật.** Mỗi mục mới trong `debug_notes.md` sinh đúng một ca.
    Không thêm ca từ tưởng tượng — đây là §9 áp cho Lớp 3.
+   **Nguyên tắc Hashimoto** (rule 00 §3): lỗi lần 1 → ghi `debug_notes.md` + một ca; **lặp lần 2** → nâng thành
+   luật trong skill, và nếu kiểm được bằng máy thì thành hook/cổng. *(thêm 30/09/2026, v0.30.0)*
 2. **Mỗi ca kiểm hai chiều.** Khi mới viết, chạy hai lần: một lần hành vi đúng (phải đạt),
    một lần hành vi cố tình sai (phải trượt). Ca không trượt được khi đáng trượt thì bỏ.
 3. **Người chấm, không phải agent.** Để agent tự chấm agent là bỏ mất chốt độc lập.

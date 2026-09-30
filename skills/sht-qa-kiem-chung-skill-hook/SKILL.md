@@ -27,6 +27,8 @@ Byte-so-byte thô dễ dương tính giả (CRLF/LF, BOM, encoding). Luôn tính
 ### 3. Chạy lại bộ test sẵn có, đừng tự bịa test mới nếu đã có
 Nhiều hook/script trong hệ SHT có sẵn `test-*.cjs` đi kèm — chạy trực tiếp lấy kết quả thật (đạt/trượt bao nhiêu ca), đừng chỉ đọc code rồi đoán nó đúng.
 > *Case:* sau khi vá path 6 hook cấp user, chạy lại đủ 6 bộ `test-chan-*.cjs` → phát hiện 1 bộ thật sự fail (assertion lỗi) dù 5 bộ kia sạch — nếu chỉ đọc code sẽ không thấy.
+>
+> ⚠️ **Giới hạn:** test đơn vị chứng minh **mã** hook đúng, **không** chứng minh app gọi được hook. `node test.cjs` trong Git Bash luôn chạy vì Bash có PATH đủ. Muốn kết luận hook **đang sống** thì dùng kỹ thuật 8.
 
 ### 4. Gọi thẳng công cụ thật — bằng chứng quyết định, không gì thuyết phục hơn
 Với skill: gọi `Skill(skill="...")` trực tiếp. Với quyền: thử chính lệnh bị nghi ngờ (`rm`) và xem có bị từ chối không. Đừng dừng ở "tôi thấy file tồn tại" hay "cấu hình có ghi".
@@ -41,13 +43,26 @@ Khi một skill từng tồn tại **2 bản trùng tên** (vd: bản project-lo
 **Cách kiểm chắc chắn:** gọi bằng namespace đầy đủ (`Skill(skill="sht-skills:ten-skill")`) — route đúng vào nguồn thật, không bị cache tên trơn đánh lừa.
 > *Case:* vừa `mv` bản project-local của `brainstorm` đi, `ls` xác nhận `No such file or directory` — nhưng `Skill(skill="brainstorm")` vẫn trả về Base directory trỏ đúng đường dẫn vừa xoá đó. Gọi lại bằng `Skill(skill="sht-skills:brainstorm")` mới route đúng vào plugin, nội dung khớp bản mới nhất.
 
+### 7. Không tìm thấy gì ≠ sạch — báo "không kiểm được" và in số đối tượng đã kiểm *(thêm 30/09/2026, v0.30.0 — báo cáo gap `THỰC HÀNH-AI/04_Kiem-Chung-Upgrade/2026-09-30_GAP-sht-skills-vs-tai-lieu-hoc.md`)*
+Phép kiểm không thấy đối tượng để kiểm (không thấy bản cài, không thấy file, thư mục rỗng, đường dẫn sai) phải báo **"không kiểm được"**, tuyệt đối không báo "sạch". Mọi kết luận kèm **đã kiểm bao nhiêu đối tượng**, để người đọc biết phép kiểm có nhìn thấy gì không (rule 05 §2.4).
+> *Case (30/08/2026):* công cụ đối chiếu in `sạch. 12 skill, 0 bản đang cài` và exit 0 — vì app đã đổi chỗ cài, công cụ quét đường cũ. Nếu plugin bị gỡ mất nó vẫn báo y hệt.
+
+### 8. Kiểm hook đúng đường harness đi — hook thiếu runtime chết lặng
+Hook không chạy được (thiếu runtime, PATH của app cũ hơn PATH terminal) **không báo lỗi**, chỉ lặng lẽ không chặn. Kiểm theo thứ tự:
+1. Lệnh hook trong `settings.json` dùng **đường dẫn tuyệt đối tới runtime** (`"C:\Program Files\nodejs\node.exe" "<hook>.cjs"`), không `node <file>`.
+2. Chạy **đúng chuỗi lệnh trong `settings.json`** qua `cmd /c` với stdin giả (payload PreToolUse), không chạy `node hook.cjs` trong Bash.
+3. Chắc nhất: trong phiên thật, thử ghi một dòng vi phạm vào file thật — hook sống thì tool call bị từ chối.
+Nhiều MCP/plugin cùng báo "Connection closed" → nghi PATH của app trước (dump PATH ở `%LOCALAPPDATA%\Claude\Logs\main.log`).
+
+**Viết hoặc sửa hook** (không chỉ kiểm): theo `references/thiet-ke-hook.md` — tám nguyên tắc, thang leo CLAUDE.md → rule → `permissions.deny` → hook, cấm `\b` với tiếng Việt.
+
 ## Quy trình chuẩn khi được giao "kiểm chứng X"
 
 1. Đọc tài liệu/code khai báo X — ghi lại đúng những gì nó TỰ NHẬN.
 2. Tìm cách tái hiện tình huống thật (đối chứng nếu cần) — không suy luận suông.
 3. Nếu có sẵn bộ test — chạy nó trước, đừng bỏ qua vì "chắc đã pass rồi".
 4. Gọi trực tiếp công cụ/API thật liên quan để lấy tín hiệu quyết định.
-5. Kết luận **kèm bằng chứng cụ thể** (exit code, số ca đạt/trượt, thông báo lỗi nguyên văn) — không kết luận suông "đã chạy được".
+5. Kết luận **kèm bằng chứng cụ thể** (exit code, số ca đạt/trượt, **số đối tượng đã kiểm**, thông báo lỗi nguyên văn) — không kết luận suông "đã chạy được". Kiểm 0 đối tượng = "không kiểm được" (kỹ thuật 7).
 6. Nếu phát hiện gãy — sửa xong phải **lặp lại đúng bước 3-4** để xác nhận đã sửa thật, không dừng ở "tôi nghĩ đã sửa đúng rồi".
 
 ## Dùng kèm

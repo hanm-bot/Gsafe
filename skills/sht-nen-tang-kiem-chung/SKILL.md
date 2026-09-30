@@ -223,15 +223,18 @@ xuất hiện thêm một lần "báo xong chưa kiểm chứng", lần đó là
 
 Trước đây khung này được viết lại độc lập ở `chuan-hoa-ho-so-tai-lieu` ("Quan sát/Suy luận/Giả định") và `ra-soat-hop-dong-vendor` ("dữ kiện/vị thế/suy luận") — hai tên gọi khác nhau cho cùng một logic, có nguy cơ trôi xa nhau. Từ nay chỉ có một bản, ở đây.
 
-Mọi phát biểu trong một deliverable rơi vào đúng một trong ba mức:
+Mọi phát biểu trong một deliverable rơi vào đúng một trong bốn mức:
 
 | Mức | Định nghĩa | Được viết như sự thật? |
 |---|---|---|
 | **1. Dữ kiện (Quan sát)** | Có nguyên văn trong nguồn/văn kiện — ai đọc lại cũng thấy y hệt | Có |
 | **2. Vị thế / Suy luận có căn cứ** | Rút ra từ (1) bằng logic rõ ràng, nhưng bên khác/nguồn khác chưa xác nhận | Không — phải nêu rõ đây là suy luận/quan điểm của mình, kèm căn cứ dẫn tới |
 | **3. Giả định** | Chưa có căn cứ trực tiếp, đang đoán | Không — chuyển thành câu hỏi, không đưa vào văn bản chính thức |
+| **4. Chưa biết** | Thiếu dữ liệu để nói gì cả — **không** đoán cho đủ | Không — ghi rõ "chưa có dữ liệu" / NOT FOUND; thiếu nhiều thì giao **bản PARTIAL** thay vì bịa cho tròn |
 
-Gắn nhãn **trước khi viết**, không gắn sau khi đã lỡ viết như sự thật. Khi không chắc một câu thuộc mức nào, coi là mức 3.
+Gắn nhãn **trước khi viết**, không gắn sau khi đã lỡ viết như sự thật. Khi không chắc một câu thuộc mức nào, coi là mức 3. Mức 4 tách khỏi mức 3 để giữ tín hiệu "từ chối đúng": nói "chưa biết" là hành vi đúng, không phải thất bại.
+
+**Bản PARTIAL 5 phần** (khi thiếu dữ liệu) và **thứ tự ưu tiên nguồn** (khi hai nguồn mâu thuẫn): `references/chong-bia-partial-nguon.md`. *(thêm 30/09/2026, v0.30.0 — báo cáo gap `THỰC HÀNH-AI/04_Kiem-Chung-Upgrade/2026-09-30_GAP-sht-skills-vs-tai-lieu-hoc.md`)*
 
 Skill nghiệp vụ có thể đặt tên riêng cho ba mức này theo đúng thuật ngữ miền của mình (ví dụ "đã ký/chưa ký" cho hợp đồng, "đã đối chiếu/chưa kiểm được" cho số liệu) — miễn giữ đúng bản chất ba tầng và **trỏ về mục này** thay vì định nghĩa lại từ đầu.
 

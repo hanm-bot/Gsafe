@@ -100,6 +100,17 @@ Sáu nhóm NFR bắt buộc cân nhắc:
 | **HITL & phê duyệt** | Mọi bước chạm **tiền hoặc PII** mặc định HITL: hệ thống gợi ý, **người duyệt** thực thi |
 | **Khả kiểm & rollback** | Log truy vết được, quyết định phản bác được, có đường lùi |
 
+**Khi hướng thi công có thành phần AI tạo sinh, thêm nhóm NFR thứ bảy** *(thêm 30/09/2026, v0.30.0 — báo cáo gap `THỰC HÀNH-AI/04_Kiem-Chung-Upgrade/2026-09-30_GAP-sht-skills-vs-tai-lieu-hoc.md`)*:
+
+| NFR đặc thù AI | Chốt gì |
+|---|---|
+| **Trần tỷ lệ bịa** | % bịa tối đa chấp nhận được, đo bằng bộ ca có ca gài (`sht-cds-thiet-ke-agent` §5); vượt trần thì không lên production |
+| **Giám sát trôi chất lượng** | Chỉ số theo dõi (% bịa, % từ chối đúng) theo tuần sau go-live, ngưỡng cảnh báo định trước |
+| **Dữ liệu ngoài phân phối** | Pilot đạt không đảm bảo scale đạt — nêu tập dữ liệu mở rộng sẽ kiểm trước khi scale |
+| **Kinh tế token** | Chi phí biến đổi theo lượng dùng; business case tính theo kịch bản lưu lượng, không tính như license phẳng |
+
+PRD trung lập hướng thi công (§7): nếu chưa chốt có dùng AI hay không, ghi nhóm này là "áp dụng nếu chọn hướng AI".
+
 Quy tắc phân loại rủi ro (mượn từ `sht-cds-thiet-ke-agent`): *Nếu hệ thống sai, ai thiệt và bao nhiêu? Kết quả có ra ngoài? Có chạm tiền/PII?* Chạm cả ba → mức **Cao** → HITL bắt buộc, ghi thẳng vào NFR.
 
 ---

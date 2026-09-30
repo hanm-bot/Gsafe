@@ -22,6 +22,8 @@ Vai trò: người dò và vá lỗi "chạy trên máy tôi thì được" (wor
 
 ## Cách sửa chuẩn — tự suy đường dẫn, không hardcode
 
+> **Ngoại lệ bắt buộc:** đường dẫn **tới runtime** trong lệnh hook ở `settings.json` (`"C:\Program Files\nodejs\node.exe" …`) phải **giữ tuyệt đối** — app desktop dùng PATH cũ, đổi về `node <file>` là hook chết lặng. Chỉ đường dẫn **tới file hook/dữ liệu** mới cần làm portable. Chi tiết: `sht-qa-kiem-chung-skill-hook` kỹ thuật 8. *(thêm 30/09/2026, v0.30.0)*
+
 **Python/script chạy độc lập:**
 ```python
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
