@@ -15,8 +15,10 @@ Dùng:
 """
 
 import argparse
+import re
 import subprocess
 import sys
+import zipfile
 from datetime import datetime
 from pathlib import Path
 
@@ -57,6 +59,34 @@ def kiem_phap_ly(van_ban):
     return False, f"Là Quyết định, có Căn cứ, nhưng THIẾU `{nguon_don.name}` và không có nhãn thoát."
 
 
+GACH_DAI = "—"
+
+
+def dem_gach_dai(van_ban, docx=None):
+    """Luật chặn gạch dài cho văn bản MỚI gửi ra ngoài (Mr. Hà chốt 27/09/2026,
+    plans/20260927-tich-hop-5-skill-ai48s/plan.md:11). Không áp cho file nội bộ.
+
+    Bỏ qua khối mã ``` trong .md. Có .docx thì đếm cả trong word/document.xml.
+    Trả về danh sách (nơi, số lượng) có ít nhất một ký tự.
+    """
+    ket = []
+    noi_dung = van_ban.read_text(encoding="utf-8", errors="replace")
+    ngoai_ma = re.sub(r"```.*?```", "", noi_dung, flags=re.S)
+    n = ngoai_ma.count(GACH_DAI)
+    if n:
+        ket.append((van_ban.name, n))
+    if docx:
+        try:
+            with zipfile.ZipFile(docx) as z:
+                xml = z.read("word/document.xml").decode("utf-8", errors="replace")
+            n = xml.count(GACH_DAI) + xml.count("&#8212;")
+            if n:
+                ket.append((Path(docx).name, n))
+        except (OSError, KeyError, zipfile.BadZipFile) as loi:
+            ket.append((f"{Path(docx).name} (không đọc được: {loi})", -1))
+    return ket
+
+
 def main():
     for luong in (sys.stdout, sys.stderr):
         if hasattr(luong, "reconfigure"):
@@ -88,7 +118,12 @@ def main():
         nang = [d.strip() for d in ra_docx.splitlines() if "[NẶNG]" in d]
         tom_tat_docx = "Đạt phần máy kiểm được" if docx_dat else f"{len(nang)} lỗi nặng: " + "; ".join(nang[:3])
 
-    chan = (not phap_ly_dat) or (docx_dat is False)
+    gach_dai = dem_gach_dai(van_ban, ts.docx) if ts.ra_ngoai else []
+    tom_tat_gach = ("không áp (văn bản nội bộ)" if not ts.ra_ngoai else
+                    "không có ký tự —" if not gach_dai else
+                    "; ".join(f"{noi}: {'?' if so < 0 else so}" for noi, so in gach_dai))
+
+    chan = (not phap_ly_dat) or (docx_dat is False) or bool(gach_dai)
     gate = LOAI_RA_NGOAI if ts.ra_ngoai else LOAI_NOI_BO
 
     d = []
@@ -105,6 +140,7 @@ def main():
     d.append("|---|---|---|")
     d.append(f"| L1 Pháp lý — truy vết Căn cứ | Hook chặn cứng khi ghi | {'✅' if phap_ly_dat else '❌'} {phap_ly_ly_do} |")
     d.append(f"| L3 Giọng văn | Cảnh báo, không chặn | {'⚠️' if vp_co_loi_phai else '✅'} {tom_tat_vp} |")
+    d.append(f"| Gạch dài ra ngoài | Chặn cứng khi `--ra-ngoai` | {'—' if not ts.ra_ngoai else ('❌' if gach_dai else '✅')} {tom_tat_gach} |")
     d.append(f"| L4 Định dạng .docx | Chặn cứng lỗi nặng | {'—' if docx_dat is None else ('✅' if docx_dat else '❌')} {tom_tat_docx} |")
     d.append("")
 
@@ -115,6 +151,8 @@ def main():
             d.append(f"- Lớp pháp lý chưa qua: {phap_ly_ly_do}")
         if docx_dat is False:
             d.append(f"- Bản .docx còn lỗi nặng: {tom_tat_docx}")
+        if gach_dai:
+            d.append(f"- Văn bản gửi ra ngoài còn gạch dài \"—\" ({tom_tat_gach}). Thay bằng \" - \", dấu phẩy hoặc từ nối.")
         d.append("")
         d.append("Sửa xong chạy lại phiếu này.")
     else:

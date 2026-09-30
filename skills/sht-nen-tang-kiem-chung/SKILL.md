@@ -246,7 +246,7 @@ Skill nghiệp vụ có thể đặt tên riêng cho ba mức này theo đúng t
 | L1 Pháp lý — Căn cứ QĐ phải truy được | Hook `chan-can-cu-khong-nguon.cjs` (cấp user) | **Chặn cứng** lúc ghi |
 | L3 Giọng văn | `python cham_van_phong.py VANBAN.md` | Cảnh báo, luôn exit 0 |
 | L4 Định dạng Word | `python kiem_xuat_ban_docx.py VANBAN.docx` | **Chặn cứng**, exit 2 khi lỗi nặng |
-| L5 Trình duyệt | `python phieu_xuat_ban.py VANBAN.md --docx VANBAN.docx [--ra-ngoai]` | Gộp 3 lớp thành 1 phiếu |
+| L5 Trình duyệt | `python phieu_xuat_ban.py VANBAN.md --docx VANBAN.docx [--ra-ngoai]` | Gộp 3 lớp thành 1 phiếu. Có `--ra-ngoai` thì **chặn gạch dài "—"** trong .md/.docx (Mr. Hà chốt 27/09/2026; chỉ văn bản mới gửi ra ngoài, không áp nội bộ, không sửa tài liệu cũ) |
 
 Chạy L5 là đủ — nó tự gọi L3 và L4. Exit 2 = chưa đủ điều kiện trình.
 

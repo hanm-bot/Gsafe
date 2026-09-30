@@ -86,7 +86,7 @@ Minh hoạ 4 ca bóc tách (tuyển dụng, giải trình sự cố, mua sắm C
 
 | Cần | Nguồn | Chuyển sang (skill SHT có thật) |
 |---|---|---|
-| Căn cứ pháp lý, điều khoản hợp đồng | VBQPPL, hợp đồng gốc | `ra-soat-hop-dong-vendor` (hợp đồng CNTT) · `sht-qd-nhansu-alignment` (QĐ tổ chức). **Tư vấn pháp luật chung: SHT chưa có skill** → ghi "⚠️ cần chuyên gia pháp chế" |
+| Căn cứ pháp lý, điều khoản hợp đồng | VBQPPL, hợp đồng gốc | `ra-soat-hop-dong-vendor` (hợp đồng CNTT) · `sht-qd-nhansu-alignment` (QĐ tổ chức). `sht-phap-che-sot` (tra luật, trích nguyên văn Điều/Khoản, hiệu lực tại mốc vụ việc). Kết luận pháp lý thay luật sư: ngoài phạm vi skill → ghi "⚠️ cần chuyên gia pháp chế" *(sửa 30/09/2026, v0.28.8 — bản cũ ghi "SHT chưa có skill" dù `sht-phap-che-sot` có từ 0.28.0)* |
 | Nội dung tài liệu đã có, bản scan | Thư mục gốc hồ sơ | `chuan-hoa-ho-so-tai-lieu` |
 | Số liệu CRM / doanh số | Turso/Base.vn | `sht-normalize-account` → `sht-xacthuc-baocao-hoatdong` |
 | Tên người, chức danh | QĐ bổ nhiệm, hợp đồng | `chuan-hoa-du-lieu-nhansu` |
