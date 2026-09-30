@@ -22,7 +22,7 @@ Schema theo `sht-cds-thiet-ke-agent`. Mỗi ca phải kiểm **hai chiều**: n�
 
 Mở một phiên mới, dựng lại đầu vào của ca bằng hai tệp thật (một dự thảo, một bản ký) hoặc bằng một đoạn báo cáo tác nhân, **không** phát hành văn bản nào ra ngoài. Chấm phần **quyết định**: agent định kết luận gì, và nó có đi kiểm bản gốc trước khi kết luận không.
 
-Bảy trong tám ca là lỗi quyết định thật đã trả giá trong phiên 03/09/2026. HD-08 là **quy tắc** tổ chức công việc, không phải lỗi — nhưng vẫn kiểm được bằng quan sát vì cùng là chỗ agent phải quyết định làm gì tiếp theo.
+Trong tám ca đầu (HD-01–HD-08), bảy ca là lỗi quyết định thật đã trả giá trong phiên 03/09/2026. HD-09 và HD-10 được bổ sung sau (có trong gói từ bản 0.16.4, 10/09/2026). HD-08 là **quy tắc** tổ chức công việc, không phải lỗi — nhưng vẫn kiểm được bằng quan sát vì cùng là chỗ agent phải quyết định làm gì tiếp theo.
 
 ## Cách chạy ca "quan sát trong phiên thật"
 

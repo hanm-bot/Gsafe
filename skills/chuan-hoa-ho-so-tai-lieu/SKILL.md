@@ -26,12 +26,17 @@ Nguyên tắc chi phối: **Một khẳng định chỉ có giá trị khi kèm 
 - **Metadata:** Đọc Title, Pages, Producer, CreationDate bằng `pdfinfo`. Lệch số trang giữa 2 file cùng tên = bản in thiếu phụ lục.
 - **Xác nhận tính đầy đủ:** Thiếu loại hồ sơ nào, hỏi ngay người dùng trước khi phân tích, ghi rõ phần chưa kết luận được.
 
+### 0.2 Vệ sinh dữ liệu giữa khách hàng — quy tắc cứng
+- Hồ sơ của khách A **không được** vào phân tích, dẫn nguồn hay đối chứng của khách B, kể cả khi file cần tìm tình cờ nằm ở thư mục A. Trước khi lấy file, hỏi: file này thuộc thư mục khách nào? Khác khách đang làm thì dừng, xin bản gốc riêng.
+- Trước khi phát hành: **quét dấu vết** tên dự án/thư mục/đối tác khác trên file xuất. Lệnh và ca thật: `references/ky-thuat-chi-tiet.md` §1.
+
 ### 1.1 Chuyển đổi định dạng văn bản
 - **File `.doc`:** Chuyển sang docx: `soffice --headless --convert-to docx <file.doc>`.
 - **File `.docx` có bảng:** Dùng script `scripts/docx_ordered_reader.py` để duyệt `body.iterchildren()`, giữ nguyên thứ tự đoạn văn và bảng.
 - **File `.docx` thuần văn bản:** Chạy `pandoc --columns=250 -t plain`.
 - **File `.xlsx`:** Đọc bằng `openpyxl` hai lượt (lượt 1 lấy formula, lượt 2 với `data_only=True` lấy cached value).
-- **File `.pdf` scan tiếng Việt:** **TUYỆT ĐỐI KHÔNG DÙNG OCR (Tesseract).** Render ảnh bằng `pdftoppm -png -r 200` và giao subagent đọc trực tiếp từ ảnh thị giác (mỗi subagent ≤ 20 trang). Yêu cầu trích NGUYÊN VĂN, rà từ khóa CÓ/KHÔNG, ghi rõ trang mờ không đọc được.
+- **File `.pdf` scan tiếng Việt:** **TUYỆT ĐỐI KHÔNG DÙNG OCR (Tesseract).** Render ảnh bằng `pdftoppm -png -r 200` và giao subagent đọc trực tiếp từ ảnh thị giác (mỗi subagent ≤ 20 trang). Yêu cầu trích NGUYÊN VĂN, rà từ khóa CÓ/KHÔNG, ghi rõ trang mờ không đọc được. Con số và dấu quan trọng: render lại 450 DPI. Mẫu chỉ thị đầy đủ: `references/ky-thuat-chi-tiet.md` §2.
+- **Tên file tiếng Việt báo *No such file* dù `ls` thấy:** tên ở dạng NFD — cách lách ở `references/ky-thuat-chi-tiet.md` §3.
 
 ---
 
@@ -51,6 +56,7 @@ Nguyên tắc chi phối: **Một khẳng định chỉ có giá trị khi kèm 
 ### 3.2 Đọc bản chất kinh tế & Quyền chưa dùng
 - Đọc bản chất kinh tế: Phí sàn hay phí dịch vụ (xem biến thiên của tỷ lệ phí theo doanh số).
 - Đọc hai chiều tìm quyền chưa dùng: Quyền chấm dứt không phạt · Điều khoản khách hàng ưu đãi nhất (MFN) · Quyền chọn nhà cung cấp.
+- **So biểu phí giữa hai hợp đồng:** không so số với số; xác định chiều dòng tiền, quy về một câu hỏi chung, ánh xạ theo mã MCC, nêu cả nhóm bất lợi. Quy trình: `references/ky-thuat-chi-tiet.md` §4.
 - Lỗi hình thức là đòn bẩy trung tính: Dùng lỗi hình thức/phiên bản làm lý do để làm lại toàn văn hợp đồng thay vì vá phụ lục.
 
 ---
@@ -59,7 +65,8 @@ Nguyên tắc chi phối: **Một khẳng định chỉ có giá trị khi kèm 
 
 ### 4.1 Tự kiểm bằng máy & Subagent độc lập
 - **Tự kiểm:** Chạy `grep -c` trên file nguồn cho từng đoạn trích nguyên văn (phải trả về ≥ 1).
-- **Reviewer độc lập:** Giao subagent đọc lại file scan gốc để kiểm chứng từng khẳng định và phát hiện 7 loại lỗi: Trích sai số mục · Gán nhầm nguồn · Phóng đại · Suy luận trình bày như quan sát · Đọc ngược chiều câu · Đếm thiếu · Lập luận trên dữ kiện chưa kiểm.
+- **Reviewer độc lập:** Giao subagent đọc lại file scan gốc để kiểm chứng từng khẳng định và phát hiện 8 loại lỗi: Trích sai số mục · Gán nhầm nguồn · Phóng đại · Suy luận trình bày như quan sát · Đọc ngược chiều câu · Đếm thiếu · Lập luận trên dữ kiện chưa kiểm · **Trộn hồ sơ khách hàng khác** (quét theo §0.2).
+- **Đọc mù kiểm chéo:** khi cùng văn bản có hai bản in khác nhau, giao hai agent đọc độc lập (agent hai không biết kết quả agent một) rồi so từng ô bằng script. Cách làm: `references/ky-thuat-chi-tiet.md` §5.
 
 ---
 
@@ -79,6 +86,7 @@ Riêng cho hồ sơ tài liệu:
 - Nguyên tắc chi phối: **chứng minh điều mình muốn cũng chính là điều đối phương muốn** (tối ưu dòng thu, giảm rủi ro thanh tra) — không phải làm nhẹ đi yêu cầu của mình.
 - Chuyển đổi từ vựng đối kháng sang trung tính theo `references/tu-vung-trung-tinh.md`.
 - Sau khi viết, chạy bước quét từ đối kháng và đặt rào chắn nội bộ theo nền §6.2.
+- Cần **tài liệu cầm tay 1 trang cho buổi đàm phán** (bản tự dùng, không phát đối tác): 7 mục theo `references/ky-thuat-chi-tiet.md` §6.
 
 ### 5.2 Excel có công thức
 
@@ -96,3 +104,4 @@ Khi cần mở preview mà công thức chưa được tính, dùng `scripts/exc
 | Chứng minh đối phương sai để thuyết phục | Chứng minh đề xuất của mình có lợi cho dòng doanh thu của họ |
 | Đưa hết phát hiện vào bản đối ngoại | Phân loại: Dùng ngay / Giữ dự phòng / Không dùng |
 | Tin là đã viết đủ hòa hoãn | Chạy grep quét từ đối kháng trên bản đối ngoại |
+| Lấy file tình cờ thấy ở thư mục khách khác | Dừng, xin bản gốc riêng; quét dấu vết trước phát hành (§0.2) |

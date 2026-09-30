@@ -23,6 +23,8 @@ Ranh giới: skill này lo **tính đúng đắn của con số**. Việc gộp 
 [5] Bàn giao kèm bảng truy vết                                                    (§5)
 ```
 
+Báo cáo **kể việc** ("đã chốt", "đã xong", "KH đồng ý") thay vì con số: chạy thêm §7.
+
 ---
 
 ## 1. Phân loại con số trước khi kiểm
@@ -125,3 +127,26 @@ Ca đặc biệt, mức rủi ro cao nhất: một QĐ bổ nhiệm căn cứ "t
 - Chốt danh tính người được nhắc bằng `chuan-hoa-du-lieu-nhansu` trước; thẩm quyền và thể thức theo `sht-qd-nhansu-alignment`.
 - Ghi thời điểm chốt số vào phần Căn cứ ("theo số liệu SHT Sales Pipeline chốt ngày …") — QĐ không ghi mốc thời gian sẽ không bảo vệ được khi số liệu thay đổi về sau.
 
+---
+
+## 7. Khi báo cáo kể kết quả thay vì nêu con số
+
+Báo cáo Engage/hoạt động thường viết "chốt", "đã xong", "thiện chí". Mỗi câu như vậy là một tuyên bố cần đối chiếu như một con số.
+
+1. **Tách từng dòng thành** đối tượng (khách hàng/chi nhánh/mã) + tuyên bố kết quả.
+2. **Bắt câu tự mâu thuẫn.** Ví dụ "Chốt… CN sẽ báo lại số lượng sau": "chốt" thật không thể đi kèm "chưa có số lượng" — dấu hiệu nhãn bị thổi phồng.
+3. **Đối chiếu với hệ thống gốc:** có hồ sơ/mã tương ứng không; hồ sơ đang ở `stageId` nào so với giai đoạn báo cáo ngầm định; **ngày tạo hồ sơ** có khớp thời điểm hoạt động không, hay hồ sơ đã có từ trước (việc cũ bị kể thành việc mới). ⚠️ Tên cột ngày tạo trong bảng `deals` chưa được đối chiếu với schema thật — kiểm trước khi viết truy vấn.
+4. **Xếp lại theo thang tiến độ 3 mức** (thang này đo *tiến độ* của việc; nhãn ✅/⚠️/❓ ở §4 vẫn đo *độ tin* của bằng chứng — dùng cả hai):
+
+| Mức | Điều kiện |
+|---|---|
+| Đã chốt | Có số lượng/giá trị cụ thể **và** hồ sơ hệ thống khớp giai đoạn tương ứng |
+| Thiện chí | Đồng ý nguyên tắc nhưng thiếu số lượng/giá trị, hoặc hồ sơ mới ở giai đoạn đầu |
+| Đang theo dõi | Đưa vào kế hoạch tương lai, chưa có hành động cụ thể trong kỳ |
+
+Không tự đặt thang khác trừ khi người dùng yêu cầu — thang càng đơn giản càng áp nhất quán cho cả đội.
+
+5. **Bàn giao hai bảng tách riêng:** (a) bảng báo cáo đã điền lại — Đối tượng · Gặp ai/Phụ trách · Công việc · Kết quả đã rà soát; (b) bảng rà soát tuân thủ — từng tiêu chí đạt/không kèm bằng chứng. Không gộp.
+6. **Kết luận ghi rõ** đây là cải thiện quy trình báo cáo, không phải đánh giá năng lực cá nhân — trừ khi người dùng yêu cầu đánh giá.
+
+**Đừng bỏ cột chỉ để "gọn".** Cột "AM phụ trách" tưởng là hành chính nhưng là căn cứ đối chiếu ngược Ownership của AM. Trước khi bỏ một trường, hỏi: nó còn phục vụ mục đích nào khác không? Nếu có, thu gọn (tên ngắn, mã) thay vì xoá.

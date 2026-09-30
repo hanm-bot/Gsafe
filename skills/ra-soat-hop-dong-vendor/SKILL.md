@@ -140,19 +140,25 @@ Tra cứu chi tiết 7 nhóm rủi ro chí tử tại `references/red-flags-hop-
 6. Rủi ro Mã nguồn & IP (Source code escrow, OSS compliance).
 7. Rủi ro Thương mại & Pháp lý Việt Nam (căn cứ pháp lý và mức trần: `sht-phap-che-sot`).
 
+### 1.7 Đối chiếu ngược — lỗi từ phía bên yêu cầu
+Kiểm: mâu thuẫn giữa phần Phạm vi và phần Yêu cầu chức năng (số hạng mục không khớp) · thành phần được nhắc tên nhưng không có mục đặc tả · tham số thiếu khiến không thể thiết kế hay nghiệm thu · **con số định lượng vượt xa thực tế** · yêu cầu vượt phạm vi đặc tả của nhà cung cấp. Tách thành mục riêng "Công việc thuộc trách nhiệm bên yêu cầu".
+
 ---
 
 ## GIAI ĐOẠN 1B — PHÂN TÍCH CHUỖI HỢP ĐỒNG (Chế độ B)
 
 ### 1B.1 Bản đồ chuỗi & Bảng đối chiếu Back-to-Back
 - Lập bảng luồng: Nhà cung cấp → Nhà tích hợp → Khách hàng cuối.
-- Đối chiếu song song điều khoản Mua vào và Bán ra: Luật áp dụng · Chế tài chậm tiến độ · Trần trách nhiệm · Bất khả kháng · SLA · Thời hạn nghiệm thu.
+- Đối chiếu song song điều khoản Mua vào và Bán ra: Luật áp dụng & cơ quan giải quyết tranh chấp · Chế tài chậm tiến độ · Trần trách nhiệm · **Thiệt hại gián tiếp** · **Tấn công mạng** · **Sở hữu trí tuệ** · **Bảo lãnh** · Bất khả kháng · SLA · Thời hạn nghiệm thu.
+- Nhận diện văn bản **không có bên tích hợp làm một bên** (thường là license cấp thẳng cho khách hàng cuối) — khoảng trống truy đòi hay nằm ở đây.
 - **Tìm điều khoản chặn Back-to-back:** Điều khoản dạng *"Điều kiện mua hàng của khách hàng không có hiệu lực với nhà cung cấp"*.
 
 ### 1B.2 Định lượng khoảng trống truy đòi & Dòng tiền
 - Lập bảng 3 cột: Mua vào — Bán ra — Biên lãi. Tuyệt đối không nhầm chênh lệch giá mua/bán là "mức tăng giá".
 - So sánh khoảng trống trách nhiệm tối đa với tổng biên lãi toàn chuỗi.
-- Đánh giá lệch pha dòng tiền: Mốc chi cho vendor vs Mốc thu từ khách hàng cuối.
+- Chỉ so mức tăng giá giữa hai lần báo giá **cùng chiều giao dịch**.
+- Đánh giá lệch pha dòng tiền: bảng Mốc | Chi | Thu; tính **đỉnh vốn phải ứng** và số ngày phải ứng. Tìm tiền lệ trong hợp đồng cũ với cùng khách hàng.
+- *Bỏ 1B.2 nếu người dùng yêu cầu báo cáo thuần kỹ thuật.*
 
 ---
 
@@ -162,7 +168,9 @@ Năm dạng báo cáo chuẩn, quy tắc chọn dạng, kỹ thuật xuất PDF/
 
 Riêng cho rà soát hợp đồng:
 
-- **Bản đầy đủ** dựng theo **12 mục tiêu chuẩn** của báo cáo gap analysis, kèm bảng đối chiếu chi tiết từng Workstream.
+- **Bản đầy đủ** dựng theo **12 mục tiêu chuẩn** của báo cáo gap analysis, kèm bảng đối chiếu chi tiết từng Workstream:
+  1 Kiểm kê + bản đồ chuỗi/giai đoạn · 2 Tóm tắt điều hành + bảng điểm rủi ro · 3 Sơ đồ chuỗi + trục thời gian · 4 **Đính chính bản trước** kèm nguyên nhân · 5 Đối chiếu định lượng · 6 Chuỗi cam kết vs nguồn · 7 Chất lượng chuỗi đặc tả · 8 Phân lớp trách nhiệm khối chức năng · 9 An ninh & tuân thủ · 10 Biên trách nhiệm & nghiệm thu · 11 Danh mục Specs/PRD cần bổ sung có ưu tiên · 12 Đề xuất quyết định.
+  Tách riêng nhóm việc **phải làm ngay bất kể có ký hay không** — thường liên quan hệ thống đang vận hành.
 - **Bản thuần kỹ thuật** tập trung SoW, Specs, ICD, Kiến trúc — bắt buộc chạy bước quét từ khóa tiền tệ ở nền §6.2 trước khi gửi ra ngoài.
 - **Bản điều hành** nêu đúng 3 vấn đề cần quyết, không dàn trải.
 
