@@ -20,7 +20,7 @@
 | 6 | **Chuyển dữ liệu xuyên biên giới** (kể cả dùng cloud/nền tảng ở nước ngoài) | Luật Đ.20 k.1 (3 trường hợp, gồm dùng nền tảng ngoài lãnh thổ), k.2 (lập hồ sơ, gửi bản chính trong **60 ngày** từ lần chuyển đầu), k.6 (miễn trừ); NĐ 356 Đ.17, Đ.18 (hồ sơ: Mẫu 09 + hợp đồng + chính sách) | Xác định có chuyển xuyên biên giới không (API mô hình AI đặt ở nước ngoài cũng tính theo Đ.20 k.1 điểm c); nếu có: ai lập hồ sơ, hạn 60 ngày | ☐ |
 | 7 | Masking/khử nhận dạng, **mã hoá** | Luật Đ.12 k.1 ("dữ liệu cá nhân sau khi được mã hóa vẫn là dữ liệu cá nhân"); Đ.14 k.6 (khử nhận dạng, cấm tái nhận dạng); Đ.2 k.1 (sau khử nhận dạng không còn là DLCN); NĐ 356 Đ.12 k.4 (trên cloud "phải được mã hóa ở trạng thái nghỉ và truyền") | Quy tắc masking trong log/DB/màn hình; mã hoá at-rest + in-transit nếu dùng cloud; không coi dữ liệu đã mã hoá là hết nghĩa vụ | ☐ |
 | 8 | **Thời hạn lưu trữ** & quy trình xoá/huỷ | Luật Đ.3 k.3 (lưu trong thời gian phù hợp mục đích); Đ.14 k.1 (6 trường hợp xoá, huỷ), k.3 (biện pháp an toàn, chống khôi phục trái phép), k.5 (không xoá được thì báo chủ thể) | Bảng thời hạn lưu theo loại dữ liệu; cơ chế xoá an toàn; ngoại lệ Đ.19 | ☐ |
-| 9 | Ứng phó sự cố lộ, mất dữ liệu | Luật Đ.23 (thông báo vi phạm — ⚠️ chưa trích nguyên văn); NĐ 356 Đ.28 (nội dung thông báo); **Ngân hàng/tín dụng:** NĐ 356 Đ.8 k.3 — thông báo cơ quan chuyên trách và chủ thể "trong thời hạn không quá 72 giờ" sau khi phát hiện lộ, mất dữ liệu nhạy cảm | Quy trình sự cố có mốc 72 giờ cho khách tài chính; mẫu thông báo | ☐ |
+| 9 | Ứng phó sự cố lộ, mất dữ liệu | Luật Đ.23 k.1 (vi phạm có thể gây tổn hại quốc phòng, an ninh, trật tự hoặc xâm phạm tính mạng, sức khoẻ, danh dự, tài sản của chủ thể → thông báo cơ quan chuyên trách "chậm nhất là 72 giờ kể từ khi phát hiện"; bên xử lý phải báo ngay bên kiểm soát), k.2 (lập biên bản xác nhận), k.3 (các trường hợp phải thông báo); NĐ 356 Đ.28 (nội dung thông báo, Mẫu 08); **Ngân hàng/tín dụng:** NĐ 356 Đ.8 k.3 (thêm nghĩa vụ báo **cả chủ thể** trong 72 giờ khi lộ dữ liệu nhạy cảm) và TT 50/2024 Đ.19 k.5 (báo khách hàng + báo NHNN, Cục CNTT) | Quy trình sự cố có mốc 72 giờ; ai phát hiện báo ai (SHT là bên xử lý → báo ngay khách); biên bản xác nhận; mẫu thông báo | ☐ |
 
 ### 1b. Điểm mới cần thêm (luật mới quy định, bản NĐ 13 cũ chưa có trong checklist)
 
@@ -34,14 +34,21 @@
 
 ## 2. Quy định NHNN — riêng cho khách Ngân hàng / TCTD
 
-| # | Điểm kiểm | Có trong PRD? |
-|---|---|---|
-| 10 | An toàn hệ thống thông tin theo cấp độ (đối chiếu quy định ATTT ngành ngân hàng hiện hành) | ☐ |
-| 11 | Xác thực & phân quyền truy cập hệ thống lõi (least-privilege) | ☐ |
-| 12 | Nhật ký giao dịch & khả năng truy vết (audit trail) không sửa được | ☐ |
-| 13 | Sao lưu, phục hồi, phương án dự phòng (BCP/DR) | ☐ |
-| 14 | Kiểm soát bên thứ ba / thuê ngoài (nếu giải pháp dùng dịch vụ ngoài) | ☐ |
-| 15 | Với eKYC/định danh: đối chiếu quy định định danh điện tử hiện hành | ☐ |
+> **Căn cứ (tra 30/09/2026, v0.30.4, CSDL quốc gia về pháp luật vbpl.vn):**
+> - **TT 09/2020/TT-NHNN** — an toàn hệ thống thông tin trong hoạt động ngân hàng, hiệu lực 01/01/2021, trạng thái "Hết hiệu lực một phần": chỉ **Điều 25 bị bãi bỏ** bởi TT 50/2024 Đ.22 k.6; các điều khác còn áp dụng. https://vbpl.vn/van-ban/chi-tiet/144532
+> - **TT 50/2024/TT-NHNN** — an toàn, bảo mật cho dịch vụ trực tuyến ngành Ngân hàng, hiệu lực 01/01/2025, sửa đổi bởi **TT 77/2025/TT-NHNN** (ban hành 31/12/2025); đọc theo **Văn bản hợp nhất 25/VBHN-NHNN** (20/01/2026). Một số điểm hiệu lực muộn: Đ.10 k.1 điểm b từ 01/01/2026; Đ.11 k.5c, k.7c và Đ.20 k.1b(iv) từ 01/07/2026 (Đ.22 k.2–4). https://vbpl.vn/van-ban/chi-tiet/87be55a0-4f72-11f1-8f9f-d3df737f6a54
+> - **NĐ 85/2016/NĐ-CP** (cấp độ an toàn HTTT, TT 09/2020 Đ.5 k.1 dẫn chiếu cho hệ thống phục vụ khách hàng trực tuyến) và TT 12/2022/TT-BTTTT hướng dẫn: "Còn hiệu lực" trên vbpl ngày tra.
+> - Nhiều ngưỡng dưới đây phụ thuộc **cấp độ hệ thống** (TT 09/2020 Đ.5) — PRD phải ghi hệ thống dự kiến ở cấp độ mấy trước khi đọc các dòng sau.
+
+| # | Điểm kiểm | Căn cứ (Điều/Khoản) | PRD phải ghi gì | Có trong PRD? |
+|---|---|---|---|---|
+| 10 | Phân loại **cấp độ** hệ thống và áp yêu cầu tương ứng | TT 09/2020 Đ.5 (k.1: hệ thống dịch vụ trực tuyến cho khách phân loại theo NĐ 85/2016; k.2–7: cấp độ 1–5 cho hệ thống khác, ví dụ cấp độ 3 gồm hệ thống nội bộ "không chấp nhận ngừng vận hành quá 4 giờ làm việc") | Cấp độ dự kiến của giải pháp + lý do; mọi dòng 11–14 đọc theo cấp độ này | ☐ |
+| 11 | Xác thực & phân quyền truy cập (least-privilege) | TT 09/2020 Đ.28 (mỗi tài khoản gán một người; tài khoản dùng chung phải được phê duyệt, xác định được trách nhiệm cá nhân; tài khoản kết nối tự động giao một cá nhân quản lý, giới hạn quyền), Đ.29, Đ.30; **Dịch vụ trực tuyến cho khách:** TT 50/2024 (VBHN 25) Đ.9 (tài khoản giao dịch điện tử), Đ.10 (xác nhận giao dịch theo nhóm loại hình, Phụ lục 01–04), Đ.11 (hình thức xác nhận: mật khẩu ≥ 08 ký tự gồm số, chữ hoa, chữ thường, hiệu lực ≤ 12 tháng; PIN ≥ 06 ký tự; SMS OTP hiệu lực ≤ 05 phút…), Đ.19 k.2 (mật khẩu, PIN, sinh trắc học lưu trữ phải mã hoá/che) | Ma trận vai trò–quyền; tài khoản dịch vụ; nếu giải pháp chạm giao dịch của khách: hình thức xác nhận theo Đ.10–11 | ☐ |
+| 12 | Nhật ký & truy vết (audit trail) | TT 09/2020 Đ.26 (hệ thống từ cấp độ 2: ghi log kết nối, đăng nhập, thay đổi cấu hình, truy cập dữ liệu quan trọng, lỗi, cảnh báo; **lưu trực tuyến** cấp độ 2 ≥ 1 tháng, sao lưu ≥ 6 tháng; cấp độ 3+ ≥ 3 tháng tập trung, sao lưu ≥ 1 năm); TT 50/2024 Đ.15 (thu log đủ để điều tra; cảnh báo giao dịch bất thường theo thời gian, vị trí, tần suất, số tiền, đăng nhập sai); NĐ 356/2025 Đ.8 k.1 (ghi nhật ký **toàn bộ** hoạt động xử lý DLCN) | Danh mục log, thời hạn lưu theo cấp độ, cơ chế chống sửa log, tiêu chí cảnh báo bất thường | ☐ |
+| 13 | Sao lưu, phục hồi, dự phòng (BCP/DR) | TT 09/2020 Đ.22 (cấp độ 3+: tự động sao lưu, dữ liệu phát sinh sao lưu trong 24 giờ, lưu ra phương tiện ngoài tách khu vực), Đ.49–52 (phân tích tác động; hệ thống cấp độ 3+ phải có kế hoạch hoạt động liên tục; Đ.50 k.1c: hệ thống dự phòng thay thế hệ thống chính trong **4 giờ** với cấp độ 3+); TT 50/2024 Đ.16 (Online Banking: đánh giá rủi ro gián đoạn tối thiểu 06 tháng/lần, kịch bản khắc phục) | RPO/RTO bằng số, khớp ngưỡng theo cấp độ; kịch bản chuyển dự phòng | ☐ |
+| 14 | Bên thứ ba / thuê ngoài / điện toán đám mây | TT 09/2020 Đ.32–36 (Đ.33: trước khi dùng dịch vụ bên thứ ba cho hệ thống cấp độ 3+ **hoặc có xử lý thông tin cá nhân khách hàng** phải đánh giá rủi ro CNTT, rủi ro hoạt động; Đ.34 tiêu chí chọn nhà cung cấp cloud; Đ.35 hợp đồng); kết hợp NĐ 356/2025 Đ.12 (hợp đồng cloud về DLCN) | SHT/đối tác là bên thứ ba của ngân hàng: chuẩn bị sẵn hồ sơ phục vụ đánh giá rủi ro Đ.33 và điều khoản hợp đồng Đ.35 | ☐ |
+| 15 | eKYC / định danh khách hàng điện tử | TT 17/2024/TT-NHNN (mở và sử dụng tài khoản thanh toán, hiệu lực 01/07/2024) — ⚠️ vbpl ghi "Hết hiệu lực một phần", **chưa tra văn bản sửa đổi** và chưa trích điều khoản eKYC; TT 50/2024 Đ.9 k.1 (khách phải được nhận biết trước khi cấp tài khoản giao dịch điện tử) | Nếu giải pháp có eKYC: tra riêng qua `sht-phap-che-sot` trước khi đặc tả | ☐ |
+| 15a | Bảo mật thông tin khách hàng trên kênh trực tuyến | TT 50/2024 Đ.19 (phân quyền truy cập dữ liệu khách theo chức năng, giám sát mỗi lần truy cập; quản lý thiết bị lưu trữ; thông báo khách và báo NHNN khi lộ lọt) | Cơ chế giám sát truy cập dữ liệu khách; quy trình báo NHNN | ☐ |
 
 ## 3. Có yếu tố nước ngoài / chuẩn quốc tế (tuỳ khách)
 

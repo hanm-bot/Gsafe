@@ -63,6 +63,10 @@
 |---|---|---|---|---|
 | Luật Bảo vệ dữ liệu cá nhân **91/2025/QH15** · NĐ **356/2025/NĐ-CP** | 01/01/2026 | Còn hiệu lực | ✅ | https://vanban.chinhphu.vn/?pageid=27160&docid=214590 · https://vanban.chinhphu.vn/?pageid=27160&docid=216387 |
 | NĐ 13/2023/NĐ-CP | — | **Hết hiệu lực 01/01/2026** — NĐ 356/2025 Đ.42 k.2, nguyên văn: "Nghị định số 13/2023/NĐ-CP ngày 17 tháng 4 năm 2023 của Chính phủ về bảo vệ dữ liệu cá nhân hết hiệu lực kể từ ngày Nghị định này có hiệu lực thi hành" | ✅ (đối chiếu 30/09/2026 trên CSDL quốc gia về pháp luật) | https://vbpl.vn/van-ban/chi-tiet/187276 |
+| TT 09/2020/TT-NHNN (an toàn HTTT ngân hàng) | 01/01/2021 | Hết hiệu lực một phần — chỉ Đ.25 bị bãi bỏ (TT 50/2024 Đ.22 k.6) | ✅ (vbpl 30/09/2026) | https://vbpl.vn/van-ban/chi-tiet/144532 |
+| TT 50/2024/TT-NHNN (an toàn, bảo mật dịch vụ trực tuyến) · sửa bởi TT 77/2025/TT-NHNN · hợp nhất 25/VBHN-NHNN (20/01/2026) | 01/01/2025 (một số điểm 01/07/2025, 01/01/2026, 01/07/2026) | Còn hiệu lực (bản gốc ghi "hết hiệu lực một phần" do đã sửa đổi) | ✅ (vbpl 30/09/2026) | https://vbpl.vn/van-ban/chi-tiet/87be55a0-4f72-11f1-8f9f-d3df737f6a54 |
+| NĐ 85/2016/NĐ-CP (an toàn HTTT theo cấp độ) · TT 12/2022/TT-BTTTT | 01/07/2016 · 01/10/2022 | Còn hiệu lực (theo vbpl ngày tra) | ✅ trạng thái; chưa đọc toàn văn | vbpl.vn (tra "bảo đảm an toàn hệ thống thông tin theo cấp độ") |
+| TT 17/2024/TT-NHNN (mở, sử dụng tài khoản thanh toán) | 01/07/2024 | Hết hiệu lực một phần — chưa tra văn bản sửa đổi | ⚠️ | vbpl.vn |
 | Luật Dữ liệu **60/2024/QH15** | 01/07/2025 | Còn hiệu lực | ✅ | https://vanban.chinhphu.vn/?pageid=27160&docid=212488 |
 | Luật An ninh mạng **116/2025/QH15** | 01/07/2026 | Còn hiệu lực. Luật mới, **kế thừa, hợp nhất** Luật ANM 24/2018 và Luật ATTTM 86/2015. Không phải luật sửa đổi | ✅ | https://vanban.chinhphu.vn/?pageid=27160&docid=216499 |
 | Luật Chuyển đổi số **148/2025/QH15** | 01/07/2026 | Còn hiệu lực. Bãi bỏ Luật CNTT 67/2006 | ✅ · ⚠️ phần bãi bỏ chỉ thấy ở nguồn phụ | congbao luat-so-148-2025-qh15 |
