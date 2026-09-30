@@ -1,9 +1,9 @@
 ---
 name: "sht-cds-danh-gia-hien-trang"
-description: "Đánh giá hiện trạng và mức sẵn sàng CĐS (DMI) Giai đoạn 01 SHT: 6 trụ cột, chất lượng dữ liệu, hạ tầng API, điểm nghẽn As-Is, báo cáo trước cổng G1. LUÔN dùng khi nói \"đánh giá hiện trạng\", \"khảo sát DMI\", \"đo maturity\", \"tìm điểm nghẽn\", hoặc chuẩn bị tư vấn lộ trình CĐS. KHÔNG dùng cho rà hợp đồng vendor, chuẩn hoá CRM (sht-normalize-account), bóc hồ sơ scan (chuan-hoa-ho-so-tai-lieu)."
+description: "Đánh giá hiện trạng CĐS (DMI) Giai đoạn 01 và lập Chiến lược – Lộ trình Giai đoạn 02 SHT: 6 trụ cột, dữ liệu, API, điểm nghẽn As-Is, cổng G1; rồi 6 lăng kính thị trường B2B, backlog use-case, business case sơ bộ. LUÔN dùng khi nói \"đánh giá hiện trạng\", \"khảo sát DMI\", \"tìm điểm nghẽn\", \"lập chiến lược CĐS\", \"backlog use-case\", \"6 lăng kính\". KHÔNG dùng cho PRD/giải pháp (sht-cds-thiet-ke-prd), rà hợp đồng vendor, chuẩn hoá CRM (sht-normalize-account)."
 ---
 
-# Đánh giá Hiện trạng & Sẵn sàng Chuyển đổi số (SHT Phase 01)
+# Đánh giá Hiện trạng & Chiến lược Chuyển đổi số (SHT Phase 01 → 02)
 
 ## 1. Mục tiêu & Nguyên lý Đánh giá Hiện trạng
 "Không giải pháp nếu chưa chẩn đoán". Trước khi tư vấn công cụ AI hay tự động hóa, doanh nghiệp bắt buộc phải đi qua Giai đoạn 01 để đo lường năng lực thực tế, phát hiện rác dữ liệu và xác định điểm nghẽn quy trình. Bỏ qua bước này sẽ dẫn đến tình trạng "tự động hóa cái lộn xộn" và gây lãng phí ngân sách.
@@ -50,6 +50,21 @@ dmi_score, level_label, gaps = calculate_dmi(scores)
 
 ## 5. Bước tiếp theo sau Cổng G1
 
-Vượt G1 xong, **không dừng ở báo cáo hiện trạng**. Bảng điểm nghẽn As-Is ở Bước 3 chính là **đầu vào cho `sht-cds-thiet-ke-prd`** (Giai đoạn 03): thiết kế quy trình To-Be và soạn PRD cho giải pháp — tài liệu yêu cầu trung lập mà mọi hướng thi công đều đọc. Chỉ **khi PRD đã chốt hướng thi công là AI agent** mới chuyển tiếp sang `sht-cds-thiet-ke-agent` để khai báo agent đủ 3 chiều, gán tầng confidence và chốt mức Tiered Governance trước khi đề xuất cho khách Bank/Telco.
+Vượt G1 xong, **không dừng ở báo cáo hiện trạng** và **không nhảy thẳng sang 03**: làm Giai đoạn 02 ở §6 trước (luật cứng #4 đòi đủ đầu ra 01 **và** 02). Sau 02, bảng điểm nghẽn As-Is cùng backlog use-case đã xếp ưu tiên là **đầu vào cho `sht-cds-thiet-ke-prd`** (Giai đoạn 03): thiết kế quy trình To-Be và soạn PRD cho giải pháp — tài liệu yêu cầu trung lập mà mọi hướng thi công đều đọc. Chỉ **khi PRD đã chốt hướng thi công là AI agent** mới chuyển tiếp sang `sht-cds-thiet-ke-agent` để khai báo agent đủ 3 chiều, gán tầng confidence và chốt mức Tiered Governance trước khi đề xuất cho khách Bank/Telco.
 
 Không đề xuất một use-case AI nào khi chưa qua Giai đoạn 01 — thiếu bản đồ As-Is thì không chứng minh được agent giải quyết điểm nghẽn nào, và không có KPI gốc để đo cải thiện.
+
+## 6. Giai đoạn 02 — Chiến lược & Lộ trình *(thêm 30/09/2026, v0.29.0 — báo cáo gap `THỰC HÀNH-AI/04_Kiem-Chung-Upgrade/2026-09-30_GAP-sht-skills-vs-tai-lieu-hoc.md`)*
+
+**Điều kiện vào:** workspace đã có đầu ra 01 và đã qua G1. Chưa có → dừng, làm §3 trước. Không workspace nào có đầu ra 01 thì **hỏi**, không tự dựng giả định.
+
+Giai đoạn 02 trả lời "làm gì trước, vì sao, có đáng tiền không" — **không** thiết kế giải pháp (việc của 03).
+
+1. **Chọn và xếp ưu tiên hướng triển khai bằng 6 lăng kính** — `references/khung-6-lang-kinh.md` (L1 nhu cầu cấp bách · L2 ba lực · L3 khoảng trống quy trình · L4 lợi thế bền vững · L5 đe doạ/đòn bẩy AI · L6 kinh tế đơn vị). Mỗi lăng kính lấy đầu vào **từ đầu ra 01**, ghi vào đúng sheet của workbook 02.
+2. **Điền workbook 6 sheet** (`.agents/knowledge/02_Chien-luoc-Lo-trinh/02_noi-dung.md`): MV-GSM · BMC · SWOT/PEST/USP/UVP · Mục tiêu–KPI theo 3 trụ · Backlog use-case (chấm giá trị/khả thi) · Business case & ROI sơ bộ.
+3. **Backlog use-case:** mỗi dòng phải map về ít nhất một trụ (Tài chính / Khách hàng / Hệ thống) — không map được thì loại. Với khách ngân hàng, gom nhóm theo 3 cụm: gian lận/rủi ro · khách hàng · vận hành.
+4. **Business case:** chi phí AI biến đổi theo lượng dùng (token/lượt gọi), không tính như license phẳng — xem `sht-cds-thiet-ke-agent` §8. Mọi con số qua luật cứng #2 (truy được nguồn hoặc gắn "chưa đối chiếu"). Không dùng số minh hoạ của tài liệu gốc AI48S.
+5. **Căn cứ pháp lý của lực cấu trúc (L2)** lấy qua `sht-phap-che-sot`, không tự khẳng định hiệu lực luật.
+6. **Cổng ra 02:** backlog đã xếp ưu tiên + business case sơ bộ được Sponsor duyệt (HITL). Có rồi mới sang `sht-cds-thiet-ke-prd`.
+
+Không dùng khung này để "bán ý tưởng" trước khi có 01 — đó chính là lỗi luật #4 chặn. L7 (kiểm chứng 0-code) và L8 (marketing) của bản gốc bị bỏ có chủ ý: kiểm chứng với khách Bank/Telco là Pilot Giai đoạn 04.

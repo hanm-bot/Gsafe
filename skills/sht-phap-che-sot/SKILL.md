@@ -109,20 +109,33 @@ Báo cáo pháp chế được xuất thành văn bản độc lập tại `data
 
 > Nguồn AI48S: §9 Cổng chất lượng.
 
-Trước khi bàn giao kết quả, agent bắt buộc kiểm tra 12 tiêu chí chất lượng:
+Trước khi bàn giao kết quả, agent bắt buộc kiểm tra 13 tiêu chí chất lượng (1–12 và 10b):
 
 - [ ] 1. Đã chuyển hóa tình huống thành đủ 5 trục tọa độ (đặc biệt xác định chính xác THỜI ĐIỂM)?
 - [ ] 2. Đã cảnh báo người dùng nếu phát hiện dấu hiệu vi phạm pháp luật (bẫy ngược)?
 - [ ] 3. Đã kích hoạt thẩm vấn ngược khi dữ kiện mấu chốt còn thiếu (trỏ `grill-me` khi cần)?
 - [ ] 4. Mọi trích dẫn đều có tọa độ chính xác: Cấp văn bản – Số hiệu – Điều – Khoản – Điểm?
-- [ ] 5. Mỗi dòng trong bảng SOT đều có URL nguồn + ngày truy cập cụ thể?
+- [ ] 5. Mỗi dòng trong bảng SOT đều có URL nguồn + ngày truy cập cụ thể, và bảng có **ít nhất 3 trích dẫn NGUYÊN VĂN** (không diễn giải)? Vụ việc chỉ có 1–2 căn cứ thật thì ghi rõ số căn cứ, không độn cho đủ 3.
 - [ ] 6. Trạng thái hiệu lực của văn bản khớp chính xác với mốc thời gian của vụ việc?
-- [ ] 7. Đã tra chéo đủ 3 chiều: Chiều dọc (Nghị định/Thông tư), Chiều ngang (Sửa đổi), Chiều thời gian?
+- [ ] 7. Đã tra chéo đủ 3 chiều: Chiều dọc (Nghị định/Thông tư), Chiều ngang (Sửa đổi), Chiều thời gian — **và chiều chuyên ngành** khi vụ việc có luật chuyên ngành (ngân hàng, viễn thông, xây dựng…) đè lên luật chung?
 - [ ] 8. Đã phân xử mâu thuẫn theo nguyên tắc Lex superior / posterior / specialis (specialis: học lý)?
 - [ ] 9. Đã thực hiện Stress-test theo khung 3 cột giả định đòn phản công?
 - [ ] 10. Đã so sánh các phương án xử lý theo thang điểm 1–5?
+- [ ] 10b. Đã lập **phòng tuyến bảo vệ**: liệt kê hồ sơ/bằng chứng SHT cần lập hoặc lưu ngay bây giờ để đứng vững nếu bị thanh tra/khởi kiện?
 - [ ] 11. Đã ghi file báo cáo độc lập vào `data/workspaces/<ws>/phap-che/<chu-de>/`?
 - [ ] 12. Khung chat chỉ hiển thị bản tóm tắt điều hành, bảng định danh 5 trục và liên kết mở báo cáo?
+
+**Đối chiếu với 15 tiêu chí gốc AI48S** *(thêm 30/09/2026, v0.29.0 — bản 0.28.0 rút 15→12 mà không ghi lý do, không tìm thấy lý do trong plan/report P3, nên ghi đối chiếu tại đây)*:
+
+| Gốc AI48S | Ở đây | Lý do |
+|---|---|---|
+| #1–3, #6, #7, #9, #10, #12, #15 | 1–4, 6, 8–10, 12 | Giữ nguyên ý |
+| #4 tạo thư mục `legal_research_*/` + file phase | gộp vào 11 | SHT ghi vào `data/workspaces/<ws>/phap-che/` (luật Output) |
+| #5 ≥3 trích dẫn nguyên văn | **khôi phục** vào 5 | Bị rút không lý do; nguyên văn là lõi của SOT |
+| #8 chiều chuyên ngành | **khôi phục** vào 7 | Bản 0.28.0 thay bằng "chiều thời gian"; nay giữ cả hai |
+| #11 phòng tuyến bảo vệ | **khôi phục** thành 10b | Bị rút không lý do; là đầu ra hành động cho SHT |
+| #13 báo cáo độc lập | 11 | Giữ ý, đổi đường dẫn |
+| #14 khối bàn giao cho skill xuất bản của gói AI48S | **bỏ có chủ ý** | Skill nhận không có trong SHT; bàn giao theo mục "Phối hợp & bàn giao liên skill" |
 
 ---
 

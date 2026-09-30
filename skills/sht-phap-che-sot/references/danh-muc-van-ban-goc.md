@@ -87,3 +87,13 @@ Danh sách này dùng làm ca gài. Skill **không** được lặp lại các k
 8. Luật Công chứng 2014 "sửa bởi 137/2025". **SAI**: thay bởi Luật 46/2024; còn Luật 137/2025 là về điều ước quốc tế.
 9. NĐ 126/2020, NĐ 123/2020, TT 105/2020, TT 86/2024, NĐ 31/2021, Luật Đầu tư 61/2020, TT 06/2024/TT-BKHĐT. **Hết hiệu lực** (xem mục 3).
 10. "Tổng cục Thuế", "TAND cấp huyện". **Lỗi thời**.
+
+## 6. Lĩnh vực chưa có danh mục — tra theo quy trình SOT *(thêm 30/09/2026, v0.29.0 — báo cáo gap `THỰC HÀNH-AI/04_Kiem-Chung-Upgrade/2026-09-30_GAP-sht-skills-vs-tai-lieu-hoc.md`)*
+
+Bộ AI48S có bản đồ cho các lĩnh vực dưới đây, **chưa** được đối chiếu hiệu lực nên **không** chép số hiệu văn bản vào đây. Khi vụ việc chạm lĩnh vực này: đọc file AI48S làm gợi ý tìm kiếm, rồi tra và trích nguyên văn theo `trich-dan-sot.md` + `nguon-tra-cuu.md`, kiểm hiệu lực tại mốc vụ việc. Mọi số hiệu lấy từ AI48S chưa kiểm coi là ⚠️ (mục 5 cho thấy bộ này có nhiều khẳng định sai/lỗi thời).
+
+| Lĩnh vực | Gợi ý tìm kiếm (chỉ đọc, chưa đối chiếu) | Liên quan SHT |
+|---|---|---|
+| Đất đai – xây dựng – bất động sản | `THỰC HÀNH-AI/AI48S/phap-che-doanh-nghiep/phap-che-doanh-nghiep/resources/domains/04-dat-dai-xay-dung.md` | Hồ sơ XDCB/nội thất (`chuan-hoa-du-lieu-du-an`) |
+| Hình sự – hành chính (xử phạt, khiếu nại) | `.../domains/02-hinh-su-hanh-chinh.md` | Xử phạt vi phạm hành chính, khiếu nại quyết định |
+| Sở hữu trí tuệ – môi trường – điện lực – chuyên ngành khác | `.../domains/06-chuyen-nganh-khac.md` | License phần mềm, bản quyền, dự án hạ tầng |

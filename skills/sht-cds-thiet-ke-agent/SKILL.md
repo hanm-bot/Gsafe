@@ -90,6 +90,10 @@ Ngưỡng khởi điểm khi chưa có dữ liệu hiệu chỉnh: **≥90** t�
 
 ## 4. Tiered Governance — lộ trình mở rộng an toàn
 
+> **Phân loại rủi ro chạy SONG SONG từ PRD, không để cuối.** Mức rủi ro quyết định mức tự động được phép thiết kế (§2); phân loại sau khi đã viết Prompt Spec/agent là phải đập ra làm lại. Với Bank/Telco, hầu hết use-case chạm tiền + dữ liệu cá nhân + gửi ra ngoài → mặc định **Cao**; phân vân thì chọn mức cao hơn trong tháng đầu. *(thêm 30/09/2026, v0.29.0)*
+>
+> **Cổng trước khi viết prompt:** mọi thành phần Prompt Spec truy được về PRD / FR / dữ liệu (BOM) / NFR. Tối thiểu trả lời: một sản phẩm AI — một Prompt Spec? · vai trò và ranh giới rõ? · chỉ một mục tiêu? · có luật xác thực đầu vào? · workflow khớp FR? · luật nghiệp vụ gắn BOM/NFR? · đầu ra khớp đặc tả artifact? · có định nghĩa hoàn thành? · bộ test đã định? (9 trong 12 câu của khung gốc `THỰC HÀNH-AI/05_Kien-Thuc-Trich-Xuat/02_chuoi-artifact.md` §2.5 — 3 câu còn lại tài liệu không nêu).
+
 - **L1 – Advisory:** agent gắn cờ rủi ro, khuyến nghị; **người giữ toàn quyền**
 - **L2 – Controlled Execution:** agent xử lý ca rủi ro thấp trong ngưỡng chặt; không chắc → escalate
 - **L3 – Autonomous Playbooks:** agent chạy trong playbook đã định, tự ưu tiên ca, escalate theo mẫu đã học; người review ngoại lệ + cập nhật chính sách
@@ -131,6 +135,15 @@ Trước khi lên production bắt buộc có: **stress test** (mô phỏng kh�
 | Agent cấp quyền quá tay, trôi khỏi làn | **Least-privilege access** |
 | Vai trò để nguyên khi chính sách đã đổi | **Review vai trò hằng quý** |
 | Không rollback khi cập nhật hỏng | **Bắt buộc có đường rollback** |
+
+**Vận hành (LLMOps) — bốn thứ phải có trước production** *(thêm 30/09/2026, v0.29.0)*:
+
+| Việc | Cụ thể |
+|---|---|
+| Ghi log | Prompt + response + nguồn RAG đã dùng — để truy vết khi khách khiếu nại |
+| Theo dõi trôi chất lượng | % Bịa và % Từ chối đúng (§8) theo tuần |
+| Ngưỡng cảnh báo | Định trước con số, không đợi khách phàn nàn |
+| SOP sự cố AI | AI sai thì ai sửa, sửa thế nào, trong bao lâu, có phải thông báo khách không |
 
 **Bẫy lớn nhất khi scale:** pilot đạt **không** đảm bảo scale đạt. Pilot chạy trên nhóm nhỏ với dữ liệu quen; mở rộng thì agent gặp dữ liệu ngoài phân phối pilot và chất lượng tụt. Khác biệt căn bản với phần mềm thường — phần mềm scale chỉ lo tải, AI scale lo cả tải lẫn chất lượng.
 

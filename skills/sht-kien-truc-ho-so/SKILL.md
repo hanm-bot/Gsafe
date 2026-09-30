@@ -72,7 +72,7 @@ Ba nhóm: **✅ ĐÃ CÓ** · **⚠️ CẦN BỔ SUNG NGAY** (thiếu thì khô
 
 | Định dạng | Dùng cho | Chuẩn SHT phải qua |
 |---|---|---|
-| Word `.docx` | Pháp lý, lập luận, trình ký | NĐ30 Tầng 1 cho mọi docx; Tầng 2 thể thức hiện **chỉ có mẫu BB/CV/BC** — loại khác ghi "⚠️ chưa có mẫu Tầng 2" trong Gap Matrix. Nghiệm thu: L4 `kiem_xuat_ban_docx.py` exit 0 **và** L4-W `kiem_word_nd30.py` exit 0. Thông số: `sht-nen-tang-kiem-chung/references/the-thuc-nd30.md` |
+| Word `.docx` | Pháp lý, lập luận, trình ký | NĐ30 Tầng 1 cho mọi docx; Tầng 2 thể thức: tra bảng "Tình trạng công cụ sinh Tầng 2" trong `the-thuc-nd30.md` (tính đến 27/09/2026: 17 loại Mẫu 1.4 + CV + BB đã nghiệm thu; 6 mẫu riêng NQ/QĐ/CĐ/GM/GGT/GNP đã sinh, ⚠️ chờ QA + Gate 3; HĐ/biên bản ghi nhớ/thoả thuận/thư công theo mẫu nội bộ, chưa có file mẫu). Loại chưa nghiệm thu ghi "⚠️ chưa có mẫu Tầng 2 nghiệm thu" trong Gap Matrix. *(Sửa 30/09/2026, v0.29.0 — bản cũ ghi "chỉ có BB/CV/BC".)* Nghiệm thu: L4 `kiem_xuat_ban_docx.py` exit 0 **và** L4-W `kiem_word_nd30.py` exit 0. Thông số: `sht-nen-tang-kiem-chung/references/the-thuc-nd30.md` |
 | Excel `.xlsx` | Số liệu, dự toán, KPI | Mọi con số truy được về nguồn (luật cứng #2); dùng skill `xlsx` để dựng |
 | Slide `.pptx` | Trình bày lãnh đạo/hội đồng | Số liệu trên slide phải trùng Excel nguồn; dùng skill `pptx` |
 

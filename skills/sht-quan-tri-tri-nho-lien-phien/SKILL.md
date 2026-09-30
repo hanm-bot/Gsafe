@@ -34,3 +34,22 @@ Trí nhớ liên phiên là bộ nhớ CỦA AGENT (kiến thức, quyết đị
 ## Dùng kèm
 
 Cùng nguyên tắc "không viết đè lịch sử, chỉ thêm ghi chú cập nhật" với `sht-quan-tri-hien-phap-tai-lieu` — khác đối tượng: skill đó lo tài liệu vận hành (CLAUDE.md và tương đương), skill này lo trí nhớ riêng của agent. Khi một fact vừa sửa xong ở tài liệu vận hành, quay lại đây cập nhật memory tương ứng theo cùng logic.
+
+## Ghi vào đâu — bốn câu hỏi, dừng ở câu đầu tiên trả lời "có" *(thêm 30/09/2026, v0.29.0 — báo cáo gap `THỰC HÀNH-AI/04_Kiem-Chung-Upgrade/2026-09-30_GAP-sht-skills-vs-tai-lieu-hoc.md`)*
+
+Nguồn: `THỰC HÀNH-AI/.agents/rules/06_tri-nho-lien-phien.md` §3–§5.
+
+1. Đọc repo/tài liệu/git có suy ra được không? → **Có: không ghi memory.**
+2. Là luật phải tuân theo? → `CLAUDE.md` (ngắn, áp mọi việc) hoặc `.agents/rules/` (cần giải thích).
+3. Là một lỗi đã gặp? → `debug_notes.md`; lặp lần 2 mới lên luật (Hashimoto).
+4. Là sự thật về con người, bối cảnh, quyết định đã chốt? → `memory/`.
+
+Không câu nào "có" → **không ghi**.
+
+## Luật riêng cho `memory/`
+
+- **Kho sinh theo đường dẫn gốc dự án của phiên.** Mở dự án ở gốc khác (thư mục con, ổ cũ) là rơi vào kho khác và **không thấy** trí nhớ kho kia. Kho ổ `D:\` cũ không phiên nào đọc được nữa. Không thấy trí nhớ thì trước khi kết luận "chưa có", kiểm phiên đang mở ở gốc nào.
+- **Ngày tuyệt đối** — không "tuần trước", "gần đây".
+- **Trí nhớ loại `project` phải có trạng thái kèm ngày.** Khi gợi lại: đối chiếu thực tế trước rồi mới dùng; trí nhớ nhắc file/lệnh/cờ thì kiểm còn tồn tại.
+- **`description` viết bằng từ anh Hà dùng** ("cái này chạy thật chưa"), không bằng thuật ngữ kỹ thuật.
+- **Kiểm gợi lại ở phiên MỚI**, hỏi thẳng không gợi ý — gợi lại được trong phiên vừa ghi không chứng minh gì.

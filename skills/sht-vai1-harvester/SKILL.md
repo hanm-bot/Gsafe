@@ -35,7 +35,7 @@ Nhân sự Vai 1 là "Người gác cổng nguyên liệu" của phòng ban. Nhi
 
 ### Bước 3: Thực thi Kỹ thuật Masking Vùng Đỏ (Traffic Light Security)
 Áp dụng bộ mẫu regex chuẩn hóa để ẩn danh hóa dữ liệu trước khi lưu:
-1. **CCCD/CMND (9-12 số):** Thay thế bằng mã định danh cấu trúc `[PII_CCCD_NV-XX]`.
+1. **CCCD/CMND (9-12 số):** Thay thế bằng mã định danh cấu trúc `[PII_CCCD_NV-XX]`. Nhận diện CCCD 12 số theo cấu trúc (mã tỉnh · giới tính/thế kỷ · năm sinh · 6 số), **không** chỉ khi có chữ "CCCD:" đứng trước — số không nhãn vẫn là PII (xem `sht-quan-tri-dn` §0).
 2. **Số Tài khoản Ngân hàng (8-19 số):** Thay thế bằng `[STK_AN_DANH_NH-XX]`.
 3. **Bảng lương / Thu nhập cá nhân:** Tách riêng lưu máy cục bộ, thay bằng `[MUC_LUONG_KHUNG_BẬC_X]`.
 4. **Họ tên cá nhân:** Thay thế bằng mã thống nhất:

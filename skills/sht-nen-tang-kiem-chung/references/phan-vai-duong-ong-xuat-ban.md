@@ -110,7 +110,10 @@ python cham_van_phong.py VANBAN.md
 Đọc phiếu, sửa những chỗ mình thấy đúng, giữ lại những chỗ mình thấy máy bắt sai — **và ghi lại
 vì sao giữ**, để Vai E khỏi hỏi lại.
 
-Sinh `.docx` theo NĐ30 (`references/the-thuc-nd30.md`) — **không** dựng tay trong Word:
+Sinh `.docx` theo NĐ30 (`references/the-thuc-nd30.md`) — **không** dựng tay trong Word.
+
+> **Hai script dưới nằm NGOÀI gói plugin**, ở `.agents/scripts/` của gốc dự án `G:\CHUYỂN ĐỔI SỐ SHT`. Lệnh chỉ chạy đúng khi thư mục hiện tại là gốc dự án. Đứng chỗ khác thì gọi bằng đường dẫn tuyệt đối tới gốc; máy/Cowork không có cây `.agents/` thì báo **"không kiểm được — thiếu công cụ sinh"**, không tự dựng docx tay rồi coi là đạt. *(thêm 30/09/2026, v0.29.0)*
+
 
 ```bash
 python .agents/scripts/sinh-word-tu-md.py VANBAN.md                # Tầng 1: quy chế, tài liệu nội bộ

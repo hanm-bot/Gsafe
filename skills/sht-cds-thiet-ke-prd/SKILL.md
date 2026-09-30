@@ -24,7 +24,7 @@ Skill này kế thừa toàn bộ quy tắc nền tảng từ `sht-nen-tang-kiem
 Hỏi ngay đầu phiên:
 
 1. **Đã có bảng điểm nghẽn As-Is / Báo cáo hiện trạng chưa?** Chưa → dừng, chuyển `sht-cds-danh-gia-hien-trang`. Không có bản đồ As-Is thì không chứng minh được PRD giải quyết điểm nghẽn nào, và không có KPI gốc để đo cải thiện.
-2. **Use-case này đã map về trụ chiến lược nào (Tài chính / Khách hàng / Hệ thống) chưa?** Không map được → **loại**, đây là "làm CĐS vì đối thủ có".
+2. **Use-case này đã map về trụ chiến lược nào (Tài chính / Khách hàng / Hệ thống) chưa, và đã nằm trong backlog Giai đoạn 02 được duyệt chưa?** Không map được → **loại**, đây là "làm CĐS vì đối thủ có". Chưa có đầu ra 02 → chuyển `sht-cds-danh-gia-hien-trang` §6.
 3. **Dữ liệu nguồn cho giải pháp ở mức nào?** Dữ liệu bẩn > 15% → ghi thành *giả định rủi ro* trong PRD và yêu cầu làm sạch trước, đừng đặc tả trên nền rác.
 
 Ba câu này là guardrail. Bỏ qua là hỏng cả PRD.
@@ -84,6 +84,8 @@ Nguyên tắc viết yêu cầu: **đo được, nghiệm thu được, truy ngu
 ---
 
 ## 4. Yêu cầu phi chức năng & tuân thủ (khối hay bị bỏ nhất)
+
+> Phân loại rủi ro use-case bắt đầu **ngay trong PRD** và chạy song song tới lúc build — xem `sht-cds-thiet-ke-agent` §4. *(thêm 30/09/2026, v0.29.0)*
 
 Đây là chỗ PRD generic từ công cụ ngoài luôn thiếu, và là chỗ khách Bank/Telco soi kỹ nhất. Đọc và điền `references/checklist-tuan-thu-nd13-nhnn.md`.
 

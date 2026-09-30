@@ -37,6 +37,23 @@ Mức: **nên**, người soát chấm.
   - "gạch ngang cách hai bên": xung đột ký hiệu `CV-SHT-223`.
   - "hạn chế dấu hai chấm": xung đột ô thể thức "Kính gửi:", "Nơi nhận:".
 
+## Kiểm chứng khẳng định trước khi phát hành *(thêm 30/09/2026, v0.29.0 — báo cáo gap `THỰC HÀNH-AI/04_Kiem-Chung-Upgrade/2026-09-30_GAP-sht-skills-vs-tai-lieu-hoc.md`)*
+
+Nguồn: AI48S `review/fact-check.md`. **Số liệu kinh doanh** (doanh số, KPI, pipeline) không kiểm ở đây — chuyển `sht-xacthuc-baocao-hoatdong`. **Căn cứ pháp lý** → `sht-phap-che-sot`. Mục này cho các khẳng định còn lại (thống kê thị trường, trích lời, so sánh, xu hướng).
+
+- **Mức rủi ro:** Cao (thống kê, trích lời, pháp lý, khẳng định tiêu cực về bên khác) → bắt buộc kiểm · Trung bình (ngày tháng, xếp hạng, so sánh) → nên kiểm · Thấp (hiểu biết chung) → tuỳ.
+- **Năm cách kiểm:** nguồn là ai, công bố khi nào · 2–3 nguồn độc lập · tìm câu gốc, đúng chữ · số có hợp lý với số khác không · còn mới không (kế hoạch hay thực tế).
+- **Không kiểm được thì:** thêm ngữ cảnh ("theo báo cáo X, …") · ghi rõ nguồn và giới hạn · hoặc **bỏ** khẳng định. Bỏ còn hơn phát hành điều chưa kiểm.
+- **Dấu hiệu phải dừng:** nguồn không rõ tác giả · số quá tròn (100%, 10 lần) · khẳng định quá đẹp · trích lời lệch ngữ cảnh · tin cũ trình bày như mới.
+
+## Văn tự nhiên — nhịp đoạn và cách trình bày
+
+Nguồn: AI48S `review/natural.md`. Mức: **nên**, người soát chấm.
+
+- **Độ dài đoạn xen kẽ** 1–6 câu; cả bài mọi đoạn dài bằng nhau là dấu hiệu văn máy.
+- **Không dùng cùng một kiểu nối câu** quá 2–3 lần liên tiếp; luân phiên dấu phẩy, ngoặc đơn, tách câu, từ nối (mà, để, vì, nhưng).
+- **Văn kể/thư/bài viết:** chuyển gạch đầu dòng thành câu văn khi ý nối nhau. **Không áp** cho văn bản hành chính NĐ30, báo cáo, bảng kiểm — ở đó gạch đầu dòng là đúng thể thức.
+
 ## Chế độ BLUF — tờ trình, báo cáo nội bộ gửi lãnh đạo
 
 Áp dụng cho: **tờ trình, báo cáo nội bộ gửi lãnh đạo** (AI48S `publishing/executive-summary.md:13-39, :44`).

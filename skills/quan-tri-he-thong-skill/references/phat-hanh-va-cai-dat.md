@@ -15,6 +15,8 @@
 ## 2. Luật đã trả giá
 
 - **Đã tải một gói lên Organization library thì sửa nguồn phải nâng số hiệu.** Hai gói khác nội dung trùng số hiệu → máy chủ giữ bản cũ, không báo lỗi (0.23.0 → 0.23.1, 25/09).
+- **Kênh Cowork/Organization library: "đã tải lên" chưa phải "đã cài".** Kiểm số hiệu trong `installed_plugins.json`/manifest của Cowork trên máy **và** grep một chuỗi chỉ có ở bản mới trong thư mục skill đang nạp (ca 10/09/2026, 0.16.4). *(thêm 30/09/2026, v0.29.0)*
+- **Thông báo "Zip file contains path with invalid characters" có thể chỉ sai chỗ.** Ca 10/09: căn nguyên là `Compress-Archive` sinh entry trùng `plugin.json` và lẫn `.gitignore`, không phải tên tiếng Việt. Soi nội dung gói (`unzip -Z1`), và chỉ đóng gói bằng `release.py`. *(thêm 30/09/2026, v0.29.0)*
 - **Cập nhật tab Code xong phải `diff -rq` cache với nguồn.** "Đã cập nhật" chưa phải bằng chứng; chỉ `diff` rỗng mới là.
 - **Nhánh `main` cục bộ theo kịp bằng `git fetch origin main:main`** sau khi Mr. Hà push `qa-hanh-vi:main` — không `checkout`/`merge` trên nhánh đang làm.
 - **Không tự push, không force-push** — kể cả khi đã có lệnh duyệt rõ; lệnh cuối để Mr. Hà bấm.

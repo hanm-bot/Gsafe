@@ -35,7 +35,7 @@ Nguyên tắc chi phối: **Một khẳng định chỉ có giá trị khi kèm 
 - **File `.docx` có bảng:** Dùng script `scripts/docx_ordered_reader.py` để duyệt `body.iterchildren()`, giữ nguyên thứ tự đoạn văn và bảng.
 - **File `.docx` thuần văn bản:** Chạy `pandoc --columns=250 -t plain`.
 - **File `.xlsx`:** Đọc bằng `openpyxl` hai lượt (lượt 1 lấy formula, lượt 2 với `data_only=True` lấy cached value).
-- **File `.pdf` scan tiếng Việt:** **TUYỆT ĐỐI KHÔNG DÙNG OCR (Tesseract).** Render ảnh bằng `pdftoppm -png -r 200` và giao subagent đọc trực tiếp từ ảnh thị giác (mỗi subagent ≤ 20 trang). Yêu cầu trích NGUYÊN VĂN, rà từ khóa CÓ/KHÔNG, ghi rõ trang mờ không đọc được. Con số và dấu quan trọng: render lại 450 DPI. Mẫu chỉ thị đầy đủ: `references/ky-thuat-chi-tiet.md` §2.
+- **File `.pdf` scan tiếng Việt:** **TUYỆT ĐỐI KHÔNG DÙNG OCR (Tesseract).** Render ảnh bằng `pdftoppm -png -r 200` (máy không có `pdftoppm` thì dùng PyMuPDF: `page.get_pixmap(dpi=200).save(...)`, không dừng, không quay sang OCR — thêm 30/09/2026, v0.29.0, ca 06/09) và giao subagent đọc trực tiếp từ ảnh thị giác (mỗi subagent ≤ 20 trang). Yêu cầu trích NGUYÊN VĂN, rà từ khóa CÓ/KHÔNG, ghi rõ trang mờ không đọc được. Con số và dấu quan trọng: render lại 450 DPI. Mẫu chỉ thị đầy đủ: `references/ky-thuat-chi-tiet.md` §2.
 - **Tên file tiếng Việt báo *No such file* dù `ls` thấy:** tên ở dạng NFD — cách lách ở `references/ky-thuat-chi-tiet.md` §3.
 
 ---

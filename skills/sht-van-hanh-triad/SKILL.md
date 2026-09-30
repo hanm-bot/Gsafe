@@ -109,6 +109,8 @@ Một DoD tốt buộc bên thực thi nộp thứ **không chép được từ 
 - SHA-256 **đủ** các sổ thật, trước = sau; `find` nguyên văn chứng minh không để rác.
 - Ảnh/đầu ra lưu **đúng đường dẫn** ghi trong phiếu (không ở thư mục riêng của công cụ).
 - Mục "Không được làm": file được phép sửa, sổ cấm ghi, dữ liệu mẫu phải **giả lập**.
+- **Ba đường dẫn bắt buộc** trong mọi phiếu/lệnh giao (Anti hoặc subagent): **thư mục làm việc thật** (không phải chỗ người giao đang đứng), **nơi ghi báo cáo**, **nơi đọc kế hoạch**. Bên nhận không thấy hội thoại — thiếu đường dẫn là báo cáo rơi sai chỗ (rule 04 §1).
+- **Ghi thì tuần tự, nghiên cứu thì song song.** Trước khi giao song song, trả lời: hai bên có ghi cùng một file không? Không chắc → tuần tự (rule 04 §2). *(Hai dòng này thêm 30/09/2026, v0.29.0.)*
 
 Phiếu viết lỏng thì lỗi là của người viết phiếu: QA ghi "của phiếu Claude", đính chính trong
 task, không phạt bên thực thi.
