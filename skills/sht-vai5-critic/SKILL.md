@@ -34,7 +34,7 @@ Nhân sự Vai 5 là "Vị Thẩm phán Độc lập" và "Người bảo vệ H
    - Nhận định nguyên nhân có bị quy chụp chủ quan không?
 3. **Tầng 3 - Kiểm tra Tuân thủ Vùng Đỏ & Quy chế SHT:**
    - Báo cáo có vô tình để lộ danh tính thật hay số liệu mật chưa Masking không?
-   - Đã áp dụng đúng nguyên tắc bảo vệ dữ liệu theo Nghị định 13/2023/NĐ-CP chưa?
+   - Đã áp dụng đúng nguyên tắc bảo vệ dữ liệu theo Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15 và NĐ 356/2025/NĐ-CP chưa? (NĐ 13/2023 hết hiệu lực từ 01/01/2026 — sửa 30/09/2026, v0.30.2)
 
 ### Bước 3: Lập Tờ trình Phê duyệt HITL (Human-In-The-Loop)
 Xuất bản tệp: `PHIEU_PHAN_BIEN_VA_TO_TRINH_HITL.md`.

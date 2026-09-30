@@ -1,8 +1,10 @@
-# CHECKLIST TUÂN THỦ — NĐ13/2023 & NHNN cho PRD giải pháp CĐS Bank/Telco
+# CHECKLIST TUÂN THỦ — Luật BVDLCN & NHNN cho PRD giải pháp CĐS Bank/Telco
+
+> ⚠️ **Đính chính 30/09/2026 (v0.30.2):** bản đầu viết theo NĐ 13/2023/NĐ-CP. Từ 01/01/2026 căn cứ là **Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15** + **NĐ 356/2025/NĐ-CP** (hiệu lực 01/01/2026; NĐ 13/2023 hết hiệu lực từ cùng ngày) — URL chính thức ở `sht-phap-che-sot/references/danh-muc-van-ban-goc.md` §4. Tên file giữ nguyên để không gãy tham chiếu. Tám điểm kiểm ở mục 1 là các nhóm nghĩa vụ chung, **chưa đối chiếu từng mục** với điều khoản Luật 91/2025 và NĐ 356/2025: trước khi đưa vào hồ sơ bán khách, tra điều khoản cụ thể qua `sht-phap-che-sot`, không trích số điều theo trí nhớ.
 
 > Đây là checklist NFR nhóm tuân thủ, không phải tư vấn pháp lý. Khi PRD ra hồ sơ bán cho khách, đối chiếu bản gốc văn bản pháp luật và để pháp chế khách duyệt. Không kết luận "đạt/không đạt" mà chưa đối chiếu văn bản gốc (luật cứng SHT #1).
 
-## 1. NĐ 13/2023/NĐ-CP — Bảo vệ dữ liệu cá nhân (nền chung mọi ngành)
+## 1. Luật 91/2025/QH15 + NĐ 356/2025/NĐ-CP — Bảo vệ dữ liệu cá nhân (nền chung mọi ngành)
 
 | # | Điểm kiểm | Có trong PRD? |
 |---|---|---|
@@ -11,7 +13,7 @@
 | 3 | Cơ chế thu thập **sự đồng ý** và rút lại đồng ý | ☐ |
 | 4 | Quyền của chủ thể dữ liệu (truy cập, chỉnh sửa, xoá, phản đối) được hệ thống hỗ trợ | ☐ |
 | 5 | **Sơ đồ luồng dữ liệu** — dữ liệu đi đâu, lưu ở đâu, ai truy cập, có ra khỏi hạ tầng khách không | ☐ |
-| 6 | Chuyển dữ liệu ra nước ngoài (nếu có) — đánh giá tác động + hồ sơ theo NĐ13 | ☐ |
+| 6 | Chuyển dữ liệu ra nước ngoài (nếu có) — đánh giá tác động + hồ sơ theo Luật 91/2025 và NĐ 356/2025 (⚠️ tra điều khoản cụ thể) | ☐ |
 | 7 | Masking/truncation PII trong log, DB, màn hình | ☐ |
 | 8 | Thời hạn lưu trữ & quy trình xoá/huỷ dữ liệu | ☐ |
 | 9 | Quy trình ứng phó sự cố lộ lọt dữ liệu (thông báo trong thời hạn luật định) | ☐ |

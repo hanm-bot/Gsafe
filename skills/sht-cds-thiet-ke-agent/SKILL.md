@@ -205,7 +205,7 @@ Phân biệt **functional trust** (agent chạy đúng, giải thích rõ, escal
 
 - **Nói với khách bằng thuật ngữ ngành, nối về tên SHT gọi** *(thêm 30/09/2026, v0.30.1 — mục THẤP báo cáo gap 30/09)*: Harness ↔ "AI Digital Staff" · RAG ↔ "Luồng Nhận thức" · Agent ↔ "Nhân sự chuyên trách" · HITL ↔ "Chốt chặn an toàn" · Guardrail ↔ "Luật cấm kỵ" · Confidence tier ↔ ba tầng §2. Tài liệu bán khách dùng thuật ngữ ngành, kèm tên SHT trong ngoặc lần đầu.
 
-- **NĐ 13/2023** về bảo vệ dữ liệu cá nhân là mức nền chung. Ngân hàng còn chịu quy định riêng của **NHNN** về an toàn hệ thống thông tin.
+- **Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15** + **NĐ 356/2025/NĐ-CP** (hiệu lực 01/01/2026; NĐ 13/2023 hết hiệu lực từ cùng ngày) là mức nền chung về bảo vệ dữ liệu cá nhân — căn cứ và URL: `sht-phap-che-sot/references/danh-muc-van-ban-goc.md` §4. *(sửa 30/09/2026, v0.30.2 — tra qua `sht-phap-che-sot`)* Ngân hàng còn chịu quy định riêng của **NHNN** về an toàn hệ thống thông tin.
 - Khách có yếu tố nước ngoài / yêu cầu chuẩn quốc tế: đối chiếu thêm **EU AI Act** (phân loại hệ thống AI theo mức rủi ro) và **NIST AI RMF**.
 - Câu khách Bank chắc chắn hỏi: *"Dữ liệu khách hàng có rời khỏi hạ tầng của chúng tôi không?"* — trả lời bằng **sơ đồ luồng dữ liệu**, không bằng lời hứa.
 

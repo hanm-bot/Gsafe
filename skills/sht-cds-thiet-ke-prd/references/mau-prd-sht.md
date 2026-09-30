@@ -51,7 +51,7 @@
 | Nhóm | Yêu cầu (số, không tính từ) | Cách nghiệm thu |
 |---|---|---|
 | Bảo mật & quyền | | |
-| Tuân thủ (NĐ13/NHNN) | | |
+| Tuân thủ (Luật BVDLCN 91/2025 + NĐ 356/2025 / NHNN) | | |
 | Luồng dữ liệu cá nhân | *(đính kèm sơ đồ luồng dữ liệu)* | |
 | Hiệu năng & tải (SLA) | | |
 | HITL & phê duyệt | | |

@@ -212,7 +212,7 @@ stateDiagram-v2
 
 - **Performance & Latency**: 95% cuộc gọi API phản hồi dưới **500ms** trong điều kiện mạng bình thường.
 - **Availability & SLA**: Đảm bảo thời gian khả dụng hệ thống đạt tối thiểu **99.9%** (Uptime).
-- **Security & Compliance**: Mã hóa dữ liệu nhạy cảm (AES-256), truyền tải an toàn (HTTPS/TLS 1.3), tuân thủ tiêu chuẩn bảo vệ dữ liệu cá nhân Nghị định 13/2023/NĐ-CP.
+- **Security & Compliance**: Mã hóa dữ liệu nhạy cảm (AES-256), truyền tải an toàn (HTTPS/TLS 1.3), tuân thủ Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15 và NĐ 356/2025/NĐ-CP (thay NĐ 13/2023 từ 01/01/2026; tra điều khoản qua `sht-phap-che-sot`).
 - **Audit & Logging**: Lưu vết 100% thay đổi trạng thái tiền tệ vào bảng log riêng biệt, không thể sửa xóa (Append-only).
 
 ---

@@ -1,6 +1,6 @@
 ---
 name: "sht-cds-thiet-ke-prd"
-description: "Soạn PRD giải pháp CĐS B2B Giai đoạn 03 SHT: từ điểm nghẽn As-Is ra luồng To-Be, yêu cầu, user story, nghiệm thu, tuân thủ NĐ13/NHNN, MoSCoW, truy vết ROI. LUÔN dùng khi nói \"viết PRD\", \"đặc tả yêu cầu\", \"quy trình To-Be\", kể cả khi chỉ mô tả quy trình cần số hoá. KHÔNG dùng cho PRD phần mềm nội bộ (prd-architect), đo DMI (sht-cds-danh-gia-hien-trang), thiết kế agent (sht-cds-thiet-ke-agent), rà SoW vendor (ra-soat-hop-dong-vendor)."
+description: "Soạn PRD giải pháp CĐS B2B Giai đoạn 03 SHT: từ điểm nghẽn As-Is ra luồng To-Be, yêu cầu, user story, nghiệm thu, tuân thủ Luật BVDLCN/NHNN, MoSCoW, truy vết ROI. LUÔN dùng khi nói \"viết PRD\", \"đặc tả yêu cầu\", \"quy trình To-Be\", kể cả khi chỉ mô tả quy trình cần số hoá. KHÔNG dùng cho PRD phần mềm nội bộ (prd-architect), đo DMI (sht-cds-danh-gia-hien-trang), thiết kế agent (sht-cds-thiet-ke-agent), rà SoW vendor (ra-soat-hop-dong-vendor)."
 ---
 
 # Thiết kế quy trình To-Be & soạn PRD cho giải pháp CĐS (SHT Phase 03)
@@ -94,7 +94,7 @@ Sáu nhóm NFR bắt buộc cân nhắc:
 | Nhóm | Chốt gì |
 |---|---|
 | **Bảo mật & quyền** | Least-privilege, phân tách dữ liệu, ai thấy gì |
-| **Tuân thủ** | **NĐ 13/2023** (bảo vệ DLCN) là nền; Bank thêm quy định **NHNN** về ATTT hệ thống; có yếu tố nước ngoài thì đối chiếu EU AI Act / NIST AI RMF |
+| **Tuân thủ** | **Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15** + **NĐ 356/2025/NĐ-CP** (hiệu lực 01/01/2026; NĐ 13/2023 hết hiệu lực từ cùng ngày) là nền (`sht-phap-che-sot/references/danh-muc-van-ban-goc.md` §4) *(sửa 30/09/2026, v0.30.2 — tra qua `sht-phap-che-sot`)*; Bank thêm quy định **NHNN** về ATTT hệ thống; có yếu tố nước ngoài thì đối chiếu EU AI Act / NIST AI RMF |
 | **Luồng dữ liệu cá nhân** | **Sơ đồ luồng dữ liệu** — trả lời "dữ liệu KH có rời hạ tầng khách không?" bằng sơ đồ, không bằng lời hứa |
 | **Hiệu năng & tải** | SLA, thông lượng, thời gian phản hồi — số, không tính từ |
 | **HITL & phê duyệt** | Mọi bước chạm **tiền hoặc PII** mặc định HITL: hệ thống gợi ý, **người duyệt** thực thi |
@@ -195,7 +195,7 @@ Chạy checklist bàn giao của `sht-nen-tang-kiem-chung` (ghi đúng thư mụ
 - [ ] Mỗi mục tiêu truy về ≥1 điểm nghẽn + KPI gốc có nguồn (số ⚠️ nếu chưa đối chiếu)
 - [ ] Có sơ đồ quy trình To-Be, đánh dấu bước HITL
 - [ ] PRD đủ 10 khối; mỗi FR trỏ về ≥1 user story; mỗi story có tiêu chí nghiệm thu đo được
-- [ ] NFR có nhóm tuân thủ (NĐ13/NHNN) + **sơ đồ luồng dữ liệu**
+- [ ] NFR có nhóm tuân thủ (Luật BVDLCN 91/2025 + NĐ 356/2025 / NHNN) + **sơ đồ luồng dữ liệu**
 - [ ] Đặc tả tích hợp nối với khảo sát hạ tầng GĐ01
 - [ ] Đã gắn MoSCoW, chốt phạm vi Pilot = tập Must
 - [ ] Đã chốt hướng thi công + chuyển tiếp đúng (agent → `sht-cds-thiet-ke-agent`)
