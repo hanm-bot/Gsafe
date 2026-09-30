@@ -39,6 +39,8 @@ Ba câu này là guardrail. Bỏ qua là hỏng cả đề xuất.
 | **Scope** | Truy cập **dữ liệu nào**, được **hành động** tới đâu? | "Đọc số dư ERP + luồng FX; tự chạy sweep nội bộ; escalate chuyển liên NH >$10M" |
 | **Boundaries** | **Giới hạn** nào phải tôn trọng? | "Dừng & báo nếu biến động FX >3%, đệm <105%, hoặc mô hình dự báo mâu thuẫn" |
 
+**Tách khung dùng chung với bản của từng use-case.** Workflow viết theo khuôn: mỗi bước có input · hành động · output · điều kiện dừng · người chịu trách nhiệm. Quy trình cụ thể của use-case A để ở tài liệu riêng của A — không chép 14 bước của A sang use-case B. *(thêm 30/09/2026, v0.30.1 — mục THẤP báo cáo gap 30/09)*
+
 **Bảng dùng khi review thiết kế:**
 
 | Agent định nghĩa tốt | Agent định nghĩa tồi |
@@ -200,6 +202,8 @@ Phân biệt **functional trust** (agent chạy đúng, giải thích rõ, escal
 ---
 
 ## 11. Lưu ý riêng ngành Bank/Telco tại Việt Nam
+
+- **Nói với khách bằng thuật ngữ ngành, nối về tên SHT gọi** *(thêm 30/09/2026, v0.30.1 — mục THẤP báo cáo gap 30/09)*: Harness ↔ "AI Digital Staff" · RAG ↔ "Luồng Nhận thức" · Agent ↔ "Nhân sự chuyên trách" · HITL ↔ "Chốt chặn an toàn" · Guardrail ↔ "Luật cấm kỵ" · Confidence tier ↔ ba tầng §2. Tài liệu bán khách dùng thuật ngữ ngành, kèm tên SHT trong ngoặc lần đầu.
 
 - **NĐ 13/2023** về bảo vệ dữ liệu cá nhân là mức nền chung. Ngân hàng còn chịu quy định riêng của **NHNN** về an toàn hệ thống thông tin.
 - Khách có yếu tố nước ngoài / yêu cầu chuẩn quốc tế: đối chiếu thêm **EU AI Act** (phân loại hệ thống AI theo mức rủi ro) và **NIST AI RMF**.

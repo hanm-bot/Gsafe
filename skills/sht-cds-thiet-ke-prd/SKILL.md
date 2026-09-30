@@ -117,6 +117,8 @@ Quy tắc phân loại rủi ro (mượn từ `sht-cds-thiet-ke-agent`): *Nếu 
 
 ## 5. Đặc tả dữ liệu & tích hợp
 
+**Mô hình đối tượng nghiệp vụ (BOM)** — mắt xích hay bị để trống giữa FR và đặc tả artifact. Tối thiểu: thực thể nghiệp vụ nào · thuộc tính bắt buộc · quan hệ giữa các thực thể · luật nghiệp vụ gắn với mỗi thực thể. Chưa cần thì ghi rõ "BOM — chưa dùng ở use-case này". *(thêm 30/09/2026, v0.30.1 — mục THẤP báo cáo gap 30/09)*
+
 Nối trực tiếp với khảo sát hạ tầng của Giai đoạn 01 (danh mục hệ thống, tình trạng API/webhook). Với mỗi tích hợp:
 
 - **Hệ thống nguồn/đích** (core banking, CRM, cổng eKYC, hệ AML…) và **có API/webhook không** — nếu không, đó là một giả định rủi ro.

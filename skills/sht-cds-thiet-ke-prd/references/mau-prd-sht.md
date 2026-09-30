@@ -10,6 +10,7 @@
 - **Phiên bản PRD:** v___  **Ngày:** ___  **Người soạn:**
 - **Trạng thái:** Dự thảo / Trình duyệt / Đã duyệt (Cổng G___)
 - **Nguồn Báo cáo hiện trạng (GĐ01):** *(đường dẫn/tên file + ngày)*
+- **Nguồn backlog & business case (GĐ02):** *(đường dẫn/tên file + ngày duyệt của Sponsor)*
 
 ## 1. Bối cảnh & vấn đề
 *(Trích từ Báo cáo hiện trạng — không viết lại từ đầu. Nêu điểm nghẽn cốt lõi PRD này giải quyết.)*

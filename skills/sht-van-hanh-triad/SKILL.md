@@ -112,6 +112,8 @@ Một DoD tốt buộc bên thực thi nộp thứ **không chép được từ 
 - **Ba đường dẫn bắt buộc** trong mọi phiếu/lệnh giao (Anti hoặc subagent): **thư mục làm việc thật** (không phải chỗ người giao đang đứng), **nơi ghi báo cáo**, **nơi đọc kế hoạch**. Bên nhận không thấy hội thoại — thiếu đường dẫn là báo cáo rơi sai chỗ (rule 04 §1).
 - **Ghi thì tuần tự, nghiên cứu thì song song.** Trước khi giao song song, trả lời: hai bên có ghi cùng một file không? Không chắc → tuần tự (rule 04 §2). *(Hai dòng này thêm 30/09/2026, v0.29.0.)*
 
+**Khung một phiếu/lệnh giao** *(thêm 30/09/2026, v0.30.1 — mục THẤP báo cáo gap 30/09)*: 5 phần Role · Context · Task · Format · Constraints. Task chạm file thêm 4 luật an toàn mặc định: không xoá · không ghi đè file đang có · có dry-run · in kế hoạch trước khi đổi. Ba luật giao: xin **kế hoạch** trước khi xin kết quả · bản đầu **nhỏ** · hỏi luôn **cách kiểm thử** (lệnh, input mẫu, output kỳ vọng). `plan.md` ≤ 80 dòng, chi tiết mỗi bước để ở `buoc-XX/` (rule 00 §6, rule 04 §3).
+
 Phiếu viết lỏng thì lỗi là của người viết phiếu: QA ghi "của phiếu Claude", đính chính trong
 task, không phạt bên thực thi.
 

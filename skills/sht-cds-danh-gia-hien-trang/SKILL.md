@@ -31,6 +31,7 @@ dmi_score, level_label, gaps = calculate_dmi(scores)
 - Tra cứu tiêu chí tại `references/kiem-toan-du-lieu-ha-tang.md`.
 - Lập bảng danh mục hệ thống hiện tại (KiotViet, myXteam, CRM, Zalo OA, Sheets...).
 - Ghi nhận: Có API/Webhook không? Ai giữ Super Admin? Rủi ro Single Point of Failure ở đâu?
+- Đếm khách/account trong CRM của khách: gộp theo **mã có cấu trúc**, không theo tên nhập tay — bài học tách khống hàng trăm account ảo, cách làm ở `sht-normalize-account`. *(thêm 30/09/2026, v0.30.1 — mục THẤP báo cáo gap 30/09)*
 
 ### Bước 3: Bản đồ Quy trình As-Is & Định vị Điểm nghẽn
 - Chọn 3-5 quy trình lõi (Tiếp nhận Lead, Xử lý đơn, Quản lý kho, Chăm sóc sau bán).
@@ -62,7 +63,7 @@ Giai đoạn 02 trả lời "làm gì trước, vì sao, có đáng tiền khôn
 
 1. **Chọn và xếp ưu tiên hướng triển khai bằng 6 lăng kính** — `references/khung-6-lang-kinh.md` (L1 nhu cầu cấp bách · L2 ba lực · L3 khoảng trống quy trình · L4 lợi thế bền vững · L5 đe doạ/đòn bẩy AI · L6 kinh tế đơn vị). Mỗi lăng kính lấy đầu vào **từ đầu ra 01**, ghi vào đúng sheet của workbook 02.
 2. **Điền workbook 6 sheet** (`.agents/knowledge/02_Chien-luoc-Lo-trinh/02_noi-dung.md`): MV-GSM · BMC · SWOT/PEST/USP/UVP · Mục tiêu–KPI theo 3 trụ · Backlog use-case (chấm giá trị/khả thi) · Business case & ROI sơ bộ.
-3. **Backlog use-case:** mỗi dòng phải map về ít nhất một trụ (Tài chính / Khách hàng / Hệ thống) — không map được thì loại. Với khách ngân hàng, gom nhóm theo 3 cụm: gian lận/rủi ro · khách hàng · vận hành.
+3. **Backlog use-case:** mỗi dòng phải map về ít nhất một trụ (Tài chính / Khách hàng / Hệ thống) — không map được thì loại. Với khách ngân hàng, gom nhóm theo 3 cụm: gian lận/rủi ro · khách hàng · vận hành. Khách có hạ tầng thiết bị (IoT/POS/TMS): xét thêm nhóm **IoT × tài chính** — định giá theo dữ liệu dùng thật, đánh giá rủi ro từ dữ liệu thiết bị, đối soát kế toán khớp giao dịch thực. Con số quy mô thị trường trong tài liệu học không đưa vào business case khi chưa đối chiếu (luật #2).
 4. **Business case:** chi phí AI biến đổi theo lượng dùng (token/lượt gọi), không tính như license phẳng — xem `sht-cds-thiet-ke-agent` §8. Mọi con số qua luật cứng #2 (truy được nguồn hoặc gắn "chưa đối chiếu"). Không dùng số minh hoạ của tài liệu gốc AI48S.
 5. **Căn cứ pháp lý của lực cấu trúc (L2)** lấy qua `sht-phap-che-sot`, không tự khẳng định hiệu lực luật.
 6. **Cổng ra 02:** backlog đã xếp ưu tiên + business case sơ bộ được Sponsor duyệt (HITL). Có rồi mới sang `sht-cds-thiet-ke-prd`.

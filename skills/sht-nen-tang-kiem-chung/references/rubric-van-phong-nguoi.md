@@ -32,6 +32,7 @@ Mức: **nên**, người soát chấm.
 - **Trộn tiếng Anh:** Tránh, **trừ** danh sách từ ngành giữ nguyên: SLA, API, POS, TMS, PO, BRD, SoW; được bổ sung, phải ghi lý do (AI48S `review/anti-ai.md:18-22`).
 - **Phân cấp tiêu đề:** Tiêu đề không viết hoa mọi chữ kiểu tiếng Anh. Tiêu đề cấp 2 trở xuống chỉ hoa chữ đầu và tên riêng (AI48S `review/capitalization.md:10-24`).
 - **Viết hoa theo Phụ lục II NĐ30:** Trỏ `references/the-thuc-nd30.md`, không chép lại. **Ngoại lệ bắt buộc ghi rõ:** "Bên", "hai Bên", "Bên Bán/Bên Mua", "Quý Công ty", "Ông/Bà" là đúng (AI48S `review/capitalization.md:10-18`).
+- **Ngày tháng viết đủ năm** (`20/10/2026`, hoặc "cuối tháng 10/2026"): ngày tháng 10 viết thiếu năm (`20/10`) trùng dạng điểm số x/10 và bị chốt luật #1 chặn nhầm (ca 05/09/2026). Viết đủ vừa rõ nghĩa vừa khỏi vướng. *(thêm 30/09/2026, v0.30.1 — mục THẤP báo cáo gap 30/09)*
 - **Lạm dụng từ nối:** Lạm dụng một từ nối nhiều lần: người soát đếm (> 3 lần/bài). **Không** đưa "Tuy nhiên", "Do đó", "Tóm lại" vào danh sách mùi AI (AI48S `review/anti-ai.md:42`).
 - **Hai điều không lấy từ AI48S và lý do:**
   - "gạch ngang cách hai bên": xung đột ký hiệu `CV-SHT-223`.

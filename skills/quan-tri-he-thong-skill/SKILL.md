@@ -153,9 +153,10 @@ Sau khi sửa:
 
 Trước khi viết một dòng nội dung nào:
 
+0. Tiêu chí mở: việc đã làm với Claude **hơn một lần** theo cùng cách — một lần thì chưa đáng đóng skill. *(thêm 30/09/2026, v0.30.1 — mục THẤP báo cáo gap 30/09)*
 1. Liệt kê skill hiện có cùng miền nghiệp vụ.
 2. Hỏi: việc này là **skill mới**, hay là **một mục** trong skill đã có? Mặc định nghiêng về mục mới trong skill cũ — hệ thống nhiều skill nhỏ chồng lấn tệ hơn ít skill mạch lạc.
-3. Nếu vẫn là skill mới: viết trước **vùng loại trừ** của nó và của các skill hàng xóm, rồi mới viết nội dung.
+3. Nếu vẫn là skill mới: viết trước **vùng loại trừ** của nó và của các skill hàng xóm, rồi mới viết nội dung. Khai luôn **artifact đầu ra** (file gì, ghi ở đâu) — skill không nói ra được đầu ra là skill chưa rõ việc.
 4. Khai báo tầng, cập nhật Sổ đăng bạ, rồi bàn giao cho `skill-creator` viết nội dung.
 
 ---
