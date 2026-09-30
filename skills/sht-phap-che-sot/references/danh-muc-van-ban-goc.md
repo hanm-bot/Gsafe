@@ -62,7 +62,7 @@
 | Văn bản | Hiệu lực | Tình trạng 27/09/2026 | Độ tin | Nguồn |
 |---|---|---|---|---|
 | Luật Bảo vệ dữ liệu cá nhân **91/2025/QH15** · NĐ **356/2025/NĐ-CP** | 01/01/2026 | Còn hiệu lực | ✅ | https://vanban.chinhphu.vn/?pageid=27160&docid=214590 · https://vanban.chinhphu.vn/?pageid=27160&docid=216387 |
-| NĐ 13/2023/NĐ-CP | — | **Hết hiệu lực 01/01/2026**, thay bởi NĐ 356/2025 (Đ.42) | ⚠️ điều thay thế chỉ thấy ở nguồn phụ (tra lại 30/09/2026: trang chính phủ docid=216387 xác nhận NĐ 356 ban hành 31/12/2025, hiệu lực 01/01/2026, chỉ đăng PDF ký số — chưa đọc được nguyên văn Đ.42; nguồn phụ luatvietnam, thuvienphapluat, EY khớp nhau) | luatvietnam.vn · thuvienphapluat.vn (nguồn phụ) |
+| NĐ 13/2023/NĐ-CP | — | **Hết hiệu lực 01/01/2026** — NĐ 356/2025 Đ.42 k.2, nguyên văn: "Nghị định số 13/2023/NĐ-CP ngày 17 tháng 4 năm 2023 của Chính phủ về bảo vệ dữ liệu cá nhân hết hiệu lực kể từ ngày Nghị định này có hiệu lực thi hành" | ✅ (đối chiếu 30/09/2026 trên CSDL quốc gia về pháp luật) | https://vbpl.vn/van-ban/chi-tiet/187276 |
 | Luật Dữ liệu **60/2024/QH15** | 01/07/2025 | Còn hiệu lực | ✅ | https://vanban.chinhphu.vn/?pageid=27160&docid=212488 |
 | Luật An ninh mạng **116/2025/QH15** | 01/07/2026 | Còn hiệu lực. Luật mới, **kế thừa, hợp nhất** Luật ANM 24/2018 và Luật ATTTM 86/2015. Không phải luật sửa đổi | ✅ | https://vanban.chinhphu.vn/?pageid=27160&docid=216499 |
 | Luật Chuyển đổi số **148/2025/QH15** | 01/07/2026 | Còn hiệu lực. Bãi bỏ Luật CNTT 67/2006 | ✅ · ⚠️ phần bãi bỏ chỉ thấy ở nguồn phụ | congbao luat-so-148-2025-qh15 |
