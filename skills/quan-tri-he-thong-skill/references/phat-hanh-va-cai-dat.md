@@ -12,6 +12,18 @@
 
 `claude.exe` đi kèm Desktop tìm bằng: `ls -d "$APPDATA"/Claude/claude-code/*/claude.exe | tail -1`.
 
+## 1b. Bước cuối: kiểm đồng bộ ba kênh *(thêm 03/10/2026, v0.30.10)*
+
+Sau khi đã push, cập nhật tab Code và Mr. Hà đã tải gói lên tổ chức (chờ Cowork đồng bộ về máy), chạy:
+
+```bash
+python "G:\CHUYỂN ĐỔI SỐ SHT\SKILL file\sht-skills\skills\quan-tri-he-thong-skill\scripts\kiem_dong_bo_ban_cai.py"
+```
+
+Nó so nguồn với: Git (ahead/behind, thay đổi chưa commit) · bản cài tab Code (`installed_plugins.json` + nội dung cache) · bản Cowork trên máy (`rpm/plugin_*`) · skill cá nhân trùng tên. Exit **0** = khớp hết → mới được báo "đã phát hành xong". Exit **1** = lệch, in từng file/kênh lệch. Exit **2** = không thấy kênh nào để so — **không** được coi là khớp.
+
+Vì sao: ca 03/10/2026 — tab Code đã 0.30.9 nhưng phiên vẫn nạp 0.30.8, vì skill được nạp từ bản Cowork (rpm) chứ không từ cache `sht-local`. Kiểm từng kênh bằng tay thì dễ sót đúng kênh đang thật sự được dùng.
+
 ## 2. Luật đã trả giá
 
 - **Đã tải một gói lên Organization library thì sửa nguồn phải nâng số hiệu.** Hai gói khác nội dung trùng số hiệu → máy chủ giữ bản cũ, không báo lỗi (0.23.0 → 0.23.1, 25/09).

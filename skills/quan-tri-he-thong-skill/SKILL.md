@@ -271,6 +271,7 @@ Mỗi lần thêm/sửa/xóa skill: sửa **hàng có sẵn** trong sổ, không
 | `audit_skills.py` | Quét 13 lớp lỗi E1–E13 | Bước [1] và [6] của luồng chuẩn |
 | `test_audit.py` | **Tự kiểm chính công cụ audit** — 32 ca, mỗi lớp lỗi kiểm hai chiều | Mỗi lần sửa `audit_skills.py`, và tự động ở cổng 1 khi phát hành |
 | `release.py` | Mười cổng phát hành rồi mới đóng gói | Mọi lần ra bản mới — thay cho việc nén tay |
+| `kiem_dong_bo_ban_cai.py` | So nguồn ↔ Git ↔ tab Code ↔ Cowork (phiên bản + nội dung từng file) và tìm skill cá nhân trùng tên | **Bước cuối mỗi lần phát hành**, sau push + cập nhật tab Code + tải lên tổ chức. Chỉ exit 0 mới được báo "đã phát hành xong" |
 
 ```bash
 python3 scripts/release.py <thư_mục_gốc_plugin> --personal <skill_cá_nhân> --out <file.plugin>
@@ -290,4 +291,4 @@ Mọi skill trong thư mục `skills/` của plugin `sht-skills` phải có dòn
 - **Đóng gói bằng `scripts/release.py`, không nén tay.** Nó chạy tự kiểm → audit → kiểm manifest/nguồn/sổ → nén → kiểm lại chính gói. Trượt cổng nào là không ra file.
 - **Thư mục nguồn plugin chỉ được chứa 3 thứ: `.claude-plugin/`, `skills/`, `README.md`.** Phiên v0.9.0 phát hiện hai thư mục làm việc (`skill-upgrade-24082026/`, `skill-upgrade-25082026/`) nằm lẫn trong nguồn, chứa cả các file `.plugin` cũ — nên bản phát hành **gói luôn ba bản phát hành trước vào bên trong**, phình từ 129 KB lên 513 KB. Để lâu thì mỗi bản lại bọc bản trước, lớn theo cấp số nhân. Sau khi đóng gói, kiểm: kích thước không nhảy vọt bất thường, và `unzip -Z1 <file>.plugin | grep -c 'skill-upgrade\|\.plugin$'` phải bằng 0. **Dùng `-Z1`, không dùng `-l`** — `unzip -l` in dòng tiêu đề `Archive: <tên gói>.plugin`, dòng đó tự khớp mẫu `\.plugin$` nên phép kiểm luôn trả về ≥1 dù gói hoàn toàn sạch. Cảnh báo giả này đã xảy ra ở phiên 03/09/2026. File nháp của phiên để ở thư mục làm việc của người dùng, không để trong nguồn plugin.
 - Ghi thay đổi vào Sổ đăng bạ ngay trong cùng phiên phát hành.
-- Push, cập nhật tab Code, tải lên Organization library — ai bấm gì, kiểm gì: `references/phat-hanh-va-cai-dat.md`.
+- Push, cập nhật tab Code, tải lên Organization library — ai bấm gì, kiểm gì: `references/phat-hanh-va-cai-dat.md`. Kết thúc bằng `scripts/kiem_dong_bo_ban_cai.py`: chỉ exit 0 mới coi là phát hành xong.

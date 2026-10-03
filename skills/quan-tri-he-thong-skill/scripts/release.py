@@ -330,7 +330,8 @@ def main():
         shutil.copy(zpath, out)
         print(f'\n✅ Mười cổng đạt. Đã ghi: {out}')
         print(f'   {name} v{ver} · {len(dirs)} skill · {size // 1024} KB')
-        print('   Sau khi cài: xác nhận đủ số skill xuất hiện trước khi coi là phát hành xong.')
+        print('   Sau khi push + cập nhật tab Code + tải lên tổ chức: chạy scripts/kiem_dong_bo_ban_cai.py —')
+        print('   chỉ exit 0 mới coi là phát hành xong.')
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
     return 0
