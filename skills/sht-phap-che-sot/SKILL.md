@@ -66,7 +66,7 @@ Pháp luật đòi hỏi chứng cứ xác thực. Khi tình huống người d�
 Nghiên cứu và thiết lập căn cứ pháp lý được vận hành theo chu trình PDCA:
 
 - **[P] Plan (Kế hoạch tra cứu):** Xác định từ khóa tra cứu theo 3 chiều (chiều dọc văn bản hướng dẫn, chiều ngang sửa đổi/bổ sung, chiều thời gian hiệu lực).
-- **[D] Do (Tra cứu thực chứng):** Nạp `ToolSearch` (`select:WebSearch,WebFetch`), tra cứu nguồn chính thống (xem `references/nguon-tra-cuu.md`). Trích xuất nguyên văn có tọa độ: Cấp văn bản – Số hiệu – Điều – Khoản – Điểm. Chi tiết định dạng: xem `references/trich-dan-sot.md`.
+- **[D] Do (Tra cứu thực chứng):** Nạp `ToolSearch` (`select:WebSearch,WebFetch`), tra cứu nguồn chính thống (xem `references/nguon-tra-cuu.md`). Trích xuất nguyên văn có tọa độ: Cấp văn bản – Số hiệu – Điều – Khoản – Điểm. Chi tiết định dạng: xem `references/trich-dan-sot.md`. Văn bản gốc là **PDF scan** (trích chữ gần như rỗng) hoặc trang web không tải được nội dung: xem `references/nguon-tra-cuu.md` mục 6 — không kết luận "không có điều X" từ lần tìm chữ rỗng.
 - **[C] Check (Kiểm tra & Phân xử xung đột):** So khớp trạng thái hiệu lực tại mốc thời điểm. Khi có xung đột giữa các văn bản, áp dụng thuật toán phân xử:
   * **Lex superior (Thứ bậc):** Văn bản cấp cao hơn ưu tiên áp dụng so với văn bản cấp thấp hơn (Luật > Nghị định > Thông tư).
   * **Lex posterior (Thời gian):** Cùng cấp ban hành, văn bản ban hành sau ưu tiên áp dụng so với văn bản ban hành trước.

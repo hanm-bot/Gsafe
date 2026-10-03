@@ -90,3 +90,21 @@ Hiểu cấu trúc số hiệu giúp định danh nhanh cấp văn bản (Ví d�
 - Văn bản trích dẫn không ghi rõ ngày có hiệu lực hoặc không thể kiểm chứng trên Cổng CSDL quốc gia.
 - Kết quả tìm kiếm là bài bình luận báo chí mang tính quan điểm thay vì văn bản quy phạm pháp luật gốc.
 - Văn bản có định dạng cũ không có thông tin cập nhật tình trạng bãi bỏ hoặc thay thế.
+
+---
+
+## 6. Đọc văn bản gốc là PDF scan (không có lớp chữ)
+
+> Thêm 03/10/2026 (0.30.11), từ ca thật: PDF ký số NĐ 331/2026 dài 44 trang mà chỉ trích ra được 195 ký tự, vì là bản scan.
+
+Bản PDF ký số tải từ `vanban.chinhphu.vn` thường là ảnh scan. Đọc chữ sẽ trả về gần như rỗng, nên **tìm theo chữ "Điều 39" sẽ không thấy gì, không phải vì văn bản không có điều đó**.
+
+1. **Nhận biết bản scan:** đếm ký tự chữ trích được (PyMuPDF: `import pymupdf` — tên `fitz` đã bị khai tử). Nếu ít hơn khoảng 100 ký tự mỗi trang thì coi là bản scan. **Không** kết luận "văn bản không có điều X" từ một lần tìm theo chữ trả về rỗng.
+2. **Chuẩn hoá NFC** (`unicodedata.normalize('NFC', …)`) trước khi tìm theo chữ ở PDF có lớp chữ, vì tiếng Việt có thể ở dạng dựng sẵn hoặc tổ hợp.
+3. **Đọc bản scan bằng ảnh trang:** dựng ảnh từng trang (`page.get_pixmap(dpi=90…120).save(...)`) vào thư mục scratchpad, rồi dùng công cụ `Read` để mở ảnh và đọc bằng mắt.
+4. **Định vị trang nhanh**, không dựng ảnh cả văn bản:
+   - Điều khoản hiệu lực và chuyển tiếp nằm ở **trang cuối của phần chính văn**, ngay trước trang có chữ ký và dấu "TM. CHÍNH PHỦ".
+   - Phụ lục và biểu mẫu nằm **sau** trang chữ ký. Số trang in trên phụ lục đánh lại từ 1, không trùng số trang PDF.
+   - Cách làm: dựng thưa vài trang để thấy số "Điều" rồi thu hẹp dần.
+5. **Ghi tọa độ trong bảng SOT:** ghi tên file và **số trang PDF**, kèm ghi chú "nguyên văn đọc từ ảnh scan". Trước khi trích vào văn bản ký, đối chiếu lại với bản gốc, vì đọc từ ảnh có thể sai chính tả nhỏ.
+6. **Trang web không tải được nội dung** (vbpl.vn dựng nội dung bằng JavaScript, nên `WebFetch` có thể chỉ trả về khung trang): thử tải bản PDF hoặc bản trên `vanban.chinhphu.vn`. Nếu không được thì dùng hàng đã đối chiếu trong `danh-muc-van-ban-goc.md` và gắn nhãn ⚠️ "chưa đọc lại nguyên văn tại ngày …". Không được viết như thể đã đọc lại.
