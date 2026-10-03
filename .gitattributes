@@ -1,0 +1,8 @@
+# Giữ LF trong repo và thư mục làm việc, tránh 45 file "đã sửa" giả trên Windows (03/10/2026)
+* text=auto eol=lf
+*.ps1 text eol=crlf
+*.png binary
+*.jpg binary
+*.pdf binary
+*.zip binary
+*.plugin binary
