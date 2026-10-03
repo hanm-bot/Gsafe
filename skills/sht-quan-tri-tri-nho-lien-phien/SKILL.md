@@ -33,7 +33,7 @@ Trí nhớ liên phiên là bộ nhớ CỦA AGENT (kiến thức, quyết đị
 
 ## Dùng kèm
 
-Cùng nguyên tắc "không viết đè lịch sử, chỉ thêm ghi chú cập nhật" với `sht-quan-tri-hien-phap-tai-lieu` — khác đối tượng: skill đó lo tài liệu vận hành (CLAUDE.md và tương đương), skill này lo trí nhớ riêng của agent. Khi một fact vừa sửa xong ở tài liệu vận hành, quay lại đây cập nhật memory tương ứng theo cùng logic.
+Cùng nguyên tắc "không viết đè lịch sử, chỉ thêm ghi chú cập nhật" — xem `sht-quan-tri-hien-phap-tai-lieu` — khác đối tượng: skill đó lo tài liệu vận hành (CLAUDE.md và tương đương), skill này lo trí nhớ riêng của agent. Khi một fact vừa sửa xong ở tài liệu vận hành, quay lại đây cập nhật memory tương ứng theo cùng logic.
 
 ## Ghi vào đâu — bốn câu hỏi, dừng ở câu đầu tiên trả lời "có" *(thêm 30/09/2026, v0.29.0 — báo cáo gap `THỰC HÀNH-AI/04_Kiem-Chung-Upgrade/2026-09-30_GAP-sht-skills-vs-tai-lieu-hoc.md`)*
 

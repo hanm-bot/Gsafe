@@ -33,4 +33,4 @@ Khi gõ lại các từ có dấu tổ hợp (như "ĐỔI"), dễ phát sinh l�
 
 ## Dùng kèm
 
-Sau khi sửa xong tài liệu vận hành, kiểm xem có memory liên phiên nào đang mô tả đúng vấn đề vừa sửa — cập nhật luôn bằng `sht-quan-tri-tri-nho-lien-phien` (cùng nguyên tắc không viết đè lịch sử, khác đối tượng: đây là tài liệu vận hành, kia là trí nhớ riêng của agent).
+Sau khi sửa xong tài liệu vận hành, kiểm xem có memory liên phiên nào đang mô tả đúng vấn đề vừa sửa — cập nhật luôn, cách làm xem `sht-quan-tri-tri-nho-lien-phien` (cùng nguyên tắc không viết đè lịch sử, khác đối tượng: đây là tài liệu vận hành, kia là trí nhớ riêng của agent).

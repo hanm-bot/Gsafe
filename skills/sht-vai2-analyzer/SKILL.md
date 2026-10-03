@@ -6,7 +6,7 @@ description: "Phân tích điểm nghẽn vận hành của một vai trò cụ 
 # KỸ NĂNG CHUYÊN MÔN VAI 2: PHÂN TÍCH ĐIỂM NGHẼN & GROUNDING ĐỐI SOÁT
 ### Mã định danh chuẩn AIS48: `[DEPT]-02` / `SHT-CORP-02` · Hạn mức: 12,000 tokens
 
-> **Quan hệ:** Vai trước: `sht-vai1-harvester`. Vai kế tiếp: `sht-vai4-reminder` (chạy song song được) và `sht-vai3-reporter`. Điều phối toàn chuỗi + ngân sách token tổng: `sht-quan-tri-dn`.
+> **Quan hệ:** Vai trước: `sht-vai1-harvester`. Vai kế tiếp: `sht-vai4-reminder` (chạy song song được) và `sht-vai3-reporter`. Điều phối toàn chuỗi + ngân sách token tổng: xem `sht-quan-tri-dn`.
 
 ---
 

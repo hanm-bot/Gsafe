@@ -6,7 +6,7 @@ description: "Soạn Báo cáo Điều hành 4 phần AIS48 của một vai trò
 # KỸ NĂNG CHUYÊN MÔN VAI 3: SOẠN THẢO BÁO CÁO ĐIỀU HÀNH 4 PHẦN AIS48
 ### Mã định danh chuẩn AIS48: `[DEPT]-03` / `SHT-CORP-03` · Hạn mức: 10,000 tokens
 
-> **Quan hệ:** Vai trước: `sht-vai1-harvester`, `sht-vai2-analyzer`, `sht-vai4-reminder`. Vai kế tiếp (bắt buộc trước khi trình): `sht-vai5-critic`. Điều phối toàn chuỗi + ngân sách token tổng: `sht-quan-tri-dn`.
+> **Quan hệ:** Vai trước: `sht-vai1-harvester`, `sht-vai2-analyzer`, `sht-vai4-reminder`. Vai kế tiếp (bắt buộc trước khi trình): `sht-vai5-critic`. Điều phối toàn chuỗi + ngân sách token tổng: xem `sht-quan-tri-dn`.
 
 ---
 

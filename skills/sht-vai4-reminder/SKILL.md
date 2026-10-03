@@ -6,7 +6,7 @@ description: "Đôn đốc tiến độ của một vai trò cụ thể (Reminde
 # KỸ NĂNG CHUYÊN MÔN VAI 4: ĐÔN ĐỐC TIẾN ĐỘ & LẬP LỊCH TÁC CHIẾN
 ### Mã định danh chuẩn AIS48: `[DEPT]-04` / `SHT-CORP-04` · Hạn mức: 8,000 tokens
 
-> **Quan hệ:** Chạy song song hoặc ngay sau `sht-vai2-analyzer`. Vai kế tiếp: `sht-vai3-reporter`. Điều phối toàn chuỗi + ngân sách token tổng: `sht-quan-tri-dn`.
+> **Quan hệ:** Chạy song song hoặc ngay sau `sht-vai2-analyzer`. Vai kế tiếp: `sht-vai3-reporter`. Điều phối toàn chuỗi + ngân sách token tổng: xem `sht-quan-tri-dn`.
 
 ---
 

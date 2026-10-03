@@ -6,7 +6,7 @@ description: "Phản biện độc lập của một vai trò cụ thể (Critic
 # KỸ NĂNG CHUYÊN MÔN VAI 5: PHẢN BIỆN ĐỘC LẬP & PHÁP TRỊ SỔ CÁI HITL
 ### Mã định danh chuẩn AIS48: `[DEPT]-05` / `SHT-CORP-05` · Hạn mức: 15,000 tokens
 
-> **Quan hệ:** Vai trước (bắt buộc): `sht-vai3-reporter`. Là chốt cuối trước khi trình con người. Điều phối toàn chuỗi + ngân sách token tổng: `sht-quan-tri-dn`.
+> **Quan hệ:** Vai trước (bắt buộc): `sht-vai3-reporter`. Là chốt cuối trước khi trình con người. Điều phối toàn chuỗi + ngân sách token tổng: xem `sht-quan-tri-dn`.
 
 ---
 

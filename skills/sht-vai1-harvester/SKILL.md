@@ -6,7 +6,7 @@ description: "Làm sạch nguyên liệu đầu vào của một vai trò cụ t
 # KỸ NĂNG CHUYÊN MÔN VAI 1: THU THẬP, LÀM SẠCH & KIỂM SOÁT CỔNG I/O
 ### Mã định danh chuẩn AIS48: `[DEPT]-01` / `SHT-CORP-01` · Hạn mức: 7,000 tokens
 
-> **Quan hệ:** Vai kế tiếp trong chuỗi: `sht-vai2-analyzer`. Điều phối toàn chuỗi 5 vai + ngân sách token tổng + Sổ Cái HITL: `sht-quan-tri-dn`. Khi cần dựng cả đội cho một phòng ban mới (không chỉ vai này), dùng `sht-quan-tri-dn` §7.
+> **Quan hệ:** Vai kế tiếp trong chuỗi: `sht-vai2-analyzer`. Điều phối toàn chuỗi 5 vai + ngân sách token tổng + Sổ Cái HITL: xem `sht-quan-tri-dn`. Khi cần dựng cả đội cho một phòng ban mới (không chỉ vai này), dùng `sht-quan-tri-dn` §7.
 
 ---
 
