@@ -297,6 +297,26 @@ def run():
         raw(r, 'skill-gap-khoi', 'description: >-\n  Làm việc X (bản chuẩn): phỏng vấn sâu, luật cứng #5.\n  KHÔNG dùng cho Y.')
         case('E13 âm tính — khối `>-` đọc đủ thì im', codes(r), must_not=['E13'])
 
+        # 0.30.12: quét 0 skill không được báo "sạch"; --help không được quét
+        import subprocess
+        AU = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'audit_skills.py')
+        def cli(*a):
+            return subprocess.run([sys.executable, AU, *a], capture_output=True, text=True,
+                                  encoding='utf-8', env={**os.environ, 'PYTHONIOENCODING': 'utf-8'})
+        rong = os.path.join(tmp, 'rong'); os.makedirs(rong)
+        p = cli(rong)
+        case('0 skill dương tính — thư mục rỗng thì exit 2, không in "Sạch"',
+             ['EXIT2'] if p.returncode == 2 and 'Sạch' not in p.stdout else ['KHAC'], must_have=['EXIT2'])
+        p = cli('--help')
+        case('--help in hướng dẫn, không quét',
+             ['HELP'] if p.returncode == 0 and 'Tuỳ chọn' in p.stdout and 'Đã quét' not in p.stdout else ['KHAC'],
+             must_have=['HELP'])
+        r = os.path.join(tmp, 'co-skill'); os.makedirs(r)
+        mkskill(r, 'skill-mot-hai'); mkskill(r, 'skill-hai-ba')
+        p = cli(r)
+        case('0 skill âm tính — có skill thì không báo "KHÔNG KIỂM ĐƯỢC"',
+             ['KKD'] if 'KHÔNG KIỂM ĐƯỢC' in p.stdout else [], must_not=['KKD'])
+
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 

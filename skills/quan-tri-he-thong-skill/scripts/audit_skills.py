@@ -10,7 +10,9 @@ Tuỳ chọn:
     --plugin DIR     thư mục gốc plugin (chứa .claude-plugin/) — bật kiểm E9
     --json           in kết quả dạng JSON
 
-Thoát mã 1 nếu còn lỗi mức CAO.
+Thoát mã 1 nếu còn lỗi mức CAO. Thoát mã 2 nếu quét được 0 skill (sai thư mục) —
+"không kiểm được" không phải "sạch" (03/10/2026, 0.30.12: trước đó `--help` hay trỏ
+sai thư mục đều báo sạch với 0 skill).
 
 LỊCH SỬ: bản E1–E6 chỉ soi nội dung BÊN TRONG các SKILL.md. Phiên nâng cấp
 v0.9.0 có 4 lỗi thật thì nó bắt được 1 — ba lỗi lọt đều nằm ngoài phạm vi đó:
@@ -332,7 +334,10 @@ def audit(root, personal=None, plugin_root=None):
 
 
 def main():
-    args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    if '-h' in sys.argv or '--help' in sys.argv:
+        print(__doc__)
+        return 0
+    args = [a for a in sys.argv[1:] if not a.startswith('-')]
     root = args[0] if args else '.'
 
     def opt(flag):
@@ -343,6 +348,10 @@ def main():
         return None
 
     skills, F = audit(root, personal=opt('--personal'), plugin_root=opt('--plugin'))
+    if not skills:
+        print(f'❌ KHÔNG KIỂM ĐƯỢC — quét được 0 skill tại {root}. '
+              'Kiểm lại đường dẫn: phải trỏ vào thư mục chứa các thư mục skill (vd. skills/).')
+        return 2
 
     if '--json' in sys.argv:
         print(json.dumps(F, ensure_ascii=False, indent=2))
