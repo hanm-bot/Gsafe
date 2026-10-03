@@ -277,18 +277,4 @@ Mỗi lần thêm/sửa/xóa skill: sửa **hàng có sẵn** trong sổ, không
 python3 scripts/release.py <thư_mục_gốc_plugin> --personal <skill_cá_nhân> --out <file.plugin>
 ```
 
-**Vì sao có `test_audit.py`:** `audit_skills.py` là thứ cả hệ dựa vào để kết luận "sạch hay không", mà nó đã từng có 2 lỗi thật và **cả hai đều lộ ra tình cờ**. Một công cụ kiểm chứng không được kiểm chứng thì chỉ là niềm tin. Mỗi ca kiểm **hai chiều**: lỗi phải nổ khi có lỗi, và phải im khi không có lỗi — thiếu chiều thứ hai thì không bắt được cảnh báo giả, đúng loại lỗi đã làm hỏng E4 suốt nhiều phiên.
-
-**Vì sao có `release.py`:** mọi lỗi phát hành đã gặp đều do quên một bước thủ công. Checklist trong đầu không đáng tin; cổng chặn thì đáng tin. Cổng 2 cố ý **không** soi skill cá nhân — E7 là lỗi phía cài đặt, chặn phát hành vì nó sẽ khoá cứng việc ra bản mới chỉ vì người dùng chưa kịp xoá một skill cũ.
-
-## Bảo trì plugin `sht-skills`
-
-Mọi skill trong thư mục `skills/` của plugin `sht-skills` phải có dòng tương ứng trong Sổ đăng bạ. Số skill hiện tại xem ở dòng đầu Sổ đăng bạ, không ghi cứng ở đây (câu này từng ghi "19 skill" và bị cũ khi plugin lên 29 — sửa 25/09/2026). Hệ quả cho mọi lần nâng cấp về sau:
-
-- **Sửa skill trong plugin thì sửa ở nguồn plugin rồi đóng gói lại**, không dùng `save_skill` — `save_skill` tạo bản skill cá nhân song song, gây hai bản cùng tên trôi khác nhau (đúng loại lỗi skill này sinh ra để chặn).
-- Tăng `version` trong `.claude-plugin/plugin.json` mỗi lần phát hành: sửa lỗi → PATCH, thêm/bỏ skill hoặc đổi ranh giới → MINOR.
-- **Đóng gói TỪ ĐÚNG folder nguồn của người dùng**, không từ bản cache plugin đang cài và không từ một bản copy cũ. Trước khi đóng gói, `diff` mục lục + số dòng giữa folder nguồn và bản cache: lệch nhau nghĩa là đã trôi nhánh, phải hợp nhất trước (đã xảy ra 23–24/08/2026 với skill tuyển dụng).
-- **Đóng gói bằng `scripts/release.py`, không nén tay.** Nó chạy tự kiểm → audit → kiểm manifest/nguồn/sổ → nén → kiểm lại chính gói. Trượt cổng nào là không ra file.
-- **Thư mục nguồn plugin chỉ được chứa 3 thứ: `.claude-plugin/`, `skills/`, `README.md`.** Phiên v0.9.0 phát hiện hai thư mục làm việc (`skill-upgrade-24082026/`, `skill-upgrade-25082026/`) nằm lẫn trong nguồn, chứa cả các file `.plugin` cũ — nên bản phát hành **gói luôn ba bản phát hành trước vào bên trong**, phình từ 129 KB lên 513 KB. Để lâu thì mỗi bản lại bọc bản trước, lớn theo cấp số nhân. Sau khi đóng gói, kiểm: kích thước không nhảy vọt bất thường, và `unzip -Z1 <file>.plugin | grep -c 'skill-upgrade\|\.plugin$'` phải bằng 0. **Dùng `-Z1`, không dùng `-l`** — `unzip -l` in dòng tiêu đề `Archive: <tên gói>.plugin`, dòng đó tự khớp mẫu `\.plugin$` nên phép kiểm luôn trả về ≥1 dù gói hoàn toàn sạch. Cảnh báo giả này đã xảy ra ở phiên 03/09/2026. File nháp của phiên để ở thư mục làm việc của người dùng, không để trong nguồn plugin.
-- Ghi thay đổi vào Sổ đăng bạ ngay trong cùng phiên phát hành.
-- Push, cập nhật tab Code, tải lên Organization library — ai bấm gì, kiểm gì: `references/phat-hanh-va-cai-dat.md`. Kết thúc bằng `scripts/kiem_dong_bo_ban_cai.py`: chỉ exit 0 mới coi là phát hành xong.
+**Vì sao có hai công cụ này, và toàn bộ quy tắc bảo trì plugin** (bản nguồn, số hiệu, đóng gói, vệ sinh nguồn, ba kênh phát hành): `references/phat-hanh-va-cai-dat.md` mục 0. Tóm tắt bắt buộc: sửa ở nguồn plugin rồi đóng gói bằng `release.py` (không `save_skill`, không nén tay); mỗi lần phát hành tăng `version`; kết thúc bằng `kiem_dong_bo_ban_cai.py` exit 0.

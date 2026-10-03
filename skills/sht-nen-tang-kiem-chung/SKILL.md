@@ -51,7 +51,7 @@ Nguyên tắc này cũng áp khi **bổ sung ngữ cảnh giữa phiên** (VD "a
 **Quy trình an toàn — sáu bước, không rút gọn:**
 
 1. **Thay theo cụm họ tên đầy đủ** (3 từ trở lên: "Bùi Việt Phương"), không theo âm tiết đơn lẻ.
-2. Khai báo danh sách **cụm bảo vệ** (§Phụ lục) trước khi chạy.
+2. Khai báo danh sách **cụm bảo vệ** (`references/cum-bao-ve-doi-ten.md`) trước khi chạy.
 3. Chạy **dry-run**: xem trước mọi vị trí sẽ đổi kèm ngữ cảnh, duyệt rồi mới áp dụng.
 4. Với DOCX/XLSX: xác nhận cụm cần thay nằm nguyên trong **một run**. Word hay tách chuỗi thành nhiều mảnh do spell-check/revision marker — nếu có dấu hiệu tách, gộp run trước (skill `docx`, `merge_runs.py`).
 5. Sau khi áp dụng, **quét lại** ba thứ: (a) mẫu lỗi `Anh Anh`, `Chị Chị`, `chị Chị`; (b) cụm bảo vệ có bị dính tiền tố không; (c) chỗ dùng tên đúng mục đích khác (người khác cùng âm tiết) có bị đổi nhầm không.
@@ -265,20 +265,3 @@ bộ chấm đổi theo, không có bản luật thứ hai.
 năm lớp (Chuẩn bị hồ sơ · Rà pháp lý · Soạn thảo · Kiểm xuất bản · Trình duyệt), mỗi phiếu
 ghi đầu vào, lệnh chạy, tiêu chí ĐẠT, giao cho ai, kèm cạm bẫy đã gặp thật. Bảng đó là phân
 công, không định nghĩa luật — luật vẫn ở skill chủ sở hữu tương ứng.
-
----
-
-# PHỤ LỤC — CỤM BẢO VỆ KHI ĐỔI TÊN HÀNG LOẠT
-
-```json
-["Hà Giang", "Đông Hà Nội", "Thái Nguyên", "Yên Bái", "Hà Nội",
- "Việt Nam", "Ninh Thuận", "Tây Ninh", "Bạc Liêu", "Bắc Thăng Long", "Ba Vì",
- "Sơn Tây", "Thủ Thiêm", "Nha Trang", "Vĩnh Hải", "Ngô Quyền", "Cần Thơ",
- "phương pháp", "phương án", "phương tiện", "phương án kinh doanh",
- "an toàn", "an ninh", "khoa học",
- "nguyên tắc", "nguyên nhân", "nguyên vật liệu", "nguyên văn",
- "thảo luận", "chiến lược", "bạn Thúy"]
-```
-
-Danh sách **không đầy đủ** — luôn chạy dry-run và đọc ngữ cảnh trước khi áp dụng. Bổ sung cụm mới vào đây mỗi khi gặp một ca dính nhầm.
-
