@@ -105,6 +105,20 @@ Bản PDF ký số tải từ `vanban.chinhphu.vn` thường là ảnh scan. Đ�
 4. **Định vị trang nhanh**, không dựng ảnh cả văn bản:
    - Điều khoản hiệu lực và chuyển tiếp nằm ở **trang cuối của phần chính văn**, ngay trước trang có chữ ký và dấu "TM. CHÍNH PHỦ".
    - Phụ lục và biểu mẫu nằm **sau** trang chữ ký. Số trang in trên phụ lục đánh lại từ 1, không trùng số trang PDF.
-   - Cách làm: dựng thưa vài trang để thấy số "Điều" rồi thu hẹp dần.
+   - **Cách làm (bổ sung 03/10/2026, 0.30.12): dựng MỘT ảnh ghép thu nhỏ toàn bộ trang**, mỗi ô có số trang PDF, rồi xem một lần. Trang ký (hình con dấu, khối "Nơi nhận") và chỗ bắt đầu phụ lục (biểu mẫu, bảng) hiện rõ ngay. Sau đó chỉ dựng ảnh độ phân giải cao cho 1–2 trang ngay trước trang ký.
+     ```python
+     import pymupdf
+     d = pymupdf.open(pdf); W, H, cols = 150, 212, 10
+     rows = (len(d) + cols - 1) // cols
+     out = pymupdf.open(); pg = out.new_page(width=W*cols, height=H*rows)
+     for i in range(len(d)):
+         r = pymupdf.Rect((i%cols)*W, (i//cols)*H, (i%cols+1)*W, (i//cols+1)*H)
+         pg.show_pdf_page(r, d, i)
+         pg.insert_text((r.x0+4, r.y0+14), str(i+1), fontsize=14, color=(1,0,0))
+     pg.get_pixmap(dpi=72).save('<scratchpad>/anh-ghep.png')  # rồi Read ảnh này
+     ```
+     Văn bản quá 100 trang thì chia nhiều ảnh ghép (mỗi ảnh ≤100 trang) để chữ số trang còn đọc được.
+   - **Không** nhận trang ký bằng màu đỏ của con dấu: bản scan thường đen trắng. Ca thật NĐ 142/2026 (97 trang): chỉ trang 1 có điểm đỏ, còn trang ký 45 không có.
+
 5. **Ghi tọa độ trong bảng SOT:** ghi tên file và **số trang PDF**, kèm ghi chú "nguyên văn đọc từ ảnh scan". Trước khi trích vào văn bản ký, đối chiếu lại với bản gốc, vì đọc từ ảnh có thể sai chính tả nhỏ.
 6. **Trang web không tải được nội dung** (vbpl.vn dựng nội dung bằng JavaScript, nên `WebFetch` có thể chỉ trả về khung trang): thử tải bản PDF hoặc bản trên `vanban.chinhphu.vn`. Nếu không được thì dùng hàng đã đối chiếu trong `danh-muc-van-ban-goc.md` và gắn nhãn ⚠️ "chưa đọc lại nguyên văn tại ngày …". Không được viết như thể đã đọc lại.
