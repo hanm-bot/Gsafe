@@ -38,7 +38,9 @@ OVERSIZE_LINES = 300
 OVERLAP_TITLE = 0.55        # ngưỡng tương đồng TIÊU ĐỀ
 OVERLAP_BODY = 0.35         # ngưỡng tương đồng NỘI DUNG — phải vượt cả hai mới báo
 TRIGGER_PREFIX_WORDS = 6
-DESC_MAX = 1024             # giới hạn cứng của save_skill
+DESC_MAX = 500              # chuẩn SHT (05/10/2026, HITL-20261005-008). save_skill chặn ở 1024, nhưng
+                            # description dài bị harness cắt khi danh sách skill vượt trần → skill mất mô tả,
+                            # không tự kích hoạt (ca thật 29/09 và 05/10: 6 skill cá nhân 828–980 ký tự)
 
 BUILTIN = {'docx', 'pptx', 'xlsx', 'pdf', 'schedule', 'morning', 'setup-cowork',
            'skill-creator', 'consolidate-memory', 'explain-usage', 'import-memory'}
@@ -162,7 +164,7 @@ def audit(root, personal=None, plugin_root=None):
         # --- E10 ngân sách description
         elif len(d) > DESC_MAX:
             add('CAO', 'E10', n,
-                f'description {len(d)} ký tự — vượt giới hạn {DESC_MAX}, `save_skill` sẽ từ chối')
+                f'description {len(d)} ký tự — vượt chuẩn SHT {DESC_MAX} — harness có thể cắt mô tả, skill không tự kích hoạt')
         elif len(d) > DESC_MAX * 0.93:
             add('THẤP', 'E10', n,
                 f'description {len(d)}/{DESC_MAX} ký tự — sát trần, lần bổ sung tới sẽ vỡ')

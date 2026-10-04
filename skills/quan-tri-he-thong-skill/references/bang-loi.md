@@ -13,7 +13,7 @@ Mở khi cần tra một mã lỗi cụ thể. Phần thân SKILL.md chỉ giữ
 | **E7** | Skill nhà nằm **ngoài** plugin, hoặc tồn tại đồng thời bản cá nhân lẫn bản plugin | Hai đường bảo trì song song → chắc chắn trôi; bản cá nhân không đi kèm khi chia sẻ plugin |
 | **E8** | Sổ đăng bạ lệch thực tế — thiếu hàng, thừa hàng, hoặc **trùng hàng** | Sổ sai còn nguy hiểm hơn không có sổ; hai hàng cùng skill sẽ trôi khác nhau |
 | **E9** | Nguồn plugin lẫn thư mục nháp / file `.plugin` cũ | Bản phát hành bọc luôn các bản trước, phình theo cấp số nhân |
-| **E10** | `description` vượt hoặc sát trần 1024 ký tự | `save_skill` từ chối thẳng; sát trần thì lần bổ sung tới sẽ vỡ |
+| **E10** | `description` vượt hoặc sát chuẩn 500 ký tự | Harness cắt mô tả khi danh sách skill vượt trần → skill không tự kích hoạt; sát chuẩn thì lần bổ sung tới sẽ vỡ |
 | **E11** | Sổ đăng bạ khai báo quan hệ mà SKILL.md không hề nhắc | Sổ mô tả một kiến trúc không tồn tại; người đọc tin vào sơ đồ sai |
 | **E12** | `description` thiếu vùng loại trừ | E6 chỉ bắt được khi câu MỞ ĐẦU trùng nên bỏ lọt phần lớn ca tranh chấp kích hoạt thật |
 
@@ -44,8 +44,8 @@ Mở khi cần tra một mã lỗi cụ thể. Phần thân SKILL.md chỉ giữ
 | `OVERSIZE_LINES` | 300 | Trên mức này thì đọc-trọn-rồi-ghi-đè quá tốn, skill thành khó nâng cấp. Báo sớm từ 93% (280 dòng). |
 | `OVERLAP_TITLE` | 0.55 | Đủ chặt để bỏ qua tiêu đề chỉ chung chữ đệm. |
 | `OVERLAP_BODY` | 0.35 | **Phải vượt cả hai ngưỡng mới báo.** Bản chỉ so tiêu đề từng sinh 3 cảnh báo giả kéo dài nhiều phiên. |
-| `DESC_MAX` | 1024 | Giới hạn cứng của `save_skill`, vượt là bị từ chối thẳng. Báo sớm từ 93% (953 ký tự). |
+| `DESC_MAX` | 500 | Chuẩn SHT từ 05/10/2026 (`HITL-20261005-008`); trước đó 1024 = giới hạn cứng của `save_skill`. Báo sớm từ 93% (465 ký tự). |
 
 Đổi ngưỡng thì phải chạy lại `test_audit.py` và ghi lý do vào Sổ đăng bạ.
 
-**E12 — xử lý:** thêm câu "KHÔNG dùng skill này khi/cho …" vào cuối description, nêu rõ skill nào mới là chủ. Đây là phần §4 gọi là "bị bỏ quên nhiều nhất". Nếu description đã sát trần 1024 ký tự, cắt phần liệt kê ví dụ trước — **giữ nguyên vùng loại trừ**.
+**E12 — xử lý:** thêm câu "KHÔNG dùng skill này khi/cho …" vào cuối description, nêu rõ skill nào mới là chủ. Đây là phần §4 gọi là "bị bỏ quên nhiều nhất". Nếu description đã sát chuẩn 500 ký tự, cắt phần liệt kê ví dụ trước — **giữ nguyên vùng loại trừ**.

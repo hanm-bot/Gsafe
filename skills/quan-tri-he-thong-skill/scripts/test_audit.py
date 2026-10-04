@@ -262,12 +262,19 @@ def run():
         # ---------- E10 ngân sách description ----------
         r = os.path.join(tmp, 'e10'); os.makedirs(r)
         mkskill(r, 'skill-mot-hai'); mkskill(r, 'skill-hai-ba')
-        mkskill(r, 'skill-vo-tran', desc='x' * 1100)
-        case('E10 dương tính — description vượt 1024', codes(r), must_have=['E10'])
+        mkskill(r, 'skill-vo-tran', desc='x' * 501)
+        case('E10 dương tính — description 501 ký tự (vượt chuẩn 500)', codes(r), must_have=['E10'])
+        assert any(f['code'] == 'E10' and f['sev'] == 'CAO' for f in audit(r)[1]), 'E10 501 phải là CAO'
+
+        r = os.path.join(tmp, 'e10d'); os.makedirs(r)
+        mkskill(r, 'skill-mot-hai'); mkskill(r, 'skill-hai-ba')
+        mkskill(r, 'skill-dung-tran', desc='x' * 500)
+        case('E10 biên — đúng 500 ký tự thì không CAO',
+             [f['code'] for f in audit(r)[1] if f['sev'] == 'CAO'], must_not=['E10'])
 
         r = os.path.join(tmp, 'e10b'); os.makedirs(r)
         mkskill(r, 'skill-mot-hai'); mkskill(r, 'skill-hai-ba')
-        mkskill(r, 'skill-sat-tran', desc='x' * 1000)
+        mkskill(r, 'skill-sat-tran', desc='x' * 480)
         case('E10 báo sớm — sát trần', codes(r), must_have=['E10'])
 
         r = os.path.join(tmp, 'e10c'); os.makedirs(r)

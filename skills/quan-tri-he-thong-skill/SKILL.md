@@ -44,7 +44,7 @@ Ghi script ở Phụ lục A ra file rồi chạy trên thư mục skill. Script
 | E7 | Skill nhà nằm ngoài plugin / tồn tại hai bản song song | CAO |
 | E8 | Sổ đăng bạ thiếu, thừa, hoặc trùng hàng | CAO |
 | E9 | Nguồn plugin lẫn thư mục nháp hoặc `.plugin` cũ | TRUNG–CAO |
-| E10 | `description` vượt hoặc sát trần 1024 ký tự | CAO–THẤP |
+| E10 | `description` vượt hoặc sát chuẩn 500 ký tự | CAO–THẤP |
 | E11 | Sổ khai báo quan hệ mà SKILL.md không nhắc | TRUNG |
 | E12 | `description` thiếu vùng loại trừ "KHÔNG dùng…" | THẤP |
 | E13 | Frontmatter không đọc được bằng trình YAML thật / mô tả bị cắt | CAO |
@@ -105,7 +105,7 @@ Kiểm nhanh: đọc description skill A, hỏi "câu này có mô tả đúng m
 
 Tránh mở đầu bằng khuôn mẫu dùng chung ("Chuẩn hóa dữ liệu ... của SHT", "Use this skill whenever..."). Sáu từ đầu nên nêu đúng miền riêng biệt.
 
-**Giới hạn cứng: description tối đa 1024 ký tự.** Vượt là `save_skill` từ chối thẳng. Bốn phần trên phải nằm gọn trong ngân sách đó — cắt phần liệt kê ví dụ trước, giữ nguyên vùng loại trừ.
+**Chuẩn SHT: description tối đa 500 ký tự** (05/10/2026, `HITL-20261005-008`; `audit_skills.py` E10 = CAO, `release.py` không đóng gói). `save_skill` chặn ở 1024, nhưng description dài bị harness cắt khi danh sách skill vượt trần → skill mất mô tả, không tự kích hoạt. Bốn phần trên phải nằm gọn trong ngân sách đó — cắt phần liệt kê ví dụ trước, giữ nguyên vùng loại trừ.
 
 ---
 
@@ -234,7 +234,7 @@ Khi thiết kế, audit hoặc nâng cấp bất kỳ Agent/Skill nào trong h�
 👉 `.agents/rules/agent_design_standards.md` (Quy chuẩn Quản trị & Thiết kế 12 Thành Phần của Agent tại SHT - SHT-SOP-AI-02).
 
 **5 Chốt chặn bắt buộc (Non-negotiables):**
-1. **Description 4 phần:** (Làm gì + Bắt bằng gì + Bắt cả khi không đúng từ khóa + Vùng loại trừ). Thiếu vùng loại trừ coi như chưa đạt. Độ dài ≤ 1024 ký tự.
+1. **Description 4 phần:** (Làm gì + Bắt bằng gì + Bắt cả khi không đúng từ khóa + Vùng loại trừ). Thiếu vùng loại trừ coi như chưa đạt. Độ dài ≤ 500 ký tự (E10).
 2. **SKILL.md tinh gọn:** ≤ 300 dòng; mẫu biểu, prompt dài đẩy vào `references/`.
 3. **Phân định môi trường:** Rạch ròi giữa Antigravity IDE (`.agents/rules/`, `.agents/scripts/`) và Claude Code CLI (`.claude/settings.json`, `.claude/commands/`, `CLAUDE.md`). Tuyệt đối không khai báo file giả.
 4. **Handoff Artifact:** Đặt tên IN HOA, bảng biểu cố định, chốt HITL rõ ràng.
