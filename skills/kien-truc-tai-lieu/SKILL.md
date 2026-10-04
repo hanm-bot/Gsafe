@@ -268,6 +268,8 @@ Khi người dùng đưa ra yêu cầu, Agent luôn phản hồi theo cấu trú
 ---
 
 ## Tác giả & Bản quyền Phương pháp
+*Ghi chú phát hành SHT (0.31.3): mục này cố ý lặp ở 5 skill dựa trên vietduc·ai (`chap-but-lanh-dao`, `kien-truc-tai-lieu`, `phap-che-doanh-nghiep`, `tham-dinh-thi-truong`, `xuat-ban-cong-vu`) để ghi công tác giả đi cùng từng skill khi được dùng riêng; không định nghĩa lại quy tắc nghiệp vụ nào.*
+
 
 **Hệ Thống AI Workforce Doanh Nghiệp (vietduc·ai)**  
 Chuyên gia Đào tạo & Chuyển giao Giải pháp Tự động hóa AI Doanh nghiệp  

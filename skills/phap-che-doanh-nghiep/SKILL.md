@@ -99,13 +99,9 @@ flowchart TD
 
 ## 6. Mũi Nhọn 4: Cỗ Máy "Stress-Test" Pháp Lý & Giả Lập Đòn Phản Công
 
-Một cố vấn pháp chế xuất sắc luôn nghĩ trước nước cờ của đối phương. Báo cáo pháp lý bắt buộc có phần **Giả lập tranh chấp (Devil's Advocate Simulator)**:
+Báo cáo pháp lý bắt buộc có phần **Giả lập tranh chấp (Devil's Advocate)**. Khung 3 cột và các đòn mẫu (vô hiệu hoá quy trình/thẩm quyền, phản tố điều khoản vượt trần, thoái thác nghĩa vụ): xem `sht-phap-che-sot` Bước H4 — không định nghĩa lại ở đây.
 
-| Hạng Mục Giả Lập | Kịch Bản Phản Công Của Đối Phương / Thanh Tra | Phòng Tuyến Bảo Vệ Doanh Nghiệp (Defensive Shield) |
-|---|---|---|
-| **Đòn tấn công 1: Vô hiệu hóa quy trình** | Đối phương nại lý do: Thông báo họp kỷ luật không tống đạt hợp lệ, vắng mặt đại diện công đoàn cơ sở. | Chuẩn bị sẵn: Bưu gửi có báo phát (tracking code), biên bản niêm yết tại trụ sở, giấy triệu tập có xác nhận của CĐCS. |
-| **Đòn tấn công 2: Phản tố điều khoản vô hiệu** | Đối tác khiếu nại: Mức phạt hợp đồng 20% là trái Điều 301 Luật Thương mại (trần 8%). | Chuẩn bị sẵn: Tách bạch rõ khoản "Phạt vi phạm" (tối đa 8%) và khoản "Bồi thường toàn bộ thiệt hại thực tế" (không khống chế trần). |
-| **Đòn tấn công 3: Bác bỏ chi phí hợp lý** | Cơ quan Thuế loại chi phí tiếp khách hoặc thuê ngoài vì nghi ngờ giao dịch khống. | Chuẩn bị sẵn: Bộ 4 chứng từ thép (Hợp đồng, Bàn giao nghiệm thu chi tiết, Giấy tờ tùy thân người nhận tiền, Chứng từ thanh toán ngân hàng). |
+Đòn bổ sung riêng cho tư vấn doanh nghiệp: **Bác bỏ chi phí hợp lý** — cơ quan Thuế loại chi phí tiếp khách/thuê ngoài vì nghi giao dịch khống → chuẩn bị bộ 4 chứng từ (hợp đồng, biên bản bàn giao nghiệm thu chi tiết, giấy tờ tuỳ thân người nhận tiền, chứng từ thanh toán ngân hàng).
 
 ---
 
@@ -199,6 +195,8 @@ Trước khi chốt báo cáo, Agent phải tự tích đủ 15 tiêu chí:
 ---
 
 ## 11. Tác Giả & Bản Quyền Độc Quyền
+*Ghi chú phát hành SHT (0.31.3): mục này cố ý lặp ở 5 skill dựa trên vietduc·ai (`chap-but-lanh-dao`, `kien-truc-tai-lieu`, `phap-che-doanh-nghiep`, `tham-dinh-thi-truong`, `xuat-ban-cong-vu`) để ghi công tác giả đi cùng từng skill khi được dùng riêng; không định nghĩa lại quy tắc nghiệp vụ nào.*
+
 
 **Hệ Thống AI Workforce Doanh Nghiệp (vietduc·ai)**  
 Chuyên gia Đào tạo & Chuyển giao Giải pháp Tự động hóa AI Doanh nghiệp  
