@@ -49,6 +49,7 @@ Ghi script ở Phụ lục A ra file rồi chạy trên thư mục skill. Script
 | E12 | `description` thiếu vùng loại trừ "KHÔNG dùng…" | THẤP |
 | E13 | Frontmatter không đọc được bằng trình YAML thật / mô tả bị cắt | CAO |
 | E14 | File chữ trong skill bị hỏng mã hoá (UTF-8 đọc thành cp1252 — dấu vết ghi bằng PowerShell); BOM chỉ cảnh báo | CAO–THẤP |
+| E15 | Sổ đăng bạ thiếu cột `Lớp` / giá trị khác "Quy Trình"·"Vận Hành" (CAO); README đặt skill sai bảng lớp (TRUNG) | CAO–TRUNG |
 
 Chi tiết từng lớp, cách xử lý và lý do chọn ngưỡng: `references/bang-loi.md`.
 
@@ -269,7 +270,7 @@ Mỗi lần thêm/sửa/xóa skill: sửa **hàng có sẵn** trong sổ, không
 
 | File | Việc | Khi nào chạy |
 |---|---|---|
-| `audit_skills.py` | Quét 14 lớp lỗi E1–E14 | Bước [1] và [6] của luồng chuẩn |
+| `audit_skills.py` | Quét 15 lớp lỗi E1–E15 | Bước [1] và [6] của luồng chuẩn |
 | `test_audit.py` | **Tự kiểm chính công cụ audit** — 32 ca, mỗi lớp lỗi kiểm hai chiều | Mỗi lần sửa `audit_skills.py`, và tự động ở cổng 1 khi phát hành |
 | `release.py` | Mười cổng phát hành rồi mới đóng gói | Mọi lần ra bản mới — thay cho việc nén tay |
 | `kiem_dong_bo_ban_cai.py` | So nguồn ↔ Git ↔ tab Code ↔ Cowork (phiên bản + nội dung từng file) và tìm skill cá nhân trùng tên | **Bước cuối mỗi lần phát hành**, sau push + cập nhật tab Code + tải lên tổ chức. Chỉ exit 0 mới được báo "đã phát hành xong" |

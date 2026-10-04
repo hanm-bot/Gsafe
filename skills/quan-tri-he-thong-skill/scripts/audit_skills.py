@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Quét sức khỏe hệ thống skill SHT — 14 lớp lỗi E1..E14.
+"""Quét sức khỏe hệ thống skill SHT — 15 lớp lỗi E1..E15.
 
 Dùng:
     python3 audit_skills.py <thư_mục_skills> [tuỳ chọn]
@@ -139,6 +139,39 @@ def read_registry(skills_dir):
             declared = set(re.findall(r'`([a-z0-9-]{6,})`', cells[2] if len(cells) > 2 else ''))
             rows.append((mm.group(1), declared))
     return rows
+
+
+LAYERS = ('Quy Trình', 'Vận Hành')
+
+
+def read_layers(skills_dir):
+    """Cột cuối `Lớp` của Sổ đăng bạ. None = không có sổ; {} = có sổ nhưng chưa có cột."""
+    ref = os.path.join(skills_dir, SELF, 'references', 'so-dang-ba.md')
+    if not os.path.isfile(ref):
+        return None
+    head, out = None, {}
+    for line in open(ref, encoding='utf-8').read().splitlines():
+        if line.startswith('| Skill |'):
+            head = [c.strip() for c in line.strip().strip('|').split('|')]
+            continue
+        mm = re.match(r'^\|\s*`([a-z0-9-]+)`\s*\|', line)
+        if mm and head and head[-1] == 'Lớp':
+            cells = [c.strip() for c in line.strip().strip('|').split('|')]
+            out[mm.group(1)] = cells[-1].strip('*` ')
+    return out
+
+
+def read_readme_layers(path):
+    """{lớp: [skill…]} từ hai bảng `## Skill Quy Trình` / `## Skill Vận Hành` của README."""
+    out, cur = {}, None
+    for line in open(path, encoding='utf-8').read().splitlines():
+        if line.startswith('## '):
+            cur = next((L for L in LAYERS if line.startswith(f'## Skill {L}')), None)
+            continue
+        mm = re.match(r'^\|\s*\*\*([a-z0-9-]+)\*\*\s*\|', line)
+        if cur and mm:
+            out.setdefault(cur, []).append(mm.group(1))
+    return out
 
 
 def audit(root, personal=None, plugin_root=None):
@@ -346,6 +379,36 @@ def audit(root, personal=None, plugin_root=None):
                     'Sổ khai báo dùng chung với ' + ', '.join(f'`{g}`' for g in ghost) +
                     ' nhưng SKILL.md KHÔNG hề nhắc tới — sổ mô tả một quan hệ không tồn tại. '
                     'Hoặc bổ sung con trỏ vào skill, hoặc sửa sổ cho đúng.')
+
+    # --- E15 hai lớp skill (task-07, 05/10/2026, HITL-20261005-013): mọi skill trong sổ
+    # phải khai cột cuối `Lớp` = "Quy Trình" | "Vận Hành"; README (khi có --plugin) chia đúng
+    # hai bảng "## Skill Quy Trình" / "## Skill Vận Hành", mỗi skill đúng một lần, đúng bảng.
+    lop = read_layers(root)
+    if lop is not None:
+        if not lop:
+            add('CAO', 'E15', '(sổ đăng bạ)', 'Sổ đăng bạ chưa có cột cuối `Lớp` (Quy Trình / Vận Hành)')
+        else:
+            for n in sorted(skills):
+                if n in BUILTIN or n not in lop:
+                    continue          # thiếu hàng sổ đã là E8
+                if lop[n] not in LAYERS:
+                    add('CAO', 'E15', n, f'cột `Lớp` = "{lop[n]}" — phải là "Quy Trình" hoặc "Vận Hành"')
+            if plugin_root and os.path.isfile(os.path.join(plugin_root, 'README.md')):
+                rd = read_readme_layers(os.path.join(plugin_root, 'README.md'))
+                seen = {}
+                for layer, names in rd.items():
+                    for n in names:
+                        seen.setdefault(n, []).append(layer)
+                for n in sorted(x for x in skills if x not in BUILTIN):
+                    got = seen.get(n, [])
+                    if not got:
+                        add('TRUNG', 'E15', n, 'README không liệt kê skill này trong bảng lớp nào')
+                    elif len(got) > 1:
+                        add('TRUNG', 'E15', n, f'README liệt kê {len(got)} lần ({", ".join(got)})')
+                    elif lop.get(n) in LAYERS and got[0] != lop[n]:
+                        add('TRUNG', 'E15', n, f'README đặt ở bảng "{got[0]}" nhưng sổ khai "{lop[n]}"')
+                for n in sorted(set(seen) - set(skills)):
+                    add('TRUNG', 'E15', n, 'README liệt kê skill không có trong gói')
 
     # --- E9 vệ sinh nguồn plugin
     if plugin_root and os.path.isdir(plugin_root):

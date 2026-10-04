@@ -294,6 +294,52 @@ def run():
         case('E10-tổng âm tính — 30 skill × ~350 ký tự dưới 14000 thì không CAO',
              [f['skill'] for f in audit(r)[1] if f['code'] == 'E10' and f['sev'] == 'CAO'], must_not=['(cả gói)'])
 
+        # ---------- E15 hai lớp skill ----------
+        def so_lop(rows):
+            s = '# SỔ ĐĂNG BẠ\n\n| Skill | Tầng | Sở hữu logic | Dùng chung với | Không đụng tới | Lớp |\n|---|---|---|---|---|---|\n'
+            return s + ''.join(f'| `{n}` | 1 | việc riêng | — | — | {l} |\n' for n, l in rows)
+
+        def dung_e15(r, rows, readme=None):
+            for n, _ in rows:
+                if n != 'quan-tri-he-thong-skill':
+                    mkskill(r, n)
+            q = mkskill(r, 'quan-tri-he-thong-skill', body='Sổ nằm ở references/so-dang-ba.md.\n')
+            os.makedirs(os.path.join(q, 'references'), exist_ok=True)
+            open(os.path.join(q, 'references', 'so-dang-ba.md'), 'w', encoding='utf-8').write(so_lop(rows))
+            if readme is not None:
+                open(os.path.join(r, 'README.md'), 'w', encoding='utf-8').write(readme)
+
+        ROWS = [('skill-mot-hai', 'Vận Hành'), ('skill-hai-ba', 'Vận Hành'), ('quan-tri-he-thong-skill', 'Quy Trình')]
+        RD_OK = ('## Skill Quy Trình (1)\n\n| Skill | Dùng khi |\n|---|---|\n| **quan-tri-he-thong-skill** | x |\n\n'
+                 '## Skill Vận Hành (2)\n\n| Skill | Dùng khi |\n|---|---|\n| **skill-hai-ba** | x |\n| **skill-mot-hai** | x |\n')
+
+        r = os.path.join(tmp, 'e15a'); os.makedirs(r)
+        dung_e15(r, ROWS, RD_OK)
+        case('E15 âm tính — sổ đủ cột Lớp, README đúng bảng thì im',
+             [f['code'] for f in audit(r, plugin_root=r)[1]], must_not=['E15'])
+
+        r = os.path.join(tmp, 'e15b'); os.makedirs(r)
+        dung_e15(r, [('skill-mot-hai', 'Nghiệp vụ')] + ROWS[1:], RD_OK)
+        case('E15 dương tính — giá trị Lớp sai là CAO',
+             [f['code'] for f in audit(r, plugin_root=r)[1] if f['sev'] == 'CAO'], must_have=['E15'])
+
+        r = os.path.join(tmp, 'e15c'); os.makedirs(r)
+        dung_e15(r, ROWS, RD_OK.replace('| **skill-hai-ba** | x |\n', '').replace(
+            '| **quan-tri-he-thong-skill** | x |\n', '| **quan-tri-he-thong-skill** | x |\n| **skill-hai-ba** | x |\n'))
+        case('E15 dương tính — README đặt skill sai bảng là TRUNG',
+             [f['skill'] for f in audit(r, plugin_root=r)[1] if f['code'] == 'E15' and f['sev'] == 'TRUNG'],
+             must_have=['skill-hai-ba'])
+
+        r = os.path.join(tmp, 'e15d'); os.makedirs(r)
+        mkskill(r, 'skill-mot-hai'); mkskill(r, 'skill-hai-ba')
+        q = mkskill(r, 'quan-tri-he-thong-skill', body='Sổ nằm ở references/so-dang-ba.md.\n')
+        os.makedirs(os.path.join(q, 'references'), exist_ok=True)
+        open(os.path.join(q, 'references', 'so-dang-ba.md'), 'w', encoding='utf-8').write(
+            so_lop(ROWS).replace(' Lớp |', '').replace('|---|---|---|---|---|---|', '|---|---|---|---|---|')
+            .replace(' Vận Hành |', '').replace(' Quy Trình |', ''))
+        case('E15 dương tính — sổ chưa có cột Lớp là CAO',
+             [f['skill'] for f in audit(r)[1] if f['code'] == 'E15' and f['sev'] == 'CAO'], must_have=['(sổ đăng bạ)'])
+
         # ---------- E14 chữ hỏng mã hoá ----------
         r = os.path.join(tmp, 'e14'); os.makedirs(r)
         mkskill(r, 'skill-mot-hai'); mkskill(r, 'skill-hai-ba'); mkskill(r, 'skill-hong-ma')
