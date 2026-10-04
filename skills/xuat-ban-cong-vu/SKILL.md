@@ -96,16 +96,16 @@ Học viên chỉ cần nói bằng ngôn ngữ giao tiếp hằng ngày, Agent 
 
 Khi xuất bản theo **Track 2 (Doanh nghiệp)**, Agent chủ động đề xuất hoặc nhận diện 1 trong 10 bộ màu chuẩn trong `standards/brand_kits/`:
 
-1. `preset-formal-navy`: Xanh navy đậm & Vàng gold nhạt — Uy tín, ngân hàng, luật, tài chính.
-2. `preset-modern-blue`: Xanh dương công nghệ & Xám bạc — Phần mềm, AI, CNTT, viễn thông.
-3. `preset-dark-tech`: Nền tối than chì & Xanh neon/cyan — Khởi nghiệp công nghệ, Web3, hacker.
-4. `preset-luxury-dark-gold`: Đen tuyền & Ánh kim đồng — Bất động sản cao cấp, trang sức, VIP.
-5. `preset-fresh-nature`: Xanh lá rừng & Xanh bạc hà — Nông nghiệp sạch, y tế, môi trường, ESG.
-6. `preset-vibrant-coral`: Cam san hô & Đỏ hoàng hôn — Thương mại điện tử, F&B, thời trang trẻ.
-7. `preset-editorial-burgundy`: Đỏ rượu vang & Kem cổ điển — Báo chí, xuất bản, học viện, giáo dục.
-8. `preset-warm-earth`: Nâu đất nung & Cát ấm — Kiến trúc, nội thất, thủ công mỹ nghệ.
-9. `preset-neutral-minimal`: Đen carbon & Trắng xám tối giản — Thiết kế, kiến trúc sư, studio.
-10. `preset-classic-ivory`: Xanh chàm & Giấy ngà truyền thống — Doanh nghiệp gia đình, hành chính cao cấp.
+1. `preset-formal-navy/`: Xanh navy đậm & Vàng gold nhạt — Uy tín, ngân hàng, luật, tài chính.
+2. `preset-modern-blue/`: Xanh dương công nghệ & Xám bạc — Phần mềm, AI, CNTT, viễn thông.
+3. `preset-dark-tech/`: Nền tối than chì & Xanh neon/cyan — Khởi nghiệp công nghệ, Web3, hacker.
+4. `preset-luxury-dark-gold/`: Đen tuyền & Ánh kim đồng — Bất động sản cao cấp, trang sức, VIP.
+5. `preset-fresh-nature/`: Xanh lá rừng & Xanh bạc hà — Nông nghiệp sạch, y tế, môi trường, ESG.
+6. `preset-vibrant-coral/`: Cam san hô & Đỏ hoàng hôn — Thương mại điện tử, F&B, thời trang trẻ.
+7. `preset-editorial-burgundy/`: Đỏ rượu vang & Kem cổ điển — Báo chí, xuất bản, học viện, giáo dục.
+8. `preset-warm-earth/`: Nâu đất nung & Cát ấm — Kiến trúc, nội thất, thủ công mỹ nghệ.
+9. `preset-neutral-minimal/`: Đen carbon & Trắng xám tối giản — Thiết kế, kiến trúc sư, studio.
+10. `preset-classic-ivory/`: Xanh chàm & Giấy ngà truyền thống — Doanh nghiệp gia đình, hành chính cao cấp.
 
 ---
 

@@ -1,3 +1,6 @@
+import sys as _sys_utf8
+if _sys_utf8.platform == 'win32' and hasattr(_sys_utf8.stdout, 'reconfigure'):
+    _sys_utf8.stdout.reconfigure(encoding='utf-8')
 import os
 import zipfile
 import json
