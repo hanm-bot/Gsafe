@@ -1,6 +1,6 @@
 ---
 name: "sht-phap-che-sot"
-description: "Tra và trích nguyên văn văn bản pháp luật Việt Nam có toạ độ Điều/Khoản và hiệu lực TẠI MỐC vụ việc, lập bảng Source of Truth, phân xử xung đột luật, stress-test phản công. LUÔN dùng khi hỏi \"căn cứ pháp lý\", \"điều nào quy định\", \"luật còn hiệu lực không\", \"mức phạt/trần lãi\", \"lấy SOT\", kể cả khi skill khác cần căn cứ. KHÔNG dùng để rà hợp đồng (ra-soat-hop-dong-vendor), soạn QĐ (sht-qd-nhansu-alignment); không thay luật sư."
+description: "Tra và trích nguyên văn văn bản pháp luật Việt Nam có toạ độ Điều/Khoản và hiệu lực TẠI MỐC vụ việc, lập bảng Source of Truth, phân xử xung đột luật, stress-test phản công. LUÔN dùng khi hỏi \"căn cứ pháp lý\", \"điều nào quy định\", \"luật còn hiệu lực không\", \"mức phạt/trần lãi\", \"lấy SOT\", kể cả khi skill khác cần căn cứ. KHÔNG dùng để rà hợp đồng (ra-soat-hop-dong-vendor), soạn QĐ (sht-qd-nhansu-alignment); không thay luật sư. Tư vấn rủi ro chung: phap-che-doanh-nghiep."
 ---
 
 # Pháp chế & Căn cứ Source of Truth (SHT)

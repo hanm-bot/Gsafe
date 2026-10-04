@@ -1,6 +1,6 @@
 ---
 name: "sht-kien-truc-ho-so"
-description: "Quy hoạch bộ hồ sơ một nghiệp vụ SHT theo vòng đời H1–H5, lập Gap Matrix đã có/cần bổ sung có bằng chứng, tính điểm sẵn sàng bằng đếm file thật. LUÔN dùng khi nói \"lập hồ sơ\", \"thiếu giấy tờ gì\", \"gap matrix\", \"hồ sơ trình ký gồm gì\", kể cả khi chỉ đưa tập file hỏi \"đủ chưa\". KHÔNG dùng để trích chứng cứ (chuan-hoa-ho-so-tai-lieu), rà hợp đồng (ra-soat-hop-dong-vendor), soạn QĐ (sht-qd-nhansu-alignment), đo DMI, soạn PRD."
+description: "Quy hoạch bộ hồ sơ một nghiệp vụ SHT theo vòng đời H1–H5, lập Gap Matrix đã có/cần bổ sung có bằng chứng, tính điểm sẵn sàng bằng đếm file thật. LUÔN dùng khi nói \"lập hồ sơ\", \"thiếu giấy tờ gì\", \"gap matrix\", \"hồ sơ trình ký gồm gì\", kể cả khi chỉ đưa tập file hỏi \"đủ chưa\". KHÔNG dùng để trích chứng cứ (chuan-hoa-ho-so-tai-lieu), rà hợp đồng (ra-soat-hop-dong-vendor), soạn QĐ (sht-qd-nhansu-alignment), đo DMI, soạn PRD. Bản đồ tài liệu chung: kien-truc-tai-lieu."
 ---
 
 # Kiến trúc hồ sơ doanh nghiệp (SHT)

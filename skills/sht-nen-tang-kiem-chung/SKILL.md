@@ -1,6 +1,6 @@
 ---
 name: "sht-nen-tang-kiem-chung"
-description: "Bốn quy tắc nền cho MỌI deliverable SHT: lan truyền hiệu chỉnh khi số/tên đổi, đổi tên hàng loạt an toàn trên tên tiếng Việt, một tài liệu một bản có hiệu lực, checklist bàn giao và 5 dạng báo cáo. LUÔN dùng trước khi bàn giao file, khi sửa số/tên ở nhiều file, dò trang trống PDF, hoặc nói \"sửa lại\", \"bản nào đúng\", \"lưu nhầm chỗ\", \"dọn thư mục\". KHÔNG dùng riêng lẻ cho nghiệp vụ — luôn KÈM skill nghiệp vụ tương ứng."
+description: "Bốn quy tắc nền cho MỌI deliverable SHT: lan truyền hiệu chỉnh khi số/tên đổi, đổi tên hàng loạt an toàn trên tên tiếng Việt, một tài liệu một bản có hiệu lực, checklist bàn giao và 5 dạng báo cáo. LUÔN dùng trước khi bàn giao file, khi sửa số/tên ở nhiều file, dò trang trống PDF, hoặc nói \"sửa lại\", \"bản nào đúng\", \"lưu nhầm chỗ\", \"dọn thư mục\". KHÔNG dùng riêng lẻ cho nghiệp vụ — luôn KÈM skill nghiệp vụ tương ứng. File Office ngoài NĐ30: xuat-ban-cong-vu."
 ---
 
 # Nền tảng kiểm chứng & bàn giao (SHT — tầng 0)
