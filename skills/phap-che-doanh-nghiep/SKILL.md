@@ -1,6 +1,6 @@
 ---
 name: phap-che-doanh-nghiep
-description: "Tư vấn pháp chế doanh nghiệp: chuyển câu hỏi đời thường thành vấn đề pháp lý, đánh giá rủi ro, giả lập thanh tra/kiểm tra. LUÔN dùng khi cần nhận định rủi ro pháp lý, chuẩn bị trước thanh tra, phân tích tình huống. KHÔNG dùng khi cần trích nguyên văn Điều/Khoản hoặc kiểm hiệu lực văn bản tại mốc (sht-phap-che-sot), rà hợp đồng CNTT (ra-soat-hop-dong-vendor). Không thay luật sư. (dựa trên vietduc·ai)"
+description: "Tư vấn pháp chế doanh nghiệp: chuyển câu hỏi đời thường thành vấn đề pháp lý, đánh giá rủi ro, giả lập thanh tra/kiểm tra. LUÔN dùng khi cần nhận định rủi ro pháp lý, chuẩn bị trước thanh tra, phân tích tình huống. KHÔNG dùng khi cần trích nguyên văn Điều/Khoản hoặc kiểm hiệu lực văn bản tại mốc (sht-phap-che-sot), rà hợp đồng CNTT (ra-soat-hop-dong-vendor). Không thay luật sư. (dựa trên vietduc·ai) Tranh chấp bán thiết bị: sht-hopdong-thietbi-tranh-chap."
 ---
 
 # Tư Vấn Pháp Luật Thực Chiến & Phòng Pháp Chế Số 2.0

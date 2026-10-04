@@ -1,6 +1,6 @@
 ---
 name: xuat-ban-cong-vu
-description: "Dựng và chuyển đổi file văn phòng bằng code: Word, PowerPoint, Excel, PDF theo bộ nhận diện thương hiệu. LUÔN dùng khi cần tạo slide, bảng tính, tài liệu thương hiệu, chuyển đổi/cắt ghép PDF. KHÔNG dùng cho văn bản hành chính hay docx giao anh Hà theo NĐ30 (sht-nen-tang-kiem-chung), trích chứng cứ PDF scan (chuan-hoa-ho-so-tai-lieu). (dựa trên vietduc·ai)"
+description: "Dựng và chuyển đổi file văn phòng bằng code: Word, PowerPoint, Excel, PDF theo bộ nhận diện thương hiệu. LUÔN dùng khi cần tạo slide, bảng tính, tài liệu thương hiệu, chuyển đổi/cắt ghép PDF. KHÔNG dùng cho văn bản hành chính hay docx giao anh Hà theo NĐ30 (sht-nen-tang-kiem-chung), trích chứng cứ PDF scan (chuan-hoa-ho-so-tai-lieu). (dựa trên vietduc·ai) PO/công văn đối tác: sht-pm-van-ban-doi-tac-po."
 ---
 
 # AI Office Master 2.0 (Bi-directional Pipeline & Multi-Skill Orchestrator)

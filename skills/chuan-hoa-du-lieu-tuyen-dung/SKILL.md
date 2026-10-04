@@ -1,6 +1,6 @@
 ---
 name: "chuan-hoa-du-lieu-tuyen-dung"
-description: "Săn CV, chấm ứng viên theo ASK có bằng chứng, soạn JD và khảo sát lương thị trường cho SHT; xuất infographic PDF + Excel scorecard. LUÔN dùng khi nói \"hunt CV\", \"săn CV\", \"lọc hồ sơ\", \"chấm điểm ứng viên\", \"soạn JD\", \"khảo sát lương\", kể cả khi chỉ gõ cộc lốc. KHÔNG dùng cho hồ sơ nhân sự đã tuyển (chuan-hoa-du-lieu-nhansu)."
+description: "Săn CV, chấm ứng viên theo ASK có bằng chứng, soạn JD và khảo sát lương thị trường cho SHT; xuất infographic PDF + Excel scorecard. LUÔN dùng khi nói \"hunt CV\", \"săn CV\", \"lọc hồ sơ\", \"chấm điểm ứng viên\", \"soạn JD\", \"khảo sát lương\", kể cả khi chỉ gõ cộc lốc. KHÔNG dùng cho hồ sơ nhân sự đã tuyển (chuan-hoa-du-lieu-nhansu). Quy trình tuyển dụng SHT: sht-quy-trinh-tuyen-dung."
 ---
 
 # Chuẩn hóa dữ liệu tuyển dụng (SHT)

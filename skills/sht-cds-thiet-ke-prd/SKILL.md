@@ -1,6 +1,6 @@
 ---
 name: "sht-cds-thiet-ke-prd"
-description: "Soạn PRD giải pháp CĐS B2B Giai đoạn 03 SHT: từ điểm nghẽn As-Is ra luồng To-Be, yêu cầu, user story, nghiệm thu, tuân thủ Luật BVDLCN/NHNN, MoSCoW, truy vết ROI. LUÔN dùng khi nói \"viết PRD\", \"đặc tả yêu cầu\", \"quy trình To-Be\", kể cả khi chỉ mô tả quy trình cần số hoá. KHÔNG dùng cho PRD phần mềm nội bộ (prd-architect), đo DMI (sht-cds-danh-gia-hien-trang), thiết kế agent (sht-cds-thiet-ke-agent), rà SoW vendor (ra-soat-hop-dong-vendor)."
+description: "Soạn PRD giải pháp CĐS B2B Giai đoạn 03 SHT: từ điểm nghẽn As-Is ra luồng To-Be, yêu cầu, user story, nghiệm thu, tuân thủ Luật BVDLCN/NHNN, MoSCoW, truy vết ROI. LUÔN dùng khi nói \"viết PRD\", \"đặc tả yêu cầu\", \"quy trình To-Be\", kể cả khi chỉ mô tả quy trình cần số hoá. KHÔNG dùng cho PRD phần mềm nội bộ (prd-architect), đo DMI (sht-cds-danh-gia-hien-trang), thiết kế agent (sht-cds-thiet-ke-agent), rà SoW vendor (ra-soat-hop-dong-vendor). ICD: sht-ky-thuat-ranh-gioi-tich-hop"
 ---
 
 # Thiết kế quy trình To-Be & soạn PRD cho giải pháp CĐS (SHT Phase 03)

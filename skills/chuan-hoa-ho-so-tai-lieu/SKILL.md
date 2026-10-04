@@ -1,6 +1,6 @@
 ---
 name: "chuan-hoa-ho-so-tai-lieu"
-description: "Chuẩn hoá hồ sơ dự án/pháp lý đa định dạng (PDF scan tiếng Việt, docx, xlsx) thành dữ liệu trích dẫn được có toạ độ trang, điều khoản; xuất báo cáo nội bộ/đối ngoại/điều hành. LUÔN dùng khi nói \"chuẩn hoá hồ sơ\", \"đọc PDF scan\", \"trích chứng cứ\", \"kiểm kê tài liệu\", \"báo cáo đối ngoại\". KHÔNG dùng cho hợp đồng CNTT (ra-soat-hop-dong-vendor), nhân sự (chuan-hoa-du-lieu-nhansu), XDCB có ghi âm (chuan-hoa-du-lieu-du-an)."
+description: "Chuẩn hoá hồ sơ dự án/pháp lý đa định dạng (PDF scan tiếng Việt, docx, xlsx) thành dữ liệu trích dẫn được có toạ độ trang, điều khoản; xuất báo cáo nội bộ/đối ngoại/điều hành. LUÔN dùng khi nói \"chuẩn hoá hồ sơ\", \"đọc PDF scan\", \"trích chứng cứ\", \"kiểm kê tài liệu\", \"báo cáo đối ngoại\". KHÔNG dùng cho hợp đồng CNTT (ra-soat-hop-dong-vendor), nhân sự (chuan-hoa-du-lieu-nhansu), XDCB có ghi âm (chuan-hoa-du-lieu-du-an). Biên bản họp đối tác: sht-thu-ky-bien-ban-ho-so."
 ---
 
 # Chuẩn hoá hồ sơ tài liệu thành dữ liệu trích dẫn được (SHT)

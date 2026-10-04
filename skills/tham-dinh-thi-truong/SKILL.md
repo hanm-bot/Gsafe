@@ -1,6 +1,6 @@
 ---
 name: tham-dinh-thi-truong
-description: "Thẩm định ý tưởng kinh doanh và thị trường ngách cho công ty nhỏ/một người: 8 lăng kính nhu cầu, đối thủ, unit economics. LUÔN dùng khi cần đánh giá ý tưởng mới, khảo sát thị trường, nghiên cứu đối thủ. KHÔNG dùng cho chiến lược CĐS khách Bank/Telco, 6 lăng kính B2B, backlog use-case (sht-cds-danh-gia-hien-trang). (dựa trên vietduc·ai)"
+description: "Thẩm định ý tưởng kinh doanh và thị trường ngách cho công ty nhỏ/một người: 8 lăng kính nhu cầu, đối thủ, unit economics. LUÔN dùng khi cần đánh giá ý tưởng mới, khảo sát thị trường, nghiên cứu đối thủ. KHÔNG dùng cho chiến lược CĐS khách Bank/Telco, 6 lăng kính B2B, backlog use-case (sht-cds-danh-gia-hien-trang). (dựa trên vietduc·ai) Thẩm định vendor CNTT: lua-chon-tham-dinh-ncc."
 ---
 
 # Cố Vấn Chiến Lược & Phân Tích Thị Trường OPC 2.0

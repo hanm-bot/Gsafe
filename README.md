@@ -2,7 +2,7 @@
 
 > ⚠️ **0.31.x: KHÔNG tải lên org – chờ xác nhận quyền dùng vietduc·ai** (`HITL-20261004-002`). Chỉ cài tab Code.
 
-Bộ skill nghiệp vụ nội bộ của **Công ty CP Đầu tư Công nghệ SHT**. 37 skill (kèm 5 skill mới: chap-but-lanh-dao, kien-truc-tai-lieu, phap-che-doanh-nghiep, tham-dinh-thi-truong, xuat-ban-cong-vu), chia bốn tầng, mỗi logic có đúng một chủ sở hữu.
+Bộ skill nghiệp vụ nội bộ của **Công ty CP Đầu tư Công nghệ SHT**. 44 skill (kèm 5 skill mới: chap-but-lanh-dao, kien-truc-tai-lieu, phap-che-doanh-nghiep, tham-dinh-thi-truong, xuat-ban-cong-vu), chia bốn tầng, mỗi logic có đúng một chủ sở hữu.
 
 Nguyên tắc xuyên suốt: **dữ liệu sai lan nhanh hơn dữ liệu đúng.** Một con số sai nhân bản ra 4–5 deliverable; một cái tên bị thay nhầm đi thẳng vào văn bản trình ký. Mọi skill ở đây tối ưu cho việc chặn lỗi sớm.
 
@@ -119,4 +119,4 @@ Sổ đăng bạ — nguồn sự thật về quan hệ giữa các skill — n�
 
 Nội bộ SHT. Các skill dẫn chiếu dữ liệu và văn bản thật của công ty (hệ thống SHT Sales Pipeline trên Turso, Quyết định bổ nhiệm, khung lương 3P, hợp đồng CNTT, khung đánh giá DMI). Không phát hành ra ngoài.
 
-Phiên bản 0.31.3 — 05/10/2026.
+Phiên bản 0.32.0 — 05/10/2026.
