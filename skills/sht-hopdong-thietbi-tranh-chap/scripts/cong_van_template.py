@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 from docx import Document
 from docx.shared import Pt, Cm, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING
@@ -58,88 +58,87 @@ no_borders(tbl)
 tbl.columns[0].width=Cm(6.8); tbl.columns[1].width=Cm(9.7)
 tbl.rows[0].cells[0].width=Cm(6.8); tbl.rows[0].cells[1].width=Cm(9.7)
 c0,c1=tbl.rows[0].cells
-cellp(c0,"CÃ”NG TY Cá»” PHáº¦N",size=12,bold=True)
-cellp(c0,"Äáº¦U TÆ¯ CÃ”NG NGHá»† SHT",size=12,bold=True)
-p=cellp(c0,"Sá»‘:        /2026/CV-SHT",size=13)
-cellp(c0,"V/v phá»‘i há»£p giáº£i trÃ¬nh vá»›i cÆ¡ quan thuáº¿ vá» nghÄ©a vá»¥ láº­p hÃ³a Ä‘Æ¡n GTGT theo Há»£p Ä‘á»“ng sá»‘ [Sá»_HÄ]",size=11,italic=True)
-cellp(c1,"Cá»˜NG HÃ’A XÃƒ Há»˜I CHá»¦ NGHÄ¨A VIá»†T NAM",size=12,bold=True)
-cellp(c1,"Äá»™c láº­p â€“ Tá»± do â€“ Háº¡nh phÃºc",size=13,bold=True)
+cellp(c0,"CÔNG TY CỔ PHẦN",size=12,bold=True)
+cellp(c0,"ĐẦU TƯ CÔNG NGHỆ SHT",size=12,bold=True)
+p=cellp(c0,"Số:        /2026/CV-SHT",size=13)
+cellp(c0,"V/v phối hợp giải trình với cơ quan thuế về nghĩa vụ lập hóa đơn GTGT theo Hợp đồng số 145/2025/HĐNT/VPBANK-SHT",size=11,italic=True)
+cellp(c1,"CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",size=12,bold=True)
+cellp(c1,"Độc lập – Tự do – Hạnh phúc",size=13,bold=True)
 cellp(c1,"________________________",size=11)
-cellp(c1,"HÃ  Ná»™i, ngÃ y       thÃ¡ng 8 nÄƒm 2026",size=13,italic=True)
+cellp(c1,"Hà Nội, ngày       tháng 8 năm 2026",size=13,italic=True)
 
 para("",after=8)
-para("KÃ­nh gá»­i: BAN LÃƒNH Äáº O NGÃ‚N HÃ€NG TMCP VIá»†T NAM THá»ŠNH VÆ¯á»¢NG ([NGÃ‚N_HÃ€NG_A])",bold=True,align=WD_ALIGN_PARAGRAPH.CENTER,after=10)
+para("Kính gửi: BAN LÃNH ĐẠO NGÂN HÀNG TMCP VIỆT NAM THỊNH VƯỢNG (VPBANK)",bold=True,align=WD_ALIGN_PARAGRAPH.CENTER,after=10)
 
 # ===== Can cu =====
 for t in [
- "CÄƒn cá»© Há»£p Ä‘á»“ng nguyÃªn táº¯c cung cáº¥p hÃ ng hÃ³a sá»‘ [Sá»_HÄ] kÃ½ ngÃ y [NGÃ€Y_KÃ] giá»¯a NgÃ¢n hÃ ng TMCP Viá»‡t Nam Thá»‹nh VÆ°á»£ng vÃ  CÃ´ng ty Cá»• pháº§n Äáº§u tÆ° CÃ´ng nghá»‡ SHT, cÃ¹ng cÃ¡c Phá»¥ lá»¥c Há»£p Ä‘á»“ng sá»‘ 01, 02, 03 (sau Ä‘Ã¢y gá»i lÃ  â€œHá»£p Ä‘á»“ngâ€);",
- "CÄƒn cá»© ÄÆ¡n Ä‘áº·t hÃ ng sá»‘ 01 vá»›i sá»‘ lÆ°á»£ng [Sá»_LÆ¯á»¢NG] thiáº¿t bá»‹ POS vÃ  bá»™ há»“ sÆ¡ bÃ n giao Ä‘Ã£ xÃ¡c láº­p giá»¯a CÃ¡c BÃªn;",
- "CÄƒn cá»© Äiá»u 9 Nghá»‹ Ä‘á»‹nh sá»‘ 123/2020/NÄ-CP ngÃ y 19/10/2020 cá»§a ChÃ­nh phá»§: thá»i Ä‘iá»ƒm láº­p hÃ³a Ä‘Æ¡n Ä‘á»‘i vá»›i bÃ¡n hÃ ng hÃ³a lÃ  thá»i Ä‘iá»ƒm chuyá»ƒn giao quyá»n sá»Ÿ há»¯u hoáº·c quyá»n sá»­ dá»¥ng hÃ ng hÃ³a cho ngÆ°á»i mua, khÃ´ng phÃ¢n biá»‡t Ä‘Ã£ thu Ä‘Æ°á»£c tiá»n hay chÆ°a thu Ä‘Æ°á»£c tiá»n;",
- "CÄƒn cá»© ThÃ´ng bÃ¡o sá»‘ [Sá»_THÃ”NG_BÃO_THUáº¾] ngÃ y [NGÃ€Y] cá»§a [CÆ _QUAN_THUáº¾] vá» káº¿ hoáº¡ch kiá»ƒm tra táº¡i trá»¥ sá»Ÿ ngÆ°á»i ná»™p thuáº¿ nÄƒm 2026 Ä‘á»‘i vá»›i CÃ´ng ty Cá»• pháº§n Äáº§u tÆ° CÃ´ng nghá»‡ SHT (cÄƒn cá»© Quyáº¿t Ä‘á»‹nh sá»‘ 6568/QÄ-HAN-KTr1 ngÃ y 06/5/2026 cá»§a TrÆ°á»Ÿng [CÆ _QUAN_THUáº¾]),",
+ "Căn cứ Hợp đồng nguyên tắc cung cấp hàng hóa số 145/2025/HĐNT/VPBANK-SHT ký ngày 07/07/2025 giữa Ngân hàng TMCP Việt Nam Thịnh Vượng và Công ty Cổ phần Đầu tư Công nghệ SHT, cùng các Phụ lục Hợp đồng số 01, 02, 03 (sau đây gọi là “Hợp đồng”);",
+ "Căn cứ Đơn đặt hàng số 01 với số lượng 4.555 thiết bị POS và bộ hồ sơ bàn giao đã xác lập giữa Các Bên;",
+ "Căn cứ Điều 9 Nghị định số 123/2020/NĐ-CP ngày 19/10/2020 của Chính phủ: thời điểm lập hóa đơn đối với bán hàng hóa là thời điểm chuyển giao quyền sở hữu hoặc quyền sử dụng hàng hóa cho người mua, không phân biệt đã thu được tiền hay chưa thu được tiền;",
+ "Căn cứ Thông báo số 16342/TB-TCS6-KTr1 ngày 22/5/2026 của Thuế cơ sở 6 Thành phố Hà Nội về kế hoạch kiểm tra tại trụ sở người nộp thuế năm 2026 đối với Công ty Cổ phần Đầu tư Công nghệ SHT (căn cứ Quyết định số 6568/QĐ-HAN-KTr1 ngày 06/5/2026 của Trưởng Thuế TP Hà Nội),",
 ]:
     para(t,italic=True,first=1.0,after=4)
 
-para("CÃ´ng ty Cá»• pháº§n Äáº§u tÆ° CÃ´ng nghá»‡ SHT (sau Ä‘Ã¢y gá»i lÃ  â€œSHTâ€) thÃ´ng bÃ¡o vÃ  Ä‘á» nghá»‹ QuÃ½ NgÃ¢n hÃ ng nhÆ° sau:",first=1.0,before=6)
+para("Công ty Cổ phần Đầu tư Công nghệ SHT (sau đây gọi là “SHT”) thông báo và đề nghị Quý Ngân hàng như sau:",first=1.0,before=6)
 
 # ===== I =====
-para("I. TÃ“M Táº®T Sá»° VIá»†C",bold=True,before=8)
+para("I. TÓM TẮT SỰ VIỆC",bold=True,before=8)
 items=[
- ("1. ","Thá»±c hiá»‡n Há»£p Ä‘á»“ng vÃ  ÄÆ¡n Ä‘áº·t hÃ ng sá»‘ 01, SHT Ä‘Ã£ hoÃ n thÃ nh nháº­p kháº©u hÃ ng hÃ³a vÃ  tá»• chá»©c bÃ n giao theo tiáº¿n Ä‘á»™. Äáº¿n nay, QuÃ½ NgÃ¢n hÃ ng má»›i tiáº¿p nháº­n 1.755/[Sá»_LÆ¯á»¢NG] thiáº¿t bá»‹ POS; sá»‘ cÃ²n láº¡i SHT Ä‘Ã£ sáºµn sÃ ng bÃ n giao nhÆ°ng chÆ°a Ä‘Æ°á»£c tiáº¿p nháº­n."),
- ("2. ","NgÃ y 04/11/2025, SHT cÃ³ vÄƒn báº£n Ä‘á» xuáº¥t bÃ n giao tiáº¿p 1.800 thiáº¿t bá»‹ POS. Äá» xuáº¥t khÃ´ng Ä‘Æ°á»£c QuÃ½ NgÃ¢n hÃ ng tiáº¿p nháº­n."),
- ("3. ","NgÃ y 30/12/2025, SHT tiáº¿p tá»¥c cÃ³ vÄƒn báº£n (thÆ° Ä‘iá»‡n tá»­ cá»§a bÃ  [Há»Œ_TÃŠN_NGÆ¯á»œI_Gá»¬I] gá»­i cÃ¡c Ä‘áº§u má»‘i cÃ³ tháº©m quyá»n cá»§a QuÃ½ NgÃ¢n hÃ ng, kÃ¨m hÃ³a Ä‘Æ¡n nhÃ¡p) Ä‘á» nghá»‹: láº­p hÃ³a Ä‘Æ¡n GTGT Ä‘á»‘i vá»›i 1.755 thiáº¿t bá»‹ Ä‘Ã£ bÃ n giao Ä‘Ãºng thá»i Ä‘iá»ƒm káº¿t thÃºc nÄƒm tÃ i chÃ­nh 2025; pháº§n cÃ²n láº¡i vÃ  hÃ ng khuyáº¿n máº¡i kÃ¨m theo láº­p hÃ³a Ä‘Æ¡n khi bÃ n giao trong nÄƒm 2026."),
- ("4. ","CÃ¹ng ngÃ y 30/12/2025, QuÃ½ NgÃ¢n hÃ ng (thÆ° Ä‘iá»‡n tá»­ cá»§a bÃ  [Há»Œ_TÃŠN_Äáº¦U_Má»I_Äá»I_TÃC]) tá»« chá»‘i viá»‡c láº­p hÃ³a Ä‘Æ¡n nÄƒm 2025; Ä‘á»“ng thá»i Ä‘á» xuáº¥t â€œhá»— trá»£ SHT kÃ½ biÃªn báº£n tá»« chá»‘i nháº­n bÃ n giao Ä‘á»ƒ gá»­i cÆ¡ quan thuáº¿â€. SHT kháº³ng Ä‘á»‹nh khÃ´ng thá»ƒ thá»±c hiá»‡n Ä‘á» xuáº¥t nÃ y, vÃ¬ ná»™i dung biÃªn báº£n khÃ´ng pháº£n Ã¡nh Ä‘Ãºng thá»±c táº¿ giao dá»‹ch vÃ  viá»‡c láº­p há»“ sÆ¡ khÃ´ng Ä‘Ãºng thá»±c táº¿ Ä‘á»ƒ cung cáº¥p cho cÆ¡ quan thuáº¿ lÃ  hÃ nh vi phÃ¡p luáº­t nghiÃªm cáº¥m."),
- ("5. ","NgÃ y [NGÃ€Y], cÆ¡ quan thuáº¿ ban hÃ nh ThÃ´ng bÃ¡o kiá»ƒm tra nÃªu trÃªn. Qua rÃ  soÃ¡t há»“ sÆ¡ nháº­p kháº©u, quáº£n lÃ½ kho vÃ  Há»£p Ä‘á»“ng, cÆ¡ quan thuáº¿ Ä‘Ã£ ghi nháº­n viá»‡c SHT nháº­p kháº©u, xuáº¥t kho bÃ¡n hÃ ng cho [NGÃ‚N_HÃ€NG_A] nhÆ°ng chÆ°a láº­p hÃ³a Ä‘Æ¡n GTGT."),
+ ("1. ","Thực hiện Hợp đồng và Đơn đặt hàng số 01, SHT đã hoàn thành nhập khẩu hàng hóa và tổ chức bàn giao theo tiến độ. Đến nay, Quý Ngân hàng mới tiếp nhận 1.755/4.555 thiết bị POS; số còn lại SHT đã sẵn sàng bàn giao nhưng chưa được tiếp nhận."),
+ ("2. ","Ngày 04/11/2025, SHT có văn bản đề xuất bàn giao tiếp 1.800 thiết bị POS. Đề xuất không được Quý Ngân hàng tiếp nhận."),
+ ("3. ","Ngày 30/12/2025, SHT tiếp tục có văn bản (thư điện tử của bà Trần Thanh Huyền gửi các đầu mối có thẩm quyền của Quý Ngân hàng, kèm hóa đơn nháp) đề nghị: lập hóa đơn GTGT đối với 1.755 thiết bị đã bàn giao đúng thời điểm kết thúc năm tài chính 2025; phần còn lại và hàng khuyến mại kèm theo lập hóa đơn khi bàn giao trong năm 2026."),
+ ("4. ","Cùng ngày 30/12/2025, Quý Ngân hàng (thư điện tử của bà Dương Thanh Thúy) từ chối việc lập hóa đơn năm 2025; đồng thời đề xuất “hỗ trợ SHT ký biên bản từ chối nhận bàn giao để gửi cơ quan thuế”. SHT khẳng định không thể thực hiện đề xuất này, vì nội dung biên bản không phản ánh đúng thực tế giao dịch và việc lập hồ sơ không đúng thực tế để cung cấp cho cơ quan thuế là hành vi pháp luật nghiêm cấm."),
+ ("5. ","Ngày 22/5/2026, cơ quan thuế ban hành Thông báo kiểm tra nêu trên. Qua rà soát hồ sơ nhập khẩu, quản lý kho và Hợp đồng, cơ quan thuế đã ghi nhận việc SHT nhập khẩu, xuất kho bán hàng cho VPBank nhưng chưa lập hóa đơn GTGT."),
 ]
 for n,t in items:
     p=para("",first=1.0,after=4); addrun(p,n,bold=True); addrun(p,t)
 
 # ===== II =====
-para("II. QUAN ÄIá»‚M PHÃP LÃ Cá»¦A SHT",bold=True,before=8)
+para("II. QUAN ĐIỂM PHÁP LÝ CỦA SHT",bold=True,before=8)
 for n,t in [
- ("1. ","NghÄ©a vá»¥ láº­p hÃ³a Ä‘Æ¡n Ä‘á»‘i vá»›i 1.755 thiáº¿t bá»‹ Ä‘Ã£ bÃ n giao phÃ¡t sinh táº¡i thá»i Ä‘iá»ƒm chuyá»ƒn giao hÃ ng hÃ³a theo Äiá»u 9 Nghá»‹ Ä‘á»‹nh sá»‘ 123/2020/NÄ-CP, khÃ´ng phá»¥ thuá»™c viá»‡c Ä‘Ã£ thu tiá»n hay chÆ°a vÃ  khÃ´ng phá»¥ thuá»™c Ã½ chÃ­ cá»§a bÃªn mua."),
- ("2. ","NguyÃªn nhÃ¢n trá»±c tiáº¿p dáº«n Ä‘áº¿n viá»‡c chÆ°a láº­p hÃ³a Ä‘Æ¡n Ä‘Ãºng thá»i Ä‘iá»ƒm lÃ  viá»‡c QuÃ½ NgÃ¢n hÃ ng khÃ´ng hoÃ n thÃ nh tiáº¿p nháº­n, nghiá»‡m thu hÃ ng hÃ³a vÃ  tá»« chá»‘i phá»‘i há»£p láº­p hÃ³a Ä‘Æ¡n, máº·c dÃ¹ SHT Ä‘Ã£ hai láº§n chá»§ Ä‘á»™ng Ä‘á» xuáº¥t báº±ng vÄƒn báº£n trong nÄƒm 2025."),
- ("3. ","SHT Ä‘ang lÆ°u giá»¯ Ä‘áº§y Ä‘á»§ vÃ  sáº½ cung cáº¥p cho cÆ¡ quan thuáº¿ toÃ n bá»™ há»“ sÆ¡ chá»©ng minh diá»…n biáº¿n nÃªu trÃªn, bao gá»“m: Há»£p Ä‘á»“ng vÃ  cÃ¡c Phá»¥ lá»¥c; ÄÆ¡n Ä‘áº·t hÃ ng sá»‘ 01; há»“ sÆ¡ nháº­p kháº©u; há»“ sÆ¡ bÃ n giao 1.755 thiáº¿t bá»‹; cÃ¡c thÆ° Ä‘iá»‡n tá»­ trao Ä‘á»•i ngÃ y 04/11/2025 vÃ  30/12/2025 cÃ¹ng hÃ³a Ä‘Æ¡n nhÃ¡p Ä‘Ã­nh kÃ¨m."),
- ("4. ","Sá»± viá»‡c hiá»‡n khÃ´ng cÃ²n lÃ  rá»§i ro hÃ nh chÃ­nh riÃªng cá»§a SHT. Há»“ sÆ¡ thá»ƒ hiá»‡n rÃµ chuá»—i hÃ nh vi vÃ  trÃ¡ch nhiá»‡m cá»§a tá»«ng BÃªn; viá»‡c cháº­m phá»‘i há»£p giáº£i trÃ¬nh chá»‰ lÃ m phÃ¡t sinh thÃªm tiá»n cháº­m ná»™p, má»Ÿ rá»™ng pháº¡m vi kiá»ƒm tra vÃ  báº¥t lá»£i cho cáº£ hai BÃªn."),
+ ("1. ","Nghĩa vụ lập hóa đơn đối với 1.755 thiết bị đã bàn giao phát sinh tại thời điểm chuyển giao hàng hóa theo Điều 9 Nghị định số 123/2020/NĐ-CP, không phụ thuộc việc đã thu tiền hay chưa và không phụ thuộc ý chí của bên mua."),
+ ("2. ","Nguyên nhân trực tiếp dẫn đến việc chưa lập hóa đơn đúng thời điểm là việc Quý Ngân hàng không hoàn thành tiếp nhận, nghiệm thu hàng hóa và từ chối phối hợp lập hóa đơn, mặc dù SHT đã hai lần chủ động đề xuất bằng văn bản trong năm 2025."),
+ ("3. ","SHT đang lưu giữ đầy đủ và sẽ cung cấp cho cơ quan thuế toàn bộ hồ sơ chứng minh diễn biến nêu trên, bao gồm: Hợp đồng và các Phụ lục; Đơn đặt hàng số 01; hồ sơ nhập khẩu; hồ sơ bàn giao 1.755 thiết bị; các thư điện tử trao đổi ngày 04/11/2025 và 30/12/2025 cùng hóa đơn nháp đính kèm."),
+ ("4. ","Sự việc hiện không còn là rủi ro hành chính riêng của SHT. Hồ sơ thể hiện rõ chuỗi hành vi và trách nhiệm của từng Bên; việc chậm phối hợp giải trình chỉ làm phát sinh thêm tiền chậm nộp, mở rộng phạm vi kiểm tra và bất lợi cho cả hai Bên."),
 ]:
     p=para("",first=1.0,after=4); addrun(p,n,bold=True); addrun(p,t)
 
 # ===== III =====
-para("III. Äá»€ NGHá»Š",bold=True,before=8)
-para("SHT Ä‘á» nghá»‹ Ban LÃ£nh Ä‘áº¡o QuÃ½ NgÃ¢n hÃ ng lá»±a chá»n vÃ  xÃ¡c nháº­n báº±ng vÄƒn báº£n má»™t trong ba phÆ°Æ¡ng Ã¡n sau Ä‘á»ƒ hai BÃªn thá»‘ng nháº¥t phá»‘i há»£p giáº£i trÃ¬nh vá»›i [CÆ _QUAN_THUáº¾]:",first=1.0,after=6)
+para("III. ĐỀ NGHỊ",bold=True,before=8)
+para("SHT đề nghị Ban Lãnh đạo Quý Ngân hàng lựa chọn và xác nhận bằng văn bản một trong ba phương án sau để hai Bên thống nhất phối hợp giải trình với Thuế Thành phố Hà Nội:",first=1.0,after=6)
 
-para("PhÆ°Æ¡ng Ã¡n 1: ",bold=True,first=1.0,after=2)
-para("QuÃ½ NgÃ¢n hÃ ng tiáº¿p nháº­n Ä‘á»§ [Sá»_LÆ¯á»¢NG] thiáº¿t bá»‹ POS theo Há»£p Ä‘á»“ng vÃ  ÄÆ¡n Ä‘áº·t hÃ ng Ä‘Ã£ kÃ½; hai BÃªn hoÃ n táº¥t bÃ n giao, nghiá»‡m thu; SHT láº­p hÃ³a Ä‘Æ¡n GTGT cho toÃ n bá»™ hÃ ng hÃ³a Ä‘á»ƒ ná»™p thuáº¿ vÃ o ngÃ¢n sÃ¡ch nhÃ  nÆ°á»›c; QuÃ½ NgÃ¢n hÃ ng chá»‹u 100% tiá»n pháº¡t vi pháº¡m hÃ nh chÃ­nh vÃ  tiá»n cháº­m ná»™p phÃ¡t sinh do hÃ nh vi láº­p hÃ³a Ä‘Æ¡n sai thá»i Ä‘iá»ƒm, vÃ¬ nguyÃªn nhÃ¢n trá»±c tiáº¿p lÃ  viá»‡c cháº­m tiáº¿p nháº­n hÃ ng hÃ³a cá»§a QuÃ½ NgÃ¢n hÃ ng.",first=1.0,after=6)
+para("Phương án 1: ",bold=True,first=1.0,after=2)
+para("Quý Ngân hàng tiếp nhận đủ 4.555 thiết bị POS theo Hợp đồng và Đơn đặt hàng đã ký; hai Bên hoàn tất bàn giao, nghiệm thu; SHT lập hóa đơn GTGT cho toàn bộ hàng hóa để nộp thuế vào ngân sách nhà nước; Quý Ngân hàng chịu 100% tiền phạt vi phạm hành chính và tiền chậm nộp phát sinh do hành vi lập hóa đơn sai thời điểm, vì nguyên nhân trực tiếp là việc chậm tiếp nhận hàng hóa của Quý Ngân hàng.",first=1.0,after=6)
 
-para("PhÆ°Æ¡ng Ã¡n 2: ",bold=True,first=1.0,after=2)
-para("Hai BÃªn hoÃ n táº¥t nghiá»‡m thu 1.755 thiáº¿t bá»‹ POS Ä‘Ã£ bÃ n giao theo Há»£p Ä‘á»“ng, ÄÆ¡n Ä‘áº·t hÃ ng vÃ  há»“ sÆ¡ bÃ n giao Ä‘Ã£ kÃ½; SHT láº­p hÃ³a Ä‘Æ¡n GTGT tÆ°Æ¡ng á»©ng Ä‘á»ƒ ná»™p thuáº¿ vÃ o ngÃ¢n sÃ¡ch nhÃ  nÆ°á»›c; QuÃ½ NgÃ¢n hÃ ng chá»‹u 100% tiá»n pháº¡t vi pháº¡m hÃ nh chÃ­nh vÃ  tiá»n cháº­m ná»™p phÃ¡t sinh do hÃ nh vi láº­p hÃ³a Ä‘Æ¡n sai thá»i Ä‘iá»ƒm. Sá»‘ lÆ°á»£ng cÃ²n láº¡i cá»§a ÄÆ¡n Ä‘áº·t hÃ ng Ä‘Æ°á»£c CÃ¡c BÃªn xá»­ lÃ½ báº±ng thá»a thuáº­n riÃªng.",first=1.0,after=6)
+para("Phương án 2: ",bold=True,first=1.0,after=2)
+para("Hai Bên hoàn tất nghiệm thu 1.755 thiết bị POS đã bàn giao theo Hợp đồng, Đơn đặt hàng và hồ sơ bàn giao đã ký; SHT lập hóa đơn GTGT tương ứng để nộp thuế vào ngân sách nhà nước; Quý Ngân hàng chịu 100% tiền phạt vi phạm hành chính và tiền chậm nộp phát sinh do hành vi lập hóa đơn sai thời điểm. Số lượng còn lại của Đơn đặt hàng được Các Bên xử lý bằng thỏa thuận riêng.",first=1.0,after=6)
 
-para("PhÆ°Æ¡ng Ã¡n 3: ",bold=True,first=1.0,after=2)
-para("NgÆ°á»i Ä‘áº¡i diá»‡n theo phÃ¡p luáº­t cá»§a QuÃ½ NgÃ¢n hÃ ng vÃ  cá»§a SHT cÃ¹ng trÃ¬nh diá»‡n [CÆ _QUAN_THUáº¾] Ä‘á»ƒ trá»±c tiáº¿p giáº£i trÃ¬nh toÃ n bá»™ sá»± viá»‡c, cung cáº¥p há»“ sÆ¡ cá»§a má»—i BÃªn vÃ  ghi nháº­n tÃ¬nh tráº¡ng tranh cháº¥p Há»£p Ä‘á»“ng Ä‘á»ƒ cÆ¡ quan thuáº¿ xem xÃ©t, xá»­ lÃ½ theo quy Ä‘á»‹nh phÃ¡p luáº­t.",first=1.0,after=6)
+para("Phương án 3: ",bold=True,first=1.0,after=2)
+para("Người đại diện theo pháp luật của Quý Ngân hàng và của SHT cùng trình diện Thuế Thành phố Hà Nội để trực tiếp giải trình toàn bộ sự việc, cung cấp hồ sơ của mỗi Bên và ghi nhận tình trạng tranh chấp Hợp đồng để cơ quan thuế xem xét, xử lý theo quy định pháp luật.",first=1.0,after=6)
 
 # ===== IV =====
-para("IV. THá»œI Háº N VÃ€ Báº¢O LÆ¯U QUYá»€N",bold=True,before=8)
+para("IV. THỜI HẠN VÀ BẢO LƯU QUYỀN",bold=True,before=8)
 for n,t in [
- ("1. ","Äá» nghá»‹ QuÃ½ NgÃ¢n hÃ ng cÃ³ vÄƒn báº£n pháº£n há»“i chÃ­nh thá»©c vá» phÆ°Æ¡ng Ã¡n lá»±a chá»n trÆ°á»›c 17h00 ngÃ y 28/8/2026 (05 ngÃ y lÃ m viá»‡c ká»ƒ tá»« ngÃ y CÃ´ng vÄƒn nÃ y Ä‘Æ°á»£c phÃ¡t hÃ nh), gá»­i vá» trá»¥ sá»Ÿ SHT theo Ä‘á»‹a chá»‰ nÃªu táº¡i pháº§n Ä‘áº§u CÃ´ng vÄƒn nÃ y."),
- ("2. ","QuÃ¡ thá»i háº¡n nÃªu trÃªn mÃ  khÃ´ng nháº­n Ä‘Æ°á»£c pháº£n há»“i, SHT sáº½ Ä‘á»™c láº­p giáº£i trÃ¬nh vá»›i cÆ¡ quan thuáº¿ trÃªn cÆ¡ sá»Ÿ toÃ n bá»™ há»“ sÆ¡ thá»±c táº¿ nÃªu táº¡i Má»¥c II, bao gá»“m cáº£ cÃ¡c thÆ° Ä‘iá»‡n tá»­ trao Ä‘á»•i giá»¯a hai BÃªn."),
- ("3. ","SHT báº£o lÆ°u toÃ n bá»™ quyá»n yÃªu cáº§u QuÃ½ NgÃ¢n hÃ ng bá»“i thÆ°á»ng thiá»‡t háº¡i phÃ¡t sinh (tiá»n pháº¡t, tiá»n cháº­m ná»™p, chi phÃ­ giáº£i trÃ¬nh vÃ  cÃ¡c thiá»‡t háº¡i khÃ¡c) vÃ  quyá»n khá»Ÿi kiá»‡n theo Äiá»u 10 Há»£p Ä‘á»“ng cÃ¹ng quy Ä‘á»‹nh phÃ¡p luáº­t cÃ³ liÃªn quan."),
+ ("1. ","Đề nghị Quý Ngân hàng có văn bản phản hồi chính thức về phương án lựa chọn trước 17h00 ngày 28/8/2026 (05 ngày làm việc kể từ ngày Công văn này được phát hành), gửi về trụ sở SHT theo địa chỉ nêu tại phần đầu Công văn này."),
+ ("2. ","Quá thời hạn nêu trên mà không nhận được phản hồi, SHT sẽ độc lập giải trình với cơ quan thuế trên cơ sở toàn bộ hồ sơ thực tế nêu tại Mục II, bao gồm cả các thư điện tử trao đổi giữa hai Bên."),
+ ("3. ","SHT bảo lưu toàn bộ quyền yêu cầu Quý Ngân hàng bồi thường thiệt hại phát sinh (tiền phạt, tiền chậm nộp, chi phí giải trình và các thiệt hại khác) và quyền khởi kiện theo Điều 10 Hợp đồng cùng quy định pháp luật có liên quan."),
 ]:
     p=para("",first=1.0,after=4); addrun(p,n,bold=True); addrun(p,t)
 
-para("SHT trÃ¢n trá»ng Ä‘á» nghá»‹ Ban LÃ£nh Ä‘áº¡o QuÃ½ NgÃ¢n hÃ ng quan tÃ¢m, chá»‰ Ä‘áº¡o xá»­ lÃ½. Sá»± viá»‡c chá»‰ cÃ³ thá»ƒ giáº£i quyáº¿t trá»n váº¹n khi hai BÃªn cÃ¹ng thá»±c hiá»‡n Ä‘Ãºng nghÄ©a vá»¥ vá»›i ngÃ¢n sÃ¡ch nhÃ  nÆ°á»›c trÃªn cÆ¡ sá»Ÿ thá»±c táº¿ giao dá»‹ch.",first=1.0,before=6,after=10)
+para("SHT trân trọng đề nghị Ban Lãnh đạo Quý Ngân hàng quan tâm, chỉ đạo xử lý. Sự việc chỉ có thể giải quyết trọn vẹn khi hai Bên cùng thực hiện đúng nghĩa vụ với ngân sách nhà nước trên cơ sở thực tế giao dịch.",first=1.0,before=6,after=10)
 
 # ===== Sign block =====
 tbl2=doc.add_table(rows=1,cols=2); no_borders(tbl2)
 tbl2.columns[0].width=Cm(8.0); tbl2.columns[1].width=Cm(8.5)
 tbl2.rows[0].cells[0].width=Cm(8.0); tbl2.rows[0].cells[1].width=Cm(8.5)
 c0,c1=tbl2.rows[0].cells
-cellp(c0,"NÆ¡i nháº­n:",size=12,bold=True,align=WD_ALIGN_PARAGRAPH.LEFT)
-for t in ["- NhÆ° trÃªn;","- [CÆ _QUAN_THUáº¾] (Ä‘á»ƒ b/c);","- HÄQT, Ban TGÄ (Ä‘á»ƒ b/c);","- LÆ°u: VT, PhÃ¡p cháº¿."]:
+cellp(c0,"Nơi nhận:",size=12,bold=True,align=WD_ALIGN_PARAGRAPH.LEFT)
+for t in ["- Như trên;","- Thuế cơ sở 6 TP Hà Nội (để b/c);","- HĐQT, Ban TGĐ (để b/c);","- Lưu: VT, Pháp chế."]:
     cellp(c0,t,size=11,italic=True,align=WD_ALIGN_PARAGRAPH.LEFT)
-cellp(c1,"CÃ”NG TY Cá»” PHáº¦N Äáº¦U TÆ¯ CÃ”NG NGHá»† SHT",size=12,bold=True)
-cellp(c1,"Tá»”NG GIÃM Äá»C",size=13,bold=True)
+cellp(c1,"CÔNG TY CỔ PHẦN ĐẦU TƯ CÔNG NGHỆ SHT",size=12,bold=True)
+cellp(c1,"TỔNG GIÁM ĐỐC",size=13,bold=True)
 for _ in range(4): cellp(c1,"",size=13)
-cellp(c1,"[Há»Œ_TÃŠN_NGÆ¯á»œI_KÃ]",size=13,bold=True)
+cellp(c1,"Nguyễn Quang Việt",size=13,bold=True)
 
-out="test.docx"
+out="/sessions/charming-compassionate-mayer/mnt/outputs/CV_SHT_gui_VPBank_Phoi_hop_giai_trinh_thue.docx"
 doc.save(out); print("saved",out)
-

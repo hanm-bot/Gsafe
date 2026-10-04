@@ -1,11 +1,11 @@
 # Checklist rà soát hợp đồng bán thiết bị — vị thế Bên Bán (SHT)
 
-Đúc kết từ 56 issue thực tế của HĐNT [SỐ_HĐ]. Mỗi mục dưới đây từng là một lỗ hổng thật.
+Đúc kết từ 56 issue thực tế của HĐNT 145/2025/HĐNT/VPBANK-SHT. Mỗi mục dưới đây từng là một lỗ hổng thật.
 
 ## 1. Thương mại
 - [ ] Cơ chế điều chỉnh giá có ĐỐI XỨNG không? Bẫy điển hình: Bên Bán tăng tối đa X% *kèm điều kiện hai bên thống nhất* (= quyền phủ quyết, trần thực chất 0%), trong khi Bên Mua được yêu cầu giảm "theo nhận định đơn phương" không tiêu chí. Yêu cầu: căn cứ ≥3 báo giá cùng model + cùng phạm vi dịch vụ, ngưỡng chênh lệch, quyền phản biện, không hồi tố PO đã ký.
 - [ ] Thiết bị nhập khẩu + giá cố định dài hạn: có điều khoản điều chỉnh theo tỷ giá không (ngưỡng ±3%)?
-- [ ] Đơn giá theo thang khối lượng nhưng Bên Mua CÓ cam kết mua tối thiểu không? Không cam kết + không điều khoản truy thu chênh lệch = báo giá [SỐ_LƯỢNG] máy trên cam kết bằng 0.
+- [ ] Đơn giá theo thang khối lượng nhưng Bên Mua CÓ cam kết mua tối thiểu không? Không cam kết + không điều khoản truy thu chênh lệch = báo giá 4.200 máy trên cam kết bằng 0.
 - [ ] Khuyến mại tặng hàng: tính lại đơn giá thực nhận (mua 100 tặng 8 → giá thực = giá × 100/108). So giá thực nhận với giá vốn, không so giá niêm yết. Hồ sơ thông báo khuyến mại đã làm chưa?
 - [ ] Chữ "license" gộp trong đơn giá: phần mềm bên thứ ba là trọn đời hay subscription? Nếu là dịch vụ Cloud gần như chắc chắn có phí định kỳ — Bên Bán gánh vô thời hạn nếu đã cam "không thu thêm khoản nào khác". Xóa cụm "và/hoặc các bên liên quan" — không cam kết thay bên mình không kiểm soát.
 - [ ] VAT: có câu khẳng định minh thị bên nào chịu và thanh toán không, hay chỉ suy ra từ "đơn giá chưa gồm GTGT"?
@@ -43,7 +43,7 @@
 - [ ] "Hỗ trợ chấp nhận thẻ mới (AMEX, UPI,…) miễn phí": phân biệt cấu hình phần mềm với CHỨNG NHẬN EMV L3 từng tổ chức thẻ (tốn ngàn-chục ngàn USD + 3-6 tháng). Đóng danh sách, bỏ dấu ba chấm, loại phí chứng nhận khỏi "miễn phí".
 
 ## 6. SHTT & License
-- [ ] Cam kết cấp quyền phần mềm bên thứ ba cho AI — có chủ thể NGOÀI hợp đồng không (ví dụ [ĐỐI_TÁC_C])? Có quyền sublicense bằng văn bản từ hãng không? Chế tài vi phạm license thường là THU HỒI + XÓA PHẦN MỀM, không phải tiền — chặn cả hệ thống đang chạy.
+- [ ] Cam kết cấp quyền phần mềm bên thứ ba cho AI — có chủ thể NGOÀI hợp đồng không (ví dụ MobiFone)? Có quyền sublicense bằng văn bản từ hãng không? Chế tài vi phạm license thường là THU HỒI + XÓA PHẦN MỀM, không phải tiền — chặn cả hệ thống đang chạy.
 - [ ] Rà giấy license hãng như MỘT HỢP ĐỒNG ĐỘC LẬP: hết hạn, mô hình phí, giới hạn thiết bị/kết nối, cấm bên thứ ba truy cập, điều kiện thu hồi.
 - [ ] Hợp đồng có điều khoản IP thật không, hay chỉ có tên điều "Sở hữu và..." mà ruột toàn bảo mật? Phân ba lớp: firmware hãng / ứng dụng thanh toán (của ai?) / know-how triển khai (của SHT).
 - [ ] IP indemnity có ngoại lệ cho thành phần do Bên Mua cung cấp/chỉ định không?

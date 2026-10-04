@@ -83,6 +83,18 @@ Skill tầng 1 **trỏ tới** tầng 0, không chép lại. Skill nhà không v
 | **sht-quan-tri-tri-nho-lien-phien** | Quản trị bộ nhớ liên phiên, quyết định ghi/xóa memory thay vì tạo mới, giữ trạng thái memory luôn chính xác. |
 | **archify** | Vẽ sơ đồ quy trình (workflow diagram) từ một kế hoạch đã chốt hoặc mô tả quy trình bằng Mermaid. |
 | **grill-me** | Phỏng vấn/khảo sát người dùng để làm rõ yêu cầu, chốt phương án thành kế hoạch trước khi thực thi. |
+| **sht-thu-ky-bien-ban-ho-so** | Thư ký biên bản hồ sơ |
+| **sht-hopdong-thietbi-tranh-chap** | Giải quyết tranh chấp hợp đồng |
+| **sht-ky-thuat-ranh-gioi-tich-hop** | Ranh giới tích hợp kỹ thuật |
+| **sht-lanh-dao-dam-phan-chuoi-hop-dong** | Đàm phán chuỗi hợp đồng |
+| **sht-pm-van-ban-doi-tac-po** | Quản lý văn bản đối tác |
+| **sht-quy-trinh-tuyen-dung** | Quy trình tuyển dụng nhân sự |
+| **lua-chon-tham-dinh-ncc** | Lựa chọn và thẩm định nhà cung cấp |
+| **chap-but-lanh-dao** | Biên tập bài phân tích (vietduc.ai) |
+| **kien-truc-tai-lieu** | Bản đồ tài liệu doanh nghiệp |
+| **phap-che-doanh-nghiep** | Tư vấn rủi ro pháp lý |
+| **tham-dinh-thi-truong** | Thẩm định ý tưởng thị trường |
+| **xuat-ban-cong-vu** | Dựng/chuyển đổi file văn bản |
 
 Mỗi skill tự kích hoạt theo mô tả của nó — không cần gọi tên. Muốn gọi tay thì gõ `/<tên-skill>`.
 

@@ -1,6 +1,6 @@
 ---
 name: sht-quy-trinh-tuyen-dung
-description: "Quy trình tuyển dụng đầu-cuối nội bộ SHT: xây chân dung JD, chuẩn hoá hồ sơ ứng viên, thiết kế và chấm phỏng vấn ASK, benchmark lương 3P/job family, lập báo cáo Ban lãnh đạo và lộ trình onboarding 30/60/90 ngày. LUÔN dùng khi thực hiện tuyển dụng nội bộ SHT, phân tích phỏng vấn, thẩm định đãi ngộ, kế hoạch thử việc. KHÔNG dùng cho nghiệp vụ săn CV ngoài thị trường, soạn JD, khảo sát lương (chuan-hoa-du-lieu-tuyen-dung), hồ sơ nhân sự chính thức đã tiếp nhận (chuan-hoa-du-lieu-nhansu)."
+description: "Quy trình tuyển dụng đầu-cuối nội bộ SHT: chuẩn hoá hồ sơ ứng viên, thiết kế và chấm phỏng vấn ASK, benchmark lương 3P/job family, lập báo cáo Ban lãnh đạo và lộ trình onboarding 30/60/90 ngày. LUÔN dùng khi thực hiện tuyển dụng nội bộ SHT, phân tích phỏng vấn, thẩm định đãi ngộ, kế hoạch thử việc. KHÔNG dùng cho nghiệp vụ săn CV ngoài thị trường (chuan-hoa-du-lieu-tuyen-dung), hồ sơ nhân sự chính thức đã tiếp nhận (chuan-hoa-du-lieu-nhansu)."
 ---
 
 # Quy trình tuyển dụng SHT — đầu đến cuối

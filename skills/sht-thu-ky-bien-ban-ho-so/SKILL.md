@@ -43,11 +43,7 @@ Transcript có nhắc thanh toán ngoài sổ sách, chuyển khoản cá nhân 
 - Có quy ước làm việc của người dùng (giọng văn, định dạng giao) thì lưu thành một file quy ước trong thư mục dự án, cập nhật file đó thay vì tạo file mới.
 
 ## 5. Khi lãnh đạo bỏ một nội dung khỏi dự án
-
-1. Tìm mọi chỗ nhắc tới nội dung đó, ở mức chữ đọc được (không chỉ tìm chuỗi trong XML — số liệu hay trùng mã XML và cho kết quả giả).
-2. Gỡ khỏi tài liệu **đang dùng**; sửa dẫn chiếu chéo và đánh số lại nếu cần.
-3. Tài liệu **đã phát hành** giữ nguyên làm hồ sơ.
-4. Ghi quyết định kèm ngày và danh sách những nơi còn nhắc, để lần phát hành lại nhớ gỡ.
+Chuyển sang dùng kỹ năng sht-lanh-dao-dam-phan-chuoi-hop-dong (mục 6).
 
 ## 6. Phiên bản và thư mục
 

@@ -5,7 +5,7 @@ description: "Rà soát hợp đồng bán thiết bị POS/SoundPOS của SHT (
 
 # SHT — Rà soát hợp đồng bán thiết bị & Xử lý tranh chấp nghiệm thu, hóa đơn, thuế
 
-Skill chuyên biệt cho SHT, đúc kết từ phiên rà soát HĐNT [SỐ_HĐ] (08/2026).
+Skill chuyên biệt cho SHT, đúc kết từ phiên rà soát HĐNT 145/2025/HĐNT/VPBANK-SHT (08/2026).
 Dùng kèm skill tổng quát `ra-soat-hop-dong-vendor` khi cần gap analysis chuỗi nhiều lớp.
 Làm việc bằng tiếng Việt. Deliverable mặc định: Word thể thức hành chính VN + Excel issue register.
 
@@ -13,8 +13,8 @@ Làm việc bằng tiếng Việt. Deliverable mặc định: Word thể thức 
 
 ## BỐI CẢNH CỐ ĐỊNH — đọc trước mọi việc khác
 
-- **[SẢN_PHẨM_POS_C]/S-POS/SoundPOS là nền tảng do SHT đầu tư theo mô hình BOT** (Build–Operate–Transfer),
-  hợp tác với [ĐỐI_TÁC_C], [ĐỐI_TÁC_D], [ĐỐI_TÁC_E], [NGÂN_HÀNG_B], [NGÂN_HÀNG_A]... **KHÔNG phải sản phẩm của [ĐỐI_TÁC_C].**
+- **MobiPOS/S-POS/SoundPOS là nền tảng do SHT đầu tư theo mô hình BOT** (Build–Operate–Transfer),
+  hợp tác với MobiFone, Dagoras, VTCPay, Sacombank, VPBank... **KHÔNG phải sản phẩm của MobiFone.**
   Nhầm điểm này sẽ map sai toàn bộ quan hệ hợp đồng.
 - SHT thường mang HAI vai đồng thời: **Bên Bán thiết bị** (hợp đồng mua bán) và **bên vận hành nền tảng**
   (hợp đồng hợp tác). Mọi rà soát phải soi xung đột giữa hai vai này.
@@ -47,7 +47,7 @@ Lỗi nguy hiểm nhất không phải đọc sót điều khoản mà là **hi�
    Xuất bảng dữ kiện thô thuần túy (chỉ những gì đọc được nguyên văn trên văn bản)
    và để người dùng chỉ vào ô sai. Chỉ tiếp tục khi họ xác nhận bằng chữ của chính họ.
 4. Với hồ sơ đa dự án: hỏi "**rà văn bản NÀO**" trước, "**theo cách nào**" sau.
-5. Số liệu người dùng cung cấp có thể lệch văn bản gốc (ví dụ [SỐ_PO] vs tổng gói [SỐ_LƯỢNG] trong phụ lục):
+5. Số liệu người dùng cung cấp có thể lệch văn bản gốc (ví dụ PO 4.555 vs tổng gói 4.200 trong phụ lục):
    nêu chênh lệch, hỏi một lần, dùng theo xác nhận của người dùng và ghi chú lại trong deliverable.
 
 ## KỸ THUẬT ĐỌC HỒ SƠ
