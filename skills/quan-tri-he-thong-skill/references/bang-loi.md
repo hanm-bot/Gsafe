@@ -14,6 +14,7 @@ Mở khi cần tra một mã lỗi cụ thể. Phần thân SKILL.md chỉ giữ
 | **E8** | Sổ đăng bạ lệch thực tế — thiếu hàng, thừa hàng, hoặc **trùng hàng** | Sổ sai còn nguy hiểm hơn không có sổ; hai hàng cùng skill sẽ trôi khác nhau |
 | **E9** | Nguồn plugin lẫn thư mục nháp / file `.plugin` cũ | Bản phát hành bọc luôn các bản trước, phình theo cấp số nhân |
 | **E10** | `description` vượt hoặc sát chuẩn 500 ký tự | Harness cắt mô tả khi danh sách skill vượt trần → skill không tự kích hoạt; sát chuẩn thì lần bổ sung tới sẽ vỡ |
+| **E14** | File chữ (.md/.py/.js/.json…) bị hỏng mã hoá — tiếng Việt thành cụm ký tự rác; hoặc có BOM | Script vẫn chạy nhưng sinh văn bản rác; grep tên thật trên chữ rác cho "0 dòng" giả (ca thật 05/10/2026, task-06, 1029 cụm) |
 | **E11** | Sổ đăng bạ khai báo quan hệ mà SKILL.md không hề nhắc | Sổ mô tả một kiến trúc không tồn tại; người đọc tin vào sơ đồ sai |
 | **E12** | `description` thiếu vùng loại trừ | E6 chỉ bắt được khi câu MỞ ĐẦU trùng nên bỏ lọt phần lớn ca tranh chấp kích hoạt thật |
 

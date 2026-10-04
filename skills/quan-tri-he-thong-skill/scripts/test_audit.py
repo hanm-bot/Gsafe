@@ -281,6 +281,27 @@ def run():
         mkskill(r, 'skill-mot-hai'); mkskill(r, 'skill-hai-ba'); mkskill(r, 'skill-ba-bon')
         case('E10 âm tính — description ngắn thì im', codes(r), must_not=['E10'])
 
+        # ---------- E14 chữ hỏng mã hoá ----------
+        r = os.path.join(tmp, 'e14'); os.makedirs(r)
+        mkskill(r, 'skill-mot-hai'); mkskill(r, 'skill-hai-ba'); mkskill(r, 'skill-hong-ma')
+        os.makedirs(os.path.join(r, 'skill-hong-ma', 'scripts'))
+        chuan = 'Công văn phối hợp giải trình với cơ quan thuế về nghĩa vụ lập hóa đơn.'
+        hong = chuan.encode('utf-8').decode('cp1252', errors='replace')
+        open(os.path.join(r, 'skill-hong-ma', 'scripts', 'mau.py'), 'w', encoding='utf-8').write(f'print("{hong}")\n')
+        case('E14 dương tính — file chữ hỏng mã hoá là CAO',
+             [f['code'] for f in audit(r)[1] if f['sev'] == 'CAO'], must_have=['E14'])
+
+        r = os.path.join(tmp, 'e14b'); os.makedirs(r)
+        mkskill(r, 'skill-mot-hai'); mkskill(r, 'skill-hai-ba')
+        mkskill(r, 'skill-chu-hoa', body='## Trạng thái\n\nĐÃ ĐÓNG. ĐÃ CHỐT HƯỚNG. Chữ “ĐÃ” viết hoa — dấu “–” hợp lệ.\n')
+        case('E14 âm tính — tiếng Việt chuẩn có "ĐÃ " và ngoặc kép cong thì im', codes(r), must_not=['E14'])
+
+        r = os.path.join(tmp, 'e14c'); os.makedirs(r)
+        mkskill(r, 'skill-mot-hai'); mkskill(r, 'skill-hai-ba'); mkskill(r, 'skill-bom')
+        open(os.path.join(r, 'skill-bom', 'ghi-chu.md'), 'wb').write('\ufeffGhi chú tiếng Việt chuẩn.'.encode('utf-8'))
+        case('E14 BOM — chỉ cảnh báo THẤP, không CAO',
+             [f['code'] for f in audit(r)[1] if f['sev'] == 'CAO'], must_not=['E14'])
+
         # ---------- E13 frontmatter phải là YAML hợp lệ ----------
         # Viết thẳng file: mkskill luôn bọc ngoặc kép nên không tái hiện được lỗi.
         def raw(r, name, desc_line):

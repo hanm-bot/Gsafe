@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Quét sức khỏe hệ thống skill SHT — 13 lớp lỗi E1..E13.
+"""Quét sức khỏe hệ thống skill SHT — 14 lớp lỗi E1..E14.
 
 Dùng:
     python3 audit_skills.py <thư_mục_skills> [tuỳ chọn]
@@ -38,6 +38,10 @@ OVERSIZE_LINES = 300
 OVERLAP_TITLE = 0.55        # ngưỡng tương đồng TIÊU ĐỀ
 OVERLAP_BODY = 0.35         # ngưỡng tương đồng NỘI DUNG — phải vượt cả hai mới báo
 TRIGGER_PREFIX_WORDS = 6
+TEXT_EXT = {'.md', '.py', '.js', '.mjs', '.json', '.txt', '.yaml', '.yml', '.html', '.csv'}
+# E14: cặp ký tự viết bằng mã \u để chính file này không tự khớp (vd U+00E1 U+00BB = dấu vết của 'ố' hỏng)
+MOJIBAKE = re.compile('\u00e1\u00bb|\u00e1\u00ba|\u00c4\u2018|\u00c6\u00b0|\u00c6\u00a1|\u00c3\u00a1|\u00c3\u00a2|\u00c3\u00aa|\u00c3\u00b4|\u00c3\u00b3|\u00c3\u00a9|\u00c3\u00ad|\u00c3\u00ba|\u00c3\u00bd|\u00c3\u00a8|\u00c3\u00ac|\u00c3\u00b2|\u00c3\u00b9|\u00e2\u20ac')
+MOJIBAKE_MIN = 3
 DESC_MAX = 500              # chuẩn SHT (05/10/2026, HITL-20261005-008). save_skill chặn ở 1024, nhưng
                             # description dài bị harness cắt khi danh sách skill vượt trần → skill mất mô tả,
                             # không tự kích hoạt (ca thật 29/09 và 05/10: 6 skill cá nhân 828–980 ký tự)
@@ -185,6 +189,25 @@ def audit(root, personal=None, plugin_root=None):
                 except yaml.YAMLError as e:
                     add('CAO', 'E13', n, f'Frontmatter không phải YAML hợp lệ ({str(e).splitlines()[0]}) '
                         '— skill không tự kích hoạt; bọc description bằng `>-`')
+        # --- E14 chữ hỏng mã hoá (UTF-8 bị đọc thành cp1252 rồi ghi lại — dấu vết ghi
+        # file tiếng Việt bằng PowerShell). Ca thật 05/10/2026 (task-06): mẫu công văn
+        # 598 cụm rác, script vẫn chạy ra docx toàn chữ rác; 10 cổng không bắt được, và
+        # grep tên thật trên chữ rác cho "0 dòng" giả. Chỉ dùng cặp ký tự KHÔNG thể có
+        # trong tiếng Việt chuẩn — "Ã " bị loại vì trùng chữ "ĐÃ " hợp lệ.
+        for dp, dns, fns in os.walk(os.path.join(root, n)):
+            dns[:] = [x for x in dns if x != '__pycache__']
+            for fn in fns:
+                if os.path.splitext(fn)[1].lower() not in TEXT_EXT:
+                    continue
+                fp = os.path.join(dp, fn)
+                raw = open(fp, 'rb').read()
+                rel = os.path.relpath(fp, os.path.join(root, n)).replace('\\', '/')
+                hits = len(MOJIBAKE.findall(raw.decode('utf-8', errors='replace')))
+                if hits >= MOJIBAKE_MIN:
+                    add('CAO', 'E14', n, f'{rel}: {hits} cụm chữ hỏng mã hoá (vd chữ \u201cphối\u201d thành \u201cph\u00e1\u00bb\u2018i\u201d) — '
+                        'chép lại từ nguồn bằng Python, đọc/ghi encoding="utf-8"')
+                elif raw.startswith(b'\xef\xbb\xbf'):
+                    add('THẤP', 'E14', n, f'{rel}: có BOM UTF-8 — thường do ghi bằng PowerShell; kiểm chữ trước khi phát hành')
         # --- E12 description thiếu VÙNG LOẠI TRỪ
         # §4 gọi đây là "phần bị bỏ quên nhiều nhất, và là thuốc chữa E6 hiệu quả
         # nhất". Thiếu nó thì hai skill cùng miền chắc chắn tranh nhau kích hoạt,
