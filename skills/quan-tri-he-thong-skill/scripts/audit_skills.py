@@ -190,7 +190,18 @@ def audit(root, personal=None, plugin_root=None):
     in_ref = {k: set() for k in skills}
 
     # --- E10-tổng: ngân sách mô tả cả gói (không tính skill dựng sẵn)
-    tong = sum(len(s['fm'].get('description') or '') for n, s in skills.items() if n not in BUILTIN)
+    def _mo_ta(s):
+        # đếm như harness đọc (YAML), không đếm chuỗi thô — chuỗi thô tính cả dấu \\" thoát,
+        # 0.33.0 đếm thô ra 13.973 trong khi thật là 13.829 (QA task-07)
+        if yaml is not None and '_text' in s['fm']:
+            try:
+                y = yaml.safe_load(s['fm']['_text'])
+                if isinstance(y, dict) and y.get('description'):
+                    return len(str(y['description']))
+            except yaml.YAMLError:
+                pass
+        return len(s['fm'].get('description') or '')
+    tong = sum(_mo_ta(s) for n, s in skills.items() if n not in BUILTIN)
     if tong > DESC_TOTAL_MAX:
         add('CAO', 'E10', '(cả gói)', f'tổng description {tong} ký tự — vượt ngân sách {DESC_TOTAL_MAX}; '
             'harness sẽ bỏ mô tả một số skill trong danh sách (skill không tự kích hoạt)')
