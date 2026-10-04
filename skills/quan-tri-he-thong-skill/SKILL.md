@@ -1,6 +1,6 @@
 ---
 name: "quan-tri-he-thong-skill"
-description: "Quản trị quan hệ GIỮA các skill SHT: audit overlap, xung đột trigger, tham chiếu gãy, frontmatter hỏng, skill quá khổ; chốt logic thuộc skill nào; nâng cấp và phát hành an toàn. LUÔN dùng khi nói \"upgrade skill\", \"audit skill\", \"skill trùng/xung đột\", \"skill không tự kích hoạt\", \"gộp/tách skill\", hoặc trước khi tạo skill mới trong miền đã có. KHÔNG dùng để viết nội dung bên trong một skill (skill-creator)."
+description: "Quản trị quan hệ giữa các skill SHT: audit trùng lặp, xung đột trigger, tham chiếu gãy, frontmatter hỏng; nâng cấp và phát hành an toàn. LUÔN dùng khi nói \"upgrade skill\", \"audit skill\", \"skill không tự kích hoạt\", \"gộp/tách skill\". KHÔNG dùng để viết nội dung bên trong một skill (skill-creator)."
 ---
 
 # Quản trị logic hệ thống skill (SHT)
@@ -44,7 +44,7 @@ Ghi script ở Phụ lục A ra file rồi chạy trên thư mục skill. Script
 | E7 | Skill nhà nằm ngoài plugin / tồn tại hai bản song song | CAO |
 | E8 | Sổ đăng bạ thiếu, thừa, hoặc trùng hàng | CAO |
 | E9 | Nguồn plugin lẫn thư mục nháp hoặc `.plugin` cũ | TRUNG–CAO |
-| E10 | `description` vượt hoặc sát chuẩn 500 ký tự | CAO–THẤP |
+| E10 | `description` vượt hoặc sát chuẩn 500 ký tự; **tổng** cả gói > 14.000 ký tự (ngân sách danh sách skill) | CAO–THẤP |
 | E11 | Sổ khai báo quan hệ mà SKILL.md không nhắc | TRUNG |
 | E12 | `description` thiếu vùng loại trừ "KHÔNG dùng…" | THẤP |
 | E13 | Frontmatter không đọc được bằng trình YAML thật / mô tả bị cắt | CAO |

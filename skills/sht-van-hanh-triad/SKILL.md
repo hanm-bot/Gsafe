@@ -1,7 +1,7 @@
 ---
 name: sht-van-hanh-triad
 version: 1.0
-description: "Điều phối dự án nhiều bước theo bộ ba Claude – Anti – Mr. Hà (SHT-SOP-AI-01): đo trước khi lập plan, phiếu giao việc có DoD, QA Lớp 2 độc lập, RFC, Gate 3 và Sổ Cái HITL. LUÔN dùng khi nói \"giao Anti làm…\", \"đối chiếu DoD\", \"soạn RFC\", \"nghiệm thu P…\", \"duyệt Gate\", kể cả khi chỉ đưa việc cần chia bước giao người khác. KHÔNG dùng cho cổng JEV (sht-jev-cong-quyet-dinh), chuỗi 5 vai AIS48 (sht-quan-tri-dn), phỏng vấn yêu cầu (grill-me), phát hành skill."
+description: "Điều phối dự án nhiều bước theo bộ ba Claude – Anti – Mr. Hà (SOP-AI-01): phiếu giao việc có DoD, QA Lớp 2, RFC, Gate 3, Sổ Cái HITL. LUÔN dùng khi \"giao Anti làm…\", \"đối chiếu DoD\", \"soạn RFC\", \"duyệt Gate\". KHÔNG dùng cho cổng JEV (sht-jev-cong-quyet-dinh), 5 vai AIS48 (sht-quan-tri-dn), làm rõ yêu cầu (grill-me)."
 ---
 
 # Vận hành bộ ba Claude – Anti – Mr. Hà (SHT-SOP-AI-01)

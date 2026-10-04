@@ -1,6 +1,6 @@
 ---
 name: "chuan-hoa-du-lieu-nhansu"
-description: "Xác minh danh tính nhân sự trong hồ sơ SHT: chốt tên với QĐ/hợp đồng trước khi soạn, tách người trùng tên, tách vai khi kiêm nhiệm. LUÔN dùng khi soạn hồ sơ bổ nhiệm, đánh giá cán bộ, onboarding, biên bản có tên người, nhất là khi có người trùng tên/họ. KHÔNG dùng cho ứng viên chưa tuyển (chuan-hoa-du-lieu-tuyen-dung) hay thẩm quyền trong QĐ (sht-qd-nhansu-alignment)."
+description: "Xác minh danh tính nhân sự SHT: chốt tên với QĐ/hợp đồng, tách người trùng tên, tách vai kiêm nhiệm. LUÔN dùng khi soạn hồ sơ bổ nhiệm, đánh giá cán bộ, biên bản có tên người. KHÔNG dùng cho ứng viên chưa tuyển (chuan-hoa-du-lieu-tuyen-dung), thẩm quyền trong QĐ (sht-qd-nhansu-alignment)."
 ---
 
 # Chuẩn hóa dữ liệu nhân sự (SHT)

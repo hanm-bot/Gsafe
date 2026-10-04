@@ -1,6 +1,6 @@
 ---
 name: "sht-thu-ky-bien-ban-ho-so"
-description: "Thư ký hồ sơ dự án giao dịch với đối tác/vendor SHT: lập biên bản họp từ ghi âm/transcript, nhật ký dự án phân phiên bản, lưu trữ _archive, soạn tài liệu họp theo đối tượng. LUÔN dùng khi làm biên bản làm việc với vendor/đối tác, cập nhật nhật ký dự án, quản lý phiên bản hồ sơ. KHÔNG dùng cho dự án XDCB/nội thất (chuan-hoa-du-lieu-du-an), quy hoạch vòng đời H1–H5 (sht-kien-truc-ho-so), trích chứng cứ scan (chuan-hoa-ho-so-tai-lieu), soạn công văn/PO (sht-pm-van-ban-doi-tac-po)."
+description: "Thư ký hồ sơ dự án giao dịch với đối tác/vendor SHT: biên bản họp từ transcript, nhật ký dự án có phiên bản, lưu _archive. LUÔN dùng khi làm biên bản với vendor/đối tác, cập nhật nhật ký dự án. KHÔNG dùng cho XDCB/nội thất (chuan-hoa-du-lieu-du-an), hồ sơ H1–H5 (sht-kien-truc-ho-so), công văn/PO (sht-pm-van-ban-doi-tac-po)."
 ---
 
 # Thư ký — biên bản, nhật ký, hồ sơ dự án

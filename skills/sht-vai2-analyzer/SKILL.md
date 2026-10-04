@@ -1,6 +1,6 @@
 ---
 name: "sht-vai2-analyzer"
-description: "Phân tích điểm nghẽn vận hành của một vai trò cụ thể (Analyzer `[DEPT]-02`): so tiến độ thực tế với kế hoạch, phân loại 3 mức đèn, truy nguyên nhân 5 Whys, trích toạ độ Second Brain Grounding. LUÔN dùng khi một nhân sự cần chẩn đoán vì sao chỉ tiêu/đầu việc bị lệch, kể cả khi chỉ nói \"vì sao trễ\", \"5 Whys\". KHÔNG dùng để điều phối 5 vai (sht-quan-tri-dn), làm sạch dữ liệu (sht-vai1-harvester), soạn tin đôn đốc (sht-vai4-reminder)."
+description: "Vai Analyzer `[DEPT]-02` AIS48: so tiến độ thực tế với kế hoạch, phân loại 3 mức đèn, truy nguyên nhân 5 Whys có toạ độ nguồn. LUÔN dùng khi một nhân sự cần chẩn đoán vì sao chỉ tiêu/đầu việc lệch, \"vì sao trễ\", \"5 Whys\". KHÔNG dùng để điều phối 5 vai (sht-quan-tri-dn), làm sạch dữ liệu (sht-vai1-harvester)."
 ---
 
 # KỸ NĂNG CHUYÊN MÔN VAI 2: PHÂN TÍCH ĐIỂM NGHẼN & GROUNDING ĐỐI SOÁT

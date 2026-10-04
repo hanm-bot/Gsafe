@@ -1,6 +1,6 @@
 ---
 name: brainstorm
-description: Kỹ thuật bóc tách ý tưởng kinh doanh & sản phẩm thô thành Bản đặc tả Brainstorm 12 phần chuẩn hóa thông qua Phỏng vấn Chuyên sâu 7 nhóm (Deep Interview - từng phần một, bằng ngôn ngữ nghiệp vụ thuần túy, kèm ma trận hành vi hệ thống, luồng ASCII, số liệu exact limits và mẫu wording chuẩn). KHÔNG dùng cho quy hoạch quy trình chung đa miền (dùng `grill-me`), không dùng để tự vẽ sơ đồ trực quan hay xuất PRD hoàn chỉnh (dùng `prd-architect` sau khi có bản Brainstorm này).
+description: "Bóc tách ý tưởng kinh doanh/sản phẩm thô thành Bản đặc tả Brainstorm 12 phần qua phỏng vấn sâu 7 nhóm bằng ngôn ngữ nghiệp vụ. LUÔN dùng khi có ý tưởng sản phẩm thô cần làm rõ trước khi viết PRD. KHÔNG dùng cho quy hoạch quy trình chung (grill-me), vẽ sơ đồ hay xuất PRD (prd-architect)."
 ---
 
 # SKILL: BRAINSTORM — DEEP INTERVIEW & PRODUCT DISCOVERY

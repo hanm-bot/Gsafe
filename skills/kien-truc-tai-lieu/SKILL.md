@@ -1,6 +1,6 @@
 ---
 name: kien-truc-tai-lieu
-description: "Lập bản đồ tài liệu doanh nghiệp chung: chẩn đoán vòng đời dự án, ma trận khoảng trống, chỉ nguồn thu thập, dàn ý trước khi viết. LUÔN dùng khi cần lên khung bộ tài liệu cho một bài toán ngoài nghiệp vụ hồ sơ SHT. KHÔNG dùng cho bộ hồ sơ nghiệp vụ SHT H1–H5 (sht-kien-truc-ho-so), trích chứng cứ (chuan-hoa-ho-so-tai-lieu), dựng file Office (xuat-ban-cong-vu). (dựa trên vietduc·ai)"
+description: "Lập bản đồ tài liệu doanh nghiệp chung: vòng đời dự án, ma trận khoảng trống, nguồn thu thập, dàn ý. LUÔN dùng khi lên khung bộ tài liệu ngoài nghiệp vụ hồ sơ SHT. KHÔNG dùng cho hồ sơ SHT H1–H5 (sht-kien-truc-ho-so), trích chứng cứ (chuan-hoa-ho-so-tai-lieu), dựng file Office (xuat-ban-cong-vu). (dựa trên vietduc·ai)"
 ---
 
 # Kiến Trúc Sư Hồ Sơ & Giải Pháp Tài Liệu Doanh Nghiệp (vietduc·ai Edition)

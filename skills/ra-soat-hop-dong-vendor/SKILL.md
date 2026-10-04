@@ -1,6 +1,6 @@
 ---
 name: "ra-soat-hop-dong-vendor"
-description: "Rà soát và gap analysis hợp đồng CNTT, chuỗi back-to-back, SoW/BRD, license và phân lớp trách nhiệm. LUÔN dùng khi nói \"rà soát hợp đồng\", \"đối chiếu spec với hợp đồng\", \"rà license\", \"hợp đồng này đã ký chưa\", kể cả khi chỉ gửi tập hợp đồng trước khi ký. KHÔNG dùng để chuẩn hoá hồ sơ scan chung (chuan-hoa-ho-so-tai-lieu), QĐ nhân sự (sht-qd-nhansu-alignment), hồ sơ XDCB (chuan-hoa-du-lieu-du-an), tra hiệu lực luật (sht-phap-che-sot). Bán thiết bị: sht-hopdong-thietbi-tranh-chap."
+description: "Rà soát và gap analysis hợp đồng CNTT, chuỗi back-to-back, SoW/BRD, license, phân lớp trách nhiệm. LUÔN dùng khi nói \"rà soát hợp đồng\", \"đối chiếu spec\", \"rà license\", \"đã ký chưa\". KHÔNG dùng cho hồ sơ scan chung (chuan-hoa-ho-so-tai-lieu), XDCB, tra luật (sht-phap-che-sot), hợp đồng SHT bán thiết bị (sht-hopdong-thietbi-tranh-chap)."
 ---
 
 # Rà soát hợp đồng CNTT — Gap Analysis, Chuỗi & Đặc tả (SHT)

@@ -1,7 +1,7 @@
 ---
 name: sht-ha-tang-va-path-portable
 version: 1.0
-description: "Phát hiện và sửa đường dẫn hardcode (path máy tác giả, ổ đĩa cũ, thư mục đã đổi tên) trong script/hook/skill để chạy được mọi máy, kiểm bằng chạy thật từ thư mục khác. LUÔN dùng khi báo \"không tìm thấy file\" dù file có, khi mang skill sang máy khác không chạy, vừa đổi tên thư mục, hoặc thấy \"C:\\Users\\…\"/\"D:\\\" trong code. KHÔNG dùng để viết skill mới hay kiểm logic nghiệp vụ (sht-qa-kiem-chung-skill-hook)."
+description: "Tìm và sửa đường dẫn ghi cứng (máy tác giả, ổ đĩa cũ, thư mục đổi tên) trong script/hook/skill, kiểm bằng chạy thật từ thư mục khác. LUÔN dùng khi \"không tìm thấy file\" dù file có, mang skill sang máy khác, thấy \"C:\\Users\\…\" trong code. KHÔNG dùng để viết skill mới, kiểm logic nghiệp vụ (sht-qa-kiem-chung-skill-hook)."
 ---
 
 # Kỹ Sư Hạ Tầng & Path Portable

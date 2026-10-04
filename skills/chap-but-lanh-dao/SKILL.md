@@ -1,6 +1,6 @@
 ---
 name: chap-but-lanh-dao
-description: "Biên tập nội dung chuyên nghiệp: bài phân tích sâu, LinkedIn/Facebook, bản tin email, khử dấu vết văn AI. LUÔN dùng khi cần viết bài, viết blog, debunk, làm mới nội dung, tẩy văn mẫu AI. KHÔNG dùng cho báo cáo điều hành AIS48 (sht-vai3-reporter), văn bản hành chính theo NĐ30 (sht-nen-tang-kiem-chung), dựng file Office (xuat-ban-cong-vu). (dựa trên vietduc·ai)"
+description: "Biên tập bài phân tích sâu, LinkedIn/Facebook, bản tin email, khử văn mẫu AI. LUÔN dùng khi cần viết bài, blog, debunk, làm mới nội dung. KHÔNG dùng cho báo cáo điều hành AIS48 (sht-vai3-reporter), văn bản NĐ30 (sht-nen-tang-kiem-chung), dựng file Office (xuat-ban-cong-vu). (dựa trên vietduc·ai)"
 ---
 
 # Viết Chuyên Nghiệp 4.0 — Tòa Soạn Báo AI & Cỗ Máy Biên Tập

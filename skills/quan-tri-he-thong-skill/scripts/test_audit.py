@@ -281,6 +281,19 @@ def run():
         mkskill(r, 'skill-mot-hai'); mkskill(r, 'skill-hai-ba'); mkskill(r, 'skill-ba-bon')
         case('E10 âm tính — description ngắn thì im', codes(r), must_not=['E10'])
 
+        # ---------- E10-tổng ngân sách mô tả cả gói ----------
+        r = os.path.join(tmp, 'e10t'); os.makedirs(r)
+        for i in range(30):
+            mkskill(r, f'skill-so-{i:02d}', desc=f'Việc riêng số {i:02d}. LUÔN dùng khi cần. KHÔNG dùng cho việc khác. ' + 'x' * 430)
+        case('E10-tổng dương tính — 30 skill × ~480 ký tự vượt 14000 là CAO',
+             [f['skill'] for f in audit(r)[1] if f['code'] == 'E10' and f['sev'] == 'CAO'], must_have=['(cả gói)'])
+
+        r = os.path.join(tmp, 'e10t2'); os.makedirs(r)
+        for i in range(30):
+            mkskill(r, f'skill-so-{i:02d}', desc=f'Việc riêng số {i:02d}. LUÔN dùng khi cần. KHÔNG dùng cho việc khác. ' + 'x' * 300)
+        case('E10-tổng âm tính — 30 skill × ~350 ký tự dưới 14000 thì không CAO',
+             [f['skill'] for f in audit(r)[1] if f['code'] == 'E10' and f['sev'] == 'CAO'], must_not=['(cả gói)'])
+
         # ---------- E14 chữ hỏng mã hoá ----------
         r = os.path.join(tmp, 'e14'); os.makedirs(r)
         mkskill(r, 'skill-mot-hai'); mkskill(r, 'skill-hai-ba'); mkskill(r, 'skill-hong-ma')

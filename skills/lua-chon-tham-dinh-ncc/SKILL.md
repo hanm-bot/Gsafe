@@ -1,6 +1,6 @@
 ---
 name: "lua-chon-tham-dinh-ncc"
-description: "Lựa chọn và thẩm định nhà cung cấp CNTT: dựng đề bài kỹ thuật trung lập, soạn NDA/RFI, thiết kế bài test PoC có ngưỡng loại, chấm điểm và so sánh báo giá. LUÔN dùng khi cần chọn vendor CNTT, thẩm định năng lực đối tác, xử lý báo giá lệch nhiều lần, thiết kế bài thi PoC. KHÔNG dùng để rà soát hợp đồng đã chọn (ra-soat-hop-dong-vendor), thẩm định ý tưởng kinh doanh/thị trường (tham-dinh-thi-truong), đặc tả ranh giới hệ thống nội bộ (sht-ky-thuat-ranh-gioi-tich-hop)."
+description: "Chọn và thẩm định nhà cung cấp CNTT: đề bài kỹ thuật trung lập, NDA/RFI, PoC có ngưỡng loại, chấm điểm, so báo giá. LUÔN dùng khi so sánh vendor CNTT, báo giá lệch nhiều lần, thiết kế PoC. KHÔNG dùng để rà hợp đồng (ra-soat-hop-dong-vendor), thẩm định ý tưởng (tham-dinh-thi-truong), ranh giới tích hợp (sht-ky-thuat-ranh-gioi-tich-hop)."
 ---
 
 # Lựa chọn và thẩm định nhà cung cấp CNTT

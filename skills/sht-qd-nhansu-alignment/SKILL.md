@@ -1,6 +1,6 @@
 ---
 name: "sht-qd-nhansu-alignment"
-description: "Soạn và rà soát Quyết định nhân sự/tổ chức SHT (bổ nhiệm, phân giao, mô hình tổ chức) cho nhất quán thẩm quyền, quan hệ báo cáo với các QĐ đang hiệu lực. LUÔN dùng khi soạn QĐ, khi nhắc xung đột quyền hạn, \"Under CCO\", đối chiếu QĐ, bổ nhiệm lại, kể cả khi chỉ hỏi QĐ mới ảnh hưởng gì QĐ cũ. KHÔNG dùng để xác minh tên người (chuan-hoa-du-lieu-nhansu) hay kiểm số liệu (sht-xacthuc-baocao-hoatdong)."
+description: "Soạn và rà Quyết định nhân sự/tổ chức SHT (bổ nhiệm, phân giao, mô hình tổ chức) cho nhất quán thẩm quyền, quan hệ báo cáo với QĐ đang hiệu lực. LUÔN dùng khi soạn QĐ, xung đột quyền hạn, \"Under CCO\", đối chiếu QĐ. KHÔNG dùng để xác minh tên người (chuan-hoa-du-lieu-nhansu), kiểm số liệu (sht-xacthuc-baocao-hoatdong)."
 ---
 
 # Chuẩn hóa & Rà soát Quyết định Nhân sự/Tổ chức — SHT

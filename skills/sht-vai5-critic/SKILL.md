@@ -1,6 +1,6 @@
 ---
 name: "sht-vai5-critic"
-description: "Phản biện độc lập của một vai trò cụ thể (Critic `[DEPT]-05`): thẩm tra số liệu / logic-thẩm quyền / Vùng Đỏ, lập tờ trình HITL, ghi Sổ Cái SHA-256 khi lãnh đạo duyệt. LUÔN dùng khi một nhân sự cần kiểm tra chéo báo cáo/kế hoạch trước khi trình, kể cả khi chỉ nói \"phản biện\", \"rà số liệu\". KHÔNG dùng để điều phối 5 vai (sht-quan-tri-dn) hay soạn bản nháp (sht-vai3-reporter)."
+description: "Vai Critic `[DEPT]-05` AIS48: phản biện độc lập số liệu, logic–thẩm quyền, Vùng Đỏ; lập tờ trình HITL, ghi Sổ Cái khi lãnh đạo duyệt. LUÔN dùng khi một nhân sự cần kiểm tra chéo báo cáo/kế hoạch trước khi trình, \"phản biện\", \"rà số liệu\". KHÔNG dùng để điều phối 5 vai (sht-quan-tri-dn), soạn bản nháp (sht-vai3-reporter)."
 ---
 
 # KỸ NĂNG CHUYÊN MÔN VAI 5: PHẢN BIỆN ĐỘC LẬP & PHÁP TRỊ SỔ CÁI HITL

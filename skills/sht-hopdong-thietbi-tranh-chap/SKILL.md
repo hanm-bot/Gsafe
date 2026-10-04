@@ -1,6 +1,6 @@
 ---
 name: sht-hopdong-thietbi-tranh-chap
-description: "Rà soát hợp đồng bán thiết bị POS/SoundPOS của SHT (vị thế Bên Bán) và xử lý tranh chấp nghiệm thu, hóa đơn GTGT, kiểm tra thuế. LUÔN dùng khi rà soát hợp đồng/PO bán thiết bị, chậm nghiệm thu, xuất hóa đơn sai thời điểm, giải trình thuế, soạn công văn đanh thép gửi đối tác hoặc giải trình mềm gửi thuế. KHÔNG dùng cho hợp đồng mua sắm CNTT (ra-soat-hop-dong-vendor), tư vấn pháp chế chung (phap-che-doanh-nghiep), văn bản theo NĐ30 (sht-nen-tang-kiem-chung)."
+description: "Hợp đồng SHT bán thiết bị POS/SoundPOS (vị thế Bên Bán): rà điều khoản, tranh chấp nghiệm thu, hoá đơn GTGT, kiểm tra thuế, công văn gửi đối tác/cơ quan thuế. LUÔN dùng khi ngân hàng chậm nghiệm thu, xuất hoá đơn sai thời điểm, giải trình thuế. KHÔNG dùng cho hợp đồng mua CNTT (ra-soat-hop-dong-vendor), pháp chế chung (phap-che-doanh-nghiep)."
 ---
 
 # SHT — Rà soát hợp đồng bán thiết bị & Xử lý tranh chấp nghiệm thu, hóa đơn, thuế

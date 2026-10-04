@@ -1,6 +1,6 @@
 ---
 name: "sht-cds-danh-gia-hien-trang"
-description: "Đánh giá hiện trạng CĐS (DMI) Giai đoạn 01 và lập Chiến lược – Lộ trình Giai đoạn 02 SHT: 6 trụ cột, dữ liệu, API, điểm nghẽn As-Is, cổng G1; rồi 6 lăng kính thị trường B2B, backlog use-case, business case sơ bộ. LUÔN dùng khi nói \"đánh giá hiện trạng\", \"khảo sát DMI\", \"tìm điểm nghẽn\", \"lập chiến lược CĐS\", \"backlog use-case\", \"6 lăng kính\". KHÔNG dùng cho PRD/giải pháp (sht-cds-thiet-ke-prd), rà hợp đồng vendor, chuẩn hoá CRM (sht-normalize-account)."
+description: "Đánh giá hiện trạng CĐS (DMI) Giai đoạn 01 và Chiến lược – Lộ trình Giai đoạn 02: 6 trụ cột, điểm nghẽn As-Is, 6 lăng kính B2B, backlog use-case. LUÔN dùng khi nói \"đánh giá hiện trạng\", \"khảo sát DMI\", \"chiến lược CĐS\". KHÔNG dùng cho PRD (sht-cds-thiet-ke-prd), hợp đồng vendor, CRM (sht-normalize-account)."
 ---
 
 # Đánh giá Hiện trạng & Chiến lược Chuyển đổi số (SHT Phase 01 → 02)

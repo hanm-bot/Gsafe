@@ -1,6 +1,6 @@
 ---
 name: "sht-pm-van-ban-doi-tac-po"
-description: "Soạn và hoàn thiện văn bản giao dịch với hãng/vendor cho PM SHT: comment công văn đối tác, soạn Đơn đặt hàng (PO), công văn nhắc/leo thang, kiểm thẩm quyền ký và bẫy SoW. LUÔN dùng khi cần hoàn thiện PO, góp ý văn bản đối tác, kiểm soát cam kết trước khi gửi. KHÔNG dùng cho lập trường đàm phán (sht-lanh-dao-dam-phan-chuoi-hop-dong), rà hợp đồng CNTT (ra-soat-hop-dong-vendor), tranh chấp bán thiết bị (sht-hopdong-thietbi-tranh-chap), lập biên bản họp (sht-thu-ky-bien-ban-ho-so)."
+description: "Văn bản giao dịch với hãng/vendor cho PM SHT: comment công văn đối tác, soạn/finalize PO, kiểm thẩm quyền ký, bẫy SoW. LUÔN dùng khi hoàn thiện PO, góp ý văn bản đối tác. KHÔNG dùng cho lập trường đàm phán (sht-lanh-dao-dam-phan-chuoi-hop-dong), rà hợp đồng, tranh chấp bán thiết bị (sht-hopdong-thietbi-tranh-chap)."
 ---
 
 # PM — văn bản với đối tác và Đơn đặt hàng

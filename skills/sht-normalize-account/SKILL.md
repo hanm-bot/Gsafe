@@ -1,6 +1,6 @@
 ---
 name: sht-normalize-account
-description: "Chuẩn hoá danh tính khách hàng/account trong SHT Sales Pipeline (Turso/Base.vn): gộp theo Mã Dự Án `ma`, KHÔNG theo tên free-text `kh`. LUÔN dùng khi làm với bảng `deals`, đếm khách/chi nhánh, rollup theo account, Account 360, kể cả khi không nói \"chuẩn hoá\". KHÔNG dùng để kiểm đúng doanh số (sht-xacthuc-baocao-hoatdong) hay xác minh tên người (chuan-hoa-du-lieu-nhansu)."
+description: "Chuẩn hoá danh tính khách/account trong SHT Sales Pipeline (Turso/Base.vn): gộp theo mã dự án `ma`, không theo tên `kh`. LUÔN dùng khi làm với bảng `deals`, đếm khách/chi nhánh, Account 360. KHÔNG dùng để kiểm đúng doanh số (sht-xacthuc-baocao-hoatdong), xác minh tên người (chuan-hoa-du-lieu-nhansu)."
 ---
 
 # Chuẩn hóa account SHT Sales Pipeline

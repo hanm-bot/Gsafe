@@ -1,6 +1,6 @@
 ---
 name: "sht-vai3-reporter"
-description: "Soạn Báo cáo Điều hành 4 phần AIS48 của một vai trò cụ thể (Reporter `[DEPT]-03`): tổng hợp từ Vai 1, 2, 4, giữ ngân sách token, xuất bản nháp DRAFT. LUÔN dùng khi một nhân sự cần tự viết báo cáo điều hành tuần/tháng, kể cả khi chỉ nói \"tóm tắt cho sếp\". KHÔNG dùng để điều phối 5 vai (sht-quan-tri-dn), phân tích điểm nghẽn (sht-vai2-analyzer), phản biện (sht-vai5-critic)."
+description: "Vai Reporter `[DEPT]-03` AIS48: soạn Báo cáo Điều hành 4 phần từ Vai 1, 2, 4, giữ ngân sách token, xuất bản nháp DRAFT. LUÔN dùng khi một nhân sự cần viết báo cáo điều hành tuần/tháng, \"tóm tắt cho sếp\". KHÔNG dùng để điều phối 5 vai (sht-quan-tri-dn), phản biện (sht-vai5-critic), bài truyền thông (chap-but-lanh-dao)."
 ---
 
 # KỸ NĂNG CHUYÊN MÔN VAI 3: SOẠN THẢO BÁO CÁO ĐIỀU HÀNH 4 PHẦN AIS48

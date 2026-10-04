@@ -42,6 +42,8 @@ TEXT_EXT = {'.md', '.py', '.js', '.mjs', '.json', '.txt', '.yaml', '.yml', '.htm
 # E14: cặp ký tự viết bằng mã \u để chính file này không tự khớp (vd U+00E1 U+00BB = dấu vết của 'ố' hỏng)
 MOJIBAKE = re.compile('\u00e1\u00bb|\u00e1\u00ba|\u00c4\u2018|\u00c6\u00b0|\u00c6\u00a1|\u00c3\u00a1|\u00c3\u00a2|\u00c3\u00aa|\u00c3\u00b4|\u00c3\u00b3|\u00c3\u00a9|\u00c3\u00ad|\u00c3\u00ba|\u00c3\u00bd|\u00c3\u00a8|\u00c3\u00ac|\u00c3\u00b2|\u00c3\u00b9|\u00e2\u20ac')
 MOJIBAKE_MIN = 3
+DESC_TOTAL_MAX = 14000       # E10-tổng (05/10/2026, HITL-20261005-011): danh sách skill có trần ngân sách chung —
+                             # 0.32.0 tổng 18.350/44 skill làm 6 skill mất mô tả; 0.31.3 tổng 14.653/37 thì đủ
 DESC_MAX = 500              # chuẩn SHT (05/10/2026, HITL-20261005-008). save_skill chặn ở 1024, nhưng
                             # description dài bị harness cắt khi danh sách skill vượt trần → skill mất mô tả,
                             # không tự kích hoạt (ca thật 29/09 và 05/10: 6 skill cá nhân 828–980 ký tự)
@@ -153,6 +155,14 @@ def audit(root, personal=None, plugin_root=None):
 
     out_ref = {k: set() for k in skills}
     in_ref = {k: set() for k in skills}
+
+    # --- E10-tổng: ngân sách mô tả cả gói (không tính skill dựng sẵn)
+    tong = sum(len(s['fm'].get('description') or '') for n, s in skills.items() if n not in BUILTIN)
+    if tong > DESC_TOTAL_MAX:
+        add('CAO', 'E10', '(cả gói)', f'tổng description {tong} ký tự — vượt ngân sách {DESC_TOTAL_MAX}; '
+            'harness sẽ bỏ mô tả một số skill trong danh sách (skill không tự kích hoạt)')
+    elif tong > DESC_TOTAL_MAX * 0.95:
+        add('THẤP', 'E10', '(cả gói)', f'tổng description {tong}/{DESC_TOTAL_MAX} ký tự — sát ngân sách')
 
     for n, s in skills.items():
         # --- E1 frontmatter

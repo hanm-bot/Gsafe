@@ -1,7 +1,7 @@
 ---
 name: usecase-diagram
 version: 1.0
-description: "Render sơ đồ PlantUML (Use Case, Activity Swimlane) thành .svg, dùng cho prd-architect hoặc khi cần sơ đồ UML. LUÔN dùng khi nói \"vẽ use case diagram\", \"render PlantUML\", \"xuất sơ đồ swimlane\". KHÔNG dùng cho Mermaid (Sequence/ERD/State), không dùng cho dữ liệu Vùng Đỏ vì nội dung gửi ra internet để render."
+description: "Render sơ đồ PlantUML (Use Case, Activity Swimlane) thành .svg cho prd-architect. LUÔN dùng khi nói \"vẽ use case diagram\", \"render PlantUML\", \"sơ đồ swimlane\". KHÔNG dùng cho Mermaid (archify), không dùng với dữ liệu Vùng Đỏ vì nội dung gửi ra internet để render."
 ---
 
 # Usecase Diagram (PlantUML Renderer)

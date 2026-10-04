@@ -1,6 +1,6 @@
 ---
 name: "sht-quan-tri-dn"
-description: "Điều phối Đội 5 Agent quản trị AIS48 (Harvester/Analyzer/Reminder/Reporter/Critic), nhân rộng 9 phòng ban, Cổng I/O chặn PII, Sổ Cái HITL; thẩm định QA Lớp 2 kế hoạch của Anti. LUÔN dùng khi chạy quản trị tuần, giám sát việc liên phòng ban, \"thẩm định QA\", \"audit chéo\", \"workshop phòng ban\". KHÔNG dùng cho xác thực doanh số (sht-xacthuc-baocao-hoatdong), một vai riêng lẻ (sht-vai1..5), cổng JEV (sht-jev-cong-quyet-dinh)."
+description: "Điều phối đội 5 agent quản trị AIS48, nhân rộng 9 phòng ban, Cổng I/O chặn PII, Sổ Cái HITL; thẩm định QA Lớp 2 kế hoạch của Anti. LUÔN dùng khi chạy quản trị tuần, giám sát liên phòng ban, \"thẩm định QA\", \"audit chéo\". KHÔNG dùng cho một vai riêng lẻ (sht-vai1..5), xác thực doanh số, cổng JEV (sht-jev-cong-quyet-dinh)."
 ---
 
 # KỸ NĂNG: ĐỘI 5 AGENT QUẢN TRỊ DOANH NGHIỆP TRÊN ANTIGRAVITY (SHT-AIS48)

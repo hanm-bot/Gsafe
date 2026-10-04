@@ -1,7 +1,7 @@
 ---
 name: sht-jev-cong-quyet-dinh
 version: 1.0
-description: "Vận hành cổng quyết định JEV nội bộ SHT: lập quyết định theo schema, qua cổng TỰ LÀM / NGƯỜI DUYỆT / CHỈ GHI LOG, ghi phản hồi CHAP_NHAN/BI_BAC/SAI vào Sổ Cái HITL, chạy ca thật không suy trạng thái từ tên file. LUÔN dùng khi nói \"JEV\", \"chạy ca thật\", \"cổng quyết định\", \"ghi phản hồi\", kể cả khi agent sắp kết luận trạng thái hồ sơ khách để hành động. KHÔNG dùng cho use-case bán khách (sht-cds-thiet-ke-agent), chuỗi 5 vai AIS48, điều phối dự án (sht-van-hanh-triad)."
+description: "Vận hành cổng quyết định JEV nội bộ SHT: lập quyết định theo schema, cổng TỰ LÀM/NGƯỜI DUYỆT/CHỈ GHI LOG, ghi phản hồi vào Sổ Cái HITL. LUÔN dùng khi nói \"JEV\", \"cổng quyết định\", \"ghi phản hồi\". KHÔNG dùng cho use-case bán khách (sht-cds-thiet-ke-agent), điều phối dự án (sht-van-hanh-triad)."
 ---
 
 # Cổng quyết định JEV — vận hành nội bộ SHT

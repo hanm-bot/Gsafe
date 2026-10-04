@@ -1,6 +1,6 @@
 ---
 name: "sht-ky-thuat-ranh-gioi-tich-hop"
-description: "Kỹ thuật tích hợp thiết bị SHT với hãng và vendor: phân lớp hệ thống, đặc tả ICD, ngân sách độ trễ, giao thức kết nối, ma trận đáp ứng và test case nghiệm thu. LUÔN dùng khi bóc tách BRD/SoW kỹ thuật, phân định ranh giới hệ thống, dựng đề bài kỹ thuật trung lập, kiểm tương thích thiết bị. KHÔNG dùng cho PRD giải pháp CĐS bán khách (sht-cds-thiet-ke-prd), rà hợp đồng (ra-soat-hop-dong-vendor), chấm điểm chọn NCC (lua-chon-tham-dinh-ncc), soạn PO (sht-pm-van-ban-doi-tac-po)."
+description: "Kỹ thuật tích hợp thiết bị SHT với hãng/vendor: phân lớp hệ thống, ICD, ngân sách độ trễ, giao thức, ma trận đáp ứng, test case nghiệm thu. LUÔN dùng khi đọc BRD/SoW kỹ thuật, phân ranh giới hãng–SHT, dựng đề bài kỹ thuật. KHÔNG dùng cho PRD CĐS (sht-cds-thiet-ke-prd), hợp đồng, chọn NCC (lua-chon-tham-dinh-ncc), PO (sht-pm-van-ban-doi-tac-po)."
 ---
 
 # Kỹ thuật — ranh giới tích hợp, đặc tả, nghiệm thu

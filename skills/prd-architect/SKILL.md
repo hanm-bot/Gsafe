@@ -1,6 +1,6 @@
 ---
 name: prd-architect
-description: "Thiết kế PRD Enterprise tổng quát cho sản phẩm/tính năng phần mềm nội bộ: phỏng vấn sâu 7 nhóm, tự sinh sơ đồ (Use Case, Swimlane, Sequence, ERD, State), xuất Markdown + HTML. LUÔN dùng khi nói \"viết PRD sản phẩm\", \"thiết kế tính năng\", \"đặc tả phần mềm\". KHÔNG dùng cho PRD CĐS bán khách Bank/Telco Giai đoạn 03 (sht-cds-thiet-ke-prd)."
+description: "Thiết kế PRD cho phần mềm/tính năng nội bộ: phỏng vấn 7 nhóm, sinh sơ đồ Use Case, Swimlane, Sequence, ERD, State; xuất Markdown + HTML. LUÔN dùng khi nói \"viết PRD sản phẩm\", \"đặc tả phần mềm\". KHÔNG dùng cho PRD CĐS bán khách Bank/Telco (sht-cds-thiet-ke-prd)."
 ---
 
 # /prd-architect - Enterprise PRD & Visual System Designer

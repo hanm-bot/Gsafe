@@ -1,6 +1,6 @@
 ---
 name: "sht-lanh-dao-dam-phan-chuoi-hop-dong"
-description: "Chiến lược đàm phán chuỗi hợp đồng nhiều lớp (Khách – Hãng – NCC phụ) cho Lãnh đạo SHT: lập trường thương thảo, phương án lùi, nhịp leo thang, thông điệp gặp đối tác, quyết Go/No-Go. LUÔN dùng khi chuẩn bị họp đàm phán, chọn chiến thuật thương lượng, cắt giảm phạm vi dự án. KHÔNG dùng để rà chi tiết điều khoản (ra-soat-hop-dong-vendor), soạn công văn/PO (sht-pm-van-ban-doi-tac-po), đặc tả kỹ thuật (sht-ky-thuat-ranh-gioi-tich-hop), lập biên bản họp (sht-thu-ky-bien-ban-ho-so)."
+description: "Chiến lược đàm phán chuỗi hợp đồng nhiều lớp (khách – hãng – NCC phụ) cho lãnh đạo SHT: lập trường, phương án lùi, nhịp leo thang, Go/No-Go. LUÔN dùng khi chuẩn bị họp đàm phán, chọn chiến thuật. KHÔNG dùng để rà điều khoản (ra-soat-hop-dong-vendor), soạn công văn/PO (sht-pm-van-ban-doi-tac-po), lập biên bản (sht-thu-ky-bien-ban-ho-so)."
 ---
 
 # Lãnh đạo đàm phán chuỗi hợp đồng

@@ -1,6 +1,6 @@
 ---
 name: "sht-xacthuc-baocao-hoatdong"
-description: "Xác thực số liệu báo cáo kinh doanh SHT với hệ thống nguồn (Turso/Base.vn CRM, dashboard) TRƯỚC khi vào văn bản chính thức: truy từng số về truy vấn sinh ra nó, phát hiện lệch do dữ liệu cũ, gắn nhãn đã/chưa đối chiếu. LUÔN dùng khi soạn/rà báo cáo doanh số, KPI, pipeline, QĐ căn cứ thành tích, hoặc nói \"số này lấy ở đâu\", \"đối chiếu với CRM\". KHÔNG dùng để gộp account (sht-normalize-account) hay soạn thể thức QĐ (sht-qd-nhansu-alignment)."
+description: "Xác thực số liệu báo cáo kinh doanh SHT với hệ thống nguồn (Turso/Base.vn, dashboard) trước khi vào văn bản chính thức: truy từng số về truy vấn, gắn nhãn đã/chưa đối chiếu. LUÔN dùng khi soạn/rà báo cáo doanh số, KPI, pipeline, \"số này lấy ở đâu\". KHÔNG dùng để gộp account (sht-normalize-account), soạn QĐ (sht-qd-nhansu-alignment)."
 ---
 
 # Xác thực báo cáo hoạt động kinh doanh (SHT)

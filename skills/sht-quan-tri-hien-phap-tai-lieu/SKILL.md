@@ -1,6 +1,6 @@
 ---
 name: sht-quan-tri-hien-phap-tai-lieu
-description: "Giữ tài liệu vận hành (CLAUDE.md, README, bảng hiệu lực) khớp thực tế đã kiểm: ghi chú cập nhật kèm ngày cạnh chỗ sai, không viết đè lịch sử, lan truyền sự thật đã đổi sang mọi nơi trích nó. LUÔN dùng khi tài liệu vận hành nói khác thực tế (đường dẫn, phiên bản, ✅/⚠️). KHÔNG dùng để soạn tài liệu nghiệp vụ mới hay sản phẩm giao khách; quy tắc chung cho deliverable ở sht-nen-tang-kiem-chung."
+description: "Giữ tài liệu vận hành (CLAUDE.md, README, bảng hiệu lực) khớp thực tế đã kiểm: ghi chú kèm ngày, không viết đè lịch sử, lan truyền sự thật đã đổi. LUÔN dùng khi tài liệu vận hành nói khác thực tế (đường dẫn, phiên bản, ✅/⚠️). KHÔNG dùng cho tài liệu nghiệp vụ hay sản phẩm giao khách (sht-nen-tang-kiem-chung)."
 ---
 
 # Quản Trị Tài Liệu / Hiến Pháp

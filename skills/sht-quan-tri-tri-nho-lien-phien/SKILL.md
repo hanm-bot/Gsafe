@@ -1,7 +1,7 @@
 ---
 name: sht-quan-tri-tri-nho-lien-phien
 version: 1.0
-description: "Quyết định sự thật nào đáng lưu memory liên phiên, cập nhật file sẵn có thay vì tạo trùng, đánh dấu \"đã giải quyết\" khi tình huống đổi, giữ MEMORY.md khớp nội dung. LUÔN dùng trước khi ghi trí nhớ liên phiên hoặc khi nghi MEMORY.md lệch. KHÔNG dùng cho dữ liệu nhạy cảm khách (luật cứng #5), không thay 00_NGUON-HO-SO.md của workspace."
+description: "Quyết định sự thật nào đáng lưu memory liên phiên, cập nhật file sẵn có thay vì tạo trùng, đánh dấu đã giải quyết, giữ MEMORY.md khớp. LUÔN dùng trước khi ghi trí nhớ liên phiên hoặc khi nghi MEMORY.md lệch. KHÔNG dùng cho dữ liệu nhạy cảm khách (luật cứng #5), không thay 00_NGUON-HO-SO.md."
 ---
 
 # Thủ Kho Trí Nhớ Liên Phiên
