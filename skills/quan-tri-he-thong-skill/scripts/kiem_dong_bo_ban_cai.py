@@ -29,7 +29,12 @@ if "--nguon" in sys.argv:
     NGUON = os.path.abspath(sys.argv[sys.argv.index("--nguon") + 1])
 HOME = os.path.expanduser("~")
 APPDATA = os.environ.get("APPDATA", os.path.join(HOME, "AppData", "Roaming"))
-SESSIONS = os.path.join(APPDATA, "Claude", "local-agent-mode-sessions")
+# Desktop cài thường → %APPDATA%\Claude; cài dạng gói MSIX (Microsoft Store) → Windows chuyển
+# hướng sang %LOCALAPPDATA%\Packages\Claude_*\LocalCache\Roaming\Claude (ca thật 05/10/2026).
+LOCALAPPDATA = os.environ.get("LOCALAPPDATA", os.path.join(HOME, "AppData", "Local"))
+_UNG_VIEN = [os.path.join(APPDATA, "Claude", "local-agent-mode-sessions")] + sorted(glob.glob(
+    os.path.join(LOCALAPPDATA, "Packages", "Claude_*", "LocalCache", "Roaming", "Claude", "local-agent-mode-sessions")))
+SESSIONS = next((p for p in _UNG_VIEN if os.path.isdir(p)), _UNG_VIEN[0])
 
 
 def doc_json(p):
@@ -45,6 +50,9 @@ def phien_ban(goc):
 def bang_bam(goc_skills):
     """{đường dẫn tương đối: sha256 nội dung đã chuẩn hoá} cho mọi file dưới skills/."""
     kq = {}
+    # Đường dẫn rpm dưới Packages\Claude_* (MSIX) vượt MAX_PATH 260 → cần tiền tố \\?\ trên Windows.
+    if os.name == "nt" and not goc_skills.startswith("\\\\?\\"):
+        goc_skills = "\\\\?\\" + os.path.abspath(goc_skills)
     for r, ds, fs in os.walk(goc_skills):
         ds[:] = [d for d in ds if d != "__pycache__"]
         for f in fs:
