@@ -41,7 +41,8 @@ lúc nhận lệnh**, trích nguyên văn — không ghi gộp cuối phiên.
 | Việc | File |
 |---|---|
 | Quy chế (luật) | `docs/QUY_CHE_PHOI_HOP_TAC_CHIEN_CLAUDE_ANTI_SHT.md` — §3.5 QA 3 lớp, §5.2 bế tắc/RFC, §6 chốt, phụ lục biểu mẫu plan/task/report/RFC |
-| Sổ Cái HITL | `docs/audit/HITL_APPROVAL_LEDGER.jsonl` — chỉ ghi qua `python .agents/scripts/ghi-log-hitl.py --append …`, kiểm bằng `--verify` |
+| Sổ Cái HITL | `docs/audit/HITL_APPROVAL_LEDGER.jsonl` — chỉ ghi qua `python .agents/scripts/ghi-log-hitl.py --append …`, kiểm bằng `--verify`. Từ 04/10/2026 (RFC-01): ghi sổ thật phải có Mr. Hà gõ mã trên console thật — agent **không** chạy `--append`, chỉ đưa lệnh cho Mr. Hà |
+| ↳ từ 05/10/2026 (RFC-02, `HITL-20261005-006`) | Sổ khoá NTFS: agent chỉ Đọc; Mr. Hà ghi bằng mã 4 ký tự + mật khẩu `sht-socai`. Mật khẩu sai → `runas` báo 1326, không ghi gì. Gõ mật khẩu với bộ gõ tiếng Anh |
 | Ủy quyền mốc nội bộ | `.agents/config/uy-quyen-moc-noi-bo.json` |
 | Bảng chọn đường ray | `sht-cds-thiet-ke-agent/references/chon-duong-ray.md` |
 | Thư mục một dự án | `plans/<ngày>-<chủ-đề>/` → `plan.md`, `buoc-XX/task-XX.md`, `reports/`, `rfc/` |
