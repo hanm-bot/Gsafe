@@ -92,6 +92,13 @@ Cấm tuyệt đối: xóa logic ở skill B rồi **không** để lại con tr
 
 Nếu một logic tầng 0 đang nằm rải rác ở tầng 1, đó chính là E4 cần nâng lên tầng nền.
 
+
+**Hai lớp skill** (task-07, v0.33.0 — Mr. Hà phê chuẩn 05/10/2026, `HITL-20261005-013`):
+Ngoài trục Tầng (0/1/2), toàn bộ 44 skill chia làm 2 lớp nghiệp vụ trong cùng một plugin:
+- **Lớp Quy Trình (20 skill):** cách SHT làm việc với AI và quản trị chính hệ AI (điều phối, cổng duyệt JEV/Triad, kiểm chứng, phát hành, 5 vai AIS48, quy tắc nền, làm rõ yêu cầu). Dùng được cho mọi nghiệp vụ, không gắn cố định một phòng ban.
+- **Lớp Vận Hành (24 skill):** nghiệp vụ hằng ngày tạo ra sản phẩm/văn bản cho một miền cụ thể (hợp đồng CNTT/thiết bị, nhân sự/tuyển dụng, CĐS DMI/PRD, hồ sơ scan/văn bản đối tác...).
+Quy tắc: Khi tạo skill mới (§8), bắt buộc phải khai báo lớp (`Quy Trình` hoặc `Vận Hành`) vào cột cuối của Sổ đăng bạ. Audit E15 sẽ chặn nếu thiếu hoặc sai lớp.
+
 ---
 
 ## 4. Sửa trigger — công thức 4 phần
@@ -159,7 +166,7 @@ Trước khi viết một dòng nội dung nào:
 1. Liệt kê skill hiện có cùng miền nghiệp vụ.
 2. Hỏi: việc này là **skill mới**, hay là **một mục** trong skill đã có? Mặc định nghiêng về mục mới trong skill cũ — hệ thống nhiều skill nhỏ chồng lấn tệ hơn ít skill mạch lạc.
 3. Nếu vẫn là skill mới: viết trước **vùng loại trừ** của nó và của các skill hàng xóm, rồi mới viết nội dung. Khai luôn **artifact đầu ra** (file gì, ghi ở đâu) — skill không nói ra được đầu ra là skill chưa rõ việc.
-4. Khai báo tầng, cập nhật Sổ đăng bạ, rồi bàn giao cho `skill-creator` viết nội dung.
+4. Khai báo tầng và lớp (Quy Trình / Vận Hành), cập nhật Sổ đăng bạ, rồi bàn giao cho `skill-creator` viết nội dung.
 
 ---
 

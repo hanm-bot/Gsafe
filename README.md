@@ -2,7 +2,7 @@
 
 > ⚠️ **0.31.x: KHÔNG tải lên org – chờ xác nhận quyền dùng vietduc·ai** (`HITL-20261004-002`). Chỉ cài tab Code.
 
-Bộ skill nghiệp vụ nội bộ của **Công ty CP Đầu tư Công nghệ SHT**. 44 skill (kèm 5 skill mới: chap-but-lanh-dao, kien-truc-tai-lieu, phap-che-doanh-nghiep, tham-dinh-thi-truong, xuat-ban-cong-vu), chia bốn tầng, mỗi logic có đúng một chủ sở hữu.
+Bộ skill nghiệp vụ nội bộ của **Công ty CP Đầu tư Công nghệ SHT**. 44 skill chia làm 2 lớp: **20 Skill Quy Trình** (cách làm việc và quản trị hệ AI) và **24 Skill Vận Hành** (nghiệp vụ cụ thể từng miền), mỗi logic có đúng một chủ sở hữu.
 
 Nguyên tắc xuyên suốt: **dữ liệu sai lan nhanh hơn dữ liệu đúng.** Một con số sai nhân bản ra 4–5 deliverable; một cái tên bị thay nhầm đi thẳng vào văn bản trình ký. Mọi skill ở đây tối ưu cho việc chặn lỗi sớm.
 
@@ -47,52 +47,57 @@ Skill tầng 1 **trỏ tới** tầng 0, không chép lại. Skill nhà không v
 
 ---
 
-## 32 skill
+## Skill Quy Trình (20)
 
 | Skill | Dùng khi |
 |---|---|
-| **sht-nen-tang-kiem-chung** | Trước **mọi** lần bàn giao file. Lan truyền hiệu chỉnh, đổi tên hàng loạt an toàn, một-bản-có-hiệu-lực, checklist chung, xuất 5 dạng báo cáo |
+| **archify** | Vẽ sơ đồ quy trình (workflow diagram) từ một kế hoạch đã chốt hoặc mô tả quy trình bằng Mermaid. |
+| **brainstorm** | Bóc tách ý tưởng thô thành Bản đặc tả Brainstorm 12 phần qua phỏng vấn sâu 7 nhóm (Deep Interview). |
+| **grill-me** | Phỏng vấn/khảo sát người dùng để làm rõ yêu cầu, chốt phương án thành kế hoạch trước khi thực thi. |
+| **kien-truc-tai-lieu** | Bản đồ tài liệu doanh nghiệp |
+| **prd-architect** | Thiết kế PRD Enterprise, phỏng vấn sâu 7 nhóm nghiệp vụ, xuất sơ đồ trực quan và báo cáo HTML Single-Page. |
 | **quan-tri-he-thong-skill** | Gõ "UPGRADE SKILL". Audit hệ skill, chống trùng logic, quy trình nâng cấp an toàn |
-| **chuan-hoa-du-lieu-du-an** | Soạn biên bản từ ghi âm, bảng tiến độ, công văn, báo cáo khảo sát, phục dựng văn bản có watermark |
-| **chuan-hoa-du-lieu-nhansu** | Hồ sơ bổ nhiệm, đánh giá cán bộ, onboarding — bất cứ tài liệu nào có tên người |
-| **sht-qd-nhansu-alignment** | Soạn/rà soát Quyết định, xung đột thẩm quyền, "Under CCO" |
-| **chuan-hoa-du-lieu-tuyen-dung** | "hunt CV", lọc hồ sơ, chấm điểm ứng viên, scorecard, soạn JD mới kèm khảo sát lương thị trường |
-| **sht-normalize-account** | Đếm khách hàng/chi nhánh, gộp account, Account 360 |
-| **sht-xacthuc-baocao-hoatdong** | "Số này lấy ở đâu", đối chiếu báo cáo với CRM trước khi đưa vào văn bản chính thức |
-| **ra-soat-hop-dong-vendor** | Rà soát hợp đồng CNTT, gap analysis spec vs SoW/BRD, chuỗi mua bán back-to-back, license |
-| **chuan-hoa-ho-so-tai-lieu** | Bóc tách PDF scan tiếng Việt, trích dẫn chứng cứ có toạ độ trang/điều, soạn báo cáo đối ngoại trung tính |
-| **sht-cds-danh-gia-hien-trang** | "Đánh giá hiện trạng CĐS", khảo sát DMI 6 trụ cột, kiểm toán dữ liệu 6 chiều, bản đồ điểm nghẽn As-Is trước Cổng G1 |
-| **sht-cds-thiet-ke-prd** | "Thiết kế PRD", "viết PRD", "quy trình To-Be", "chốt scope pilot" — nhận điểm nghẽn As-Is → thiết kế To-Be → soạn PRD cho giải pháp CĐS (Giai đoạn 03) |
-| **sht-kien-truc-ho-so** | "Lập hồ sơ", "còn thiếu giấy tờ gì", "gap matrix" — định vị pha H1–H5, Gap Matrix có đường dẫn bằng chứng, điểm sẵn sàng đếm file thật |
-| **sht-phap-che-sot** | "Căn cứ pháp lý", "điều nào quy định", "luật còn hiệu lực không" — trích nguyên văn có toạ độ Điều/Khoản, hiệu lực tại mốc vụ việc, bảng SOT |
-| **sht-cds-thiet-ke-agent** | "Thiết kế use-case AI", "AI được tự quyết đến đâu", "HITL" — khai báo agent 3 chiều, tầng confidence, Tiered Governance (khi PRD chốt hướng là agent) |
-| **sht-quan-tri-dn** | Vận hành quy trình quản trị tuần, giám sát đầu việc liên phòng ban, `/goal` `/teamwork` `/schedule`, thẩm định QA Lớp 2, dựng Đội 5 Agent cho phòng ban mới |
+| **sht-ha-tang-va-path-portable** | Phát hiện và sửa đường dẫn hardcode, đảm bảo tương thích đường dẫn portable trên mọi máy. |
 | **sht-jev-cong-quyet-dinh** | "Chạy ca thật", "JEV", "cổng quyết định", "chấp nhận/bác/sai JEV-…", "vá cổng" — vận hành cổng 3 ngả nội bộ, ghi phản hồi xác thực Sổ Cái, luật ca thật trên kho nguồn, phiếu việc 4 vai |
-| **sht-van-hanh-triad** | "Giao Anti làm…", "đọc report-XX, đối chiếu DoD và audit chéo", "soạn RFC", "nghiệm thu P…" — điều phối dự án nhiều bước Claude–Anti–Mr. Hà theo SOP-AI-01, phiếu việc 5 vai |
+| **sht-nen-tang-kiem-chung** | Trước **mọi** lần bàn giao file. Lan truyền hiệu chỉnh, đổi tên hàng loạt an toàn, một-bản-có-hiệu-lực, checklist chung, xuất 5 dạng báo cáo |
+| **sht-qa-kiem-chung-skill-hook** | Kiểm chứng bằng hành vi thật xem skill/hook có đang chạy không, tránh kết luận sai lệch giữa tài liệu và thực tế. |
+| **sht-quan-tri-dn** | Vận hành quy trình quản trị tuần, giám sát đầu việc liên phòng ban, `/goal` `/teamwork` `/schedule`, thẩm định QA Lớp 2, dựng Đội 5 Agent cho phòng ban mới |
+| **sht-quan-tri-hien-phap-tai-lieu** | Giữ tài liệu vận hành (CLAUDE.md, README) khớp đúng thực tế máy hiện tại khi phát hiện sai lệch. |
+| **sht-quan-tri-tri-nho-lien-phien** | Quản trị bộ nhớ liên phiên, quyết định ghi/xóa memory thay vì tạo mới, giữ trạng thái memory luôn chính xác. |
 | **sht-vai1-harvester** | "Làm sạch dữ liệu", "ẩn danh hồ sơ", "mask PII" — tự tay làm sạch dữ liệu thô trước khi giao bước phân tích |
 | **sht-vai2-analyzer** | "Vì sao trễ", "phân tích nguyên nhân", "5 Whys" — chẩn đoán chỉ tiêu/đầu việc bị lệch, đèn giao thông 3 mức |
 | **sht-vai3-reporter** | "Viết báo cáo điều hành", "tóm tắt cho sếp" — Báo cáo Điều hành 4 phần AIS48, kiểm soát ngân sách token |
 | **sht-vai4-reminder** | "Nhắc việc", "soạn tin đôn đốc", "ai đang trễ hạn" — phân loại quá hạn/sắp hạn, soạn nhắc việc 4 phần |
 | **sht-vai5-critic** | "Phản biện", "kiểm tra chéo trước khi trình", "rà số liệu" — thẩm tra 3 tầng, tờ trình HITL, Sổ Cái SHA-256 |
-| **brainstorm** | Bóc tách ý tưởng thô thành Bản đặc tả Brainstorm 12 phần qua phỏng vấn sâu 7 nhóm (Deep Interview). |
-| **prd-architect** | Thiết kế PRD Enterprise, phỏng vấn sâu 7 nhóm nghiệp vụ, xuất sơ đồ trực quan và báo cáo HTML Single-Page. |
+| **sht-van-hanh-triad** | "Giao Anti làm…", "đọc report-XX, đối chiếu DoD và audit chéo", "soạn RFC", "nghiệm thu P…" — điều phối dự án nhiều bước Claude–Anti–Mr. Hà theo SOP-AI-01, phiếu việc 5 vai |
 | **usecase-diagram** | Render sơ đồ PlantUML (Use Case, Activity) thành ảnh vector .svg, hỗ trợ `prd-architect`. |
-| **sht-qa-kiem-chung-skill-hook** | Kiểm chứng bằng hành vi thật xem skill/hook có đang chạy không, tránh kết luận sai lệch giữa tài liệu và thực tế. |
-| **sht-ha-tang-va-path-portable** | Phát hiện và sửa đường dẫn hardcode, đảm bảo tương thích đường dẫn portable trên mọi máy. |
-| **sht-quan-tri-hien-phap-tai-lieu** | Giữ tài liệu vận hành (CLAUDE.md, README) khớp đúng thực tế máy hiện tại khi phát hiện sai lệch. |
-| **sht-quan-tri-tri-nho-lien-phien** | Quản trị bộ nhớ liên phiên, quyết định ghi/xóa memory thay vì tạo mới, giữ trạng thái memory luôn chính xác. |
-| **archify** | Vẽ sơ đồ quy trình (workflow diagram) từ một kế hoạch đã chốt hoặc mô tả quy trình bằng Mermaid. |
-| **grill-me** | Phỏng vấn/khảo sát người dùng để làm rõ yêu cầu, chốt phương án thành kế hoạch trước khi thực thi. |
-| **sht-thu-ky-bien-ban-ho-so** | Thư ký biên bản hồ sơ |
+
+## Skill Vận Hành (24)
+
+| Skill | Dùng khi |
+|---|---|
+| **chap-but-lanh-dao** | Biên tập bài phân tích (vietduc.ai) |
+| **chuan-hoa-du-lieu-du-an** | Soạn biên bản từ ghi âm, bảng tiến độ, công văn, báo cáo khảo sát, phục dựng văn bản có watermark |
+| **chuan-hoa-du-lieu-nhansu** | Hồ sơ bổ nhiệm, đánh giá cán bộ, onboarding — bất cứ tài liệu nào có tên người |
+| **chuan-hoa-du-lieu-tuyen-dung** | "hunt CV", lọc hồ sơ, chấm điểm ứng viên, scorecard, soạn JD mới kèm khảo sát lương thị trường |
+| **chuan-hoa-ho-so-tai-lieu** | Bóc tách PDF scan tiếng Việt, trích dẫn chứng cứ có toạ độ trang/điều, soạn báo cáo đối ngoại trung tính |
+| **lua-chon-tham-dinh-ncc** | Lựa chọn và thẩm định nhà cung cấp |
+| **phap-che-doanh-nghiep** | Tư vấn rủi ro pháp lý |
+| **ra-soat-hop-dong-vendor** | Rà soát hợp đồng CNTT, gap analysis spec vs SoW/BRD, chuỗi mua bán back-to-back, license |
+| **sht-cds-danh-gia-hien-trang** | "Đánh giá hiện trạng CĐS", khảo sát DMI 6 trụ cột, kiểm toán dữ liệu 6 chiều, bản đồ điểm nghẽn As-Is trước Cổng G1 |
+| **sht-cds-thiet-ke-agent** | "Thiết kế use-case AI", "AI được tự quyết đến đâu", "HITL" — khai báo agent 3 chiều, tầng confidence, Tiered Governance (khi PRD chốt hướng là agent) |
+| **sht-cds-thiet-ke-prd** | "Thiết kế PRD", "viết PRD", "quy trình To-Be", "chốt scope pilot" — nhận điểm nghẽn As-Is → thiết kế To-Be → soạn PRD cho giải pháp CĐS (Giai đoạn 03) |
 | **sht-hopdong-thietbi-tranh-chap** | Giải quyết tranh chấp hợp đồng |
+| **sht-kien-truc-ho-so** | "Lập hồ sơ", "còn thiếu giấy tờ gì", "gap matrix" — định vị pha H1–H5, Gap Matrix có đường dẫn bằng chứng, điểm sẵn sàng đếm file thật |
 | **sht-ky-thuat-ranh-gioi-tich-hop** | Ranh giới tích hợp kỹ thuật |
 | **sht-lanh-dao-dam-phan-chuoi-hop-dong** | Đàm phán chuỗi hợp đồng |
+| **sht-normalize-account** | Đếm khách hàng/chi nhánh, gộp account, Account 360 |
+| **sht-phap-che-sot** | "Căn cứ pháp lý", "điều nào quy định", "luật còn hiệu lực không" — trích nguyên văn có toạ độ Điều/Khoản, hiệu lực tại mốc vụ việc, bảng SOT |
 | **sht-pm-van-ban-doi-tac-po** | Quản lý văn bản đối tác |
+| **sht-qd-nhansu-alignment** | Soạn/rà soát Quyết định, xung đột thẩm quyền, "Under CCO" |
 | **sht-quy-trinh-tuyen-dung** | Quy trình tuyển dụng nhân sự |
-| **lua-chon-tham-dinh-ncc** | Lựa chọn và thẩm định nhà cung cấp |
-| **chap-but-lanh-dao** | Biên tập bài phân tích (vietduc.ai) |
-| **kien-truc-tai-lieu** | Bản đồ tài liệu doanh nghiệp |
-| **phap-che-doanh-nghiep** | Tư vấn rủi ro pháp lý |
+| **sht-thu-ky-bien-ban-ho-so** | Thư ký biên bản hồ sơ |
+| **sht-xacthuc-baocao-hoatdong** | "Số này lấy ở đâu", đối chiếu báo cáo với CRM trước khi đưa vào văn bản chính thức |
 | **tham-dinh-thi-truong** | Thẩm định ý tưởng thị trường |
 | **xuat-ban-cong-vu** | Dựng/chuyển đổi file văn bản |
 
@@ -131,4 +136,4 @@ Sổ đăng bạ — nguồn sự thật về quan hệ giữa các skill — n�
 
 Nội bộ SHT. Các skill dẫn chiếu dữ liệu và văn bản thật của công ty (hệ thống SHT Sales Pipeline trên Turso, Quyết định bổ nhiệm, khung lương 3P, hợp đồng CNTT, khung đánh giá DMI). Không phát hành ra ngoài.
 
-Phiên bản 0.32.0 — 05/10/2026.
+Phiên bản 0.33.0 — 05/10/2026.
