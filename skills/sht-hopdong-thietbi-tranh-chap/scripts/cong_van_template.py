@@ -140,5 +140,8 @@ cellp(c1,"TỔNG GIÁM ĐỐC",size=13,bold=True)
 for _ in range(4): cellp(c1,"",size=13)
 cellp(c1,"Nguyễn Quang Việt",size=13,bold=True)
 
-out="/sessions/charming-compassionate-mayer/mnt/outputs/CV_SHT_gui_VPBank_Phoi_hop_giai_trinh_thue.docx"
+# Đường dẫn ra: đối số thứ nhất, mặc định thư mục hiện hành. Bản gốc ghi cứng thư mục sandbox Cowork
+# (/sessions/.../mnt/outputs) nên chạy ngoài Cowork là FileNotFoundError (QA task-06, 05/10/2026).
+import sys, os
+out=sys.argv[1] if len(sys.argv)>1 else os.path.join(os.getcwd(),"CV_SHT_gui_VPBank_Phoi_hop_giai_trinh_thue.docx")
 doc.save(out); print("saved",out)
